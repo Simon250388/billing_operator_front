@@ -1,1 +1,39 @@
-<p>square-room-add works!</p>
+<button mat-raised-button (click)="openAddRowDialog()"> Добавить </button>
+
+<table mat-table [dataSource]="squareItems" class="mat-elevation-z8">
+    <!-- squareType Column -->
+    <ng-container matColumnDef="squareType">
+        <th mat-header-cell *matHeaderCellDef> Вид площади </th>
+        <td mat-cell *matCellDef="let item"> {{item.squareType?.present}} </td>
+    </ng-container>
+
+    <!-- squareValue Column -->
+    <ng-container matColumnDef="squareValue">
+        <th mat-header-cell *matHeaderCellDef>Значение </th>
+        <td mat-cell *matCellDef="let item"> {{item.value}} </td>
+    </ng-container>
+
+    <!-- action Column -->
+    <ng-container matColumnDef="rowAction">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let item">            
+                <div class="example-flex-container">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon button with a vertical three dot icon">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                          <mat-icon>delete</mat-icon>
+                          <span>Удалить</span>
+                        </button>
+                        <button mat-menu-item (click)="openAddRowDialog(item)">
+                          <mat-icon>edit</mat-icon>
+                          <span>Изменить</span>
+                        </button>
+                      </mat-menu>
+                </div>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

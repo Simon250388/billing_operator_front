@@ -1,4 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ImprovementTypeRowComponent } from '../improvement-type-row/improvement-type-row.component';
+
+const IMPROVEMENT_TEST_DATA = [{
+  service: {
+    id: 1,
+    present: 'Электроэнергия'
+  },
+  improvementType: {
+    id: 1,
+    present: 'Вид благоустройства'
+  },
+  rateGroup: {
+    id: 1,
+    present: 'Тарифная группа'
+  }  
+}]
 
 @Component({
   selector: 'app-improvement-type-add',
@@ -7,9 +24,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImprovementTypeAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  improvementItems = IMPROVEMENT_TEST_DATA;
+
+  displayedColumns = ['service', 'improvementType', 'rateGroup', 'rowAction']
+
+  openAddRowDialog(rowData?: any): void {
+    const dialogRef = this.dialog.open(ImprovementTypeRowComponent, {
+      data: rowData
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
-
 }
