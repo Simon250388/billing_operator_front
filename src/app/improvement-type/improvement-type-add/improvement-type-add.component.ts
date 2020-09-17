@@ -22,7 +22,7 @@ const IMPROVEMENT_TEST_DATA = [{
   templateUrl: './improvement-type-add.component.html',
   styleUrls: ['./improvement-type-add.component.css']
 })
-export class ImprovementTypeAddComponent implements OnInit {
+export class ImprovementTypeAddComponent {
 
   constructor(private dialog: MatDialog) { }
 
