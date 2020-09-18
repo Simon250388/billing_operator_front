@@ -1,0 +1,115 @@
+<h3>
+    Заключение договора с физическим лицом
+</h3>
+<mat-vertical-stepper #stepper>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Данные физического лица</ng-template>
+            <p>
+                <mat-form-field>
+                    <mat-label>Фамилия</mat-label>
+                    <input matInput placeholder="Укажите фамилию физического лица" formControlName="secondName">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Имя</mat-label>
+                    <input matInput placeholder="Укажите имя физического лица" formControlName="fistName">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Отчество</mat-label>
+                    <input matInput placeholder="Укажите отчество физического лица" formControlName="midleName">
+                </mat-form-field>
+            </p>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Данные помещения</ng-template>
+            <p>
+                <mat-form-field>
+                    <mat-label>Строение</mat-label>
+                    <input matInput placeholder="Укажите фамилию физического лица" formControlName="buildingId">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Помещение</mat-label>
+                    <input matInput placeholder="Укажите имя физического лица" formControlName="roomId">
+                </mat-form-field>
+            </p>
+            <mat-form-field appearance="fill">
+                <mat-label>Тип помещения</mat-label>
+                <mat-select formControlName="roomTypeId">
+                    <mat-option *ngFor="let item  of [{id: 1, present: 'Квартира'}]" [value]="item.id">
+                        {{item.present}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>
+                <mat-form-field>
+                    <mat-label>Количество собственников</mat-label>
+                    <input matInput placeholder="Укажите количество собственников помещения" type="number"
+                        formControlName="countOwner">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Количество прописанных</mat-label>
+                    <input matInput placeholder="Укажите количество прописанных в помещении" type="number"
+                        formControlName="countPrescribed">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Количество проживающих</mat-label>
+                    <input matInput placeholder="Укажите количество проживающих в помещении" type="number"
+                        formControlName="countResidents">
+                </mat-form-field>
+            </p>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Площади помещения</ng-template>
+            <app-square-room-add></app-square-room-add>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Виды благоустройств</ng-template>
+            <app-improvement-type-add></app-improvement-type-add>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Услуги</ng-template>
+            <app-service-connector-add></app-service-connector-add>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Завершение</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>
