@@ -20,6 +20,12 @@
         <td mat-cell *matCellDef="let item"> {{item.contractPointLocation}} </td>
     </ng-container>
 
+    <!-- contractPointLocation Column -->
+    <ng-container matColumnDef="meterIsActive">
+        <th mat-header-cell *matHeaderCellDef>Прибор учета установлен</th>
+        <td mat-cell *matCellDef="let item"> {{item.meter == null}} </td>
+    </ng-container>
+
     <!-- action Column -->
     <ng-container matColumnDef="rowAction">
         <th mat-header-cell *matHeaderCellDef> </th>

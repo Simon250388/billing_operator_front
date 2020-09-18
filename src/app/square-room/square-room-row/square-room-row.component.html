@@ -3,7 +3,7 @@
     <form class="example-form" [formGroup]="formGroup">
         <p>
             <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите вид услуги" aria-label="Number" matInput
+                <input type="text" placeholder="Укажите вид площади" aria-label="Number" matInput
                     formControlName="squareTypeId" [matAutocomplete]="auto">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                     <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">

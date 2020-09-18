@@ -15,7 +15,7 @@ export class ServiceConnectorAddComponent {
 
   connectedServiceItems = CONNECTED_SERVICE_TEST_DATA;
 
-  displayedColumns = ['service', 'provider', 'contractPointLocation', 'rowAction']
+  displayedColumns = ['service', 'provider', 'contractPointLocation', 'meterIsActive', 'rowAction']
 
   openAddRowDialog(rowData?: any): void {
     const dialogRef = this.dialog.open(ServiceConnectorRowComponent, {

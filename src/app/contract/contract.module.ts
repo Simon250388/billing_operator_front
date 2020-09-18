@@ -7,6 +7,8 @@ import { ContractDetailsComponent } from './contract-details/contract-details.co
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import { SquareRoomModule } from '../square-room/square-room.module';
 import { ImprovementTypeModule } from '../improvement-type/improvement-type.module';
 import { ServiceConnectorModule } from '../service-connector/service-connector.module';
@@ -22,6 +24,7 @@ import { ServiceConnectorModule } from '../service-connector/service-connector.m
     MatStepperModule,
     MatInputModule,
     MatSelectModule,
+    MatAutocompleteModule,
     SquareRoomModule,
     ImprovementTypeModule,
     ServiceConnectorModule
