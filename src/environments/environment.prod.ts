@@ -1,3 +1,10 @@
+
+export const globalEnvironment = {  
+  apiUrl: 'http://localhost:3000'
+};
+
 export const environment = {
-  production: true
+  application: {},
+  global: globalEnvironment,
+  production: true,
 };

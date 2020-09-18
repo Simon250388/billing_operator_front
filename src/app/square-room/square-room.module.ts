@@ -11,7 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { EnumInputModule } from '../enum-input/enum-input.module';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    MatAutocompleteModule
+    EnumInputModule
   ],
   exports: [
     SquareRoomAddComponent
