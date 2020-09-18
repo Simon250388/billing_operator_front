@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>Соотвествие тарифных групп и видов благоустройств</h2>
-<div mat-dialog-content>
+<h2 mat-dialog-title>Значение площади</h2>
+<mat-dialog-content>
     <form class="example-form" [formGroup]="formGroup">
         <p>
             <mat-form-field class="example-full-width">
@@ -14,8 +14,8 @@
         </p>
         <p>
             <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите вид благоустройства" aria-label="Number" matInput
-                    formControlName="improvementTypeId" [matAutocomplete]="auto">
+                <input type="text" placeholder="Укажите поставщика" aria-label="Number" matInput
+                    formControlName="providerId" [matAutocomplete]="auto">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                     <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
                         {{improvementType.present}}
@@ -25,8 +25,8 @@
         </p>
         <p>
             <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите тарифную группу" aria-label="Number" matInput
-                    formControlName="rateGroupId" [matAutocomplete]="auto">
+                <input type="text" placeholder="Укажите направление использования" aria-label="Number" matInput
+                    formControlName="directionOfUseId" [matAutocomplete]="auto">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                     <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
                         {{improvementType.present}}
@@ -34,9 +34,12 @@
                 </mat-autocomplete>
             </mat-form-field>
         </p>
+        <p>
+            <app-meter-add></app-meter-add>
+        </p>
     </form>
-</div>
-<div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]>Отмена</button>
-    <button mat-button [mat-dialog-close]="formGroup.value" cdkFocusInitial>Ok</button>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Отмена</button>
+    <button mat-button [mat-dialog-close]="formGroup.value" cdkFocusInitial>Завершить</button>
+</mat-dialog-actions>

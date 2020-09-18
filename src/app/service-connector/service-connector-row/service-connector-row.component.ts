@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-improvement-type-row',
-  templateUrl: './improvement-type-row.component.html',
-  styleUrls: ['./improvement-type-row.component.css']
+  selector: 'app-service-connector-row',
+  templateUrl: './service-connector-row.component.html',
+  styleUrls: ['./service-connector-row.component.css']
 })
-export class ImprovementTypeRowComponent implements OnInit {
+export class ServiceConnectorRowComponent implements OnInit {
 
   improvementTypes: [] = [];
 
@@ -17,8 +17,8 @@ export class ImprovementTypeRowComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public rowData: []) {
     this.formGroup = this._formBuilder.group({
       serviceId: [, Validators.required],
-      improvementTypeId: [, Validators.required],
-      rateGroupId: [, Validators.required],
+      providerId: [, Validators.required],
+      directionOfUseId: [, Validators.required]
     });
   }
 
