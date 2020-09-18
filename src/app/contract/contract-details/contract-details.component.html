@@ -35,8 +35,8 @@
                 <mat-form-field>
                     <mat-label>Строение</mat-label>
                     <input matInput placeholder="Укажите строение" formControlName="buildingId" [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                        <mat-option *ngFor="let building of buildings" [value]="building.id">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayBuilding">
+                        <mat-option *ngFor="let building of buildings | async" [value]="building">
                             {{building.present}}
                         </mat-option>
                     </mat-autocomplete>

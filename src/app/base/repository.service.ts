@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { BaseEntity } from './base-entity';
 
-export abstract class RepositoryService<Entity extends BaseEntity> {
-  abstract apiDomen: string;
+export abstract class BaseRepositoryService<Entity extends BaseEntity> {
+  protected abstract apiDomen: string;
 
   constructor(
     protected http: HttpClient) { }
@@ -29,3 +29,5 @@ export abstract class RepositoryService<Entity extends BaseEntity> {
     return this.http.delete(`${environment.apiUrl}/${this.apiDomen}/${id}`);
   }
 }
+
+

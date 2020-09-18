@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Building } from 'src/app/model/building';
+import { BuildingStoreService } from 'src/app/service/building-store.service';
 
 @Component({
   selector: 'app-contract-details',
@@ -8,13 +11,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContractDetailsComponent implements OnInit {
 
-  buildings: [] = [];
-
   formGroup: FormGroup;
 
+
+  buildings: Observable<Building[]>;
+
   constructor(
-    private _formBuilder: FormBuilder
-  ) { }
+    private _formBuilder: FormBuilder,
+    private _buildingStore: BuildingStoreService
+  ) {
+    this._buildingStore.load();
+    this.buildings = this._buildingStore.items;
+  }
 
   ngOnInit(): void {
     this.formGroup = this._formBuilder.group({
@@ -28,6 +36,10 @@ export class ContractDetailsComponent implements OnInit {
       countResidents: [],
       roomTypeId: [, Validators.required]
     });
-  }
+  }  
 
+
+  displayBuilding(value: Building): String {
+    return value && value.present ? value.present : '';
+  }
 }
