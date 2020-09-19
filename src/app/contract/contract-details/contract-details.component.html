@@ -32,21 +32,12 @@
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Данные помещения</ng-template>
             <p>
-                <mat-form-field>
-                    <mat-label>Строение</mat-label>
-                    <input matInput placeholder="Укажите строение" formControlName="buildingId" [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayBuilding">
-                        <mat-option *ngFor="let building of buildings | async" [value]="building">
-                            {{building.present}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
+                <app-building-input [lbl]="'Строение'" [formGroup]="formGroup" formControlName="buildingId"
+                    [placeholder]="'укажите строение'"></app-building-input>
             </p>
             <p>
-                <mat-form-field>
-                    <mat-label>Помещение</mat-label>
-                    <input matInput placeholder="Укажите имя физического лица" formControlName="roomId">
-                </mat-form-field>
+                <app-room-input [lbl]="'Помещение'" [formGroup]="formGroup" formControlName="roomId"
+                    [placeholder]="'укажите помещение'"></app-room-input>
             </p>
             <mat-form-field appearance="fill">
                 <mat-label>Тип помещения</mat-label>

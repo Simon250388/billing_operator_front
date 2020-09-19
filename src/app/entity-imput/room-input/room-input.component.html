@@ -1,0 +1,9 @@
+<mat-form-field [formGroup]="formGroup">
+    <mat-label>{{lbl}}</mat-label>
+    <input matInput [placeholder]="placeholder" [formControlName]="formControlName" [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getPresent">
+        <mat-option *ngFor="let item of filtrItems | async" [value]="item">
+            {{item.present}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

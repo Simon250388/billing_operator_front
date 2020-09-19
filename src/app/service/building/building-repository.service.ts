@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
-import { BaseRepositoryService } from '../base/repository.service';
-import { Building } from '../model/building';
+import { BaseRepositoryService } from '../../base/repository.service';
+import { Building } from '../../model/building';
 
 const TEST_DATA: Building[] = [
   {
@@ -17,12 +17,14 @@ const TEST_DATA: Building[] = [
 @Injectable({
   providedIn: 'root'
 })
-export class BuildingRepositoryService extends BaseRepositoryService<Building> {
+export class BuildingRepositoryService extends BaseRepositoryService<Building>{
   protected apiDomen: string = 'building';
 
   get(): Observable<Building[]> {
     return from([TEST_DATA]);
   }
 }
+
+
 
 

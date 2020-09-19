@@ -12,6 +12,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SquareRoomModule } from '../square-room/square-room.module';
 import { ImprovementTypeModule } from '../improvement-type/improvement-type.module';
 import { ServiceConnectorModule } from '../service-connector/service-connector.module';
+import { EntityImputModule } from '../entity-imput/entity-imput.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ServiceConnectorModule } from '../service-connector/service-connector.m
     MatAutocompleteModule,
     SquareRoomModule,
     ImprovementTypeModule,
-    ServiceConnectorModule
+    ServiceConnectorModule,
+    EntityImputModule
   ]
 })
 export class ContractModule { }

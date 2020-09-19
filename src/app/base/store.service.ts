@@ -6,18 +6,17 @@ import { BaseRepositoryService } from './repository.service';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class StoreService<Entity extends BaseEntity, repository extends BaseRepositoryService<Entity>> {
+export abstract class StoreService<Entity extends BaseEntity, repository extends BaseRepositoryService<Entity>> implements IStoreService<Entity>  {
 
   private _items: BehaviorSubject<Entity[]> = new BehaviorSubject([]);
   private _store: { items: Entity[] } = { items: [] };
 
-  get items(): Observable<Entity[]> {
-    return this._items.asObservable();
-  }
-
   constructor(
     protected repository: repository
-  ) {    
+  ) {
+  }
+  get items(): Observable<Entity[]> {
+    return this._items.asObservable();
   }
 
   save(entity: Entity): void {
@@ -38,9 +37,12 @@ export abstract class StoreService<Entity extends BaseEntity, repository extends
   }
 
   load(): void {
+    if (this._store.items.length != 0) {
+      return;
+    }
     this.repository.get().subscribe(
       data => {
-        this._store.items = [...this._store.items, ...data];
+        data.forEach(row => this._store.items.push(row));
         this._items.next(Object.assign({}, this._store).items)
       }
     );
@@ -57,4 +59,12 @@ export abstract class StoreService<Entity extends BaseEntity, repository extends
       }
     )
   }
+}
+
+
+export interface IStoreService<Entity extends BaseEntity> {
+  save(entity: Entity): void;
+  load(): void;
+  loadById(id: number): void;
+  items: Observable<Entity[]>
 }
