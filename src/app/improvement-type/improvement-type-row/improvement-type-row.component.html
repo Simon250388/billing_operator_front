@@ -2,37 +2,17 @@
 <div mat-dialog-content>
     <form class="example-form" [formGroup]="formGroup">
         <p>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите вид услуги" aria-label="Number" matInput
-                    formControlName="serviceId" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
-                        {{improvementType.present}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+                [placeholder]="'Укажите вид услуги'"></app-service-input>
         </p>
         <p>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите вид благоустройства" aria-label="Number" matInput
-                    formControlName="improvementTypeId" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
-                        {{improvementType.present}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <app-improvement-type-input [lbl]="'Вид благоустройства'" [formGroup]="formGroup"
+                formControlName="improvementTypeId" [placeholder]="'Укажите вид благоустройства'">
+            </app-improvement-type-input>
         </p>
         <p>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите тарифную группу" aria-label="Number" matInput
-                    formControlName="rateGroupId" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
-                        {{improvementType.present}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <app-rate-group-input [lbl]="'Тарифная группа'" [formGroup]="formGroup" formControlName="rateGroupId"
+                [placeholder]="'Укажите тарифную группу'"></app-rate-group-input>
         </p>
     </form>
 </div>

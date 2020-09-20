@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EntityImputModule } from '../entity-imput/entity-imput.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    EntityImputModule
   ],
   exports: [
     ImprovementTypeAddComponent
