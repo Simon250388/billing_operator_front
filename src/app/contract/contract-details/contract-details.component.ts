@@ -22,9 +22,10 @@ export class ContractDetailsComponent implements OnInit {
       buildingId: ['', Validators.required],
       roomId: [''],
       countOwner: [1, Validators.required],
-      countPrescribed: [],
-      countResidents: [],
-      roomTypeId: [, Validators.required]
+      countPrescribed: [0],
+      countResidents: [0],
+      roomTypeId: [, Validators.required],
+      squareValues: this._formBuilder.array([])
     });
-  }  
+  }
 }

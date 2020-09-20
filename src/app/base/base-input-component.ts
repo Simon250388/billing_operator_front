@@ -16,21 +16,24 @@ export abstract class BaseInputComponent<Entity extends BaseEntity> {
 
     public onTouched: () => void = () => { };
 
-    getPresent(value: Entity): String {
-        return value && value.present ? value.present : '';
+    getPresent(id: number | string): String {
+        if (!id || id == '') {
+            return '';
+        }
+        return this.storeService.getPresent(id as number);
     }
 
     writeValue(obj: any): void {
-      
+
     }
     registerOnChange(fn: any): void {
-        
+
     }
     registerOnTouched(fn: any): void {
-      
+
     }
     setDisabledState?(isDisabled: boolean): void {
-      
+
     }
 
     validate(control: AbstractControl): ValidationErrors {

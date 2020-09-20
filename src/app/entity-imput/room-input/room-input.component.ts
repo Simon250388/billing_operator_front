@@ -33,8 +33,11 @@ export class RoomInputComponent extends BaseInputComponent<Room> implements OnIn
     super(storeService);
   }
   ngOnInit(): void {
-    this.filtrItems = this.items.pipe(
-      map(items => items.filter(row=> row.buildingId == this.buildingId))
-    )    
+
+    this.formGroup.controls['buildingId'].valueChanges.subscribe(value => {
+      this.filtrItems = this.items.pipe(
+        map(items => items.filter(row => row.buildingId == value)))
+    }
+    );
   }
 }

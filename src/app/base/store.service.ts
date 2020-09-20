@@ -59,6 +59,10 @@ export abstract class StoreService<Entity extends BaseEntity, repository extends
       }
     )
   }
+
+  getPresent(id: number): string {
+   return this._store.items.find(row => row.id == id).present;
+  }
 }
 
 
@@ -66,5 +70,6 @@ export interface IStoreService<Entity extends BaseEntity> {
   save(entity: Entity): void;
   load(): void;
   loadById(id: number): void;
+  getPresent(id: number): String;
   items: Observable<Entity[]>
 }

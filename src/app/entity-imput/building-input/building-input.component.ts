@@ -25,6 +25,5 @@ export class BuildingInputComponent extends BaseInputComponent<Building> impleme
 
   constructor(protected storeService: BuildingStoreService) {
     super(storeService);
-  }
-  
+  }  
 }

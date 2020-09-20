@@ -1,26 +1,19 @@
 <h2 mat-dialog-title>Значение площади</h2>
 <mat-dialog-content>
-    <form class="example-form" [formGroup]="formGroup">
-        <p>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите вид площади" aria-label="Number" matInput
-                    formControlName="squareTypeId" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
-                        {{improvementType.present}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field class="example-full-width">
-                <mat-label>Значение площади</mat-label>
-                <input matInput placeholder="Укажите значение площади" value="50" type="number">
-              </mat-form-field>
-        </p>        
-    </form>
+  <form class="example-form" [formGroup]="formGroup">
+    <p>
+      <app-square-type [lbl]="'Вид площади'" [formGroup]="formGroup" formControlName="squareTypeId"
+        [placeholder]="'Укажите вид площади'"></app-square-type>
+    </p>
+    <p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Значение площади</mat-label>
+        <input matInput placeholder="Укажите значение площади" value="50" type="number" formControlName="value">
+      </mat-form-field>
+    </p>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Отмена</button>
-    <button mat-button [mat-dialog-close]="formGroup.value" cdkFocusInitial>Завершить</button>
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button [mat-dialog-close]="formGroup" cdkFocusInitial>Завершить</button>
 </mat-dialog-actions>
