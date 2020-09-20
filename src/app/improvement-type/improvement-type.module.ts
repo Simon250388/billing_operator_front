@@ -8,8 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EntityImputModule } from '../entity-imput/entity-imput.module';
 
@@ -25,9 +23,7 @@ import { EntityImputModule } from '../entity-imput/entity-imput.module';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    MatDialogModule,
-    MatInputModule,
-    MatAutocompleteModule,
+    MatDialogModule,   
     EntityImputModule
   ],
   exports: [
