@@ -11,9 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ServiceConnectorRowComponent } from './service-connector-row/service-connector-row.component';
 import { MeterModule } from '../meter/meter.module';
+import { EntityImputModule } from '../entity-imput/entity-imput.module';
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import { MeterModule } from '../meter/meter.module';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    MatAutocompleteModule
+    EntityImputModule
   ],
   exports: [
     ServiceConnectorAddComponent

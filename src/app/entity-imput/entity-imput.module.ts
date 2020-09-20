@@ -8,6 +8,8 @@ import { RoomInputComponent } from './room-input/room-input.component';
 import { ServiceInputComponent } from './service-input/service-input.component';
 import { ImprovementTypeInputComponent } from './improvement-type-input/improvement-type-input.component';
 import { RateGroupInputComponent } from './rate-group-input/rate-group-input.component';
+import { ProviderInputComponent } from './provider-input/provider-input.component';
+import { DirectionOfUseInputComponent } from './direction-of-use-input/direction-of-use-input.component';
 
 
 
@@ -17,7 +19,9 @@ import { RateGroupInputComponent } from './rate-group-input/rate-group-input.com
     RoomInputComponent,
     ServiceInputComponent,
     ImprovementTypeInputComponent,
-    RateGroupInputComponent
+    RateGroupInputComponent,
+    ProviderInputComponent,
+    DirectionOfUseInputComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,9 @@ import { RateGroupInputComponent } from './rate-group-input/rate-group-input.com
     RoomInputComponent,
     ServiceInputComponent,
     ImprovementTypeInputComponent,
-    RateGroupInputComponent
+    RateGroupInputComponent,
+    ProviderInputComponent,
+    DirectionOfUseInputComponent
   ]
 })
 export class EntityImputModule { }

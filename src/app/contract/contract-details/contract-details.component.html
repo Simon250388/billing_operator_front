@@ -85,7 +85,7 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Виды благоустройств</ng-template>
-            <app-improvement-type-add></app-improvement-type-add>
+            <app-improvement-type-add [formArray]="formGroup.controls['improvementTypes']"></app-improvement-type-add>
             <div>
                 <button mat-button matStepperNext>Next</button>
             </div>

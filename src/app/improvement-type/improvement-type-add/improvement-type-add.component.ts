@@ -1,21 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ServiceImprovementTypeRateGroup } from 'src/app/model/service-improvement-type-rate-group';
 import { ImprovementTypeRowComponent } from '../improvement-type-row/improvement-type-row.component';
-
-const IMPROVEMENT_TEST_DATA = [{
-  service: {
-    id: 1,
-    present: 'Электроэнергия'
-  },
-  improvementType: {
-    id: 1,
-    present: 'Вид благоустройства'
-  },
-  rateGroup: {
-    id: 1,
-    present: 'Тарифная группа'
-  }  
-}]
 
 @Component({
   selector: 'app-improvement-type-add',
@@ -24,19 +11,33 @@ const IMPROVEMENT_TEST_DATA = [{
 })
 export class ImprovementTypeAddComponent {
 
+  @Input() formArray: FormArray;
+
   constructor(private dialog: MatDialog) { }
 
-  improvementItems = IMPROVEMENT_TEST_DATA;
+  get improvementTypeItems(): ServiceImprovementTypeRateGroup[] {
+    return this.formArray.value;
+  }
 
   displayedColumns = ['service', 'improvementType', 'rateGroup', 'rowAction']
 
-  openAddRowDialog(rowData?: any): void {
+  openAddRowDialog(index?: any): void {
+    let data: ServiceImprovementTypeRateGroup;
+
+    if (index != null) {
+      data = this.formArray.at(index).value as ServiceImprovementTypeRateGroup;
+    }
+
     const dialogRef = this.dialog.open(ImprovementTypeRowComponent, {
-      data: rowData
+      data: data
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (index != null && result) {
+        this.formArray.at(index).setValue((result as FormGroup).value as ServiceImprovementTypeRateGroup);
+      } else if (result) {
+        this.formArray.push(result);
+      }
     });
   }
 }

@@ -2,37 +2,17 @@
 <mat-dialog-content>
     <form class="example-form" [formGroup]="formGroup">
         <p>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите вид услуги" aria-label="Number" matInput
-                    formControlName="serviceId" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
-                        {{improvementType.present}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+                [placeholder]="'Укажите вид услуги'"></app-service-input>
         </p>
         <p>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите поставщика" aria-label="Number" matInput
-                    formControlName="providerId" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
-                        {{improvementType.present}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
+                [placeholder]="'Укажите поставщика'"></app-provider-input>
         </p>
         <p>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Укажите направление использования" aria-label="Number" matInput
-                    formControlName="directionOfUseId" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let improvementType of improvementTypes" [value]="improvementType.id">
-                        {{improvementType.present}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <app-direction-of-use-input [lbl]="'направление использования'" [formGroup]="formGroup"
+                formControlName="directionOfUseId" [placeholder]="'Укажите направление использования'">
+            </app-direction-of-use-input>
         </p>
         <p>
             <app-meter-add></app-meter-add>

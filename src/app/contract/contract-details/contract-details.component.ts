@@ -25,7 +25,8 @@ export class ContractDetailsComponent implements OnInit {
       countPrescribed: [0],
       countResidents: [0],
       roomTypeId: [, Validators.required],
-      squareValues: this._formBuilder.array([])
+      squareValues: this._formBuilder.array([]),
+      improvementTypes: this._formBuilder.array([])
     });
   }
 }
