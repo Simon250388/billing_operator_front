@@ -11,7 +11,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { SquareRoomModule } from '../square-room/square-room.module';
 import { ImprovementTypeRowModule } from '../improvement-type-row/improvement-type-row.module';
-import { ServiceConnectorModule } from '../service-connector/service-connector.module';
+import { AccountingPointServiceModule } from '../accounting-point-service/accounting-point-service.module';
 import { EntityImputModule } from '../entity-imput/entity-imput.module';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { EntityImputModule } from '../entity-imput/entity-imput.module';
     MatAutocompleteModule,
     SquareRoomModule,
     ImprovementTypeRowModule,
-    ServiceConnectorModule,
+    AccountingPointServiceModule,
     EntityImputModule
   ]
 })

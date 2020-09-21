@@ -94,7 +94,7 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Услуги</ng-template>
-            <app-service-connector-add></app-service-connector-add>
+            <accounting-point-service-list [formArray]="formGroup.controls['accountingPoints']"></accounting-point-service-list>
             <div>
                 <button mat-button matStepperNext>Next</button>
             </div>

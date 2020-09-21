@@ -11,6 +11,8 @@ import { ImprovementTypeRowAddComponent } from '../improvement-type-row-add/impr
   styleUrls: ['./improvement-type-row-list.component.css']
 })
 export class ImprovementTypeRowListComponent {
+  
+  displayedColumns = ['service', 'improvementType', 'rateGroup', 'rowAction'];
 
   @Input() formArray: FormArray;
 
@@ -19,16 +21,13 @@ export class ImprovementTypeRowListComponent {
     private _store : ImprovementTypeRowStoreService
     ) { }
 
-  get improvementTypeItems(): ServiceImprovementTypeRateGroup[] {
+  get items(): ServiceImprovementTypeRateGroup[] {
     return this.formArray.value;
   }
 
   get store(): ImprovementTypeRowStoreService {
     return this._store; 
-  }
-
-
-  displayedColumns = ['service', 'improvementType', 'rateGroup', 'rowAction']
+  }  
 
   openAddRowDialog(index?: any): void {
     let data: ServiceImprovementTypeRateGroup;

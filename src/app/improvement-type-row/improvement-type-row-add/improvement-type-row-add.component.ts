@@ -10,8 +10,6 @@ import { ServiceImprovementTypeRateGroup } from 'src/app/model/service-improveme
 })
 export class ImprovementTypeRowAddComponent {
 
-  improvementTypes: [] = [];
-
   formGroup: FormGroup;
 
   constructor(
