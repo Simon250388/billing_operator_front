@@ -4,7 +4,7 @@ import { Service } from './service';
 
 export interface ServiceImprovementTypeRateGroup {
     id?: number,
-    service: Service;
-    improvementType: ImprovementType;
-    rateGroup: RateGroup;
+    serviceId?: number;
+    improvementTypeId: number;
+    rateGroupId: number;
 }

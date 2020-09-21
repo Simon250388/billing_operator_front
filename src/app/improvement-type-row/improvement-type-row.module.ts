@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImprovementTypeAddComponent } from './improvement-type-add/improvement-type-add.component';
-import { ImprovementTypeRowComponent } from './improvement-type-row/improvement-type-row.component';
+import { ImprovementTypeRowListComponent } from './improvement-type-row-list/improvement-type-row-list.component';
+import { ImprovementTypeRowAddComponent } from './improvement-type-row-add/improvement-type-row-add.component';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,8 +13,8 @@ import { EntityImputModule } from '../entity-imput/entity-imput.module';
 
 @NgModule({
   declarations: [
-    ImprovementTypeAddComponent,
-    ImprovementTypeRowComponent
+    ImprovementTypeRowListComponent,
+    ImprovementTypeRowAddComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +27,7 @@ import { EntityImputModule } from '../entity-imput/entity-imput.module';
     EntityImputModule
   ],
   exports: [
-    ImprovementTypeAddComponent
+    ImprovementTypeRowListComponent
   ]
 })
-export class ImprovementTypeModule { }
+export class ImprovementTypeRowModule { }

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SquareTypeComponent } from './square-type/square-type.component';
+import { SquareTypeInputComponent } from './square-type/square-type.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    SquareTypeComponent
+    SquareTypeInputComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
     MatAutocompleteModule
   ],
   exports: [
-    SquareTypeComponent
+    SquareTypeInputComponent
   ]
 })
 export class EnumInputModule { }

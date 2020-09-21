@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseEntity } from 'src/app/base/base-entity';
 import { BaseInputComponent } from 'src/app/base/base-input-component';
-import { SquareTypeStoreService } from 'src/app/service/square-type/SquareTypeStore.service';
+import { SquareTypeStoreService } from 'src/app/service/square-type/square-type-store.service';
 
 @Component({
   selector: 'app-square-type',
@@ -11,12 +11,12 @@ import { SquareTypeStoreService } from 'src/app/service/square-type/SquareTypeSt
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SquareTypeComponent),
+      useExisting: forwardRef(() => SquareTypeInputComponent),
       multi: true
     }
   ]
 })
-export class SquareTypeComponent extends BaseInputComponent<BaseEntity> implements ControlValueAccessor {
+export class SquareTypeInputComponent extends BaseInputComponent<BaseEntity> implements ControlValueAccessor {
 
   @Input() formGroup: FormGroup;
   @Input() formControlName: string;

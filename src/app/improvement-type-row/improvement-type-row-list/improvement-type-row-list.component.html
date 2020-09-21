@@ -4,19 +4,19 @@
     <!-- squareType Column -->
     <ng-container matColumnDef="service">
         <th mat-header-cell *matHeaderCellDef>Услуга</th>
-        <td mat-cell *matCellDef="let item"> {{item.service?.present}} </td>
+        <td mat-cell *matCellDef="let item"> {{store.getServicePresent(item.serviceId)}} </td>
     </ng-container>
 
     <!-- squareValue Column -->
     <ng-container matColumnDef="improvementType">
         <th mat-header-cell *matHeaderCellDef>Вид благоустройства </th>
-        <td mat-cell *matCellDef="let item"> {{item.improvementType?.present}} </td>
+        <td mat-cell *matCellDef="let item"> {{store.getImprovementTypePresent(item.improvementTypeId)}} </td>
     </ng-container>
 
     <!-- squareValue Column -->
     <ng-container matColumnDef="rateGroup">
         <th mat-header-cell *matHeaderCellDef>Тарифная групп </th>
-        <td mat-cell *matCellDef="let item"> {{item.rateGroup?.present}} </td>
+        <td mat-cell *matCellDef="let item"> {{store.getRateGroupPresent(item.rateGroupId)}} </td>
     </ng-container>
 
     <!-- action Column -->

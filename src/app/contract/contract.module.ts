@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { SquareRoomModule } from '../square-room/square-room.module';
-import { ImprovementTypeModule } from '../improvement-type/improvement-type.module';
+import { ImprovementTypeRowModule } from '../improvement-type-row/improvement-type-row.module';
 import { ServiceConnectorModule } from '../service-connector/service-connector.module';
 import { EntityImputModule } from '../entity-imput/entity-imput.module';
 
@@ -27,7 +27,7 @@ import { EntityImputModule } from '../entity-imput/entity-imput.module';
     MatSelectModule,
     MatAutocompleteModule,
     SquareRoomModule,
-    ImprovementTypeModule,
+    ImprovementTypeRowModule,
     ServiceConnectorModule,
     EntityImputModule
   ]

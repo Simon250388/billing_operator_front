@@ -2,22 +2,31 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceImprovementTypeRateGroup } from 'src/app/model/service-improvement-type-rate-group';
-import { ImprovementTypeRowComponent } from '../improvement-type-row/improvement-type-row.component';
+import { ImprovementTypeRowStoreService } from 'src/app/service/improvement-type-row/improvement-type-row-store.service';
+import { ImprovementTypeRowAddComponent } from '../improvement-type-row-add/improvement-type-row-add.component';
 
 @Component({
-  selector: 'app-improvement-type-add',
-  templateUrl: './improvement-type-add.component.html',
-  styleUrls: ['./improvement-type-add.component.css']
+  selector: 'app-improvement-type-row-list',
+  templateUrl: './improvement-type-row-list.component.html',
+  styleUrls: ['./improvement-type-row-list.component.css']
 })
-export class ImprovementTypeAddComponent {
+export class ImprovementTypeRowListComponent {
 
   @Input() formArray: FormArray;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    private _store : ImprovementTypeRowStoreService
+    ) { }
 
   get improvementTypeItems(): ServiceImprovementTypeRateGroup[] {
     return this.formArray.value;
   }
+
+  get store(): ImprovementTypeRowStoreService {
+    return this._store; 
+  }
+
 
   displayedColumns = ['service', 'improvementType', 'rateGroup', 'rowAction']
 
@@ -28,7 +37,7 @@ export class ImprovementTypeAddComponent {
       data = this.formArray.at(index).value as ServiceImprovementTypeRateGroup;
     }
 
-    const dialogRef = this.dialog.open(ImprovementTypeRowComponent, {
+    const dialogRef = this.dialog.open(ImprovementTypeRowAddComponent, {
       data: data
     });
 

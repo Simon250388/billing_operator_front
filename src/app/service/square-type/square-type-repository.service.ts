@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { BaseEntity } from 'src/app/base/base-entity';
 import { BaseRepositoryService } from 'src/app/base/repository.service';
 
@@ -26,7 +26,7 @@ const TEST_DATA: BaseEntity[] = [
   providedIn: 'root'
 })
 export class SquareTypeRepositoryService extends BaseRepositoryService<BaseEntity>{
-  protected apiDomen: string = 'square-type';
+  protected apiDomen: string = 'square-type-row';
 
   get(): Observable<BaseEntity[]> {
     return from([TEST_DATA]);

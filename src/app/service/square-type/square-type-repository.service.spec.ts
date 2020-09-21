@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { SquareTypeRepositoryService } from './SquareTypeRepository.service';
+import { SquareTypeRepositoryService } from './square-type-repository.service';
 
 describe('Service: SquareTypeRepository', () => {
   beforeEach(() => {

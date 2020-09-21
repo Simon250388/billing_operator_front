@@ -4,18 +4,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ServiceImprovementTypeRateGroup } from 'src/app/model/service-improvement-type-rate-group';
 
 @Component({
-  selector: 'app-improvement-type-row',
-  templateUrl: './improvement-type-row.component.html',
-  styleUrls: ['./improvement-type-row.component.css']
+  selector: 'app-improvement-type-row-add',
+  templateUrl: './improvement-type-row-add.component.html',
+  styleUrls: ['./improvement-type-row-add.component.css']
 })
-export class ImprovementTypeRowComponent {
+export class ImprovementTypeRowAddComponent {
 
   improvementTypes: [] = [];
 
   formGroup: FormGroup;
 
   constructor(
-    public dialogRef: MatDialogRef<ImprovementTypeRowComponent>,
+    public dialogRef: MatDialogRef<ImprovementTypeRowAddComponent>,
     private _formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public rowData: ServiceImprovementTypeRateGroup) {
     this.formGroup = this._formBuilder.group({
