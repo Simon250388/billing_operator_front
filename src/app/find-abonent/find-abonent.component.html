@@ -1,0 +1,10 @@
+
+<mat-form-field>
+    <mat-label>Лицевой счет</mat-label>
+    <input matInput [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <!-- <mat-option *ngFor="let item of items | async" [value]="item.id">
+            {{item.present}}
+        </mat-option> -->
+    </mat-autocomplete>
+</mat-form-field>
