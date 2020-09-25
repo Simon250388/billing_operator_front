@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FindAbonentModule } from './find-abonent/find-abonent.module';
-import { ContractModule } from './contract/contract.module';
 
 
 @NgModule({
@@ -17,9 +15,7 @@ import { ContractModule } from './contract/contract.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
-    FindAbonentModule,
-    ContractModule
+    FlexLayoutModule
   ],
   providers: [
   ],

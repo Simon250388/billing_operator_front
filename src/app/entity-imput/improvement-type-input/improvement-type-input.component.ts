@@ -1,7 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { BaseInputComponent } from 'src/app/base/base-input-component';
+import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
 import { ImprovementType } from 'src/app/model/improvement-type';
 import { ImprovementTypeStoreService } from 'src/app/service/improvement-type/improvement-type-store.service';
 
@@ -17,7 +16,7 @@ import { ImprovementTypeStoreService } from 'src/app/service/improvement-type/im
     }
   ]
 })
-export class ImprovementTypeInputComponent extends BaseInputComponent<ImprovementType> implements ControlValueAccessor {
+export class ImprovementTypeInputComponent extends BaseCatalogComponent<ImprovementType> implements ControlValueAccessor {
 
   @Input() formGroup: FormGroup;
   @Input() formControlName: string;

@@ -1,28 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { BaseEntity } from './base-entity';
+import { BaseCatalog } from './base-catalog';
 
-export abstract class BaseRepositoryService<Entity extends BaseEntity> {
+export abstract class BaseRepositoryService<Catalog extends BaseCatalog> {
   protected abstract apiDomen: string;
 
   constructor(
     protected http: HttpClient) { }
 
-  get(): Observable<Entity[]> {
-    return this.http.get<Entity[]>(`${environment.apiUrl}/${this.apiDomen}`);
+  get(): Observable<Catalog[]> {
+    return this.http.get<Catalog[]>(`${environment.apiUrl}/${this.apiDomen}`);
   }
 
-  getById(id: number): Observable<Entity> {
-    return this.http.get<Entity>(`${environment.apiUrl}/${this.apiDomen}/${id}`);
+  getById(id: number): Observable<Catalog> {
+    return this.http.get<Catalog>(`${environment.apiUrl}/${this.apiDomen}/${id}`);
   }
 
-  post(entity: Entity): Observable<Entity> {
-    return this.http.post<Entity>(`${environment.apiUrl}/${this.apiDomen}`, entity);
+  post(entity: Catalog): Observable<Catalog> {
+    return this.http.post<Catalog>(`${environment.apiUrl}/${this.apiDomen}`, entity);
   }
 
-  put(entity: Entity): Observable<Entity> {
-    return this.http.put<Entity>(`${environment.apiUrl}/${this.apiDomen}/${entity.id}`, entity);
+  put(entity: Catalog): Observable<Catalog> {
+    return this.http.put<Catalog>(`${environment.apiUrl}/${this.apiDomen}/${entity.id}`, entity);
   }
 
   delete(id: number): Observable<object> {

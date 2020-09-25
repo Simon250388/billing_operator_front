@@ -1,6 +1,6 @@
-import { BaseEntity } from "../base/base-entity";
+import { BaseCatalog } from '../base/base-catalog';
 
-export interface SquareTypeRow extends BaseEntity{
+export interface SquareTypeRow extends BaseCatalog {
   squareTypeId?: number;
   value: number;
 }

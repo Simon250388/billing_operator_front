@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { BaseEntity } from './base-entity';
+import { BaseCatalog } from './base-catalog';
 import { BaseRepositoryService } from './repository.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class StoreService<Entity extends BaseEntity, repository extends BaseRepositoryService<Entity>> implements IStoreService<Entity>  {
+export abstract class StoreService<Catalog extends BaseCatalog, repository extends BaseRepositoryService<Catalog>> implements IStoreService<Catalog>  {
 
-  private _items: BehaviorSubject<Entity[]> = new BehaviorSubject([]);
-  private _store: { items: Entity[] } = { items: [] };
+  private _items: BehaviorSubject<Catalog[]> = new BehaviorSubject([]);
+  private _store: { items: Catalog[] } = { items: [] };
 
   constructor(
     protected repository: repository
   ) {
   }
-  get items(): Observable<Entity[]> {
+  get items(): Observable<Catalog[]> {
     return this._items.asObservable();
   }
 
-  save(entity: Entity): void {
+  save(entity: Catalog): void {
     if (entity.id) {
       this.repository.put(entity).subscribe(
         data => {
@@ -66,10 +66,10 @@ export abstract class StoreService<Entity extends BaseEntity, repository extends
 }
 
 
-export interface IStoreService<Entity extends BaseEntity> {
-  save(entity: Entity): void;
+export interface IStoreService<Catalog extends BaseCatalog> {
+  save(entity: Catalog): void;
   load(): void;
   loadById(id: number): void;
   getPresent(id: number): String;
-  items: Observable<Entity[]>
+  items: Observable<Catalog[]>
 }

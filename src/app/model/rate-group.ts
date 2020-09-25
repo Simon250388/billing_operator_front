@@ -1,4 +1,4 @@
-import { BaseEntity } from '../base/base-entity';
+import { BaseCatalog } from '../base/base-catalog';
 
-export interface RateGroup extends BaseEntity {
+export interface RateGroup extends BaseCatalog {
 }

@@ -1,8 +1,8 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { BaseInputComponent } from 'src/app/base/base-input-component';
+import { map } from 'rxjs/operators';
+import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
 import { Room } from 'src/app/model/room';
 import { RoomStoreService } from 'src/app/service/room/room-store.service';
 
@@ -18,7 +18,7 @@ import { RoomStoreService } from 'src/app/service/room/room-store.service';
     }
   ]
 })
-export class RoomInputComponent extends BaseInputComponent<Room> implements OnInit, ControlValueAccessor {
+export class RoomInputComponent extends BaseCatalogComponent<Room> implements OnInit, ControlValueAccessor {
 
   @Input() formGroup: FormGroup;
   @Input() formControlName: string;

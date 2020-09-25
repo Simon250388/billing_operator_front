@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BaseEntity } from 'src/app/base/base-entity';
+import { BaseCatalog } from 'src/app/base/base-catalog';
 import { IStoreService, StoreService } from 'src/app/base/store.service';
 import { SquareTypeRepositoryService } from './square-type-repository.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SquareTypeStoreService extends StoreService<BaseEntity, SquareTypeRepositoryService> implements IStoreService<BaseEntity> {
+export class SquareTypeStoreService extends StoreService<BaseCatalog, SquareTypeRepositoryService> implements IStoreService<BaseCatalog> {
   constructor(
     protected repository: SquareTypeRepositoryService
   ) {

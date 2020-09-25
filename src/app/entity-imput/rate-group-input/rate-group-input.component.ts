@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BaseInputComponent } from 'src/app/base/base-input-component';
+import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
 import { RateGroup } from 'src/app/model/rate-group';
 import { RateGroupStoreService } from 'src/app/service/rate-group/rate-group-store.service';
 
@@ -16,7 +16,7 @@ import { RateGroupStoreService } from 'src/app/service/rate-group/rate-group-sto
     }
   ]
 })
-export class RateGroupInputComponent extends BaseInputComponent<RateGroup> implements ControlValueAccessor {
+export class RateGroupInputComponent extends BaseCatalogComponent<RateGroup> implements ControlValueAccessor {
 
   @Input() formGroup: FormGroup;
   @Input() formControlName: string;

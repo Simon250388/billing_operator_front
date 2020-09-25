@@ -1,15 +1,15 @@
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { BaseEntity } from './base-entity';
+import { BaseCatalog } from './base-catalog';
 import { IStoreService } from './store.service';
 
 
-export abstract class BaseInputComponent<Entity extends BaseEntity> {
+export abstract class BaseCatalogComponent<Catalog extends BaseCatalog> {
 
-    items: Observable<Entity[]>;
+    items: Observable<Catalog[]>;
     abstract formGroup: FormGroup;
 
-    constructor(protected storeService: IStoreService<Entity>) {
+    constructor(protected storeService: IStoreService<Catalog>) {
         this.storeService.load();
         this.items = this.storeService.items;
     }

@@ -1,6 +1,6 @@
-import { BaseEntity } from '../base/base-entity';
+import { BaseCatalog } from '../base/base-catalog';
 /**
  * Вид благоустройства
  */
-export interface ImprovementType extends BaseEntity {
+export interface ImprovementType extends BaseCatalog {
 }

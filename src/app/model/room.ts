@@ -1,5 +1,5 @@
-import { BaseEntity } from '../base/base-entity';
+import { BaseCatalog } from '../base/base-catalog';
 
-export interface Room extends BaseEntity {
+export interface Room extends BaseCatalog {
     buildingId: number;
 }
