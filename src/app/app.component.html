@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-    <div fxFlex="60%">
+    <div fxFlex="70%">
         <div fxLayout="column">
             <div fxLayout="row">
                 <div fxFlex="100%" class="HeaderNavBar">Hello</div>
@@ -9,11 +9,9 @@
                     <router-outlet></router-outlet>
                 </div>
                 <div fxFlex="25%">
-                    <!-- <app-find-abonent></app-find-abonent>
-                    <app-contract-info></app-contract-info> -->
+                    <ng-template [cdkPortalOutlet]="currentPortal"></ng-template>                  
                 </div>
             </div>
         </div>
-
     </div>
 </div>

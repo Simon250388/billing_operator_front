@@ -16,7 +16,7 @@ export abstract class BaseCatalogComponent<Catalog extends BaseCatalog> {
 
     public onTouched: () => void = () => { };
 
-    getPresent(id: number | string): String {
+    getPresent(id: number | string): string {
         if (!id || id == '') {
             return '';
         }

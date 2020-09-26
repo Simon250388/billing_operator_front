@@ -1,35 +1,35 @@
 <div fxLayout="row wrap">
-    <div fxFlex="50%" *ngFor="let item of [0,1,2,3,4,5,6]">
+    <div fxFlex="50%" *ngFor="let item of items">
         <mat-card class="example-card">
             <mat-card-content>
                 <table>
                     <tr>
                         <td>Наименование</td>
-                        <td>Кухня</td>
+                        <td>{{presentAccountingPoint(item.accountingPointId)}}</td>
                     </tr>
                     <tr>
                         <td>Услуга</td>
-                        <td>ХВС+Водоотведение</td>
+                        <td>{{presentService(item.serviceId)}}</td>
                     </tr>
                     <tr>
                         <td>Поставщик</td>
-                        <td>МУП Водоканал</td>
+                        <td>{{presentProvider(item.providerId)}}</td>
                     </tr>
                     <tr>
                         <td>Прибор учета</td>
-                        <td>5151515/СГВ-15</td>
+                        <td>{{presentMeter(item.meterId)}}/СГВ-15</td>
                     </tr>
                     <tr>
                         <td>Дата установки</td>
-                        <td>01-01-2020</td>
+                        <td>{{item.meterStateChangeAt| date:'shortDate'}}</td>
                     </tr>
                     <tr>
                         <td>Вид дифифиринцированности</td>
-                        <td>Однотарифный</td>
+                        <td>{{presentDifferentiationType(item.differentiationTypeId)}}</td>
                     </tr>
                     <tr>
                         <td>Последние показания</td>
-                        <td>9898989</td>
+                        <td>{{item.lastMeterValue}}</td>
                     </tr>
                 </table>
             </mat-card-content>

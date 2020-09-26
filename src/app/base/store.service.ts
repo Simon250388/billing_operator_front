@@ -61,7 +61,7 @@ export abstract class StoreService<Catalog extends BaseCatalog, repository exten
   }
 
   getPresent(id: number): string {
-   return this._store.items.find(row => row.id == id).present;
+    return this._store.items.find(row => row.id == id).present;
   }
 }
 
@@ -70,6 +70,6 @@ export interface IStoreService<Catalog extends BaseCatalog> {
   save(entity: Catalog): void;
   load(): void;
   loadById(id: number): void;
-  getPresent(id: number): String;
+  getPresent(id: number): string;
   items: Observable<Catalog[]>
 }

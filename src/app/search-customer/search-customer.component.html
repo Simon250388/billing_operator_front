@@ -1,0 +1,47 @@
+<mat-form-field>
+    <mat-label>Лицевой счет</mat-label>
+    <input matInput [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <!-- <mat-option *ngFor="let item of items | async" [value]="item.id">
+            {{item.present}}
+        </mat-option> -->
+    </mat-autocomplete>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Город</mat-label>
+    <input matInput [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <!-- <mat-option *ngFor="let item of items | async" [value]="item.id">
+            {{item.present}}
+        </mat-option> -->
+    </mat-autocomplete>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Улица</mat-label>
+    <input matInput [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <!-- <mat-option *ngFor="let item of items | async" [value]="item.id">
+            {{item.present}}
+        </mat-option> -->
+    </mat-autocomplete>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Строение</mat-label>
+    <input matInput [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <!-- <mat-option *ngFor="let item of items | async" [value]="item.id">
+            {{item.present}}
+        </mat-option> -->
+    </mat-autocomplete>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Помещение</mat-label>
+    <input matInput [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <!-- <mat-option *ngFor="let item of items | async" [value]="item.id">
+            {{item.present}}
+        </mat-option> -->
+    </mat-autocomplete>
+</mat-form-field>
+
+<button mat-button color="primary" (click)="setCurrentCustomer()">Найти</button>
