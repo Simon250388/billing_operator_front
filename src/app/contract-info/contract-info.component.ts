@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from 'src/app/model/customer';
-import { CutomerNavigationService } from 'src/app/service/customer/cutomer-navigation.service';
+import { Customer } from '../model/customer';
+import { CutomerNavigationService } from '../service/customer/cutomer-navigation.service';
 
 @Component({
   selector: 'app-contract-info',
@@ -23,4 +23,5 @@ export class ContractInfoComponent {
   setCurrentCustomer(): void {
     this.cutomerNavigationService.setCurrentCustomer(null);
   }
+
 }

@@ -5,6 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 
 import { AccountingPointActiveListComponent } from './accounting-point-active-list/accounting-point-active-list.component';
 import { AccountingPointActiveRoutingModule } from './accounting-point-active-routing.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { AccountingPointActiveRoutingModule } from './accounting-point-active-ro
     CommonModule,
     AccountingPointActiveRoutingModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule
   ],
   exports: [
     AccountingPointActiveListComponent

@@ -53,7 +53,11 @@ const TEST_DATA: Customer[] = [
     address: '414000, г. Астрахань, ул. Кирова, д. 922 кв 8888',
     debt: 3500,
     isActive: false,
-    stateChangeAt: '2020-01-02T00:00:00'
+    stateChangeAt: '2020-01-02T00:00:00',
+    countOwner: 1,
+    countResident: 1,
+    countPrescribed: 1,
+    totalSquare: 50
   }
 ];
 

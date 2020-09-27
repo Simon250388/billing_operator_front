@@ -14,13 +14,11 @@ import { SquareRoomModule } from '../square-room/square-room.module';
 import { ImprovementTypeRowModule } from '../improvement-type-row/improvement-type-row.module';
 import { AccountingPointServiceModule } from '../accounting-point-service/accounting-point-service.module';
 import { EntityImputModule } from '../entity-imput/entity-imput.module';
-import { ContractInfoComponent } from './contract-info/contract-info.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    ContractDetailsComponent,
-    ContractInfoComponent
+    ContractDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -30,15 +28,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatListModule,
     MatButtonModule,
     SquareRoomModule,
     ImprovementTypeRowModule,
     AccountingPointServiceModule,
     EntityImputModule
   ],
-  exports: [
-    ContractInfoComponent
-  ]
+  exports: []
 })
 export class ContractModule { }

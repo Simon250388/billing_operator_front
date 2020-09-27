@@ -32,4 +32,33 @@ export interface Customer extends BaseCatalog {
      * @memberof Customer
      */
     stateChangeAt: string;
+    /**
+     * Количество проживающих
+     *
+     * @type {number}
+     * @memberof Customer
+     */
+    countResident: number;
+    /**
+     *Количество прописанных
+     *
+     * @type {number}
+     * @memberof Customer
+     */
+    countPrescribed: number;
+    /**
+     *Количество собственников
+     *
+     * @type {number}
+     * @memberof Customer
+     */
+    countOwner: number;
+    /**
+     *Общая площадь помещения
+     *
+     * @type {number}
+     * @memberof Customer
+     */
+    totalSquare: number;
+
 }
