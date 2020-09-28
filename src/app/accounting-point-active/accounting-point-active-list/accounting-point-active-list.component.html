@@ -15,16 +15,16 @@
                         <td>Поставщик</td>
                         <td>
                             <span>{{presentProvider(item.providerId)}}</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                            <button mat-icon-button [matMenuTriggerFor]="menuProvder"
                                 aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
-                            <mat-menu #menu="matMenu">
+                            <mat-menu #menuProvder="matMenu">
                                 <button mat-menu-item>
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
                                 </button>
-                                <button mat-menu-item>
+                                <button mat-menu-item [routerLink]="[ '/provider-history', item.accountingPointId ]">
                                     <mat-icon>history</mat-icon>
                                     <span>История</span>
                                 </button>
@@ -35,11 +35,11 @@
                         <td>Прибор учета</td>
                         <td>
                             <span>{{presentMeter(item.meterId)}}/СГВ-15</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                            <button mat-icon-button [matMenuTriggerFor]="menuMeter"
                                 aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
-                            <mat-menu #menu="matMenu">
+                            <mat-menu #menuMeter="matMenu">
                                 <button mat-menu-item>
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
@@ -52,18 +52,18 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Дата установки</td>
-                        <td>{{item.meterStateChangeAt| date:'shortDate'}}</td>
-                    </tr>
+                        <td>Состояние прибора</td>
+                        <td>Установлен / {{item.meterStateChangeAt| date:'shortDate'}}</td>
+                    </tr>                   
                     <tr>
                         <td>Вид дифференцированности</td>
                         <td>
                             <span>{{presentDifferentiationType(item.differentiationTypeId)}}</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                            <button mat-icon-button [matMenuTriggerFor]="menuDifferentiationType"
                                 aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
-                            <mat-menu #menu="matMenu">
+                            <mat-menu #menuDifferentiationType="matMenu">
                                 <button mat-menu-item>
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
@@ -79,11 +79,11 @@
                         <td>Последние показания</td>
                         <td>
                             <span>{{item.lastMeterValue}}</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                            <button mat-icon-button [matMenuTriggerFor]="menuMeterValue"
                                 aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
-                            <mat-menu #menu="matMenu">
+                            <mat-menu #menuMeterValue="matMenu">
                                 <button mat-menu-item>
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>

@@ -20,7 +20,7 @@ const TEST_DATA: Customer[] = [
       meterStateChangeAt: '2020-01-01T00:00:00'
     },
     {
-      accountingPointId: 1,
+      accountingPointId: 2,
       serviceId: 1,
       providerId: 1,
       differentiationTypeId: 1,

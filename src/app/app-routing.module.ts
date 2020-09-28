@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'meters', loadChildren: () => import('./meter/meter.module').then(m => m.MeterModule) },
   { path: 'active-accounting-point', loadChildren: () => import('src/app/accounting-point-active/accounting-point-active.module').then(m => m.AccountingPointActiveModule) },
   { path: 'search-customer', loadChildren: () => import('./search-customer/search-customer.module').then(m => m.SearchCustomerModule) },
+  { path: 'provider-history', loadChildren: () => import('./provider-history/provider-history.module').then(m => m.ProviderHistoryModule) },
 ];
 
 @NgModule({
