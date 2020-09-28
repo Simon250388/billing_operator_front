@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ProviderHistory } from '../model/provider-history';
+import { MeterHistory } from '../model/meter-history';
 import { AccountingPointStoreService } from '../service/accounting-point/accounting-point-store.service';
-import { ProviderHistoryStoreService } from '../service/provider-history/provider-history-store.service';
-import { ProviderStoreService } from '../service/provider/provider-store.service';
+import { MeterStoreService } from '../service/meter/meter-store.service';
 import { Location } from '@angular/common';
+import { MeterHistoryStoreService } from '../service/meter-history/meter-history-store.service';
 
 @Component({
-  selector: 'app-provider-history',
-  templateUrl: './provider-history.component.html',
-  styleUrls: ['./provider-history.component.css']
+  selector: 'app-meter-history',
+  templateUrl: './meter-history.component.html',
+  styleUrls: ['./meter-history.component.css']
 })
-export class ProviderHistoryComponent implements OnInit {
+export class MeterHistoryComponent implements OnInit {
 
   private accountigPointId: number;
 
-  items: Observable<ProviderHistory[]>;
+  items: Observable<MeterHistory[]>;
 
-  displayedColumns = ['period', 'provider']
+  displayedColumns = ['period', 'meter']
 
   constructor(
     private accountingPointStore: AccountingPointStoreService,
-    private providerStore: ProviderStoreService,
-    private providerHistoryStore: ProviderHistoryStoreService,
+    private meterStore: MeterStoreService,
+    private providerHistoryStore: MeterHistoryStoreService,
     private location: Location,
     private router: ActivatedRoute) {
     this.providerHistoryStore.load();
@@ -39,8 +39,8 @@ export class ProviderHistoryComponent implements OnInit {
     });
   }
 
-  getProviderPresent(id: number) {
-    return this.providerStore.getPresent(id);
+  getMeterPresent(id: number) {
+    return this.meterStore.getPresent(id);
   }
 
   getAccountingPointPresent(id: number) {
