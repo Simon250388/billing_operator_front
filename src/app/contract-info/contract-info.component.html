@@ -57,15 +57,15 @@
     </mat-list-item>
     <mat-list-item>
         <div>Количество собственников: {{customer.countOwner}}</div>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <button mat-icon-button [matMenuTriggerFor]="countOwner" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #countOwner="matMenu">
             <button mat-menu-item>
                 <mat-icon>dialpad</mat-icon>
                 <span>Изменить</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['/people-history', '1']">
                 <mat-icon>notifications_off</mat-icon>
                 <span>История</span>
             </button>

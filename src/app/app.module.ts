@@ -6,9 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PortalModule } from '@angular/cdk/portal';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -21,7 +24,11 @@ registerLocaleData(localeRu, 'ru');
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
-    PortalModule
+    PortalModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru' }
