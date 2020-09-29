@@ -35,7 +35,7 @@
                         <td>Прибор учета</td>
                         <td>
                             <span>{{presentMeter(item.meterId)}}/СГВ-15</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menuMeter"  [routerLink]="['/meter-history', item.accountingPointId]" 
+                            <button mat-icon-button [matMenuTriggerFor]="menuMeter"
                                 aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
@@ -44,7 +44,7 @@
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
                                 </button>
-                                <button mat-menu-item>
+                                <button mat-menu-item [routerLink]="['/meter-history', item.accountingPointId]" >
                                     <mat-icon>history</mat-icon>
                                     <span>История</span>
                                 </button>
@@ -68,7 +68,7 @@
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
                                 </button>
-                                <button mat-menu-item>
+                                <button mat-menu-item  [routerLink]="['/differentiation-type-history', item.accountingPointId]"> 
                                     <mat-icon>history</mat-icon>
                                     <span>История</span>
                                 </button>
@@ -88,7 +88,7 @@
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
                                 </button>
-                                <button mat-menu-item>
+                                <button mat-menu-item [routerLink]="['/meter-values', item.accountingPointId]"> 
                                     <mat-icon>history</mat-icon>
                                     <span>История</span>
                                 </button>
