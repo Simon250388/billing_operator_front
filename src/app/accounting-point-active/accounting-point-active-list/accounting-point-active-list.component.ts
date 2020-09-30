@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DifferentiationTypeChangeComponent } from 'src/app/change-value/differentiation-type-change/differentiation-type-change.component';
+import { ProviderChangeComponent } from 'src/app/change-value/provider-change/provider-change.component';
 import { AccountingPointActive } from 'src/app/model/accounting-point-active';
 import { AccountingPointStoreService } from 'src/app/service/accounting-point/accounting-point-store.service';
 import { CutomerNavigationService } from 'src/app/service/customer/cutomer-navigation.service';
@@ -17,6 +20,7 @@ export class AccountingPointActiveListComponent {
   items: AccountingPointActive[] = [];
 
   constructor(
+    private dialog: MatDialog,
     private accountingPointStore: AccountingPointStoreService,
     private serviceStore: ServiceStoreService,
     private providerStore: ProviderStoreService,
@@ -56,4 +60,31 @@ export class AccountingPointActiveListComponent {
   presentDifferentiationType(id: number): string {
     return this.differentiationTypeStore.getPresent(id);
   }
+
+  showProviderDialog(index: number): void {
+
+    const dialogRef = this.dialog.open(ProviderChangeComponent, {
+      data: this.items[index].providerId
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.items[index].providerId = result;
+      }
+    });
+  }
+
+  showDifferentiationTypeChangeDialog(index: number): void {
+    const dialogRef = this.dialog.open(DifferentiationTypeChangeComponent, {
+      data: this.items[index].differentiationTypeId
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.items[index].differentiationTypeId = result;
+      }
+    });
+
+  }
+
 }

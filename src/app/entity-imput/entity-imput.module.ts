@@ -10,6 +10,7 @@ import { ImprovementTypeInputComponent } from './improvement-type-input/improvem
 import { RateGroupInputComponent } from './rate-group-input/rate-group-input.component';
 import { ProviderInputComponent } from './provider-input/provider-input.component';
 import { DirectionOfUseInputComponent } from './direction-of-use-input/direction-of-use-input.component';
+import { DifferentiationTypeInputComponent } from './differentiation-type-input/differentiation-type-input.component';
 
 
 
@@ -21,7 +22,8 @@ import { DirectionOfUseInputComponent } from './direction-of-use-input/direction
     ImprovementTypeInputComponent,
     RateGroupInputComponent,
     ProviderInputComponent,
-    DirectionOfUseInputComponent
+    DirectionOfUseInputComponent,
+    DifferentiationTypeInputComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { DirectionOfUseInputComponent } from './direction-of-use-input/direction
     ImprovementTypeInputComponent,
     RateGroupInputComponent,
     ProviderInputComponent,
-    DirectionOfUseInputComponent
+    DirectionOfUseInputComponent,
+    DifferentiationTypeInputComponent
   ]
 })
 export class EntityImputModule { }

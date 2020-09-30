@@ -1,5 +1,5 @@
 <div fxLayout="row wrap">
-    <div fxFlex="50%" *ngFor="let item of items">
+    <div fxFlex="50%" *ngFor="let item of items; let i = index">
         <mat-card class="example-card">
             <mat-card-content>
                 <table>
@@ -15,12 +15,12 @@
                         <td>Поставщик</td>
                         <td>
                             <span>{{presentProvider(item.providerId)}}</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menuProvder"
+                            <button mat-icon-button [matMenuTriggerFor]="menuProvider"
                                 aria-label="Example icon-button with a menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
-                            <mat-menu #menuProvder="matMenu">
-                                <button mat-menu-item>
+                            <mat-menu #menuProvider="matMenu">
+                                <button mat-menu-item (click)="showProviderDialog(i)">
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
                                 </button>
@@ -64,7 +64,7 @@
                                 <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #menuDifferentiationType="matMenu">
-                                <button mat-menu-item>
+                                <button mat-menu-item (click)="showDifferentiationTypeChangeDialog(i)">
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
                                 </button>

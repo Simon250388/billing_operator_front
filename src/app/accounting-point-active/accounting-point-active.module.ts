@@ -8,6 +8,8 @@ import { AccountingPointActiveRoutingModule } from './accounting-point-active-ro
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ChangeValueModule } from '../change-value/change-value.module';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { MatMenuModule } from '@angular/material/menu';
   imports: [
     CommonModule,
     AccountingPointActiveRoutingModule,
+    ChangeValueModule,
     FlexLayoutModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   exports: [
     AccountingPointActiveListComponent
