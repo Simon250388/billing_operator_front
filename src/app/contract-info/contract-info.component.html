@@ -10,12 +10,12 @@
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                <mat-icon>dialpad</mat-icon>
-                <span>Изменить</span>
+            <button mat-menu-item [disabled]="!customer.isActive">
+                <mat-icon>close</mat-icon>
+                <span>Закрыть</span>
             </button>
             <button mat-menu-item>
-                <mat-icon>notifications_off</mat-icon>
+                <mat-icon>history</mat-icon>
                 <span>История</span>
             </button>
         </mat-menu>
@@ -30,11 +30,11 @@
         </button>
         <mat-menu #menuCountResident="matMenu">
             <button mat-menu-item (click)="showCountResidentChangeDialog(customer.countResident)"> 
-                <mat-icon>dialpad</mat-icon>
+                <mat-icon>edit</mat-icon>
                 <span>Изменить</span>
             </button>
             <button mat-menu-item>
-                <mat-icon>notifications_off</mat-icon>
+                <mat-icon>history</mat-icon>
                 <span>История</span>
             </button>
         </mat-menu>
@@ -46,11 +46,11 @@
         </button>
         <mat-menu #menuCountPrescribed="matMenu">
             <button mat-menu-item (click)="showCountPrescribedChangeDialog(customer.countPrescribed)">
-                <mat-icon>dialpad</mat-icon>
+                <mat-icon>edit</mat-icon>
                 <span>Изменить</span>
             </button>
             <button mat-menu-item>
-                <mat-icon>notifications_off</mat-icon>
+                <mat-icon>history</mat-icon>
                 <span>История</span>
             </button>
         </mat-menu>
@@ -62,11 +62,11 @@
         </button>
         <mat-menu #countOwnerMenu="matMenu">
             <button mat-menu-item (click)="showCountOwnerChangeDialog(customer.countOwner)">
-                <mat-icon>dialpad</mat-icon>
+                <mat-icon>edit</mat-icon>
                 <span>Изменить</span>
             </button>
             <button mat-menu-item [routerLink]="['/people-history', '1']">
-                <mat-icon>notifications_off</mat-icon>
+                <mat-icon>history</mat-icon>
                 <span>История</span>
             </button>
         </mat-menu>
@@ -78,11 +78,11 @@
         </button>
         <mat-menu #menuTotalSquare="matMenu">
             <button mat-menu-item (click)="showTotalSquareChangeDialog(customer.totalSquare)">
-                <mat-icon>dialpad</mat-icon>
+                <mat-icon>edit</mat-icon>
                 <span>Изменить</span>
             </button>
             <button mat-menu-item [routerLink]="['/square-values', '1']">
-                <mat-icon>notifications_off</mat-icon>
+                <mat-icon>history</mat-icon>
                 <span>История</span>
             </button>
         </mat-menu>
@@ -94,11 +94,11 @@
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item>
-                <mat-icon>dialpad</mat-icon>
+                <mat-icon>edit</mat-icon>
                 <span>Изменить</span>
             </button>
             <button mat-menu-item>
-                <mat-icon>notifications_off</mat-icon>
+                <mat-icon>history</mat-icon>
                 <span>История</span>
             </button>
         </mat-menu>
