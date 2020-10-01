@@ -4,7 +4,7 @@
     <!-- squareType Column -->
     <ng-container matColumnDef="squareType">
         <th mat-header-cell *matHeaderCellDef> Вид площади </th>
-        <td mat-cell *matCellDef="let item"> {{this.store.squareTypePresent(item.squareTypeId)}} </td>
+        <td mat-cell *matCellDef="let item"> {{squareTypePresent(item.squareTypeId)|async}} </td>
     </ng-container>
 
     <!-- squareValue Column -->
