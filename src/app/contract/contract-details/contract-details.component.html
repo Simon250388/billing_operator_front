@@ -5,24 +5,18 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Данные физического лица</ng-template>
-            <p>
-                <mat-form-field>
-                    <mat-label>Фамилия</mat-label>
-                    <input matInput placeholder="Укажите фамилию физического лица" formControlName="secondName">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <mat-label>Имя</mat-label>
-                    <input matInput placeholder="Укажите имя физического лица" formControlName="firstName">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <mat-label>Отчество</mat-label>
-                    <input matInput placeholder="Укажите отчество физического лица" formControlName="midleName">
-                </mat-form-field>
-            </p>
+            <mat-form-field>
+                <mat-label>Фамилия</mat-label>
+                <input matInput placeholder="Укажите фамилию физического лица" formControlName="secondName">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Имя</mat-label>
+                <input matInput placeholder="Укажите имя физического лица" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Отчество</mat-label>
+                <input matInput placeholder="Укажите отчество физического лица" formControlName="midleName">
+            </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Далее</button>
             </div>
@@ -31,14 +25,10 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Данные помещения</ng-template>
-            <p>
-                <app-building-input [lbl]="'Строение'" [formGroup]="formGroup" formControlName="buildingId"
-                    [placeholder]="'укажите строение'"></app-building-input>
-            </p>
-            <p>
-                <app-room-input [lbl]="'Помещение'" [formGroup]="formGroup" formControlName="roomId"
-                    [placeholder]="'укажите помещение'"></app-room-input>
-            </p>
+            <app-building-input [lbl]="'Строение'" [formGroup]="formGroup" formControlName="buildingId"
+                [placeholder]="'укажите строение'"></app-building-input>
+            <app-room-input [lbl]="'Помещение'" [formGroup]="formGroup" formControlName="roomId"
+                [placeholder]="'укажите помещение'"></app-room-input>
             <mat-form-field appearance="fill">
                 <mat-label>Тип помещения</mat-label>
                 <mat-select formControlName="roomTypeId">
@@ -47,27 +37,21 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <p>
-                <mat-form-field>
-                    <mat-label>Количество собственников</mat-label>
-                    <input matInput placeholder="Укажите количество собственников помещения" type="number"
-                        formControlName="countOwner">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <mat-label>Количество прописанных</mat-label>
-                    <input matInput placeholder="Укажите количество прописанных в помещении" type="number"
-                        formControlName="countPrescribed">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <mat-label>Количество проживающих</mat-label>
-                    <input matInput placeholder="Укажите количество проживающих в помещении" type="number"
-                        formControlName="countResidents">
-                </mat-form-field>
-            </p>
+            <mat-form-field>
+                <mat-label>Количество собственников</mat-label>
+                <input matInput placeholder="Укажите количество собственников помещения" type="number"
+                    formControlName="countOwner">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Количество прописанных</mat-label>
+                <input matInput placeholder="Укажите количество прописанных в помещении" type="number"
+                    formControlName="countPrescribed">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Количество проживающих</mat-label>
+                <input matInput placeholder="Укажите количество проживающих в помещении" type="number"
+                    formControlName="countResidents">
+            </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Далее</button>
             </div>
@@ -85,7 +69,8 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Виды благоустройств</ng-template>
-            <app-improvement-type-row-list [formArray]="formGroup.controls['improvementTypes']"></app-improvement-type-row-list>
+            <app-improvement-type-row-list [formArray]="formGroup.controls['improvementTypes']">
+            </app-improvement-type-row-list>
             <div>
                 <button mat-button matStepperNext>Далее</button>
             </div>
@@ -94,7 +79,8 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Услуги</ng-template>
-            <accounting-point-service-list [formArray]="formGroup.controls['accountingPoints']"></accounting-point-service-list>
+            <accounting-point-service-list [formArray]="formGroup.controls['accountingPoints']">
+            </accounting-point-service-list>
             <div>
                 <button mat-button matStepperNext>Далее</button>
             </div>

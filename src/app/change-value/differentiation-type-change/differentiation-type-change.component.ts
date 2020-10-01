@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { DifferentiationTypeStoreService } from 'src/app/service/differentiation-type/differentiation-type-store.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class DifferentiationTypeChangeComponent  {
     })
   }
 
-  get currentValuePresent(): string {
+  get currentValuePresent(): Observable<string> {
     return this.store.getPresent(this.currentValueId);
   }
 

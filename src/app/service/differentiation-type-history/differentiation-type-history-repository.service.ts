@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Environmenter } from 'ng-environmenter';
 import { BaseRepositoryService } from 'src/app/base/repository.service';
 import { DifferentiationTypeHistory } from 'src/app/model/differentiation-type-history';
 
@@ -8,4 +9,10 @@ import { DifferentiationTypeHistory } from 'src/app/model/differentiation-type-h
 })
 export class DifferentiationTypeHistoryRepositoryService extends BaseRepositoryService<DifferentiationTypeHistory>{
   protected apiDomen: string = 'differentiation-type-history';
+
+  constructor(
+    protected environmenter: Environmenter,
+    protected http: HttpClient) {
+    super(environmenter, http);
+  }
 }

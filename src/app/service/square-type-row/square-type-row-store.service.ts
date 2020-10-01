@@ -9,13 +9,8 @@ import { SquareTypeRowRepositoryService } from './square-type-row-repository.ser
 })
 export class SquareTypeRowStoreService extends StoreService<SquareTypeRow, SquareTypeRowRepositoryService> implements IStoreService<SquareTypeRow> {
   constructor(
-    protected repository: SquareTypeRowRepositoryService,
-    protected squareTypeStore: SquareTypeStoreService
+    protected repository: SquareTypeRowRepositoryService
   ) {
     super(repository);
-  }
-
-  squareTypePresent(id: number): string {
-    return this.squareTypeStore.getPresent(id);
-  }
+  }  
 }

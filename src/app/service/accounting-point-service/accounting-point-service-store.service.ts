@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IStoreService, StoreService } from 'src/app/base/store.service';
 import { AccountingPointService } from 'src/app/model/accounting-point-service';
 import { DirectionOfUseStoreService } from '../direction-of-use/direction-of-use-store.service';
@@ -20,15 +21,15 @@ export class AccountingPointServiceStoreService extends StoreService<AccountingP
     super(repository);
   }
 
-  getServicePresent(serviceId: number): string {
+  getServicePresent(serviceId: number): Observable<string> {
     return this.serviceStore.getPresent(serviceId);
   }
 
-  getProviderPresent(providerId: number): string {
+  getProviderPresent(providerId: number): Observable<string> {
     return this.providersStore.getPresent(providerId);
   }
 
-  getDirectionOfUsePresent(directionOfuseId: number): string {
+  getDirectionOfUsePresent(directionOfuseId: number): Observable<string> {
     return this.directionOfUseStore.getPresent(directionOfuseId);
   }
 }

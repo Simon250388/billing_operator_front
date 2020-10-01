@@ -1,6 +1,6 @@
 <mat-dialog-content>
     <form [formGroup]="formGroup">
-        <h4>Текущее значение : {{currentValuePresent}}</h4>
+        <h4>Текущее значение : {{currentValuePresent | async}}</h4>
         <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
             [placeholder]="'Укажите текущего поставщик'"></app-provider-input>
     </form>

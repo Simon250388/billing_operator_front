@@ -13,8 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { EnvironmenterModule } from 'ng-environmenter';
 
 registerLocaleData(localeRu, 'ru');
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ registerLocaleData(localeRu, 'ru');
     MatButtonModule,
     HttpClientModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    EnvironmenterModule.forRoot(environment)
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru' }

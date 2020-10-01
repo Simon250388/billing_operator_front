@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DifferentiationTypeChangeComponent } from 'src/app/change-value/differentiation-type-change/differentiation-type-change.component';
 import { ProviderChangeComponent } from 'src/app/change-value/provider-change/provider-change.component';
 import { SimpleNumberChangeComponent } from 'src/app/change-value/simple-number-change/simple-number-change.component';
@@ -18,7 +20,7 @@ import { ServiceStoreService } from 'src/app/service/service/service-store.servi
 })
 export class AccountingPointActiveListComponent {
 
-  items: AccountingPointActive[] = [];
+  items: Observable<AccountingPointActive[]>;
 
   constructor(
     private dialog: MatDialog,
@@ -35,70 +37,72 @@ export class AccountingPointActiveListComponent {
     this.meterStore.load();
     this.differentiationTypeStore.load();
 
-    this.cutomerNavigationService.currentCustomer.subscribe(customer => {
-      if (customer) {
-        this.items = customer.accountingPoint;
-      }
-    });
+    this.items = this.cutomerNavigationService.currentCustomer.pipe(
+      map(customer => {
+        if (customer?.accountingPoint) {
+          return customer.accountingPoint;
+        }
+        return [];
+      })
+    );
   }
 
-  presentAccountingPoint(id: number): string {
+  presentAccountingPoint(id: number): Observable<string> {
     return this.accountingPointStore.getPresent(id);
   }
 
-  presentService(id: number): string {
+  presentService(id: number): Observable<string> {
     return this.serviceStore.getPresent(id);
   }
 
-  presentProvider(id: number): string {
+  presentProvider(id: number): Observable<string> {
     return this.providerStore.getPresent(id);
   }
 
-  presentMeter(id: number): string {
+  presentMeter(id: number): Observable<string> {
     return this.meterStore.getPresent(id);
   }
 
-  presentDifferentiationType(id: number): string {
+  presentDifferentiationType(id: number): Observable<string> {
     return this.differentiationTypeStore.getPresent(id);
   }
 
-  showProviderDialog(index: number): void {
+  showProviderDialog(item: AccountingPointActive): void {
 
     const dialogRef = this.dialog.open(ProviderChangeComponent, {
-      data: this.items[index].providerId
+      data: item.providerId
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.items[index].providerId = result;
+        item.providerId = result;
       }
     });
   }
 
-  showDifferentiationTypeChangeDialog(index: number): void {
+  showDifferentiationTypeChangeDialog(item: AccountingPointActive): void {
     const dialogRef = this.dialog.open(DifferentiationTypeChangeComponent, {
-      data: this.items[index].differentiationTypeId
+      data: item.differentiationTypeId
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.items[index].differentiationTypeId = result;
+        item.differentiationTypeId = result;
       }
     });
   }
 
-  showMeterValueChangeDialog(index: number): void {
+  showMeterValueChangeDialog(item: AccountingPointActive): void {
 
     const dialogRef = this.dialog.open(SimpleNumberChangeComponent, {
-      data: this.items[index].lastMeterValue
+      data: item.lastMeterValue
     });
 
     dialogRef.afterClosed().subscribe((result: number) => {
       if (result) {
-        this.items[index].lastMeterValue = result;
+        item.lastMeterValue = result;
       }
     });
-
   }
 
 }

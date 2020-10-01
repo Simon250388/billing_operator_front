@@ -1,5 +1,5 @@
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { BaseCatalog } from './base-catalog';
 import { IStoreService } from './store.service';
 
@@ -8,7 +8,6 @@ export abstract class BaseCatalogComponent<Catalog extends BaseCatalog> {
 
     items: Observable<Catalog[]>;
     abstract formGroup: FormGroup;
-
     constructor(protected storeService: IStoreService<Catalog>) {
         this.storeService.load();
         this.items = this.storeService.items;
@@ -16,11 +15,14 @@ export abstract class BaseCatalogComponent<Catalog extends BaseCatalog> {
 
     public onTouched: () => void = () => { };
 
-    getPresent(id: number | string): string {
-        if (!id || id == '') {
+    getPresent(items: Catalog[]): (id: number) => string {
+        return (id: number) => {
+            const item = items.find(row => row.id == id);
+            if (item) {
+                return item.present
+            }
             return '';
         }
-        return this.storeService.getPresent(id as number);
     }
 
     writeValue(obj: any): void {

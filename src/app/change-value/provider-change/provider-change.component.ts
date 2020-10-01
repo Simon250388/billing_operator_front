@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { ProviderStoreService } from 'src/app/service/provider/provider-store.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class ProviderChangeComponent {
     })
   }
 
-  get currentValuePresent(): string {
+  get currentValuePresent(): Observable<string> {
     return this.store.getPresent(this.currentValueId);
   }
 

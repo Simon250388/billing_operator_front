@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { BaseCatalog } from './base-catalog';
 import { BaseRepositoryService } from './repository.service';
 
@@ -60,8 +61,16 @@ export abstract class StoreService<Catalog extends BaseCatalog, repository exten
     )
   }
 
-  getPresent(id: number): string {
-    return this._store.items.find(row => row.id == id).present;
+  getPresent(id: number): Observable<string> {
+    return this.items.pipe(
+      map(data => {
+        const entity = data.find(row => row.id == id);
+        if (entity) {
+          return entity.present;
+        }
+        return "Объект не найден"
+      })
+    );
   }
 }
 
@@ -70,6 +79,6 @@ export interface IStoreService<Catalog extends BaseCatalog> {
   save(entity: Catalog): void;
   load(): void;
   loadById(id: number): void;
-  getPresent(id: number): string;
+  getPresent(id: number): Observable<string>;
   items: Observable<Catalog[]>
 }

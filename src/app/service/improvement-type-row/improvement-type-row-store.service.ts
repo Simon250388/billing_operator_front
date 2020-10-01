@@ -12,24 +12,7 @@ import { ImprovementTypeRowRepositoryService } from './improvement-type-row-repo
 export class ImprovementTypeRowStoreService extends StoreService<ServiceImprovementTypeRateGroup, ImprovementTypeRowRepositoryService> implements IStoreService<ServiceImprovementTypeRateGroup> { 
   
   constructor(
-    protected repository : ImprovementTypeRowRepositoryService,
-    protected serviceStore: ServiceStoreService,
-    protected improvementTypeStore: ImprovementTypeStoreService,
-    protected rateGroupStore: RateGroupStoreService) {
+    protected repository : ImprovementTypeRowRepositoryService) {
     super(repository);    
   }
-
-  getServicePresent(id:number) : string {
-    return this.serviceStore.getPresent(id);
-  }
-
-  getImprovementTypePresent(id:number) : string {
-    return this.improvementTypeStore.getPresent(id);
-  }
-
-  getRateGroupPresent(id:number) : string {
-    return this.rateGroupStore.getPresent(id);
-  }
-
-
 }
