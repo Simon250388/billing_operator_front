@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DifferentiationTypeChangeComponent } from 'src/app/change-value/differentiation-type-change/differentiation-type-change.component';
 import { ProviderChangeComponent } from 'src/app/change-value/provider-change/provider-change.component';
+import { SimpleNumberChangeComponent } from 'src/app/change-value/simple-number-change/simple-number-change.component';
 import { AccountingPointActive } from 'src/app/model/accounting-point-active';
 import { AccountingPointStoreService } from 'src/app/service/accounting-point/accounting-point-store.service';
 import { CutomerNavigationService } from 'src/app/service/customer/cutomer-navigation.service';
@@ -82,6 +83,19 @@ export class AccountingPointActiveListComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.items[index].differentiationTypeId = result;
+      }
+    });
+  }
+
+  showMeterValueChangeDialog(index: number): void {
+
+    const dialogRef = this.dialog.open(SimpleNumberChangeComponent, {
+      data: this.items[index].lastMeterValue
+    });
+
+    dialogRef.afterClosed().subscribe((result: number) => {
+      if (result) {
+        this.items[index].lastMeterValue = result;
       }
     });
 

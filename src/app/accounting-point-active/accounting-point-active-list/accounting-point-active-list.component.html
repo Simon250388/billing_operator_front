@@ -84,7 +84,7 @@
                                 <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #menuMeterValue="matMenu">
-                                <button mat-menu-item>
+                                <button mat-menu-item (click)="showMeterValueChangeDialog(i)">
                                     <mat-icon>edit</mat-icon>
                                     <span>Изменить</span>
                                 </button>
