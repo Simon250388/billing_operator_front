@@ -25,11 +25,11 @@
     </mat-list-item>
     <mat-list-item>
         <div>Количество проживающих: {{customer.countResident}}</div>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <button mat-icon-button [matMenuTriggerFor]="menuCountResident" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+        <mat-menu #menuCountResident="matMenu">
+            <button mat-menu-item (click)="showCountResidentChangeDialog(customer.countResident)"> 
                 <mat-icon>dialpad</mat-icon>
                 <span>Изменить</span>
             </button>
@@ -41,11 +41,11 @@
     </mat-list-item>
     <mat-list-item>
         <div>Количество прописанных: {{customer.countPrescribed}}</div>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <button mat-icon-button [matMenuTriggerFor]="menuCountPrescribed" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+        <mat-menu #menuCountPrescribed="matMenu">
+            <button mat-menu-item (click)="showCountPrescribedChangeDialog(customer.countPrescribed)">
                 <mat-icon>dialpad</mat-icon>
                 <span>Изменить</span>
             </button>
@@ -57,11 +57,11 @@
     </mat-list-item>
     <mat-list-item>
         <div>Количество собственников: {{customer.countOwner}}</div>
-        <button mat-icon-button [matMenuTriggerFor]="countOwner" aria-label="Example icon-button with a menu">
+        <button mat-icon-button [matMenuTriggerFor]="countOwnerMenu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #countOwner="matMenu">
-            <button mat-menu-item>
+        <mat-menu #countOwnerMenu="matMenu">
+            <button mat-menu-item (click)="showCountOwnerChangeDialog(customer.countOwner)">
                 <mat-icon>dialpad</mat-icon>
                 <span>Изменить</span>
             </button>
@@ -77,7 +77,7 @@
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menuTotalSquare="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="showTotalSquareChangeDialog(customer.totalSquare)">
                 <mat-icon>dialpad</mat-icon>
                 <span>Изменить</span>
             </button>

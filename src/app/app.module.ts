@@ -12,6 +12,7 @@ import localeRu from '@angular/common/locales/ru';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -27,6 +28,7 @@ registerLocaleData(localeRu, 'ru');
     PortalModule,
     MatToolbarModule,
     MatButtonModule,
+    HttpClientModule,
     MatMenuModule,
     MatIconModule
   ],

@@ -1,6 +1,7 @@
-import { ComponentPortal, Portal } from '@angular/cdk/portal';
-import { AfterViewInit, Compiler, Component, ComponentFactoryResolver, Injector } from '@angular/core';
-import { SearchCustomerComponent } from './search-customer/search-customer.component';
+import { Portal } from '@angular/cdk/portal';
+import { AfterViewInit, Component} from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { SideBarNavigationService } from './service/side-bar/side-bar-navigation.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class AppComponent implements AfterViewInit {
   public currentPortal: Portal<any>;
 
   constructor(
-   private sideBarNavigation: SideBarNavigationService) {
+    private domSanitizer: DomSanitizer, 
+    private matIconRegistry: MatIconRegistry,
+    private sideBarNavigation: SideBarNavigationService) {
+      this.matIconRegistry.addSvgIcon("logo",this.domSanitizer.bypassSecurityTrustResourceUrl("assets/logo.svg"));
   }
 
   ngAfterViewInit(): void {

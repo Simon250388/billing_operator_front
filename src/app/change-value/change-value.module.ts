@@ -6,20 +6,24 @@ import { ProviderChangeComponent } from './provider-change/provider-change.compo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DifferentiationTypeChangeComponent } from './differentiation-type-change/differentiation-type-change.component';
+import { SimpleNumberChangeComponent } from './simple-number-change/simple-number-change.component';
+import { MatInputModule } from '@angular/material/input';
 
 
 
 @NgModule({
   declarations: [
     ProviderChangeComponent,
-    DifferentiationTypeChangeComponent
+    DifferentiationTypeChangeComponent,
+    SimpleNumberChangeComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     EntityImputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ]
 })
 export class ChangeValueModule { }
