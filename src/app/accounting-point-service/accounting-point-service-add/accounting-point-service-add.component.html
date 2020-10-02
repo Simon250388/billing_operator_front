@@ -1,22 +1,17 @@
 <h2 mat-dialog-title>Значение площади</h2>
 <mat-dialog-content>
     <form class="example-form" [formGroup]="formGroup">
-        <p>
-            <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
-                [placeholder]="'Укажите вид услуги'"></app-service-input>
-        </p>
-        <p>
-            <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
-                [placeholder]="'Укажите поставщика'"></app-provider-input>
-        </p>
-        <p>
-            <app-direction-of-use-input [lbl]="'направление использования'" [formGroup]="formGroup"
-                formControlName="directionOfUseId" [placeholder]="'Укажите направление использования'">
-            </app-direction-of-use-input>
-        </p>
-        <p>
-            <!-- <app-meter-add></app-meter-add> -->
-        </p>
+        <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+            [placeholder]="'Укажите вид услуги'"></app-service-input>
+
+        <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
+            [placeholder]="'Укажите поставщика'"></app-provider-input>
+
+        <app-direction-of-use-input [lbl]="'направление использования'" [formGroup]="formGroup"
+            formControlName="directionOfUseId" [placeholder]="'Укажите направление использования'">
+        </app-direction-of-use-input>
+        <!-- <app-meter-add></app-meter-add> -->
+
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
