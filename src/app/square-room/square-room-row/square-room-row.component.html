@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Значение площади</h2>
+<mat-dialog-content>
+  <form class="example-form" [formGroup]="formGroup">
+    <app-square-type [lbl]="'Вид площади'" [formGroup]="formGroup" formControlName="squareTypeId"
+      [placeholder]="'Укажите вид площади'"></app-square-type>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Значение площади</mat-label>
+      <input matInput placeholder="Укажите значение площади" value="50" type="number" formControlName="value">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-button [mat-dialog-close]="formGroup" cdkFocusInitial>Завершить</button>
+</mat-dialog-actions>

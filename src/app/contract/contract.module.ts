@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContractRoutingModule } from './contract-routing.module';
-import { ContractComponent } from './contract.component';
 import { ContractDetailsComponent } from './contract-details/contract-details.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatListModule } from '@angular/material/list';
+
 import { SquareRoomModule } from '../square-room/square-room.module';
-import { ImprovementTypeModule } from '../improvement-type/improvement-type.module';
-import { ServiceConnectorModule } from '../service-connector/service-connector.module';
+import { ImprovementTypeRowModule } from '../improvement-type-row/improvement-type-row.module';
+import { AccountingPointServiceModule } from '../accounting-point-service/accounting-point-service.module';
+import { EntityImputModule } from '../entity-imput/entity-imput.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    ContractComponent,
     ContractDetailsComponent
   ],
   imports: [
@@ -24,9 +27,13 @@ import { ServiceConnectorModule } from '../service-connector/service-connector.m
     MatStepperModule,
     MatInputModule,
     MatSelectModule,
+    MatAutocompleteModule,
+    MatButtonModule,
     SquareRoomModule,
-    ImprovementTypeModule,
-    ServiceConnectorModule
-  ]
+    ImprovementTypeRowModule,
+    AccountingPointServiceModule,
+    EntityImputModule
+  ],
+  exports: []
 })
 export class ContractModule { }

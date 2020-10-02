@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Соотвествие тарифных групп и видов благоустройств</h2>
+<div mat-dialog-content>
+    <form class="example-form" [formGroup]="formGroup">
+        <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+            [placeholder]="'Укажите вид услуги'"></app-service-input>
+        <app-improvement-type-input [lbl]="'Вид благоустройства'" [formGroup]="formGroup"
+            formControlName="improvementTypeId" [placeholder]="'Укажите вид благоустройства'">
+        </app-improvement-type-input>
+        <app-rate-group-input [lbl]="'Тарифная группа'" [formGroup]="formGroup" formControlName="rateGroupId"
+            [placeholder]="'Укажите тарифную группу'"></app-rate-group-input>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Отмена</button>
+    <button mat-button [mat-dialog-close]="formGroup" cdkFocusInitial>Ok</button>
+</div>
