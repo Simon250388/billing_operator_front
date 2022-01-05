@@ -8,7 +8,7 @@
     </ng-container>  
     <ng-container matColumnDef="rateZone">
         <th mat-header-cell *matHeaderCellDef>Тарифная зона</th>
-        <td mat-cell *matCellDef="let item"> {{getRateZonePresent(item.rateZoneId)}} </td>
+        <td mat-cell *matCellDef="let item"> {{getRateZonePresent()}} </td>
     </ng-container>
    
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,10 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
-import { Room } from 'src/app/model/room';
-import { RoomStoreService } from 'src/app/service/room/room-store.service';
+import { Room } from 'src/store/models/room';
+
 
 @Component({
   selector: 'app-room-input',
@@ -18,26 +15,26 @@ import { RoomStoreService } from 'src/app/service/room/room-store.service';
     }
   ]
 })
-export class RoomInputComponent extends BaseCatalogComponent<Room> implements OnInit, ControlValueAccessor {
+export class RoomInputComponent implements OnInit, ControlValueAccessor {
+  writeValue(obj: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnChange(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
 
-  @Input() formGroup: FormGroup;
-  @Input() formControlName: string;
-  @Input() lbl: string;
-  @Input() placeholder: string;
+  @Input() formGroup!: FormGroup;
+  @Input() formControlName!: string;
+  @Input() lbl!: string;
+  @Input() placeholder!: string;
 
   @Input() buildingId: number = 1;
 
-  filtrItems: Observable<Room[]>;
+  filtrItems: Room[] = [];
 
-  constructor(protected storeService: RoomStoreService) {
-    super(storeService);
-  }
-  ngOnInit(): void {
 
-    this.formGroup.controls['buildingId'].valueChanges.subscribe(value => {
-      this.filtrItems = this.items.pipe(
-        map(items => items.filter(row => row.buildingId == value)))
-    }
-    );
-  }
+  ngOnInit(): void { }
 }

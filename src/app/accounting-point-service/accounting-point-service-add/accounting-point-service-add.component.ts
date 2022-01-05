@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AccountingPointService } from 'src/app/model/accounting-point-service';
+import { AccountingPointService } from 'src/store/models/accounting-point-service';
 
 @Component({
   selector: 'accounting-point-service-add',

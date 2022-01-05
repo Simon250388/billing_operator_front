@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { SquareValueHistoryStoreService } from '../service/square-value-history/square-value-history-store.service';
 import { Observable } from 'rxjs';
-import { SquareValueHistory } from '../model/square-value-history';
-import { SquareTypeStoreService } from '../service/square-type/square-type-store.service';
+import { SquareValueHistory } from '../../store/models/square-value-history';
+
 
 @Component({
   selector: 'app-square-value-history',
@@ -13,21 +11,18 @@ import { SquareTypeStoreService } from '../service/square-type/square-type-store
 })
 export class SquareValueHistoryComponent {
 
-  private keyRoomId: number;
+  private keyRoomId!: number;
 
-  items: Observable<SquareValueHistory[]>;
+  items!: Observable<SquareValueHistory[]>;
 
   displayedColumns = ['period', 'squareType', 'value']
 
-  constructor(
-    private squareValueHistoryStore: SquareValueHistoryStoreService,
-    private squareTypeStore: SquareTypeStoreService,
+  constructor(   
     private location: Location) {
-    this.squareValueHistoryStore.load();
   }
 
-  getSquareTypePresent(id: number) {
-    this.squareTypeStore.getPresent(id);
+  getSquareTypePresent(id: number): string {
+    return "";
   }
 
   backLocation(): void {

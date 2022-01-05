@@ -1,8 +1,8 @@
-import { Portal } from '@angular/cdk/portal';
-import { AfterViewInit, Component} from '@angular/core';
+import { AfterViewInit, Component, Injector } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { SideBarNavigationService } from './service/side-bar/side-bar-navigation.service';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/store/state/app.state';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +10,19 @@ import { SideBarNavigationService } from './service/side-bar/side-bar-navigation
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
-  public currentPortal: Portal<any>;
 
   constructor(
-    private domSanitizer: DomSanitizer, 
+    private domSanitizer: DomSanitizer,
     private matIconRegistry: MatIconRegistry,
-    private sideBarNavigation: SideBarNavigationService) {
-      this.matIconRegistry.addSvgIcon("logo",this.domSanitizer.bypassSecurityTrustResourceUrl("assets/logo.svg"));
+    private _store: Store<IAppState>,
+    private injector: Injector) {
+    this.matIconRegistry.addSvgIcon("logo", this.domSanitizer.bypassSecurityTrustResourceUrl("assets/logo.svg"));
+
   }
 
   ngAfterViewInit(): void {
-    this.sideBarNavigation.currentPortal.subscribe(portal => this.currentPortal = portal);
-  }
+   
+  }  
 
   title = 'BillingOperator';
 }

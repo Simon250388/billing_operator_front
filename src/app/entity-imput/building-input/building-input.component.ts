@@ -1,8 +1,6 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
-import { Building } from 'src/app/model/building';
-import { BuildingStoreService } from 'src/app/service/building/building-store.service';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Building } from 'src/store/models/building';
 
 @Component({
   selector: 'app-building-input',
@@ -13,17 +11,25 @@ import { BuildingStoreService } from 'src/app/service/building/building-store.se
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => BuildingInputComponent),
       multi: true
-    }    
+    }
   ]
 })
-export class BuildingInputComponent extends BaseCatalogComponent<Building> implements ControlValueAccessor {
+export class BuildingInputComponent implements ControlValueAccessor {
 
-  @Input() formGroup: FormGroup;
-  @Input() formControlName: string;
-  @Input() lbl: string;
-  @Input() placeholder: string;
+  @Input() formGroup!: FormGroup;
+  @Input() formControlName!: string;
+  @Input() lbl!: string;
+  @Input() placeholder!: string;
 
-  constructor(protected storeService: BuildingStoreService) {
-    super(storeService);
-  }  
+  items: Building[] = []
+
+  writeValue(obj: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnChange(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
 }

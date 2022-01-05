@@ -1,10 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { SquareRoomRowComponent } from "../square-room-row/square-room-row.component";
 import { MatDialog } from "@angular/material/dialog";
-import { FormArray, FormGroup } from "@angular/forms";
-import { SquareTypeRow } from "src/app/model/square-type-row";
-import { Observable } from 'rxjs';
-import { SquareTypeStoreService } from 'src/app/service/square-type/square-type-store.service';
+import { AbstractControl, FormArray, FormGroup } from "@angular/forms";
+import { SquareTypeRow } from "src/store/models/square-type-row";
 
 @Component({
   selector: "app-square-room-add",
@@ -12,28 +10,27 @@ import { SquareTypeStoreService } from 'src/app/service/square-type/square-type-
   styleUrls: ["./square-room-add.component.css"],
 })
 export class SquareRoomAddComponent {
-  @Input() formArray: FormArray;
+  @Input()
+  formArray!: AbstractControl;
 
   constructor(
-    private dialog: MatDialog,    
-    private squareTypestore: SquareTypeStoreService) { }
+    private dialog: MatDialog) { }
 
   get squareItems() {
-    return this.formArray.value;
+    return (<FormArray>this.formArray).value;
   }
 
   displayedColumns = ["squareType", "squareValue", "rowAction"];
 
-  squareTypePresent(id: number): Observable<string> {
-    return this.squareTypestore.getPresent(id);
+  squareTypePresent(id: number): string {
+    return "";
   }
 
   openAddRowDialog(index?: number): void {
-    let data: SquareTypeRow;
 
-    if (index != null) {
-      data = this.formArray.at(index).value as SquareTypeRow;
-    }
+    if (index == null || index == undefined) return
+
+    let data = (<FormArray>this.formArray).at(index).value as SquareTypeRow;
 
     const dialogRef = this.dialog.open(SquareRoomRowComponent, {
       data: data
@@ -41,9 +38,9 @@ export class SquareRoomAddComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (index != null && result) {
-        this.formArray.at(index).setValue((result as FormGroup).value as SquareTypeRow);
+        (<FormArray>this.formArray).at(index).setValue((result as FormGroup).value as SquareTypeRow);
       } else if (result) {
-        this.formArray.push(result);
+        (<FormArray>this.formArray).push(result);
       }
     });
   }

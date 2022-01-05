@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Environmenter } from 'ng-environmenter';
 import { Observable, from } from 'rxjs';
 import { BaseRepositoryService } from 'src/app/base/repository.service';
-import { AccountingPointService } from 'src/app/model/accounting-point-service';
+import { AccountingPointService } from 'src/store/models/accounting-point-service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class AccountingPointServiceRepositoryService extends BaseRepositoryServi
   protected apiDomen: string = 'building';  
 
   constructor(
-    protected environmenter: Environmenter,
-    protected http: HttpClient) {
+    protected override environmenter: Environmenter,
+    protected override http: HttpClient) {
     super(environmenter, http);
   }
 }

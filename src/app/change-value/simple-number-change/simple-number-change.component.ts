@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class SimpleNumberChangeComponent {
 
-  @Input() lbl: string;
+  @Input() lbl!: string;
   formGroup: FormGroup;
 
   constructor(

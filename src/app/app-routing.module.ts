@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   { path: 'contract', loadChildren: () => import('./contract/contract.module').then(m => m.ContractModule) },
   { path: 'contract-info', loadChildren: () => import('./contract-info/contract-info.module').then(m => m.ContractInfoModule) },
   { path: 'accounting-point-service', loadChildren: () => import('./accounting-point-service/accounting-point-service.module').then(m => m.AccountingPointServiceModule) },
@@ -15,7 +17,8 @@ const routes: Routes = [
   { path: 'meter-values', loadChildren: () => import('./meter-value-history/meter-value-history.module').then(m => m.MeterValueHistoryModule) },
   { path: 'square-values', loadChildren: () => import('./square-value-history/square-value-history.module').then(m => m.SquareValueHistoryModule) },
   { path: 'differentiation-type-history', loadChildren: () => import('./differentiation-type-history/differentiation-type-history.module').then(m => m.DifferentiationTypeHistoryModule) },
-  { path: 'people-history', loadChildren: () => import('./people-history/people-history.module').then(m => m.PeopleHistoryModule) }
+  { path: 'people-history', loadChildren: () => import('./people-history/people-history.module').then(m => m.PeopleHistoryModule) },
+  { path: 'key-room', loadChildren: () => import('./key-room/key-room.module').then(m => m.KeyRoomModule) }
 ];
 
 @NgModule({

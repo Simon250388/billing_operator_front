@@ -1,9 +1,8 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
-import { Service } from 'src/app/model/service';
-import { ServiceStoreService } from 'src/app/service/service/service-store.service';
+import { Service } from 'src/store/models/service';
+
 
 @Component({
   selector: 'app-service-input',
@@ -17,18 +16,26 @@ import { ServiceStoreService } from 'src/app/service/service/service-store.servi
     }
   ]
 })
-export class ServiceInputComponent extends BaseCatalogComponent<Service> implements ControlValueAccessor {
+export class ServiceInputComponent implements ControlValueAccessor {
 
-  @Input() formGroup: FormGroup;
-  @Input() formControlName: string;
-  @Input() lbl: string;
-  @Input() placeholder: string;
+  @Input() formGroup!: FormGroup;
+  @Input() formControlName!: string;
+  @Input() lbl!: string;
+  @Input() placeholder!: string;
 
   @Input() buildingId: number = 1;
 
-  filtrItems: Observable<Service[]>;
+  items: Service[] = []
 
-  constructor(protected storeService: ServiceStoreService) {
-    super(storeService);
-  }  
+  filtrItems!: Observable<Service[]>;
+
+  writeValue(obj: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnChange(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
 }

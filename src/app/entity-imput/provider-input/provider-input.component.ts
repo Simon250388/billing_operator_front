@@ -1,8 +1,6 @@
-import { Component, forwardRef, Input} from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
-import { Provider } from 'src/app/model/provider';
-import { ProviderStoreService } from 'src/app/service/provider/provider-store.service';
+import { Provider } from 'src/store/models/provider';
 
 @Component({
   selector: 'app-provider-input',
@@ -16,16 +14,25 @@ import { ProviderStoreService } from 'src/app/service/provider/provider-store.se
     }
   ]
 })
-export class ProviderInputComponent extends BaseCatalogComponent<Provider> implements ControlValueAccessor {
+export class ProviderInputComponent implements ControlValueAccessor {
 
-  @Input() formGroup: FormGroup;
-  @Input() formControlName: string;
-  @Input() lbl: string;
-  @Input() placeholder: string;
+  @Input() formGroup!: FormGroup;
+  @Input() formControlName!: string;
+  @Input() lbl!: string;
+  @Input() placeholder!: string;
 
   @Input() buildingId: number = 1;
-  
-  constructor(protected storeService: ProviderStoreService) {
-    super(storeService);
-  }  
+
+  items: Provider[] = []
+
+  constructor() { }
+  writeValue(obj: any): void {
+    ;
+  }
+  registerOnChange(fn: any): void {
+    ;
+  }
+  registerOnTouched(fn: any): void {
+    ;
+  }
 }

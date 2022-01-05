@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Environmenter } from 'ng-environmenter';
 import { Observable, from } from 'rxjs';
 import { BaseRepositoryService } from 'src/app/base/repository.service';
-import { SquareTypeRow } from 'src/app/model/square-type-row';
+import { SquareTypeRow } from 'src/store/models/square-type-row';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class SquareTypeRowRepositoryService extends BaseRepositoryService<Square
   protected apiDomen: string = 'square-type-row';
 
   constructor(
-    protected environmenter: Environmenter,
-    protected http: HttpClient) {
+    protected override environmenter: Environmenter,
+    protected override http: HttpClient) {
     super(environmenter, http);
   }
 }

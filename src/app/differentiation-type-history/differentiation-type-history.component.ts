@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { DifferentiationTypeHistory } from '../model/differentiation-type-history';
-import { DifferentiationTypeHistoryStoreService } from '../service/differentiation-type-history/differentiation-type-history-store.service';
-import { DifferentiationTypeStoreService } from '../service/differentiation-type/differentiation-type-store.service';
-import { MeterStoreService } from '../service/meter/meter-store.service';
+import { DifferentiationTypeHistory } from '../../store/models/differentiation-type-history';
 import { Location } from '@angular/common';
 
 @Component({
@@ -15,36 +10,25 @@ import { Location } from '@angular/common';
 })
 export class DifferentiationTypeHistoryComponent implements OnInit {
 
-  private meterId: number;
+  private meterId!: number;
 
-  items: Observable<DifferentiationTypeHistory[]>;
+  items!: Observable<DifferentiationTypeHistory[]>;
 
   displayedColumns = ['period', 'differentiationType']
 
-  constructor(
-    private meterStore: MeterStoreService,
-    private differentiationTypeStore: DifferentiationTypeStoreService,
-    private differentiationTypeHistoryStore: DifferentiationTypeHistoryStoreService,
-    private location: Location,
-    private router: ActivatedRoute) {
-    this.differentiationTypeHistoryStore.load();
+  constructor(private location: Location) {
   }
 
   ngOnInit(): void {
-    this.router.paramMap.subscribe((params: ParamMap) => {
-      this.meterId = Number.parseInt(params.get('id'));
-      this.items = this.differentiationTypeHistoryStore.items.pipe(
-        map(items => items.filter(row => row.meterId == this.meterId))
-      );
-    });
+
   }
 
   getMeterPresent(id: number) {
-    return this.meterStore.getPresent(id);
+    return "";
   }
 
   getDifferentiationTypePresent(id: number) {
-    return this.differentiationTypeStore.getPresent(id);
+    return "";
   }
 
   backLocation(): void {

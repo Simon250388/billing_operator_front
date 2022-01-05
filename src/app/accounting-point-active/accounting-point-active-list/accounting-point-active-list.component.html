@@ -1,102 +1,94 @@
-<div fxLayout="row wrap">
-    <div fxFlex="50%" *ngFor="let item of items | async; let i = index">
-        <mat-card class="example-card">
+<div fxLayout="column" fxLayoutGap="10px" class="card-container" fxLayoutAlign="center start">
+    <div fxLayout="row wrap" fxLayoutGap="10px" class="button-row">
+        <mat-card  class="find-card">
             <mat-card-content>
-                <table>
-                    <tr>
-                        <td>Наименование</td>
-                        <td>{{presentAccountingPoint(item.accountingPointId) | async}}</td>
-                    </tr>
-                    <tr>
-                        <td>Услуга</td>
-                        <td>{{presentService(item.serviceId)| async}}</td>
-                    </tr>
-                    <tr>
-                        <td>Поставщик</td>
-                        <td>
-                            <span>{{presentProvider(item.providerId)| async}}</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menuProvider"
-                                aria-label="Example icon-button with a menu">
-                                <mat-icon>more_vert</mat-icon>
+                <button mat-button color="primary" routerLink="/search-customer">Добавить</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="10px">
+
+        <mat-card *ngFor="let item of items | async; let i = index" class="example-card" >
+            <mat-card-title>{{item.accountingPoint.present}}</mat-card-title>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>Услуга {{item.service.present}}</mat-list-item>
+                    <mat-list-item>
+                        <span>Поставщик {{item.provider.present}}</span>
+                        <button mat-icon-button [matMenuTriggerFor]="menuProvider"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menuProvider="matMenu">
+                            <button mat-menu-item (click)="showProviderDialog(item)">
+                                <mat-icon>edit</mat-icon>
+                                <span>Изменить</span>
                             </button>
-                            <mat-menu #menuProvider="matMenu">
-                                <button mat-menu-item (click)="showProviderDialog(item)">
-                                    <mat-icon>edit</mat-icon>
-                                    <span>Изменить</span>
-                                </button>
-                                <button mat-menu-item [routerLink]="['/provider-history', item.accountingPointId]">
-                                    <mat-icon>history</mat-icon>
-                                    <span>История</span>
-                                </button>
-                            </mat-menu>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Прибор учета</td>
-                        <td>
-                            <span>{{presentMeter(item.meterId)| async}}/СГВ-15</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menuMeter"
-                                aria-label="Example icon-button with a menu">
-                                <mat-icon>more_vert</mat-icon>
+                            <button mat-menu-item [routerLink]="['/provider-history', item.accountingPoint?.id]">
+                                <mat-icon>history</mat-icon>
+                                <span>История</span>
                             </button>
-                            <mat-menu #menuMeter="matMenu">
-                                <button mat-menu-item>
-                                    <mat-icon>edit</mat-icon>
-                                    <span>Изменить</span>
-                                </button>
-                                <button mat-menu-item [routerLink]="['/meter-history', item.accountingPointId]">
-                                    <mat-icon>history</mat-icon>
-                                    <span>История</span>
-                                </button>
-                            </mat-menu>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Состояние прибора</td>
-                        <td>Установлен / {{item.meterStateChangeAt| date:'shortDate'}}</td>
-                    </tr>
-                    <tr>
-                        <td>Вид дифференцированности</td>
-                        <td>
-                            <span>{{presentDifferentiationType(item.differentiationTypeId)| async}}</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menuDifferentiationType"
-                                aria-label="Example icon-button with a menu">
-                                <mat-icon>more_vert</mat-icon>
+                        </mat-menu>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span>Пр-р учета {{item.meter.present}}</span>
+                        <button mat-icon-button [matMenuTriggerFor]="menuMeter"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menuMeter="matMenu">
+                            <button mat-menu-item>
+                                <mat-icon>edit</mat-icon>
+                                <span>Изменить</span>
                             </button>
-                            <mat-menu #menuDifferentiationType="matMenu">
-                                <button mat-menu-item (click)="showDifferentiationTypeChangeDialog(item)">
-                                    <mat-icon>edit</mat-icon>
-                                    <span>Изменить</span>
-                                </button>
-                                <button mat-menu-item
-                                    [routerLink]="['/differentiation-type-history', item.accountingPointId]">
-                                    <mat-icon>history</mat-icon>
-                                    <span>История</span>
-                                </button>
-                            </mat-menu>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Последние показания</td>
-                        <td>
-                            <span>{{item.lastMeterValue}}</span>
-                            <button mat-icon-button [matMenuTriggerFor]="menuMeterValue"
-                                aria-label="Example icon-button with a menu">
-                                <mat-icon>more_vert</mat-icon>
+                            <button mat-menu-item [routerLink]="['/meter-history', item.meter.id]">
+                                <mat-icon>history</mat-icon>
+                                <span>История</span>
                             </button>
-                            <mat-menu #menuMeterValue="matMenu">
-                                <button mat-menu-item (click)="showMeterValueChangeDialog(item)">
-                                    <mat-icon>edit</mat-icon>
-                                    <span>Изменить</span>
-                                </button>
-                                <button mat-menu-item [routerLink]="['/meter-values', item.accountingPointId]">
-                                    <mat-icon>history</mat-icon>
-                                    <span>История</span>
-                                </button>
-                            </mat-menu>
-                        </td>
-                    </tr>
-                </table>
+                        </mat-menu>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span>Вид дифф-ти</span>
+    
+                        <span>{{item.differentiationType.present}}</span>
+    
+                        <button mat-icon-button [matMenuTriggerFor]="menuDifferentiationType"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menuDifferentiationType="matMenu">
+                            <button mat-menu-item (click)="showDifferentiationTypeChangeDialog(item)">
+                                <mat-icon>edit</mat-icon>
+                                <span>Изменить</span>
+                            </button>
+                            <button mat-menu-item [routerLink]="['/differentiation-type-history', item.meter.id]">
+                                <mat-icon>history</mat-icon>
+                                <span>История</span>
+                            </button>
+                        </mat-menu>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span>Последние показания</span>
+    
+                        <span>{{item.lastMeterValue}}</span>
+    
+                        <button mat-icon-button [matMenuTriggerFor]="menuMeterValue"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+    
+                        <mat-menu #menuMeterValue="matMenu">
+                            <button mat-menu-item (click)="showMeterValueChangeDialog(item)">
+                                <mat-icon>edit</mat-icon>
+                                <span>Изменить</span>
+                            </button>
+                            <button mat-menu-item [routerLink]="['/meter-values', item.meter.id]">
+                                <mat-icon>history</mat-icon>
+                                <span>История</span>
+                            </button>
+                        </mat-menu>
+                    </mat-list-item>
+                </mat-list>            
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button color="primary">Отключить</button>
@@ -105,3 +97,5 @@
         </mat-card>
     </div>
 </div>
+
+

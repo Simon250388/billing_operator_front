@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContractDetailsComponent implements OnInit {
 
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder

@@ -1,35 +1,29 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <div fxFlex="70%">
-        <div fxLayout="column">
-            <div fxLayout="row">
-                <div fxFlex="100%" class="HeaderNavBar">
-                    <mat-toolbar color="primary">
-                       
-                            <button mat-icon-button>
-                                <mat-icon svgIcon="logo"></mat-icon>
-                            </button>
-                            <a mat-button>Взаиморасчеты</a>
-                            <a mat-button>История оплат</a>                            
-                            <span style="flex: 1 1 auto;"></span>
-                            <button mat-button [matMenuTriggerFor]="menuAccount">account@gmail.com
-                                <mat-icon>more_vert</mat-icon>
-                            </button>
-                            <mat-menu #menuAccount="matMenu">
-                                <button mat-menu-item>Настройки</button>
-                                <button mat-menu-item>Выход</button>
-                            </mat-menu>
-                                           
-                    </mat-toolbar>                    
-                </div>
-            </div>
-            <div fxLayout="row">
-                <div fxFlex="75%">
-                    <router-outlet></router-outlet>
-                </div>
-                <div fxFlex="25%">
-                    <ng-template [cdkPortalOutlet]="currentPortal"></ng-template>
-                </div>
-            </div>
+        <div fxFlex="100%" class="HeaderNavBar">
+            <mat-toolbar color="primary">
+                <button mat-icon-button>
+                    <mat-icon svgIcon="logo"></mat-icon>
+                </button>
+                <a mat-button>Взаиморасчеты</a>
+                <a mat-button>История оплат</a>
+                <span style="flex: 1 1 auto;"></span>
+                <button mat-button [matMenuTriggerFor]="menuAccount">account@gmail.com
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menuAccount="matMenu">
+                    <button mat-menu-item>Настройки</button>
+                    <button mat-menu-item>Выход</button>
+                </mat-menu>
+
+            </mat-toolbar>
+        </div>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="center" style="height: 80%;">
+    <div fxFlex="70%">
+        <div fxLayout="column" style="height: 100%;" >
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

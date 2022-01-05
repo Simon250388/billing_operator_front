@@ -7,17 +7,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
   declarations: [SearchCustomerComponent],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     SearchCustomerRoutingModule,
     MatInputModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ]
 })
 export class SearchCustomerModule { }

@@ -1,12 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { ServiceImprovementTypeRateGroup } from 'src/app/model/service-improvement-type-rate-group';
-import { ImprovementTypeRowStoreService } from 'src/app/service/improvement-type-row/improvement-type-row-store.service';
-import { ImprovementTypeStoreService } from 'src/app/service/improvement-type/improvement-type-store.service';
-import { RateGroupStoreService } from 'src/app/service/rate-group/rate-group-store.service';
-import { ServiceStoreService } from 'src/app/service/service/service-store.service';
+import { ServiceImprovementTypeRateGroup } from 'src/store/models/service-improvement-type-rate-group';
 import { ImprovementTypeRowAddComponent } from '../improvement-type-row-add/improvement-type-row-add.component';
 
 @Component({
@@ -18,27 +13,21 @@ export class ImprovementTypeRowListComponent {
 
   displayedColumns = ['service', 'improvementType', 'rateGroup', 'rowAction'];
 
-  @Input() formArray: FormArray;
+  @Input() formArray!: AbstractControl;
 
   constructor(
-    private dialog: MatDialog,
-    private store: ImprovementTypeRowStoreService,
-    private serviceStore: ServiceStoreService,
-    private improvementTypeStore: ImprovementTypeStoreService,
-    private rateGroupStore: RateGroupStoreService
-  ) { }
+    private dialog: MatDialog  ) { }
 
   get items(): ServiceImprovementTypeRateGroup[] {
-    return this.formArray.value;
+    return (<FormArray>this.formArray).value;
   }
 
 
   openAddRowDialog(index?: any): void {
-    let data: ServiceImprovementTypeRateGroup;
 
-    if (index != null) {
-      data = this.formArray.at(index).value as ServiceImprovementTypeRateGroup;
-    }
+    if (index == null || index == undefined) return
+
+    let data = (<FormArray>this.formArray).at(index).value as ServiceImprovementTypeRateGroup;
 
     const dialogRef = this.dialog.open(ImprovementTypeRowAddComponent, {
       data: data
@@ -46,22 +35,22 @@ export class ImprovementTypeRowListComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (index != null && result) {
-        this.formArray.at(index).setValue((result as FormGroup).value as ServiceImprovementTypeRateGroup);
+        (<FormArray>this.formArray).at(index).setValue((result as FormGroup).value as ServiceImprovementTypeRateGroup);
       } else if (result) {
-        this.formArray.push(result);
+        (<FormArray>this.formArray).push(result);
       }
     });
   }
 
-  getServicePresent(id: number): Observable<string> {
-    return this.serviceStore.getPresent(id);
+  getServicePresent(): string {
+    return "";;
   }
 
-  getImprovementTypePresent(id: number): Observable<string> {
-    return this.improvementTypeStore.getPresent(id);
+  getImprovementTypePresent(): string {
+    return "";
   }
 
-  getRateGroupPresent(id: number): Observable<string> {
-    return this.rateGroupStore.getPresent(id);
+  getRateGroupPresent(): string {
+    return "";
   }
 }

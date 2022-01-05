@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { ProviderStoreService } from 'src/app/service/provider/provider-store.service';
+
 
 @Component({
   selector: 'app-provider-change',
@@ -15,22 +14,19 @@ export class ProviderChangeComponent {
 
   constructor(
     private formbuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public currentValueId: number,
-    private store: ProviderStoreService
+    @Inject(MAT_DIALOG_DATA) public currentValueId: number
   ) {
     this.formGroup = this.formbuilder.group({
       providerId: ['', Validators.required]
     })
   }
 
-  get currentValuePresent(): Observable<string> {
-    return this.store.getPresent(this.currentValueId);
+  get currentValuePresent(): string {
+    return "";
   }
 
   get controlValue(): number {
     return this.formGroup.controls['providerId'].value;
   }
-
-
 
 }

@@ -1,8 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BaseCatalogComponent } from 'src/app/base/base-catalog-component';
-import { ImprovementType } from 'src/app/model/improvement-type';
-import { ImprovementTypeStoreService } from 'src/app/service/improvement-type/improvement-type-store.service';
+import { ImprovementType } from 'src/store/models/improvement-type';
+
 
 @Component({
   selector: 'app-improvement-type-input',
@@ -16,16 +15,25 @@ import { ImprovementTypeStoreService } from 'src/app/service/improvement-type/im
     }
   ]
 })
-export class ImprovementTypeInputComponent extends BaseCatalogComponent<ImprovementType> implements ControlValueAccessor {
+export class ImprovementTypeInputComponent implements ControlValueAccessor {
 
-  @Input() formGroup: FormGroup;
-  @Input() formControlName: string;
-  @Input() lbl: string;
-  @Input() placeholder: string;
+  @Input() formGroup!: FormGroup;
+  @Input() formControlName!: string;
+  @Input() lbl!: string;
+  @Input() placeholder!: string;
 
   @Input() buildingId: number = 1;
 
-  constructor(protected storeService: ImprovementTypeStoreService) {
-    super(storeService);
-  }  
+  items: ImprovementType[] = []
+
+  constructor() { }
+  writeValue(obj: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnChange(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
 }

@@ -1,0 +1,28 @@
+:host {
+    height: 100%;
+}
+
+.example-card{
+    margin-top: 10px;
+    max-width: 200px;
+    width: 200px;
+}
+
+.find-card{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.example-card:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.card-container { 
+    height: 30vh;
+    width: 100%;
+}
+
+.button-row{
+    width: 100%;
+}

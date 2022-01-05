@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Environmenter } from 'ng-environmenter';
 import { from, Observable } from 'rxjs';
 import { BaseRepositoryService } from 'src/app/base/repository.service';
-import { RateGroup } from 'src/app/model/rate-group';
+import { RateGroup } from 'src/store/models/rate-group';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class RateGroupRepositoryService extends BaseRepositoryService<RateGroup>
   protected apiDomen: string = 'rate-group';
 
   constructor(
-    protected environmenter: Environmenter,
-    protected http: HttpClient) {
+    protected override environmenter: Environmenter,
+    protected override http: HttpClient) {
     super(environmenter, http);
   }
 }

@@ -1,9 +1,8 @@
-import { ComponentType } from '@angular/cdk/portal';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SimpleNumberChangeComponent } from '../change-value/simple-number-change/simple-number-change.component';
-import { Customer } from '../model/customer';
-import { CutomerNavigationService } from '../service/customer/cutomer-navigation.service';
+import { Customer } from '../../store/models/customer';
+
 
 @Component({
   selector: 'app-contract-info',
@@ -12,20 +11,15 @@ import { CutomerNavigationService } from '../service/customer/cutomer-navigation
 })
 export class ContractInfoComponent {
 
-  customer: Customer;
+  customer!: Customer;
 
   constructor(
-    private dialog: MatDialog,
-    private cutomerNavigationService: CutomerNavigationService) {
-    this.cutomerNavigationService.currentCustomer.subscribe(customer => {
-      if (customer) {
-        this.customer = customer;
-      }
-    })
+    private dialog: MatDialog) {
+    
   }
 
   setCurrentCustomer(): void {
-    this.cutomerNavigationService.setCurrentCustomer(null);
+   
   }
 
   showTotalSquareChangeDialog(totalSquare: number): void {

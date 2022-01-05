@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChangeValueModule } from '../change-value/change-value.module';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { ChangeValueModule } from '../change-value/change-value.module';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    MatDividerModule
   ],
   exports: [
     AccountingPointActiveListComponent

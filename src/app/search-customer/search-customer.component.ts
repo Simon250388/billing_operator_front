@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { filter, find, map } from 'rxjs/operators';
-import { Customer } from '../model/customer';
-import { CustomerStoreService } from '../service/customer/customer-store.service';
-import { CutomerNavigationService } from '../service/customer/cutomer-navigation.service';
+import { StartChooseCurrentAction } from 'src/store/action/key-room.action';
+import { IKeyRoom } from 'src/store/models/key-room.model';
+import { getHistory } from 'src/store/selectors/key-room.selector';
+import { IAppState } from 'src/store/state/app.state';
 
 @Component({
   selector: 'app-search-customer',
@@ -11,19 +12,7 @@ import { CutomerNavigationService } from '../service/customer/cutomer-navigation
   styleUrls: ['./search-customer.component.css']
 })
 export class SearchCustomerComponent {
-  items: Observable<Customer[]>;
 
-  constructor(
-    private storeService: CustomerStoreService,
-    private navigationService: CutomerNavigationService) {
-    this.items = this.storeService.items;
-  }
+  
 
-  setCurrentCustomer(): void {
-    this.storeService.load();
-    
-    this.items.pipe(
-      map(items => items.filter(customer => customer.id == 1))
-    ).subscribe(customers => this.navigationService.setCurrentCustomer(customers[0]));
-  }
 }

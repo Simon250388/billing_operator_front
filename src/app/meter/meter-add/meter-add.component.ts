@@ -6,6 +6,7 @@ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { ImprovementType } from 'src/store/models/improvement-type';
 
 @Component({
   selector: 'app-meter-add',
@@ -22,9 +23,9 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
   ]
 })
 export class MeterAddComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
-  improvementTypes: [] = [];
+  improvementTypes: ImprovementType[] = [];
 
   constructor(private _formBuilder: FormBuilder) {
     this.formGroup = this._formBuilder.group({

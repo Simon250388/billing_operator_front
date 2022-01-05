@@ -5,31 +5,31 @@
     <!-- service Column -->
     <ng-container matColumnDef="service">
         <th mat-header-cell *matHeaderCellDef>Услуга</th>
-        <td mat-cell *matCellDef="let item"> {{this.store.getServicePresent(item.serviceId)}} </td>
+        <td mat-cell *matCellDef="let item"> Услуга </td>
     </ng-container>
 
     <!-- provider Column -->
     <ng-container matColumnDef="provider">
         <th mat-header-cell *matHeaderCellDef>Поставщик</th>
-        <td mat-cell *matCellDef="let item"> {{this.store.getProviderPresent(item.providerId)}} </td>
+        <td mat-cell *matCellDef="let item"> Поставщик </td>
     </ng-container>
 
     <!-- contractPointLocation Column -->
     <ng-container matColumnDef="directionOfUse">
         <th mat-header-cell *matHeaderCellDef>Направление использования</th>
-        <td mat-cell *matCellDef="let item"> {{this.store.getDirectionOfUsePresent(item.directionOfUseId )}} </td>
+        <td mat-cell *matCellDef="let item"> Направление использования </td>
     </ng-container>
 
     <!-- contractPointLocation Column -->
     <ng-container matColumnDef="pointLocation">
         <th mat-header-cell *matHeaderCellDef>Расположение</th>
-        <td mat-cell *matCellDef="let item"> {{item.contractPointLocation}} </td>
+        <td mat-cell *matCellDef="let item"> Расположение </td>
     </ng-container>
 
     <!-- contractPointLocation Column -->
     <ng-container matColumnDef="meterIsActive">
         <th mat-header-cell *matHeaderCellDef>Прибор учета установлен</th>
-        <td mat-cell *matCellDef="let item"> {{item.meter == null}} </td>
+        <td mat-cell *matCellDef="let item"> Прибор учета установле </td>
     </ng-container>
 
     <!-- action Column -->
