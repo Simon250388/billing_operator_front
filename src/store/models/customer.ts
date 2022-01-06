@@ -1,15 +1,11 @@
 import { BaseCatalog } from './base-catalog';
-import { AccountingPointActive } from './accounting-point-active.model';
 
 export interface Customer extends BaseCatalog {
     /**
      * Номер лицевого счета
      */
     lsNumber: string;
-    /**
-     * Действующие точки учета
-     */
-    accountingPoint: AccountingPointActive[];
+       
     /**
      * Адрес помещения
      */

@@ -1,25 +1,15 @@
-import { ChooseCurrentCompleteAction, EKeyRoomActionAction, KeyRoomActionActions, ReceivdeResultSearchKeyRoomAction } from "../action/key-room.action";
+import { createReducer, on } from "@ngrx/store";
+import { chooseCurrentCompleteAction, receivdeResultSearchKeyRoomAction } from "../action/key-room.action";
+import { IKeyRoom } from "../models/key-room.model";
 import { IKeyRoomState, initialKeyRoomState } from "../state/key-room.state";
 
-export const KeyRoomReducer = (
-    state: IKeyRoomState = initialKeyRoomState,
-    action: KeyRoomActionActions
-): IKeyRoomState => {
-    switch (action.type) {
-        case EKeyRoomActionAction.ChooseCurrentComplete:
-            return {
-                items: state.items,
-                history: state.history,
-                current: (<ChooseCurrentCompleteAction>action).payload.item
-            }
+export const KeyRoomReducer = createReducer(
+    initialKeyRoomState,
+    on(chooseCurrentCompleteAction, (state: IKeyRoomState, keyRoom: IKeyRoom) => {
+        return { ...state, current: keyRoom }
 
-        case EKeyRoomActionAction.ReceivdeResultSearchKeyRoom:
-            return {
-                items: (<ReceivdeResultSearchKeyRoomAction>action).payload.items,
-                history: state.history,
-                current: state.current
-            }
-
-        default: return state;
-    }
-}
+    }),
+    on(receivdeResultSearchKeyRoomAction, (state: IKeyRoomState, playload: { items: IKeyRoom[] }) => {
+        return { ...state, items: [...playload.items] }
+    })
+)

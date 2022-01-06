@@ -1,7 +1,7 @@
 import { BaseEntity } from './base-entity';
 import { SimpleRef } from './simple-ref.model';
 
-export interface AccountingPointActive extends BaseEntity {
+export interface IAccountingPointActive extends BaseEntity {
     accountingPoint: SimpleRef;
     service: SimpleRef;
     provider: SimpleRef;

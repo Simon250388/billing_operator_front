@@ -16,7 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
-    AccountingPointActiveListComponent
+     AccountingPointActiveListComponent
   ],
   imports: [
     CommonModule,
@@ -30,9 +30,6 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatListModule,
     MatDividerModule
-  ],
-  exports: [
-    AccountingPointActiveListComponent
   ]
 })
 export class AccountingPointActiveModule { }

@@ -25,7 +25,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { KeyRoomEffect } from 'src/store/effects/key-room.effect';
-import { KeyRoomHttpService } from './service/key-room.http';
+import { KeyRoomHttpService } from './service/key-room/key-room.http.service';
+import { AccountingPointEffect } from 'src/store/effects/accountin-point.effect';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -46,7 +47,7 @@ registerLocaleData(localeRu, 'ru');
     FormsModule,
     EnvironmenterModule.forRoot(environment),
     StoreModule.forRoot(appRedusers),
-    EffectsModule.forRoot([UserEffect, KeyRoomEffect]),
+    EffectsModule.forRoot([UserEffect, KeyRoomEffect, AccountingPointEffect]),
     StoreRouterConnectingModule.forRoot(),
     MatCardModule,
     MatInputModule,
@@ -57,8 +58,7 @@ registerLocaleData(localeRu, 'ru');
     MatToolbarModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'ru' },
-    KeyRoomHttpService
+    { provide: LOCALE_ID, useValue: 'ru' }
   ],
   bootstrap: [AppComponent]
 })

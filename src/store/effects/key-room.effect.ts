@@ -1,41 +1,36 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, mergeMap, of, switchMap, tap } from "rxjs";
-import { KeyRoomHttpService } from "src/app/service/key-room.http";
-import { ChooseCurrentCompleteAction, EKeyRoomActionAction, ReceivdeResultSearchKeyRoomAction, StartChooseCurrentAction, StartSearchKeyRoomAction } from "../action/key-room.action";
+import { map, mergeMap, of, tap } from "rxjs";
+import { IKeyRoomHttpService } from "src/app/service/key-room/key-room.http.service.factory";
+import { chooseCurrentCompleteAction, receivdeResultSearchKeyRoomAction, startChooseCurrentAction, startSearchKeyRoomAction } from "../action/key-room.action";
 
 @Injectable()
 export class KeyRoomEffect {
 
     constructor(
-        private actions$: Actions,
-        private httpService: KeyRoomHttpService,
+        private actions: Actions,
+        private httpService: IKeyRoomHttpService,
         private router: Router
     ) { }
 
-
     startSearchKeyRoomEffect$ = createEffect(
-        () => this.actions$.pipe(
-            ofType<StartSearchKeyRoomAction>(EKeyRoomActionAction.StartSearch),
+        () => this.actions.pipe(
+            ofType(startSearchKeyRoomAction),
             mergeMap(() =>
                 this.httpService.search().pipe(
                     map(
-                        (items) => new ReceivdeResultSearchKeyRoomAction({ items: items })
+                        (items) => receivdeResultSearchKeyRoomAction({ items: items })
                     )
                 )
             )
         )
     )
 
-
     setCurrentEffect$ = createEffect(
-        () => this.actions$.pipe(
-            ofType<StartChooseCurrentAction>(EKeyRoomActionAction.StartChooseCurrent),
-            map(action => action.payload),
-            switchMap(
-                current => of(new ChooseCurrentCompleteAction(current))
-            ),
+        () => this.actions.pipe(
+            ofType(startChooseCurrentAction),
+            mergeMap(current => of(chooseCurrentCompleteAction(current))),
             tap(() => this.router.navigate(["active-accounting-point"])
             ))
     )

@@ -1,51 +1,58 @@
-import { Action } from "@ngrx/store";
-import { AccountingPointActive } from "../models/accounting-point-active.model";
+import { createAction, props } from "@ngrx/store";
+import { IAccountingPointActive } from "../models/accounting-point-active.model";
 import { SimpleRef } from "../models/simple-ref.model";
 
 export enum EActiveAccountingPointAction {
-    GetActiveAccountingPoint = "[AccountingPoint] get active",
+    LoadFromApiStart = "[AccountingPoint] load from api start",
+    LoadFromApiSuccess = "[AccountingPoint] load from api success",
     CreateActiveAccountingPoint = "[AccountingPoint] create new",
     DisconnectService = "[AccountingPoint] disconnect service",
     DisconnectMeter = "[AccountingPoint] Disconnect metter",
     ConnectMeter = "[AccountingPoint] Connect metter",
     ChangeProvider = "[AccountingPoint] Change provider",
+    ChangeMeterValue = "[AccountingPoint] Change meter value",
     ChangeSelected = "[AccountingPoint] Change selected"
 }
 
-export class GetActiveAccountingPoint implements Action {
-    readonly type: string = EActiveAccountingPointAction.GetActiveAccountingPoint;
+export const loadFromApiStartAction = createAction(
+    EActiveAccountingPointAction.LoadFromApiStart
+)
 
-}
+export const loadFromApiStartActionSuccessAction = createAction(
+    EActiveAccountingPointAction.LoadFromApiSuccess,
+    props<{ items: IAccountingPointActive[] }>()
+)
 
-export class CreateActiveAccountingPoint implements Action {
-    readonly type: string = EActiveAccountingPointAction.CreateActiveAccountingPoint;
-}
+export const createActiveAccountingPointAction = createAction(
+    EActiveAccountingPointAction.CreateActiveAccountingPoint
+);
 
-export class DisconnectService implements Action {
-    readonly type: string = EActiveAccountingPointAction.DisconnectService;
-    constructor(public payload: { item: AccountingPointActive }) { }
-}
+export const disconnectServiceInActiveAccountingPointAction = createAction(
+    EActiveAccountingPointAction.DisconnectService,
+    props<SimpleRef>()
+)
 
-export class DisconnectMeter implements Action {
-    readonly type: string = EActiveAccountingPointAction.DisconnectMeter;
-    constructor(public payload: AccountingPointActive) { }
-}
+export const disconnectMeterInActiveAccountingPointAction = createAction(
+    EActiveAccountingPointAction.DisconnectMeter,
+    props<SimpleRef>()
+)
 
-export class ConnectMeter implements Action {
-    readonly type: string = EActiveAccountingPointAction.ConnectMeter;
-    constructor(public payload: AccountingPointActive) { }
-}
+export const connectMeterInActiveAccountingPointAction = createAction(
+    EActiveAccountingPointAction.ConnectMeter,
+    props<SimpleRef>()
+)
 
-export class ChangeProviderIntoSelectedAccountingPoint implements Action {
-    readonly type: string = EActiveAccountingPointAction.ChangeProvider;
-    constructor(public payload: SimpleRef) { }
-}
+export const changeProviderInActiveAccountingPointAction = createAction(
+    EActiveAccountingPointAction.ChangeProvider,
+    props<SimpleRef>()
+)
 
-export class ChangeSelected implements Action {
-    readonly type: string = EActiveAccountingPointAction.ChangeSelected;
-    constructor(public payload: AccountingPointActive) { }
-}
+export const changeMeterValueInActiveAccountingPointAction = createAction(
+    EActiveAccountingPointAction.ChangeMeterValue,
+    props<{ value: number }>()
+)
 
-export type ActiveAccountingPointActions =
-    GetActiveAccountingPoint | CreateActiveAccountingPoint | DisconnectService
-    | DisconnectMeter | ConnectMeter | ChangeProviderIntoSelectedAccountingPoint | ChangeSelected;
+export const changeSelectedActiveAccountingPointAction = createAction(
+    EActiveAccountingPointAction.ChangeSelected,
+    props<IAccountingPointActive>()
+)

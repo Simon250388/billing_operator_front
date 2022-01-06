@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ProviderChangeComponent } from 'src/app/change-value/provider-change/provider-change.component';
-import { ChangeProviderIntoSelectedAccountingPoint, ChangeSelected, GetActiveAccountingPoint } from 'src/store/action/accounting-point.action';
-import { AccountingPointActive } from 'src/store/models/accounting-point-active.model';
+
+import { changeMeterValueInActiveAccountingPointAction, changeProviderInActiveAccountingPointAction, changeSelectedActiveAccountingPointAction, loadFromApiStartAction } from 'src/store/action/accounting-point.action';
+import { IAccountingPointActive } from 'src/store/models/accounting-point-active.model';
 import { getSelectedAccountingPoint, selectAccountingAllPoint } from 'src/store/selectors/accountiing-point.selector';
 import { IAppState } from 'src/store/state/app.state';
 import { SimpleRef } from 'src/store/models/simple-ref.model';
+import { SimpleNumberChangeComponent } from 'src/app/change-value/simple-number-change/simple-number-change.component';
+import { ProviderChangeComponent } from 'src/app/change-value/provider-change/provider-change.component';
 
 @Component({
   selector: 'app-accounting-point-list',
@@ -17,8 +19,8 @@ import { SimpleRef } from 'src/store/models/simple-ref.model';
 export class AccountingPointActiveListComponent implements OnInit {
 
 
-  items: Observable<AccountingPointActive[]> = this._store.pipe(select(selectAccountingAllPoint))
-  selected: Observable<AccountingPointActive | undefined> = this._store.pipe(select(getSelectedAccountingPoint))
+  items: Observable<IAccountingPointActive[]> = this._store.pipe(select(selectAccountingAllPoint))
+  selected: Observable<IAccountingPointActive | undefined> = this._store.pipe(select(getSelectedAccountingPoint))
 
   constructor(
     private dialog: MatDialog,
@@ -26,12 +28,12 @@ export class AccountingPointActiveListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._store.dispatch(new GetActiveAccountingPoint())
+    this._store.dispatch(loadFromApiStartAction())
   }
 
-  showProviderDialog(newSelected: AccountingPointActive): void {
+  showProviderDialog(newSelected: IAccountingPointActive): void {
 
-    this._store.dispatch(new ChangeSelected(newSelected))
+    this._store.dispatch(changeSelectedActiveAccountingPointAction(newSelected))
 
     const dialogRef = this.dialog.open(ProviderChangeComponent, {
       data: newSelected.provider
@@ -39,16 +41,28 @@ export class AccountingPointActiveListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result != '' && <SimpleRef>result != undefined) {
-        this._store.dispatch(new ChangeProviderIntoSelectedAccountingPoint(<SimpleRef>result))
+        this._store.dispatch(changeProviderInActiveAccountingPointAction(<SimpleRef>result))
       }
     });
   }
 
-  showDifferentiationTypeChangeDialog(item: AccountingPointActive): void {
+  showDifferentiationTypeChangeDialog(item: IAccountingPointActive): void {
 
   }
 
-  showMeterValueChangeDialog(item: AccountingPointActive): void {
+  showMeterValueChangeDialog(newSelected: IAccountingPointActive): void {
+
+    this._store.dispatch(changeSelectedActiveAccountingPointAction(newSelected))
+
+    const dialogRef = this.dialog.open(SimpleNumberChangeComponent, {
+      data: newSelected.lastMeterValue
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result != '' && <SimpleRef>result != undefined) {
+        this._store.dispatch(changeMeterValueInActiveAccountingPointAction({ value: result }))
+      }
+    });
 
   }
 }

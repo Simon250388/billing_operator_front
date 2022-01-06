@@ -1,4 +1,4 @@
-import { Action } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
 import { IKeyRoom } from "../models/key-room.model";
 
 export enum EKeyRoomActionAction {
@@ -8,24 +8,21 @@ export enum EKeyRoomActionAction {
     ChooseCurrentComplete = "[KeyRoom] choose current complete"
 }
 
-export class StartSearchKeyRoomAction implements Action {
-    readonly type: string = EKeyRoomActionAction.StartSearch;
-}
+export const startSearchKeyRoomAction = createAction(
+    EKeyRoomActionAction.StartSearch
+);
 
-export class ReceivdeResultSearchKeyRoomAction implements Action {
-    readonly type: string = EKeyRoomActionAction.ReceivdeResultSearchKeyRoom;
-    constructor(public payload: { items: IKeyRoom[] }) { }
-}
+export const receivdeResultSearchKeyRoomAction = createAction(
+    EKeyRoomActionAction.ReceivdeResultSearchKeyRoom,
+    props<{ items: IKeyRoom[] }>()
+);
 
-export class StartChooseCurrentAction implements Action {
-    readonly type: string = EKeyRoomActionAction.StartChooseCurrent;
-    constructor(public payload: { item: IKeyRoom }) { }
-}
+export const startChooseCurrentAction = createAction(
+    EKeyRoomActionAction.StartChooseCurrent,
+    props<IKeyRoom>()
+);
 
-export class ChooseCurrentCompleteAction implements Action {
-    readonly type: string = EKeyRoomActionAction.ChooseCurrentComplete;
-    constructor(public payload: { item: IKeyRoom }) { }
-}
-
-export type KeyRoomActionActions = StartSearchKeyRoomAction | ReceivdeResultSearchKeyRoomAction
-    | StartChooseCurrentAction | ChooseCurrentCompleteAction
+export const chooseCurrentCompleteAction = createAction(
+    EKeyRoomActionAction.ChooseCurrentComplete,
+    props<IKeyRoom>()
+);
