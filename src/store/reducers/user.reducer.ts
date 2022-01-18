@@ -1,14 +1,14 @@
-import { EUserAction, UserActions, UserLoginSuccessAction } from "../action/user.action";
-import { initialUserState, IUserState } from "../state/user.state";
+import * as EntityAction from "../action/user.action";
+import {initialUserState, IUserState} from "../state/user.state";
+import {createReducer, on} from "@ngrx/store";
+import {IUser} from "../models/user.model";
 
-export const UserReducer = (
-    state: IUserState = initialUserState,
-    action: UserActions
-): IUserState => {
-    switch (action.type) {
-        case EUserAction.UserLoginSuccess: return {
-            current: (<UserLoginSuccessAction>action).payload.user
-        }
-        default: return state
+export const UserReducer = createReducer(
+  initialUserState,
+  on(EntityAction.UserLoginSuccessAction, (state: IUserState, currentUser: IUser) => {
+    return {
+      ...state,
+      current: currentUser
     }
-}
+  })
+)

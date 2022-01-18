@@ -7,8 +7,8 @@ export enum EActiveAccountingPointAction {
     LoadFromApiSuccess = "[AccountingPoint] load from api success",
     CreateActiveAccountingPoint = "[AccountingPoint] create new",
     DisconnectService = "[AccountingPoint] disconnect service",
-    DisconnectMeter = "[AccountingPoint] Disconnect metter",
-    ConnectMeter = "[AccountingPoint] Connect metter",
+    DisconnectMeter = "[AccountingPoint] Disconnect meter",
+    ConnectMeter = "[AccountingPoint] Connect meter",
     ChangeProvider = "[AccountingPoint] Change provider",
     ChangeMeterValue = "[AccountingPoint] Change meter value",
     ChangeSelected = "[AccountingPoint] Change selected"

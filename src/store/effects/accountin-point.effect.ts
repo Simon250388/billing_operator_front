@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { mergeMap, map } from "rxjs";
-import { IAccountingPointHttpService } from "src/app/service/accounting-point-service/accounting-point.http.factory";
-import { loadFromApiStartAction, loadFromApiStartActionSuccessAction } from "../action/accounting-point.action";
+import { IAccountingPointHttpService } from "src/service/accounting-point-service/accounting-point.http.factory";
+import * as EntityActions from "../action/accounting-point.action";
 
 
 @Injectable()
@@ -14,11 +14,11 @@ export class AccountingPointEffect {
 
     startLoadFromHttpEffect = createEffect(
         () => this.actions.pipe(
-            ofType(loadFromApiStartAction),
+            ofType(EntityActions.loadFromApiStartAction),
             mergeMap(() =>
                 this.httpService.load().pipe(
                     map(
-                        (items) => loadFromApiStartActionSuccessAction({ items: items })
+                        (items) => EntityActions.loadFromApiStartActionSuccessAction({ items: items })
                     )
                 )
             )

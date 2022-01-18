@@ -1,0 +1,85 @@
+<h3>
+    Добавление нового помещения
+</h3>
+<mat-vertical-stepper #stepper>    
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Данные помещения</ng-template>
+            <p>
+                <app-entity-input [lbl]="'Строение'" [formGroup]="formGroup" formControlName="buildingId"
+                    [placeholder]="'укажите строение'"></app-entity-input>
+            </p>
+            <p>
+                <app-entity-input [lbl]="'Помещение'" [formGroup]="formGroup" formControlName="roomId"
+                    [placeholder]="'укажите помещение'"></app-entity-input>
+            </p>
+            <mat-form-field appearance="fill" formControlName="roomTypeId" ngDefaultControl>
+                <mat-label>Тип помещения</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let item  of [{id: 1, present: 'Квартира'},{id: 1, present: 'Частный дом'}]" [value]="item.id">
+                        {{item.present}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>
+                <mat-form-field>
+                    <mat-label>Количество собственников</mat-label>
+                    <input matInput placeholder="Укажите количество собственников помещения" type="number"
+                        formControlName="countOwner">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Количество прописанных</mat-label>
+                    <input matInput placeholder="Укажите количество прописанных в помещении" type="number"
+                        formControlName="countPrescribed">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Количество проживающих</mat-label>
+                    <input matInput placeholder="Укажите количество проживающих в помещении" type="number"
+                        formControlName="countResidents">
+                </mat-form-field>
+            </p>
+            <div>
+                <button mat-button matStepperNext>Далее</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Площади помещения</ng-template>
+            <app-square-room-add [formArray]="formGroup.controls['squareValues']"></app-square-room-add>
+            <div>
+                <button mat-button matStepperNext>Далее</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Виды благоустройств</ng-template>
+            <app-improvement-type-row-list [formArray]="formGroup.controls['improvementTypes']"></app-improvement-type-row-list>
+            <div>
+                <button mat-button matStepperNext>Далее</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formGroup">
+            <ng-template matStepLabel>Услуги</ng-template>
+            <accounting-point-service-list [formArray]="formGroup.controls['accountingPoints']"></accounting-point-service-list>
+            <div>
+                <button mat-button matStepperNext>Далее</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Завершение</ng-template>
+        <p>Тут будет предпросмотр</p>
+        <div>
+            <button mat-button matStepperPrevious>Назад</button>
+            <button mat-button (click)="stepper.reset()">Записать</button>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>

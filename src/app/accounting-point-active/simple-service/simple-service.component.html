@@ -1,0 +1,26 @@
+<mat-card class="example-card">
+  <mat-card-title>{{item.service?.present}}</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item class="app-mat-list-item">
+        <span>Поставщик {{item.provider?.present}}</span>
+        <button mat-icon-button [matMenuTriggerFor]="menuProvider"
+                aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menuProvider="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Изменить</span>
+          </button>
+        </mat-menu>
+      </mat-list-item>
+      <mat-list-item class="app-mat-list-item">
+        <span>Норма потребления:  {{item.normVolume}}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary">Отключить</button>
+  </mat-card-actions>
+</mat-card>

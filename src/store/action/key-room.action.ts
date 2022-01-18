@@ -12,7 +12,7 @@ export const startSearchKeyRoomAction = createAction(
     EKeyRoomActionAction.StartSearch
 );
 
-export const receivdeResultSearchKeyRoomAction = createAction(
+export const receiveResultSearchKeyRoomAction = createAction(
     EKeyRoomActionAction.ReceivdeResultSearchKeyRoom,
     props<{ items: IKeyRoom[] }>()
 );

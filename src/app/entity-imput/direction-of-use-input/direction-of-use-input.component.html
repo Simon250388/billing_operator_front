@@ -1,9 +1,0 @@
-<mat-form-field [formGroup]="formGroup">
-  <mat-label>{{lbl}}</mat-label>
-  <input matInput [placeholder]="placeholder" [formControlName]="formControlName" [matAutocomplete]="auto">
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let item of items" [value]="item.id">
-          {{item.present}}
-      </mat-option>
-  </mat-autocomplete>
-</mat-form-field>

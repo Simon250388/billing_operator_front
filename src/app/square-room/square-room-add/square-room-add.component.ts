@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { SquareRoomRowComponent } from "../square-room-row/square-room-row.component";
-import { MatDialog } from "@angular/material/dialog";
-import { AbstractControl, FormArray, FormGroup } from "@angular/forms";
-import { SquareTypeRow } from "src/store/models/square-type-row";
+import {Component, Input} from "@angular/core";
+import {SquareRoomRowComponent} from "../square-room-row/square-room-row.component";
+import {MatDialog} from "@angular/material/dialog";
+import {AbstractControl, FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {SquareTypeRow} from "src/store/models/square-type-row";
 
 @Component({
   selector: "app-square-room-add",
@@ -14,7 +14,9 @@ export class SquareRoomAddComponent {
   formArray!: AbstractControl;
 
   constructor(
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private _formBuilder: FormBuilder) {
+  }
 
   get squareItems() {
     return (<FormArray>this.formArray).value;
@@ -28,9 +30,13 @@ export class SquareRoomAddComponent {
 
   openAddRowDialog(index?: number): void {
 
-    if (index == null || index == undefined) return
+    let data = undefined
 
-    let data = (<FormArray>this.formArray).at(index).value as SquareTypeRow;
+    if (index == null) {
+
+    } else {
+      let data = (<FormArray>this.formArray).at(index).value as SquareTypeRow;
+    }
 
     const dialogRef = this.dialog.open(SquareRoomRowComponent, {
       data: data

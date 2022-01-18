@@ -7,4 +7,5 @@ export const environment = {
   application: {},
   global: globalEnvironment,
   production: true,
+  apiUrl: 'http://localhost:3000'
 };

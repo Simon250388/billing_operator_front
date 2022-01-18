@@ -25,9 +25,9 @@ export class ImprovementTypeRowListComponent {
 
   openAddRowDialog(index?: any): void {
 
-    if (index == null || index == undefined) return
+    let data = undefined
 
-    let data = (<FormArray>this.formArray).at(index).value as ServiceImprovementTypeRateGroup;
+    if (index) data = (<FormArray>this.formArray).at(index).value as ServiceImprovementTypeRateGroup;
 
     const dialogRef = this.dialog.open(ImprovementTypeRowAddComponent, {
       data: data
@@ -43,7 +43,7 @@ export class ImprovementTypeRowListComponent {
   }
 
   getServicePresent(): string {
-    return "";;
+    return "";
   }
 
   getImprovementTypePresent(): string {

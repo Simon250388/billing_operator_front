@@ -1,11 +1,11 @@
 <mat-dialog-content>
     <form [formGroup]="formGroup">
         <h4>Текущее значение : {{currentValuePresent}}</h4>
-        <app-differentiation-type-input [lbl]="'Вид дифференцированности'" [formGroup]="formGroup" formControlName="differentiationTypeId"
-            [placeholder]="'Укажите текущий вид дифференцированности'"></app-differentiation-type-input>
+        <!-- <app-differentiation-type-input [lbl]="'Вид дифференцированности'" [formGroup]="formGroup" formControlName="differentiationTypeId"
+            [placeholder]="'Укажите текущий вид дифференцированности'"></app-differentiation-type-input> -->
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Отмена</button>
+    <button mat-button mat-dialog-close="">Отмена</button>
     <button mat-button [mat-dialog-close]="controlValue" cdkFocusInitial>Завершить</button>
 </mat-dialog-actions>

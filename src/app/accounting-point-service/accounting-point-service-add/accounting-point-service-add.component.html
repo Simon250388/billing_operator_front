@@ -2,17 +2,17 @@
 <mat-dialog-content>
     <form class="example-form" [formGroup]="formGroup">
         <p>
-            <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
-                [placeholder]="'Укажите вид услуги'"></app-service-input>
+            <app-entity-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+                [placeholder]="'Укажите вид услуги'"></app-entity-input>
         </p>
         <p>
-            <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
-                [placeholder]="'Укажите поставщика'"></app-provider-input>
+            <app-entity-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
+                [placeholder]="'Укажите поставщика'"></app-entity-input>
         </p>
         <p>
-            <app-direction-of-use-input [lbl]="'направление использования'" [formGroup]="formGroup"
+            <app-entity-input [lbl]="'направление использования'" [formGroup]="formGroup"
                 formControlName="directionOfUseId" [placeholder]="'Укажите направление использования'">
-            </app-direction-of-use-input>
+            </app-entity-input>
         </p>
         <p>
             <!-- <app-meter-add></app-meter-add> -->
@@ -20,6 +20,6 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Отмена</button>
+    <button mat-button mat-dialog-close="">Отмена</button>
     <button mat-button [mat-dialog-close]="formGroup" cdkFocusInitial>Завершить</button>
 </mat-dialog-actions>

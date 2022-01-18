@@ -1,6 +1,6 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SquareTypeRow } from 'src/store/models/square-type-row';
+import {Component, forwardRef, Input} from '@angular/core';
+import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {SquareTypeRow} from 'src/store/models/square-type-row';
 
 @Component({
   selector: 'app-square-type',
@@ -25,13 +25,16 @@ export class SquareTypeInputComponent implements ControlValueAccessor {
 
   constructor() {
   }
+
   writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+
   }
+
   registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+
   }
+
   registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+
   }
 }

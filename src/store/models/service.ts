@@ -1,5 +1,4 @@
-import { BaseCatalog } from './base-catalog';
-import { BaseEntity } from './base-entity';
+import {BaseCatalog} from './base-catalog';
 
 export interface Service  extends BaseCatalog {
 }

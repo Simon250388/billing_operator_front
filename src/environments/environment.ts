@@ -1,9 +1,6 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 
-import { Provider } from "@angular/core";
-import { KeyRoomHttMockService } from "src/app/service/key-room/key-room-http.mock.service";
-
 
 // The list of file replacements can be found in `angular.json`.
 export const globalEnvironment = {
@@ -13,7 +10,8 @@ export const globalEnvironment = {
 export const environment = {
   application: {},
   global: globalEnvironment,
-  production: false
+  production: false,
+  apiUrl: 'http://localhost:3000'
 };
 
 /*

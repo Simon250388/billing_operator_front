@@ -29,10 +29,10 @@ export class MeterAddComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder) {
     this.formGroup = this._formBuilder.group({
-      factoryNumber: [, Validators.required],
-      modelId: [, Validators.required],
+      factoryNumber: [Validators.required],
+      modelId: [Validators.required],
       coefficient: [1, Validators.required],
-      verificationDate: [, Validators.required]
+      verificationDate: [Validators.required]
     });
   }
 

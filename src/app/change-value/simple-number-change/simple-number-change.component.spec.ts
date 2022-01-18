@@ -1,9 +1,7 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SimpleNumberChangeComponent } from './simple-number-change.component';
+import {SimpleNumberChangeComponent} from './simple-number-change.component';
 
 describe('SimpleNumberChangeComponent', () => {
   let component: SimpleNumberChangeComponent;
@@ -11,9 +9,9 @@ describe('SimpleNumberChangeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SimpleNumberChangeComponent ]
+      declarations: [SimpleNumberChangeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

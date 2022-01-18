@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
-import { SquareValueHistory } from '../../store/models/square-value-history';
+import {Component} from '@angular/core';
+import {Location} from '@angular/common';
+import {Observable} from 'rxjs';
+import {SquareValueHistory} from '../../store/models/square-value-history';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class SquareValueHistoryComponent {
 
   displayedColumns = ['period', 'squareType', 'value']
 
-  constructor(   
+  constructor(
     private location: Location) {
   }
 

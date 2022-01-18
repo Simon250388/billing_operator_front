@@ -1,20 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BuildingInputComponent } from './building-input.component';
+import {EntityInputComponent} from './building-input.component';
 
-describe('BuildingInputComponent', () => {
-  let component: BuildingInputComponent;
-  let fixture: ComponentFixture<BuildingInputComponent>;
+describe('EntityInputComponent', () => {
+  let component: EntityInputComponent;
+  let fixture: ComponentFixture<EntityInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuildingInputComponent ]
+      declarations: [EntityInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BuildingInputComponent);
+    fixture = TestBed.createComponent(EntityInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

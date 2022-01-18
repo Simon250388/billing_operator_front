@@ -11,5 +11,6 @@ export interface IAccountingPointActive extends BaseEntity {
     meterStateChangeAt: string;
     differentiationType: SimpleRef;
     lastMeterValue: number;
+    avgVolume: number;
 }
 

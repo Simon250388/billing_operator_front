@@ -1,35 +1,51 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Building } from 'src/store/models/building';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { startServicesHttpRequestAction } from 'src/store/action/services.action';
+import { SimpleRef } from 'src/store/models/simple-ref.model';
+import { getSimpleItemsByNameSelector } from 'src/store/selectors/simple-ref.selector';
+import { IAppState } from 'src/store/state/app.state';
 
 @Component({
-  selector: 'app-building-input',
+  selector: 'app-entity-input',
   templateUrl: './building-input.component.html',
   styleUrls: ['./building-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => BuildingInputComponent),
+      useExisting: forwardRef(() => EntityInputComponent),
       multi: true
     }
   ]
 })
-export class BuildingInputComponent implements ControlValueAccessor {
+export class EntityInputComponent implements ControlValueAccessor, OnInit {
 
   @Input() formGroup!: FormGroup;
   @Input() formControlName!: string;
   @Input() lbl!: string;
   @Input() placeholder!: string;
+  @Input() stateProperty!: string;
 
-  items: Building[] = []
+  items: Observable<SimpleRef[]> = this.appState.select(getSimpleItemsByNameSelector("services"));
+
+  constructor(private appState: Store<IAppState>) { }
+
+  ngOnInit(): void {
+    this.appState.dispatch(startServicesHttpRequestAction());
+  }
 
   writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+
   }
   registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+
   }
   registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+
+  }
+
+  displayWithFn(item: SimpleRef) {
+    return item?.present
   }
 }

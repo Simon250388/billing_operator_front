@@ -1,214 +1,34 @@
-
-<div fxLayout="column" fxFlex="80%" fxLayoutGap="10px" class="card-container" fxLayoutAlign="center start">
-    <div fxLayout="row wrap"  fxLayoutGap="10px" class="button-row">
-        <mat-card class="find-card" >
-            <mat-card-content>
-                <button mat-button color="primary" routerLink="/search-customer">Добавить</button>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div fxLayout="row wrap" fxLayoutGap="10px">
-
-        <mat-card *ngFor="let item of items | async; let i = index" class="example-card">
-            <mat-card-title>{{item.accountingPoint.present}}</mat-card-title>
-            <mat-card-content>
-                <mat-list>
-                    <mat-list-item>Услуга {{item.service.present}}</mat-list-item>
-                    <mat-list-item>
-                        <span>Поставщик {{item.provider.present}}</span>
-                        <button mat-icon-button [matMenuTriggerFor]="menuProvider"
-                            aria-label="Example icon-button with a menu">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menuProvider="matMenu">
-                            <button mat-menu-item (click)="showProviderDialog(item)">
-                                <mat-icon>edit</mat-icon>
-                                <span>Изменить</span>
-                            </button>
-                            <button mat-menu-item [routerLink]="['/provider-history', item.accountingPoint?.id]">
-                                <mat-icon>history</mat-icon>
-                                <span>История</span>
-                            </button>
-                        </mat-menu>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span>Пр-р учета {{item.meter.present}}</span>
-                        <button mat-icon-button [matMenuTriggerFor]="menuMeter"
-                            aria-label="Example icon-button with a menu">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menuMeter="matMenu">
-                            <button mat-menu-item>
-                                <mat-icon>edit</mat-icon>
-                                <span>Изменить</span>
-                            </button>
-                            <button mat-menu-item [routerLink]="['/meter-history', item.meter.id]">
-                                <mat-icon>history</mat-icon>
-                                <span>История</span>
-                            </button>
-                        </mat-menu>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span>Вид дифф-ти</span>
-
-                        <span>{{item.differentiationType.present}}</span>
-
-                        <button mat-icon-button [matMenuTriggerFor]="menuDifferentiationType"
-                            aria-label="Example icon-button with a menu">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menuDifferentiationType="matMenu">
-                            <button mat-menu-item (click)="showDifferentiationTypeChangeDialog(item)">
-                                <mat-icon>edit</mat-icon>
-                                <span>Изменить</span>
-                            </button>
-                            <button mat-menu-item [routerLink]="['/differentiation-type-history', item.meter.id]">
-                                <mat-icon>history</mat-icon>
-                                <span>История</span>
-                            </button>
-                        </mat-menu>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <span>Последние показания</span>
-
-                        <span>{{item.lastMeterValue}}</span>
-
-                        <button mat-icon-button [matMenuTriggerFor]="menuMeterValue"
-                            aria-label="Example icon-button with a menu">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-
-                        <mat-menu #menuMeterValue="matMenu">
-                            <button mat-menu-item (click)="showMeterValueChangeDialog(item)">
-                                <mat-icon>edit</mat-icon>
-                                <span>Изменить</span>
-                            </button>
-                            <button mat-menu-item [routerLink]="['/meter-values', item.meter.id]">
-                                <mat-icon>history</mat-icon>
-                                <span>История</span>
-                            </button>
-                        </mat-menu>
-                    </mat-list-item>
-                </mat-list>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button color="primary">Отключить</button>
-                <button mat-button color="primary">Вывести прибор</button>
-            </mat-card-actions>
-        </mat-card>
+<div fxLayout="column" fxFlex="75%" fxLayoutGap="10px" class="card-container">
+    <div>
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Точки учета
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center start">
+                <div fxLayout="row wrap">
+                    <button mat-button color="primary">Добавить</button>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="10px">
+                    <app-accounting-point-item *ngFor="let item of accountingPoints | async; let i = index" [item]="item"></app-accounting-point-item>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Прочие услуги
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="column" fxLayoutAlign="center start">
+                <div fxLayout="row wrap" fxLayoutGap="10px">
+                    <app-simple-service *ngFor="let item of simpleServices | async; let i = index" [item]="item"></app-simple-service>
+                </div>
+            </div>
+        </mat-expansion-panel>
     </div>
 </div>
 <div fxLayout="column" fxFlex="20%" fxLayoutGap="10px" class="card-container-left" fxLayoutAlign="start start">
-    <mat-card style="height: 100%;">
-        <mat-card-content>
-            <mat-list>
-                <mat-list-item> Лицевой счет 123123123 </mat-list-item>
-                <mat-list-item> ФИО: Иванов Иван Иванович </mat-list-item>
-                <mat-list-item> Дата состояния: 2021-18-99 </mat-list-item>
-                <mat-list-item>
-                    <div>Состояние: Открыт</div>
-                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>close</mat-icon>
-                            <span>Закрыть</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon>history</mat-icon>
-                            <span>История</span>
-                        </button>
-                    </mat-menu>
-                </mat-list-item>
-                <mat-list-item>
-                    <div>Задолженность: 300 р</div>
-                </mat-list-item>
-                <mat-list-item>
-                    <div>Количество проживающих: 2</div>
-                    <button mat-icon-button [matMenuTriggerFor]="menuCountResident"
-                        aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menuCountResident="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>edit</mat-icon>
-                            <span>Изменить</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon>history</mat-icon>
-                            <span>История</span>
-                        </button>
-                    </mat-menu>
-                </mat-list-item>
-                <mat-list-item>
-                    <div>Количество прописанных: 1</div>
-                    <button mat-icon-button [matMenuTriggerFor]="menuCountPrescribed"
-                        aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menuCountPrescribed="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>edit</mat-icon>
-                            <span>Изменить</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon>history</mat-icon>
-                            <span>История</span>
-                        </button>
-                    </mat-menu>
-                </mat-list-item>
-                <mat-list-item>
-                    <div>Количество собственников: 3</div>
-                    <button mat-icon-button [matMenuTriggerFor]="countOwnerMenu"
-                        aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #countOwnerMenu="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>edit</mat-icon>
-                            <span>Изменить</span>
-                        </button>
-                        <button mat-menu-item [routerLink]="['/people-history', '1']">
-                            <mat-icon>history</mat-icon>
-                            <span>История</span>
-                        </button>
-                    </mat-menu>
-                </mat-list-item>
-                <mat-list-item>
-                    <div>Общая площадь: 40</div>
-                    <button mat-icon-button [matMenuTriggerFor]="menuTotalSquare"
-                        aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menuTotalSquare="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>edit</mat-icon>
-                            <span>Изменить</span>
-                        </button>
-                        <button mat-menu-item [routerLink]="['/square-values', '1']">
-                            <mat-icon>history</mat-icon>
-                            <span>История</span>
-                        </button>
-                    </mat-menu>
-                </mat-list-item>
-                <mat-list-item>
-                    <div>Контроллер: Имя контроллера</div>
-                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>edit</mat-icon>
-                            <span>Изменить</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon>history</mat-icon>
-                            <span>История</span>
-                        </button>
-                    </mat-menu>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
-    </mat-card>
+    <app-contract-info></app-contract-info>
 </div>

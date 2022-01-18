@@ -26,9 +26,9 @@ export class AccountingPointServiceListComponent {
 
   openAddRowDialog(index?: any): void {
 
-    if (index == null || index == undefined) return;
+    let data = undefined;
 
-    let data = (<FormArray>this.formArray).at(index).value as AccountingPointService;
+    if (index) data = (<FormArray>this.formArray).at(index).value as AccountingPointService;
 
     const dialogRef = this.dialog.open(AccountingPointServiceAddComponent, {
       data: data

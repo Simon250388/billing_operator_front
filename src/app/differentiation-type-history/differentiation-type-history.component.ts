@@ -10,8 +10,6 @@ import { Location } from '@angular/common';
 })
 export class DifferentiationTypeHistoryComponent implements OnInit {
 
-  private meterId!: number;
-
   items!: Observable<DifferentiationTypeHistory[]>;
 
   displayedColumns = ['period', 'differentiationType']

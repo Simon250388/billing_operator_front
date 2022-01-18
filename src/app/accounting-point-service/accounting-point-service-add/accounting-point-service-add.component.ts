@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AccountingPointService } from 'src/store/models/accounting-point-service';
@@ -17,13 +17,13 @@ export class AccountingPointServiceAddComponent {
     private _formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public rowData: AccountingPointService) {
     this.formGroup = this._formBuilder.group({
-      serviceId: [, Validators.required],
-      providerId: [, Validators.required],
-      directionOfUseId: [, Validators.required],
+      serviceId: [Validators.required],
+      providerId: [Validators.required],
+      directionOfUseId: [Validators.required],
       accountingPoint: this._formBuilder.group({
-        location: [, Validators.required]
+        location: [Validators.required]
       }),
-      meter: this._formBuilder.group({        
+      meter: this._formBuilder.group({
       })
     });
 

@@ -1,10 +1,9 @@
-import { ComponentPortal } from "@angular/cdk/portal";
-import { IUser } from "../models/user.model";
+import {IUser} from "../models/user.model";
 
 export interface IUserState {
-    current: IUser | undefined
+  current: IUser | undefined
 }
 
 export const initialUserState: IUserState = {
-    current: undefined
+  current: undefined
 }
