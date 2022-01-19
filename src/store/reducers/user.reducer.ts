@@ -10,5 +10,11 @@ export const UserReducer = createReducer(
       ...state,
       current: currentUser
     }
+  }),
+  on(EntityAction.UserLogoutAction, (state: IUserState) => {
+    return {
+      ...state,
+      current: undefined
+    }
   })
 )

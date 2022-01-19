@@ -2,8 +2,6 @@
   <button mat-icon-button>
     <mat-icon svgIcon="logo"></mat-icon>
   </button>
-  <a mat-button>Взаиморасчеты</a>
-  <a mat-button>История оплат</a>
   <span style="flex: 1 1 auto;"></span>
   <ng-container *ngIf="currentUser">
     <button mat-button [matMenuTriggerFor]="menuAccount">{{(currentUser | async)?.userName}}
@@ -11,7 +9,7 @@
     </button>
     <mat-menu #menuAccount="matMenu">
       <button mat-menu-item>Настройки</button>
-      <button mat-menu-item>Выход</button>
+      <button mat-menu-item (click)="logout()">Выход</button>
     </mat-menu>
   </ng-container>
 </mat-toolbar>

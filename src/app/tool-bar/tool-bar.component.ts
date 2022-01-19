@@ -4,6 +4,7 @@ import {IAppState} from "../../store/state/app.state";
 import {Observable} from "rxjs";
 import {IUser} from "../../store/models/user.model";
 import {getCurrentUser} from "../../store/selectors/user.selector";
+import {UserLogoutAction} from "../../store/action/user.action";
 
 @Component({
   selector: 'app-tool-bar',
@@ -22,5 +23,11 @@ export class ToolBarComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  logout() {
+    this._store.dispatch(UserLogoutAction())
+  }
+
+
 
 }

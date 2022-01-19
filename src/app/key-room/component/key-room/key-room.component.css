@@ -8,19 +8,13 @@
     width: 200px;
 }
 
-.find-card{
-    margin-top: 10px;
-    width: 100%;
-}
-
 .example-card:hover {
     background-color: lightgrey;
     cursor: pointer;
 }
 
-.card-container { 
-    height: 30vh;
-    width: 100%;
+.card-container {
+    padding-left: 10px;
 }
 
 .button-row{

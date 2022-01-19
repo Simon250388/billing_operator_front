@@ -1,4 +1,4 @@
-import {Action, createAction, props} from "@ngrx/store";
+import {createAction, props} from "@ngrx/store";
 import {IUser} from "../models/user.model";
 
 enum EUserAction {
@@ -18,10 +18,10 @@ export const UserLoginSuccessAction = createAction(
   props<IUser>()
 )
 
-export class UserLoginFailAction implements Action {
-  readonly type: string = EUserAction.UserLoginFail;
-}
+export const UserLoginFailAction = createAction(
+  EUserAction.UserLoginFail
+)
 
-export class UserLogoutAction implements Action {
-  readonly type: string = EUserAction.UserLogout;
-}
+export const UserLogoutAction = createAction(
+  EUserAction.UserLogout
+)
