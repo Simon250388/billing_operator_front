@@ -5,7 +5,8 @@ export enum EKeyRoomActionAction {
     StartSearch = "[KeyRoom] start search",
     ReceivdeResultSearchKeyRoom = "[KeyRoom] received search result",
     StartChooseCurrent = "[KeyRoom] start choose current",
-    ChooseCurrentComplete = "[KeyRoom] choose current complete"
+    ChooseCurrentComplete = "[KeyRoom] choose current complete",
+    ClearCurrentComplete = "[KeyRoom] clear current"
 }
 
 export const startSearchKeyRoomAction = createAction(
@@ -20,6 +21,10 @@ export const receiveResultSearchKeyRoomAction = createAction(
 export const startChooseCurrentAction = createAction(
     EKeyRoomActionAction.StartChooseCurrent,
     props<IKeyRoom>()
+);
+
+export const clearCurrentKeyRoomAction = createAction(
+  EKeyRoomActionAction.ClearCurrentComplete,
 );
 
 export const chooseCurrentCompleteAction = createAction(

@@ -1,9 +1,17 @@
-import { SimpleRef } from "../models/simple-ref.model";
+import {SimpleRef} from "../models/simple-ref.model";
 
 export interface ISimpleRefState {
-    services: SimpleRef[]
+  services: SimpleRef[],
+  improvementTypes: SimpleRef[],
+  providers: SimpleRef[],
+  directionOfUses: SimpleRef[],
+  rateGroups: SimpleRef[]
 }
 
 export const initialSimpleRefState: ISimpleRefState = {
-    services: []
+  services: [],
+  improvementTypes: [],
+  providers: [],
+  directionOfUses: [],
+  rateGroups: []
 }

@@ -15,32 +15,33 @@ import {ChangeValueModule} from '../change-value/change-value.module';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {ContractInfoComponent} from './contract-info/contract-info.component';
 import {AccountingPointItemComponent} from './accountin-point-item/accounting-point-item.component';
 import {SimpleServiceComponent} from './simple-service/simple-service.component';
 
 
 @NgModule({
-  declarations: [
-    AccountingPointActiveListComponent,
-    ContractInfoComponent,
-    AccountingPointItemComponent,
-    SimpleServiceComponent
-  ],
-  imports: [
-    CommonModule,
-    AccountingPointActiveRoutingModule,
-    ChangeValueModule,
-    FlexLayoutModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatDialogModule,
-    MatListModule,
-    MatDividerModule,
-    MatExpansionModule
-  ]
+    declarations: [
+        AccountingPointActiveListComponent,
+        AccountingPointItemComponent,
+        SimpleServiceComponent
+    ],
+    exports: [
+        AccountingPointActiveListComponent
+    ],
+    imports: [
+        CommonModule,
+        AccountingPointActiveRoutingModule,
+        ChangeValueModule,
+        FlexLayoutModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        MatDialogModule,
+        MatListModule,
+        MatDividerModule,
+        MatExpansionModule
+    ]
 })
 export class AccountingPointActiveModule {
 }

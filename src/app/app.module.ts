@@ -30,9 +30,9 @@ import {ServiceSimpleEffect} from "../store/effects/service-simple.effect";
 import {ToolBarComponent} from './tool-bar/tool-bar.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
-import {SideNavComponent} from './side-nav/side-nav/side-nav.component';
+
+import {MatSelectModule} from "@angular/material/select";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -41,8 +41,7 @@ registerLocaleData(localeRu, 'ru');
   declarations: [
     AppComponent,
     LoginComponent,
-    ToolBarComponent,
-    SideNavComponent
+    ToolBarComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +69,9 @@ registerLocaleData(localeRu, 'ru');
     MatMenuModule,
     MatIconModule,
     MatFormFieldModule,
-    MatSidenavModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSelectModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'ru'}

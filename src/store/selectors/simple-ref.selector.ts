@@ -1,13 +1,45 @@
-import { createSelector } from "@ngrx/store";
-import { IAppState } from "../state/app.state";
-import { ISimpleRefState } from "../state/simple-ref.state";
+import {createSelector} from "@ngrx/store";
+import {IAppState} from "../state/app.state";
+import {ISimpleRefState} from "../state/simple-ref.state";
 
 const simpleRefStates = (state: IAppState) => state.simpleRefs;
 
-export const getSimpleItemsByNameSelector = (stateProperty: string) => createSelector(
-    simpleRefStates,
-    (state: ISimpleRefState) => {
-        if (stateProperty == "services") return state.services
-        else return state.services
-    }
+export const servicesSimpleRefSelector = createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.services
+  }
 )
+
+export const improvementSimpleRefSelector = createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.improvementTypes
+  }
+)
+
+export const providerSimpleRefSelector = createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.providers
+  }
+)
+
+export const directionOfUseSimpleRefSelector = createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.directionOfUses
+  }
+)
+
+export const rateGroupSimpleRefSelector = createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.rateGroups
+  }
+)
+
+
+
+
+

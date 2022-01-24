@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { MeterModule } from '../meter/meter.module';
-import { EntityImputModule } from '../entity-imput/entity-imput.module';
+import { EntityInputModule } from '../entity-input/entity-input.module';
 import { AccountingPointServiceListComponent } from './accounting-point-service-list/accounting-point-service-list.component';
 import { AccountingPointServiceAddComponent } from './accounting-point-service-add/accounting-point-service-add.component';
 import { AccountingPointServiceRoutingModule } from './accounting-point-service-routing.module';
@@ -32,7 +32,7 @@ import { AccountingPointServiceRoutingModule } from './accounting-point-service-
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    EntityImputModule
+    EntityInputModule
   ],
   exports: [
     AccountingPointServiceListComponent

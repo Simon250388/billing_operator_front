@@ -2,17 +2,17 @@
 <div mat-dialog-content>
     <form class="example-form" [formGroup]="formGroup">
         <p>
-            <app-entity-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
-                [placeholder]="'Укажите вид услуги'"></app-entity-input>
+            <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+                [placeholder]="'Укажите вид услуги'"></app-service-input>
         </p>
         <p>
-            <app-entity-input [lbl]="'Вид благоустройства'" [formGroup]="formGroup"
+            <app-improvement-type-input [lbl]="'Вид благоустройства'" [formGroup]="formGroup"
                 formControlName="improvementTypeId" [placeholder]="'Укажите вид благоустройства'">
-            </app-entity-input>
+            </app-improvement-type-input>
         </p>
         <p>
-            <app-entity-input [lbl]="'Тарифная группа'" [formGroup]="formGroup" formControlName="rateGroupId"
-                [placeholder]="'Укажите тарифную группу'"></app-entity-input>
+            <app-rate-group-input [lbl]="'Тарифная группа'" [formGroup]="formGroup" formControlName="rateGroupId"
+                [placeholder]="'Укажите тарифную группу'"></app-rate-group-input>
         </p>
     </form>
 </div>

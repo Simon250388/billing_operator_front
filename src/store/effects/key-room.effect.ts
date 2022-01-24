@@ -30,7 +30,7 @@ export class KeyRoomEffect {
     () => this.actions.pipe(
       ofType(EntityActions.startChooseCurrentAction),
       mergeMap(action => of(EntityActions.chooseCurrentCompleteAction(action))),
-      tap(() => this.router.navigate(["active-accounting-point"])
+      tap((current) => this.router.navigate(["/key-room", current.id, "accounting-points"],)
       ))
   )
 }

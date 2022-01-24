@@ -10,12 +10,12 @@ export const getHistory = createSelector(
     (state: IKeyRoomState) => state.history
 )
 
-export const getCurrent = createSelector(
+export const getCurrentKeyRoom = createSelector(
     keyRoomState,
     (state: IKeyRoomState) => state.current
 )
 
-export const getItems = createSelector(
+export const getKeyRoomItems = createSelector(
     keyRoomState,
     (state: IKeyRoomState) => state.items
 )

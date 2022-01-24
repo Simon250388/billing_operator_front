@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {startChooseCurrentAction, startSearchKeyRoomAction} from 'src/store/action/key-room.action';
+import {startSearchKeyRoomAction} from 'src/store/action/key-room.action';
 import {IKeyRoom} from 'src/store/models/key-room.model';
-import {getItems} from 'src/store/selectors/key-room.selector';
+import {getKeyRoomItems} from 'src/store/selectors/key-room.selector';
 import {IAppState} from 'src/store/state/app.state';
 
 @Component({
@@ -13,19 +13,13 @@ import {IAppState} from 'src/store/state/app.state';
 })
 export class KeyRoomComponent implements OnInit {
 
-  items: Observable<IKeyRoom[]> = this._store.select(getItems);
+  items: Observable<IKeyRoom[]> = this._store.select(getKeyRoomItems);
 
   constructor(private _store: Store<IAppState>) {
   }
 
   ngOnInit(): void {
     this._store.dispatch(startSearchKeyRoomAction())
-  }
-
-
-  setCurrentKeyRoom(item: IKeyRoom) {
-    this._store.dispatch(startChooseCurrentAction(item))
-
   }
 
 }

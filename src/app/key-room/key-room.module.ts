@@ -9,19 +9,29 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { KeyRoomRoutingModule } from './key-room-routing.module';
 import { MatStepperModule } from '@angular/material/stepper';
-import { EntityImputModule } from '../entity-imput/entity-imput.module';
+import { EntityInputModule } from '../entity-input/entity-input.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { KeyRoomAddComponent } from './component/key-room-add/key-room-add.component';
 import { SquareRoomModule } from '../square-room/square-room.module';
 import { MatSelectModule } from '@angular/material/select';
 import { ImprovementTypeRowModule } from '../improvement-type-row/improvement-type-row.module';
 import { AccountingPointServiceModule } from '../accounting-point-service/accounting-point-service.module';
+import { KeyRoomItemComponent } from './component/key-room-item/key-room-item.component';
+import { CurrentKeyRoomComponent } from './component/current-key-room/current-key-room.component';
+import {AccountingPointActiveModule} from "../accounting-point-active/accounting-point-active.module";
+import {SideNavComponent} from "../side-nav/side-nav/side-nav.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
   declarations: [
     KeyRoomComponent,
-    KeyRoomAddComponent
+    KeyRoomAddComponent,
+    KeyRoomItemComponent,
+    CurrentKeyRoomComponent,
+    SideNavComponent
   ],
   imports: [
     CommonModule,
@@ -36,10 +46,14 @@ import { AccountingPointServiceModule } from '../accounting-point-service/accoun
     MatStepperModule,
     MatSelectModule,
     MatInputModule,
-    EntityImputModule,
+    EntityInputModule,
     SquareRoomModule,
     ImprovementTypeRowModule,
-    AccountingPointServiceModule
+    AccountingPointServiceModule,
+    AccountingPointActiveModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatIconModule
   ]
 })
 export class KeyRoomModule { }

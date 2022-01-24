@@ -1,10 +1,17 @@
 <mat-sidenav-container class="example-container" autosize style="height: 100%;">
   <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" style="width: 100%">
     <mat-nav-list>
-      <mat-list-item mat-list-item routerLink=".">
-        <span>Общая</span>
-        <mat-icon mat-list-icon>home</mat-icon>
+      <mat-list-item role="listitem">
+
+        <button mat-button [matMenuTriggerFor]="setCurrentKeyRoomMenu">{{(currentKeyRoom | async)?.present}}</button>
+        <mat-menu #setCurrentKeyRoomMenu="matMenu">
+          <button mat-menu-item *ngFor="let keyRoom of keyRoomItems | async" (click)="setCurrentKeyRoom(keyRoom)">{{keyRoom.present}}</button>
+
+        </mat-menu>
+
       </mat-list-item>
+      <mat-divider></mat-divider>
+
       <mat-list-item mat-list-item routerLink="/meters">
         <span>Приборы учета</span>
         <mat-icon mat-list-icon>radio</mat-icon>
@@ -12,10 +19,6 @@
       <mat-list-item mat-list-item routerLink="/calculations">
         <span>Начисления</span>
         <mat-icon mat-list-icon>calculate</mat-icon>
-      </mat-list-item>
-      <mat-list-item mat-list-item routerLink="/messages">
-        <span>Сообщения</span>
-        <mat-icon mat-list-icon>email</mat-icon>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>

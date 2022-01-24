@@ -28,6 +28,4 @@ export class ToolBarComponent implements OnInit {
     this._store.dispatch(UserLogoutAction())
   }
 
-
-
 }

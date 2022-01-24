@@ -1,0 +1,15 @@
+<mat-card class="example-card" (click)=setCurrentKeyRoom()>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item class="app-mat-list-item">Нанименование: {{item?.present}}</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Адрес: {{item?.address}}</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Тип помещения: квартира</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Прописанных: 2</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Проживающих: 2</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Собственников: 2</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Общая площадь: 100</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Задолженность: 200</mat-list-item>
+      <mat-list-item class="app-mat-list-item">Количество точек: {{item?.countPoints}}</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

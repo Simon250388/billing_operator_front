@@ -1,9 +1,23 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button>
-    <mat-icon svgIcon="logo"></mat-icon>
-  </button>
+
+  <a mat-button routerLink=".">
+    <span class="mat-button-wrapper">
+      <mat-icon>home</mat-icon>
+      <span>Домой</span>
+    </span>
+  </a>
+  <a mat-button routerLink=".">
+    <span class="mat-button-wrapper">
+      <mat-icon>email</mat-icon>
+      <span>Сообщения</span>
+    </span>
+  </a>
+<!--  <a mat-button routerLink="/prices">Сообщения</a>-->
+
+
+<!--  <mat-icon mat-list-icon>email</mat-icon>-->
   <span style="flex: 1 1 auto;"></span>
-  <ng-container *ngIf="currentUser">
+  <ng-container *ngIf="currentUser | async ">
     <button mat-button [matMenuTriggerFor]="menuAccount">{{(currentUser | async)?.userName}}
       <mat-icon>more_vert</mat-icon>
     </button>

@@ -1,22 +1,11 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <div fxFlex="100%">
-    <div fxFlex="100%" class="HeaderNavBar">
-      <app-tool-bar></app-tool-bar>
+<div fxLayout="row" fxLayoutAlign="center" style="min-height: 100%">
+  <div fxFlex="80">
+    <div fxLayout="row" fxLayoutAlign="center">
+        <app-tool-bar></app-tool-bar>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-<div fxLayout="row" fxLayoutAlign="center" style="height: 80%;">
-  <div fxFlex="100%" fxLayout="column" style="height: 100%;">
-    <div fxLayout="row" fxLayoutAlign="center" style="height: 80%;">
-      <div *ngIf="currentUser | async" fxLayout="column" fxFlex="10%" style="height: 100%; width: 100%;">
-        <app-side-nav></app-side-nav>
-      </div>
-      <div fxFlex="80%" fxLayout="column" style="height: 100%;">
-        <router-outlet></router-outlet>
-      </div>
-      <div *ngIf="currentUser | async" fxLayout="column" fxFlex="10%" style="height: 100%;width: 100%">
-        <button mat-list-item>Начисления</button>
-      </div>
-    </div>
-  </div>
-</div>
+

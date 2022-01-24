@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EntityImputModule } from '../entity-imput/entity-imput.module';
+import { EntityInputModule } from '../entity-input/entity-input.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { EntityImputModule } from '../entity-imput/entity-imput.module';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    MatDialogModule,   
-    EntityImputModule
+    MatDialogModule,
+    EntityInputModule
   ],
   exports: [
     ImprovementTypeRowListComponent

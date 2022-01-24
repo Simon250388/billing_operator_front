@@ -1,0 +1,9 @@
+.example-card{
+  margin-top: 10px;
+  width: 300px;
+}
+
+.example-card:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}

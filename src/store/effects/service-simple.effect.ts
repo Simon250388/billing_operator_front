@@ -9,7 +9,7 @@ export class ServiceSimpleEffect {
   constructor(private actions: Actions, private httpService: SimpleHttpService) {
   }
 
-  ttt = createEffect(
+  loadServiceSimpleRefEffect = createEffect(
     () => this.actions.pipe(
       ofType(EntityActions.servicesHttpRequestStartAction),
       mergeMap(() =>
@@ -21,6 +21,4 @@ export class ServiceSimpleEffect {
       )
     )
   )
-
-
 }

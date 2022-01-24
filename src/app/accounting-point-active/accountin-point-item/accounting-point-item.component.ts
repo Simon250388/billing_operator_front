@@ -3,14 +3,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {Store} from '@ngrx/store';
 import {ProviderChangeComponent} from 'src/app/change-value/provider-change/provider-change.component';
 import {SimpleNumberChangeComponent} from 'src/app/change-value/simple-number-change/simple-number-change.component';
-import {
-  changeMeterValueInActiveAccountingPointAction,
-  changeProviderInActiveAccountingPointAction,
-  changeSelectedActiveAccountingPointAction
-} from 'src/store/action/accounting-point.action';
 import {IAccountingPointActive} from 'src/store/models/accounting-point-active.model';
 import {SimpleRef} from 'src/store/models/simple-ref.model';
 import {IAppState} from 'src/store/state/app.state';
+import * as AccountingPointActions from 'src/store/action/accounting-point.action';
 
 @Component({
   selector: 'app-accounting-point-item',
@@ -23,7 +19,7 @@ export class AccountingPointItemComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private _store: Store<IAppState>) {
+    private store: Store<IAppState>) {
   }
 
   ngOnInit() {
@@ -31,7 +27,7 @@ export class AccountingPointItemComponent implements OnInit {
 
   showProviderDialog(): void {
 
-    this._store.dispatch(changeSelectedActiveAccountingPointAction(this.item))
+    this.store.dispatch(AccountingPointActions.changeSelectedActiveAccountingPointAction(this.item))
 
     const dialogRef = this.dialog.open(ProviderChangeComponent, {
       data: this.item.provider
@@ -39,7 +35,7 @@ export class AccountingPointItemComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result != '' && <SimpleRef>result != undefined) {
-        this._store.dispatch(changeProviderInActiveAccountingPointAction(<SimpleRef>result))
+        this.store.dispatch(AccountingPointActions.changeProviderInActiveAccountingPointAction(<SimpleRef>result))
       }
     });
   }
@@ -50,7 +46,7 @@ export class AccountingPointItemComponent implements OnInit {
 
   showMeterValueChangeDialog(): void {
 
-    this._store.dispatch(changeSelectedActiveAccountingPointAction(this.item))
+    this.store.dispatch(AccountingPointActions.changeSelectedActiveAccountingPointAction(this.item))
 
     const dialogRef = this.dialog.open(SimpleNumberChangeComponent, {
       data: this.item.lastMeterValue
@@ -58,10 +54,9 @@ export class AccountingPointItemComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result != '' && <SimpleRef>result != undefined) {
-        this._store.dispatch(changeMeterValueInActiveAccountingPointAction({value: result}))
+        this.store.dispatch(AccountingPointActions.changeMeterValueInActiveAccountingPointAction({value: result}))
       }
     });
-
   }
 
 }

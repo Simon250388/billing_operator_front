@@ -1,16 +1,5 @@
 :host {
-    height: 100%;
-}
-
-.example-card{
-    margin-top: 10px;
-    max-width: 200px;
-    width: 200px;
-}
-
-.example-card:hover {
-    background-color: lightgrey;
-    cursor: pointer;
+    width: 100%;
 }
 
 .card-container {

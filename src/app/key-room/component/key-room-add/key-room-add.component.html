@@ -1,17 +1,19 @@
 <h3>
     Добавление нового помещения
 </h3>
-<mat-vertical-stepper #stepper>    
+<mat-vertical-stepper #stepper>
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Данные помещения</ng-template>
             <p>
-                <app-entity-input [lbl]="'Строение'" [formGroup]="formGroup" formControlName="buildingId"
-                    [placeholder]="'укажите строение'"></app-entity-input>
+                <app-building-input></app-building-input>
             </p>
             <p>
-                <app-entity-input [lbl]="'Помещение'" [formGroup]="formGroup" formControlName="roomId"
-                    [placeholder]="'укажите помещение'"></app-entity-input>
+              <mat-form-field [formGroup]="formGroup">
+                <mat-label>Помещение</mat-label>
+                <input matInput placeholder="укажите помещение" formControlName="roomId" type="number">
+              </mat-form-field>
+
             </p>
             <mat-form-field appearance="fill" formControlName="roomTypeId" ngDefaultControl>
                 <mat-label>Тип помещения</mat-label>

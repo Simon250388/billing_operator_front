@@ -2,17 +2,17 @@
 <mat-dialog-content>
     <form class="example-form" [formGroup]="formGroup">
         <p>
-            <app-entity-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
-                [placeholder]="'Укажите вид услуги'"></app-entity-input>
+            <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+                [placeholder]="'Укажите вид услуги'"></app-service-input>
         </p>
         <p>
-            <app-entity-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
-                [placeholder]="'Укажите поставщика'"></app-entity-input>
+            <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
+                [placeholder]="'Укажите поставщика'"></app-provider-input>
         </p>
         <p>
-            <app-entity-input [lbl]="'направление использования'" [formGroup]="formGroup"
+            <app-direction-of-use-input [lbl]="'направление использования'" [formGroup]="formGroup"
                 formControlName="directionOfUseId" [placeholder]="'Укажите направление использования'">
-            </app-entity-input>
+            </app-direction-of-use-input>
         </p>
         <p>
             <!-- <app-meter-add></app-meter-add> -->
