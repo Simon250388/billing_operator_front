@@ -12,7 +12,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
   constructor(private http: HttpClient) {
   }
 
-  load(): Observable<IAccountingPointActive[]> {
+  load(keyRoomId: string): Observable<IAccountingPointActive[]> {
     return of(
       [{
         accountingPoint: {

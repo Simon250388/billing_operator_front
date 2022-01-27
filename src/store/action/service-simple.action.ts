@@ -8,7 +8,8 @@ enum EServiceSimpleAction {
 }
 
 export const servicesHttpRequestStartAction = createAction(
-  EServiceSimpleAction.startServicesHttpRequest
+  EServiceSimpleAction.startServicesHttpRequest,
+  props<String>()
 )
 
 

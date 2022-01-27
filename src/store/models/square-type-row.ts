@@ -1,6 +1,15 @@
-import { BaseCatalog } from './base-catalog';
+import {BaseCatalog} from './base-catalog';
 
 export interface SquareTypeRow extends BaseCatalog {
-  squareTypeId?: number;
+  squareTypeId: string;
   value: number;
+}
+
+export const squareTypeValues = () => {
+    return [
+      {
+        id: "someId",
+        present: "Общая"
+      }
+    ]
 }

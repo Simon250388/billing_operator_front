@@ -25,7 +25,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {KeyRoomEffect} from 'src/store/effects/key-room.effect';
 import {AccountingPointEffect} from 'src/store/effects/accountin-point.effect';
-import {ServiceEffect} from 'src/store/effects/service.effect';
+import {SimpleRefEffects} from 'src/store/effects/simple-ref-effects.service';
 import {ServiceSimpleEffect} from "../store/effects/service-simple.effect";
 import {ToolBarComponent} from './tool-bar/tool-bar.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -58,7 +58,7 @@ registerLocaleData(localeRu, 'ru');
       UserEffect,
       KeyRoomEffect,
       AccountingPointEffect,
-      ServiceEffect,
+      SimpleRefEffects,
       ServiceSimpleEffect
     ]),
     StoreRouterConnectingModule.forRoot(),

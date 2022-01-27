@@ -3,9 +3,10 @@ import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {catchError, map, mergeMap} from "rxjs";
 import {ICrudHttpService} from "src/service/crud-http/crud.http.factory";
 import * as EntityActions from "../action/services.action";
+import {successfulCompleteRateGroupsHttpRequestAction} from "../action/services.action";
 
 @Injectable()
-export class ServiceEffect {
+export class SimpleRefEffects {
   constructor(
     private actions: Actions,
     private httpService: ICrudHttpService) {
@@ -47,7 +48,7 @@ export class ServiceEffect {
       mergeMap(() =>
         this.httpService.getAll("providers")
           .pipe(
-            map(items => EntityActions.successfulCompleteImprovementHttpRequestAction({items: items})),
+            map(items => EntityActions.successfulCompleteProvidesHttpRequestAction({items: items})),
             catchError(() => {
               throw new Error('could not get providers from http')
             })
@@ -59,11 +60,11 @@ export class ServiceEffect {
 
   loadRateGroupsSimpleRefEffect = createEffect(
     () => this.actions.pipe(
-      ofType(EntityActions.successfulCompleteRateGroupsHttpRequestAction),
+      ofType(EntityActions.startRateGroupsHttpRequestAction),
       mergeMap(() =>
         this.httpService.getAll("rate-groups")
           .pipe(
-            map(items => EntityActions.successfulCompleteImprovementHttpRequestAction({items: items})),
+            map(items => EntityActions.successfulCompleteRateGroupsHttpRequestAction({items: items})),
             catchError(() => {
               throw new Error('could not get providers from http')
             })

@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "src/environments/environment";
 import {IAccountingPointActive} from "src/store/models/accounting-point-active.model";
 import {AccountingPointHttpMockService} from "./accounting-point.http.mock.service";
+import {AccountingPointHttpService} from "./accounting-point.http.service";
 
 export const accountingPointHttpServiceFactory = (http: HttpClient) => {
   const isProduction = environment["production"] as boolean;
@@ -12,7 +13,7 @@ export const accountingPointHttpServiceFactory = (http: HttpClient) => {
     return new AccountingPointHttpMockService(http);
   }
 
-  return new AccountingPointHttpMockService(http)
+  return new AccountingPointHttpService(http)
 }
 
 @Injectable({
@@ -21,5 +22,5 @@ export const accountingPointHttpServiceFactory = (http: HttpClient) => {
   deps: [HttpClient]
 })
 export abstract class IAccountingPointHttpService {
-  abstract load(): Observable<IAccountingPointActive[]>
+  abstract load(keyRoomId: String): Observable<IAccountingPointActive[]>
 }

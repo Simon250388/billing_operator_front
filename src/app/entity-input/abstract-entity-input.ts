@@ -15,6 +15,8 @@ export abstract class AbstractEntityInput {
   stateProperty!: string;
 
   abstract items: Observable<SimpleRef[]>
+  private _items: SimpleRef[] = []
+
 
   abstract loadItemsAction: TypedAction<any>
 
@@ -23,6 +25,7 @@ export abstract class AbstractEntityInput {
 
   ngOnInit(): void {
     this.appState.dispatch(this.loadItemsAction);
+    this.items.subscribe(items => this._items = items)
   }
 
   registerOnChange(fn: any): void {
@@ -34,8 +37,16 @@ export abstract class AbstractEntityInput {
   writeValue(obj: any): void {
   }
 
-  displayWithFn(item: SimpleRef) {
-    return item?.present
+  displayWithFn(id: string) {
+    return this._items.find(value => value.id == id)?.present || "";
+  }
+
+  displayFnWrapper() {
+    return (id: string) => this.displayWithFn(id)
+  }
+
+  getItems() {
+    return this.items;
   }
 
 }

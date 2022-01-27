@@ -4,7 +4,7 @@ import {IAccountingPointActive} from 'src/store/models/accounting-point-active.m
 import {IAccountingPointHttpService} from './accounting-point.http.factory';
 
 export class AccountingPointHttpService implements IAccountingPointHttpService {
-  load(): Observable<IAccountingPointActive[]> {
+  load(keyRoomId: string): Observable<IAccountingPointActive[]> {
     throw new Error('Method not implemented.');
   }
 

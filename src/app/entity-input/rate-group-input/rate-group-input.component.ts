@@ -30,7 +30,7 @@ export class RateGroupInputComponent extends AbstractEntityInput implements Cont
 
   items: Observable<SimpleRef[]> = this.appState.select(rateGroupSimpleRefSelector);
 
-  loadItemsAction = startRateGroupsHttpRequestAction
+  loadItemsAction = startRateGroupsHttpRequestAction()
 
   constructor(protected override appState: Store<IAppState>) {
     super(appState);

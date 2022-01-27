@@ -2,7 +2,7 @@ import {Component, Input} from "@angular/core";
 import {SquareRoomRowComponent} from "../square-room-row/square-room-row.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AbstractControl, FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {SquareTypeRow} from "src/store/models/square-type-row";
+import {SquareTypeRow, squareTypeValues} from "src/store/models/square-type-row";
 
 @Component({
   selector: "app-square-room-add",
@@ -11,7 +11,7 @@ import {SquareTypeRow} from "src/store/models/square-type-row";
 })
 export class SquareRoomAddComponent {
   @Input()
-  formArray!: AbstractControl;
+  formArray!: FormArray;
 
   constructor(
     private dialog: MatDialog,
@@ -19,34 +19,32 @@ export class SquareRoomAddComponent {
   }
 
   get squareItems() {
-    return (<FormArray>this.formArray).value;
+    return this.formArray.value as SquareTypeRow[];
   }
 
   displayedColumns = ["squareType", "squareValue", "rowAction"];
 
-  squareTypePresent(id: number): string {
-    return "";
+  squareTypePresent(id: string): string {
+    return squareTypeValues().find(value => value.id == id)?.present || "";
   }
 
   openAddRowDialog(index?: number): void {
 
-    let data = undefined
+    let data;
 
-    if (index == null) {
-
-    } else {
-      let data = (<FormArray>this.formArray).at(index).value as SquareTypeRow;
+    if (index != null) {
+      data = this.formArray.at(index).value as SquareTypeRow;
     }
 
     const dialogRef = this.dialog.open(SquareRoomRowComponent, {
       data: data
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: FormGroup) => {
       if (index != null && result) {
-        (<FormArray>this.formArray).at(index).setValue((result as FormGroup).value as SquareTypeRow);
+        this.formArray.at(index).setValue(result.value as SquareTypeRow);
       } else if (result) {
-        (<FormArray>this.formArray).push(result);
+        this.formArray.push(result);
       }
     });
   }

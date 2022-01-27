@@ -21,7 +21,11 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
         },
         room: undefined,
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        countPoints: 4
+        countPoints: 4,
+        isAccountingPointLoad: false,
+        simpleServices: [],
+        isSimpleServiceLoad: false,
+        accountingPoints: []
       },
       {
         present: "Второе",
@@ -32,7 +36,11 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
           present: "some"
         },
         room: undefined,
-        countPoints: 4
+        countPoints: 4,
+        isAccountingPointLoad: false,
+        simpleServices: [],
+        isSimpleServiceLoad: false,
+        accountingPoints: []
 
       },
       {
@@ -44,7 +52,11 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
           present: "some"
         },
         room: undefined,
-        countPoints: 4
+        countPoints: 4,
+        isAccountingPointLoad: false,
+        simpleServices: [],
+        isSimpleServiceLoad: false,
+        accountingPoints: []
       },
       {
         present: "Третье",
@@ -55,7 +67,11 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
           present: "some"
         },
         room: undefined,
-        countPoints: 4
+        countPoints: 4,
+        isAccountingPointLoad: false,
+        simpleServices: [],
+        isSimpleServiceLoad: false,
+        accountingPoints: []
       }
     ])
   }

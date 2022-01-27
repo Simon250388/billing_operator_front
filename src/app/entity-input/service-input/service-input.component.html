@@ -1,8 +1,8 @@
 <mat-form-field [formGroup]="formGroup">
     <mat-label>{{lbl}}</mat-label>
     <input matInput [placeholder]="placeholder" [formControlName]="formControlName" [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayWithFn">
-        <mat-option *ngFor="let item of items | async" [value]="item">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnWrapper()">
+        <mat-option *ngFor="let item of items | async" [value]="item.id">
             {{item.present}}
         </mat-option>
     </mat-autocomplete>

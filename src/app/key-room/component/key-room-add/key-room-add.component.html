@@ -52,7 +52,7 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Площади помещения</ng-template>
-            <app-square-room-add [formArray]="formGroup.controls['squareValues']"></app-square-room-add>
+            <app-square-room-add [formArray]="squareValuesArray()"></app-square-room-add>
             <div>
                 <button mat-button matStepperNext>Далее</button>
             </div>
@@ -61,7 +61,7 @@
     <mat-step>
         <form [formGroup]="formGroup">
             <ng-template matStepLabel>Виды благоустройств</ng-template>
-            <app-improvement-type-row-list [formArray]="formGroup.controls['improvementTypes']"></app-improvement-type-row-list>
+            <app-improvement-type-row-list [formArray]="improvementTypesArray()"></app-improvement-type-row-list>
             <div>
                 <button mat-button matStepperNext>Далее</button>
             </div>

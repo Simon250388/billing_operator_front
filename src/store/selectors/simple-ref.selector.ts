@@ -11,10 +11,24 @@ export const servicesSimpleRefSelector = createSelector(
   }
 )
 
+export const serviceSimpleRefPresentSelector = (id: string) => createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.services.find(value => value.id == id)?.present || ""
+  }
+)
+
 export const improvementSimpleRefSelector = createSelector(
   simpleRefStates,
   (state: ISimpleRefState) => {
     return state.improvementTypes
+  }
+)
+
+export const improvementSimpleRefPresentSelector = (id: string) => createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.improvementTypes.find(value => value.id == id)?.present || ""
   }
 )
 
@@ -25,10 +39,24 @@ export const providerSimpleRefSelector = createSelector(
   }
 )
 
+export const providerSimpleRefPresentSelector = (id: string) => createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.providers.find(value => value.id == id)?.present || ""
+  }
+)
+
 export const directionOfUseSimpleRefSelector = createSelector(
   simpleRefStates,
   (state: ISimpleRefState) => {
     return state.directionOfUses
+  }
+)
+
+export const directionOfUseSimpleRefPresentSelector = (id: string) => createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.directionOfUses.find(value => value.id == id)?.present || ""
   }
 )
 
@@ -38,6 +66,16 @@ export const rateGroupSimpleRefSelector = createSelector(
     return state.rateGroups
   }
 )
+
+export const rateGroupSimpleRefPresentSelector = (id: string) => createSelector(
+  simpleRefStates,
+  (state: ISimpleRefState) => {
+    return state.rateGroups.find(value => value.id == id)?.present || ""
+  }
+)
+
+
+
 
 
 

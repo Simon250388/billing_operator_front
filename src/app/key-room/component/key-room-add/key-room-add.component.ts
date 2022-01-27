@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-contract-details',
@@ -12,7 +12,8 @@ export class KeyRoomAddComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.formGroup = this._formBuilder.group({
@@ -26,5 +27,13 @@ export class KeyRoomAddComponent implements OnInit {
       improvementTypes: this._formBuilder.array([]),
       accountingPoints: this._formBuilder.array([])
     });
+  }
+
+  squareValuesArray(): FormArray {
+    return this.formGroup.controls['squareValues'] as FormArray;
+  }
+
+  improvementTypesArray() {
+    return this.formGroup.controls['improvementTypes'] as FormArray;
   }
 }
