@@ -1,23 +1,29 @@
 <mat-sidenav-container class="example-container" autosize style="height: 100%;">
-  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" style="width: 100%">
+  <mat-sidenav #sidenav class="example-sidenav" mode="over" opened="true" style="width: 100%">
     <mat-nav-list>
       <mat-list-item role="listitem">
 
-        <button mat-button [matMenuTriggerFor]="setCurrentKeyRoomMenu">{{(currentKeyRoom | async)?.present}}</button>
+        <button [class.mat-icon-button]=isSmallSize [class.mat-button]=!isSmallSize  [matMenuTriggerFor]="setCurrentKeyRoomMenu">
+          <span [hidden]="isSmallSize">{{(currentKeyRoom | async)?.present}}</span>
+          <mat-icon *ngIf="isSmallSize">more_vert</mat-icon>
+        </button>
         <mat-menu #setCurrentKeyRoomMenu="matMenu">
-          <button mat-menu-item *ngFor="let keyRoom of keyRoomItems | async" (click)="setCurrentKeyRoom(keyRoom)">{{keyRoom.present}}</button>
-
+          <button mat-menu-item *ngFor="let keyRoom of keyRoomItems | async"
+                  (click)="setCurrentKeyRoom(keyRoom)">{{keyRoom.present}}</button>
         </mat-menu>
 
       </mat-list-item>
       <mat-divider></mat-divider>
-
+      <mat-list-item mat-list-item routerLink="/accounting-points">
+        <span [hidden]="isSmallSize">Услуги</span>
+        <mat-icon mat-list-icon>list</mat-icon>
+      </mat-list-item>
       <mat-list-item mat-list-item routerLink="/meters">
-        <span>Приборы учета</span>
+        <span [hidden]="isSmallSize">Приборы учета</span>
         <mat-icon mat-list-icon>radio</mat-icon>
       </mat-list-item>
       <mat-list-item mat-list-item routerLink="/calculations">
-        <span>Начисления</span>
+        <span [hidden]="isSmallSize">Начисления</span>
         <mat-icon mat-list-icon>calculate</mat-icon>
       </mat-list-item>
     </mat-nav-list>

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {KeyRoomItemComponent} from "./component/key-room-item/key-room-item.component";
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
@@ -11,7 +11,7 @@ import {MatCardModule} from "@angular/material/card";
   imports: [
     CommonModule,
     MatListModule,
-    MatCardModule,
+    MatCardModule
   ],
   exports : [
     KeyRoomItemComponent

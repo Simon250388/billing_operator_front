@@ -1,0 +1,4 @@
+.card-container {
+  max-height:95vh;
+  overflow: inherit;
+}
