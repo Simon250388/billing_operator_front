@@ -1,9 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { AccountingPointService } from 'src/store/models/accounting-point-service';
-import { ServiceImprovementTypeRateGroup } from 'src/store/models/service-improvement-type-rate-group';
-import { AccountingPointServiceAddComponent } from '../accounting-point-service-add/accounting-point-service-add.component';
+import {Component, Input} from '@angular/core';
+import {FormArray, FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {AccountingPointService} from 'src/store/models/accounting-point-service';
+import {
+  AccountingPointServiceAddComponent
+} from '../accounting-point-service-add/accounting-point-service-add.component';
+import {Observable} from "rxjs";
+import {
+  directionOfUseSimpleRefPresentSelector,
+  providerSimpleRefPresentSelector,
+  serviceSimpleRefPresentSelector
+} from "../../../store/selectors/simple-ref.selector";
+import {IAppState} from "../../../store/state/app.state";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'accounting-point-service-list',
@@ -12,35 +21,57 @@ import { AccountingPointServiceAddComponent } from '../accounting-point-service-
 })
 export class AccountingPointServiceListComponent {
 
-  @Input() formArray!: AbstractControl;
+  @Input() formArray!: FormArray;
 
   constructor(
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private store: Store<IAppState>
+  ) {
+  }
 
-  get items(): ServiceImprovementTypeRateGroup[] {
+  get items(): AccountingPointService[] {
     return this.formArray.value;
   }
 
-  displayedColumns = ['service', 'provider', 'pointLocation', 'directionOfUse', 'meterIsActive', 'rowAction']
+  displayedColumns = [
+    'description',
+    'service',
+    'provider',
+    'pointLocation',
+    'directionOfUse',
+    'meterIsActive',
+    'rowAction']
 
   openAddRowDialog(index?: any): void {
+    let data;
 
-    let data = undefined;
-
-    if (index) data = (<FormArray>this.formArray).at(index).value as AccountingPointService;
+    if (index != null) {
+      data = this.formArray.at(index).value as AccountingPointService;
+    }
 
     const dialogRef = this.dialog.open(AccountingPointServiceAddComponent, {
       data: data
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: FormGroup) => {
       if (index != null && result) {
-        (<FormArray>this.formArray).at(index).setValue((result as FormGroup).value as AccountingPointService);
+        this.formArray.at(index).setValue(result.value as AccountingPointService);
       } else if (result) {
-        (<FormArray>this.formArray).push(result);
+        this.formArray.push(result);
       }
     });
+  }
+
+  getServicePresent(id: string): Observable<String> {
+    return this.store.select(serviceSimpleRefPresentSelector(id));
+  }
+
+  getProviderPresent(id: string): Observable<String> {
+    return this.store.select(providerSimpleRefPresentSelector(id));
+  }
+
+  getDirectionOfUsePresent(id: string): Observable<String> {
+    return this.store.select(directionOfUseSimpleRefPresentSelector(id));
   }
 
 }

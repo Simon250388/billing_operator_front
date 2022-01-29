@@ -6,9 +6,6 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'accounting-point-service', loadChildren: () => import('./accounting-point-service/accounting-point-service.module').then(m => m.AccountingPointServiceModule) },
-  { path: 'meters', loadChildren: () => import('./meter/meter.module').then(m => m.MeterModule) },
-  { path: 'active-accounting-point', loadChildren: () => import('src/app/accounting-point-active/accounting-point-active.module').then(m => m.AccountingPointActiveModule) },
   { path: 'provider-history', loadChildren: () => import('./provider-history/provider-history.module').then(m => m.ProviderHistoryModule) },
   { path: 'meter-history', loadChildren: () => import('./meter-history/meter-history.module').then(m => m.MeterHistoryModule) },
   { path: 'meter-values', loadChildren: () => import('./meter-value-history/meter-value-history.module').then(m => m.MeterValueHistoryModule) },

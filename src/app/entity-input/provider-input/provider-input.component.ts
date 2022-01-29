@@ -30,7 +30,7 @@ export class ProviderInputComponent extends AbstractEntityInput implements Contr
 
   items: Observable<SimpleRef[]> = this.appState.select(providerSimpleRefSelector);
 
-  loadItemsAction = startProvidesHttpRequestAction
+  loadItemsAction = startProvidesHttpRequestAction()
 
   constructor(protected override appState: Store<IAppState>) {
     super(appState);

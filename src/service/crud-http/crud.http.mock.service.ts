@@ -12,20 +12,22 @@ export class CrudHttpMockService implements ICrudHttpService {
   getAll(apiDomen: string): Observable<SimpleRef[]> {
     switch (apiDomen) {
       case "service":
-        return this.getServices();
+        return CrudHttpMockService.getServices();
       case "improvement-types":
-        return this.getImprovementTypes();
+        return CrudHttpMockService.getImprovementTypes();
       case "providers":
-        return this.getProviders();
+        return CrudHttpMockService.getProviders();
       case "rate-groups":
-        return this.getRateGroups();
+        return CrudHttpMockService.getRateGroups();
+      case "direction-of-uses":
+        return CrudHttpMockService.getDirectionOfUses();
       default:
         throw new Error("Method not implemented.");
 
     }
   }
 
-  private getServices(): Observable<SimpleRef[]> {
+  private static getServices(): Observable<SimpleRef[]> {
 
     return of([
       {
@@ -35,7 +37,7 @@ export class CrudHttpMockService implements ICrudHttpService {
     ])
   }
 
-  private getImprovementTypes(): Observable<SimpleRef[]> {
+  private static getImprovementTypes(): Observable<SimpleRef[]> {
 
     return of([
       {
@@ -65,7 +67,7 @@ export class CrudHttpMockService implements ICrudHttpService {
     ])
   }
 
-  private getProviders() {
+  private static getProviders() {
     return of([
       {
         id: "someServiceID",
@@ -82,7 +84,7 @@ export class CrudHttpMockService implements ICrudHttpService {
     ])
   }
 
-  private getRateGroups() {
+  private static getRateGroups() {
     return of([
       {
         id: "someServiceID",
@@ -95,6 +97,23 @@ export class CrudHttpMockService implements ICrudHttpService {
       {
         id: "someServiceID",
         present: "Тарифная группа 3"
+      }
+    ])
+  }
+
+  private static getDirectionOfUses() {
+    return of([
+      {
+        id: "directionOfUseId1",
+        present: "Направление 1"
+      },
+      {
+        id: "directionOfUseId2",
+        present: "Направление 2"
+      },
+      {
+        id: "directionOfUseId3",
+        present: "Направление 3"
       }
     ])
   }

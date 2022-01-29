@@ -1,7 +1,7 @@
-import { Component, Inject} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AccountingPointService } from 'src/store/models/accounting-point-service';
+import {Component, Inject} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {AccountingPointService} from 'src/store/models/accounting-point-service';
 
 @Component({
   selector: 'accounting-point-service-add',
@@ -17,14 +17,11 @@ export class AccountingPointServiceAddComponent {
     private _formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public rowData: AccountingPointService) {
     this.formGroup = this._formBuilder.group({
-      serviceId: [Validators.required],
-      providerId: [Validators.required],
-      directionOfUseId: [Validators.required],
-      accountingPoint: this._formBuilder.group({
-        location: [Validators.required]
-      }),
-      meter: this._formBuilder.group({
-      })
+      description: this._formBuilder.control('', [Validators.required]),
+      serviceId: this._formBuilder.control('', [Validators.required]),
+      providerId: this._formBuilder.control('', [Validators.required]),
+      directionOfUseId: this._formBuilder.control('', [Validators.required]),
+      meter: this._formBuilder.group({})
     });
 
     if (rowData) {
@@ -34,5 +31,9 @@ export class AccountingPointServiceAddComponent {
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  getDescriptionControl(): FormControl {
+    return this.formGroup.controls['description'] as FormControl
   }
 }

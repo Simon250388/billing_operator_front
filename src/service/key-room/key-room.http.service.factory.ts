@@ -5,6 +5,7 @@ import {environment} from "src/environments/environment";
 import {IKeyRoom} from "src/store/models/key-room.model";
 import {KeyRoomHttMockService} from "./key-room-http.mock.service";
 import {KeyRoomHttpService} from "./key-room.http.service";
+import {IKeyRoomAddModel} from "../../store/models/key-room-add.model";
 
 export const keyRoomHttpServiceFactory = (http: HttpClient): IKeyRoomHttpService => {
 
@@ -25,6 +26,8 @@ export const keyRoomHttpServiceFactory = (http: HttpClient): IKeyRoomHttpService
 })
 export abstract class IKeyRoomHttpService {
   abstract search(): Observable<IKeyRoom[]>
+
+  abstract save(model: IKeyRoomAddModel): Observable<IKeyRoom>
 }
 
 

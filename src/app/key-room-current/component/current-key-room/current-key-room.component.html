@@ -3,7 +3,7 @@
     <app-side-nav></app-side-nav>
   </div>
   <div fxFlex="63">
-    <app-accounting-point-list></app-accounting-point-list>
+    <router-outlet></router-outlet>
   </div>
   <div fxFlex="25">
     <app-key-room-item *ngIf="item" [item]="item | async"></app-key-room-item>

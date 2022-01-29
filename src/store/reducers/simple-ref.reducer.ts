@@ -1,5 +1,6 @@
 import {createReducer, on} from "@ngrx/store";
 import {
+  successfulCompleteDirectionOfUsesHttpRequestAction,
   successfulCompleteImprovementHttpRequestAction,
   successfulCompleteProvidesHttpRequestAction,
   successfulCompleteRateGroupsHttpRequestAction,
@@ -32,6 +33,12 @@ export const simpleRefReducer = createReducer(
     return {
       ...state,
       rateGroups: payload.items
+    }
+  }),
+  on(successfulCompleteDirectionOfUsesHttpRequestAction, (state: ISimpleRefState, payload: { items: SimpleRef[] }) => {
+    return {
+      ...state,
+      directionOfUses: payload.items
     }
   })
 )

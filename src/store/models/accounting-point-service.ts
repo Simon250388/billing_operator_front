@@ -1,8 +1,8 @@
-import { BaseEntity } from './base-entity';
+import {BaseEntity} from './base-entity';
 
 export interface AccountingPointService extends BaseEntity {
-    accountingPointId:number;
-    accountingPoint : BaseEntity;
-    serviceId:number;
-    providerId: number;
+  description: string;
+  serviceId: string;
+  providerId: string;
+  directionOfUseId: String
 }

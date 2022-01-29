@@ -19,7 +19,10 @@ export class KeyRoomComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._store.dispatch(startSearchKeyRoomAction())
+    this.items.subscribe(items => {
+      if (items.length == 0) {
+        this._store.dispatch(startSearchKeyRoomAction())
+      }
+    })
   }
-
 }

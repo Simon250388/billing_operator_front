@@ -33,6 +33,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 
 import {MatSelectModule} from "@angular/material/select";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -71,7 +72,12 @@ registerLocaleData(localeRu, 'ru');
     MatFormFieldModule,
     MatListModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'ru'}

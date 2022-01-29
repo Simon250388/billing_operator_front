@@ -18,7 +18,7 @@ export class KeyRoomEffect {
   loadEffect = createEffect(
     () => this.actions.pipe(
       ofType(EntityActions.startSearchKeyRoomAction),
-      mergeMap(action => this.httpService.search().pipe(
+      mergeMap(() => this.httpService.search().pipe(
         map(items => EntityActions.receiveResultSearchKeyRoomAction({items: items})),
         catchError(() => {
           throw new Error('could not get services from http')
@@ -30,8 +30,20 @@ export class KeyRoomEffect {
     () => this.actions.pipe(
       ofType(EntityActions.startChooseCurrentAction),
       mergeMap(action => of(EntityActions.chooseCurrentCompleteAction(action))),
-      tap((current) => this.router.navigate(["/key-room", current.id, "accounting-points"],)
+      tap((current) => this.router.navigate(["/key-room", current.id],)
       ))
+  )
+
+  saveEffect = createEffect(
+    () => this.actions.pipe(
+      ofType(EntityActions.addNewKeyRoomStartAction),
+      mergeMap(action => this.httpService.save(action).pipe(
+        map(item => EntityActions.addNewKeyRoomSuccessAction(item)),
+        catchError(() => {
+          throw new Error('could not post from http')
+        })
+      )),
+      tap(() => this.router.navigate(["/key-room"])))
   )
 }
 

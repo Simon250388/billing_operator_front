@@ -18,7 +18,13 @@ export const KeyRoomReducer = createReducer(
   on(EntityActions.clearCurrentKeyRoomAction, (state: IKeyRoomState) => {
     return {...state, current: undefined}
   }),
+  on(EntityActions.addNewKeyRoomSuccessAction, (state: IKeyRoomState, keyRoom: IKeyRoom) => {
+    let new_items = [...state.items];
 
+    new_items.push(keyRoom)
+
+    return {...state, items: new_items}
+  }),
   on(AccountingPointActions.loadFromApiStartActionSuccessAction, (state: IKeyRoomState, payload: { items: IAccountingPointActive[] }) => {
 
     let items = state.items.map(value => {
