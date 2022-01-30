@@ -2,9 +2,6 @@ import {Component, Input} from '@angular/core';
 import {FormArray, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {AccountingPointService} from 'src/store/models/accounting-point-service';
-import {
-  AccountingPointServiceAddComponent
-} from '../accounting-point-service-add/accounting-point-service-add.component';
 import {Observable} from "rxjs";
 import {
   directionOfUseSimpleRefPresentSelector,
@@ -13,6 +10,9 @@ import {
 } from "../../../store/selectors/simple-ref.selector";
 import {IAppState} from "../../../store/state/app.state";
 import {Store} from "@ngrx/store";
+import {
+  AccountingPointAddDialogComponent
+} from "../../accounting-point-add-dialog/component/accounting-point-add-dialog/accounting-point-add-dialog.component";
 
 @Component({
   selector: 'accounting-point-service-list',
@@ -49,7 +49,7 @@ export class AccountingPointServiceListComponent {
       data = this.formArray.at(index).value as AccountingPointService;
     }
 
-    const dialogRef = this.dialog.open(AccountingPointServiceAddComponent, {
+    const dialogRef = this.dialog.open(AccountingPointAddDialogComponent, {
       data: data
     });
 

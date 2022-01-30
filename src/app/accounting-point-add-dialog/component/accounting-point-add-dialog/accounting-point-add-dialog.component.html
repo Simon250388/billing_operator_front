@@ -1,0 +1,8 @@
+
+<mat-dialog-content>
+  <app-accounting-point-add-form [value]="value" (onFormGroupValueChange)="setFormGroupValue($event)"></app-accounting-point-add-form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close="">Отмена</button>
+  <button mat-button [mat-dialog-close]="formGroupValue">Завершить</button>
+</mat-dialog-actions>

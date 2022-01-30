@@ -1,0 +1,25 @@
+  <form class="example-form" [formGroup]="formGroup">
+    <p>
+      <mat-form-field [formGroup]="formGroup">
+        <mat-label>Наименование</mat-label>
+        <input matInput placeholder="укажите Наименование" [formControl]="getDescriptionControl()"  type="text">
+      </mat-form-field>
+    </p>
+    <p>
+      <app-service-input [lbl]="'Вид услуги'" [formGroup]="formGroup" formControlName="serviceId"
+                         [placeholder]="'Укажите вид услуги'"></app-service-input>
+    </p>
+    <p>
+      <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
+                          [placeholder]="'Укажите поставщика'"></app-provider-input>
+    </p>
+    <p>
+      <app-direction-of-use-input [lbl]="'направление использования'" [formGroup]="formGroup"
+                                  formControlName="directionOfUseId" [placeholder]="'Укажите направление использования'">
+      </app-direction-of-use-input>
+    </p>
+    <p>
+      <!-- <app-meter-add></app-meter-add> -->
+    </p>
+  </form>
+

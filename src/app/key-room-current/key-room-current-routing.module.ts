@@ -14,7 +14,16 @@ const routes: Routes = [
       {
         path: 'accounting-points',
         loadChildren: () => import('../accounting-point-active/accounting-point-active.module').then(m => m.AccountingPointActiveModule),
-      }]
+      },
+      {
+        path: 'accounting-points/new',
+        loadChildren: () => import('../accounting-point-add/accounting-point-add.module').then(m => m.AccountingPointAddModule),
+      },
+      {
+        path: 'meters',
+        loadChildren: () => import('../meter-history/meter-history.module').then(m => m.MeterHistoryModule),
+      }
+      ]
   }
 ];
 

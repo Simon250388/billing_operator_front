@@ -5,6 +5,7 @@ import { MeterHistoryRoutingModule } from './meter-history-routing.module';
 import { MeterHistoryComponent } from './meter-history.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MeterHistoryRoutingModule,
+    FlexLayoutModule,
     MatTableModule,
     MatButtonModule
   ]

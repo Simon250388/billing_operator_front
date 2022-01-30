@@ -25,9 +25,6 @@ import {SimpleServiceComponent} from './simple-service/simple-service.component'
         AccountingPointItemComponent,
         SimpleServiceComponent
     ],
-    exports: [
-        AccountingPointActiveListComponent
-    ],
     imports: [
         CommonModule,
         AccountingPointActiveRoutingModule,

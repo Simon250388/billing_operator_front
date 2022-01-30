@@ -1,15 +1,24 @@
 <mat-card class="example-card" (click)=setCurrentKeyRoom()>
   <mat-card-content>
-    <mat-list>
-      <mat-list-item class="app-mat-list-item">Нанименование: {{item?.present}}</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Адрес: {{item?.address}}</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Тип помещения: квартира</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Прописанных: 2</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Проживающих: 2</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Собственников: 2</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Общая площадь: 100</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Задолженность: 200</mat-list-item>
-      <mat-list-item class="app-mat-list-item">Количество точек: {{item?.countPoints}}</mat-list-item>
+    <mat-list class="key-room-list">
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Нанименование</span>: <span
+        class="key-room-property-value">{{item?.present}}</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Адрес</span>: <span
+        class="key-room-property-value">{{item?.address}}</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Тип помещения</span>: <span
+        class="key-room-property-value">квартира</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Прописанных</span>: <span
+        class="key-room-property-value">2</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Проживающих</span>: <span
+        class="key-room-property-value">2</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Собственников</span>: <span
+        class="key-room-property-value">2</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Общая площадь</span>: <span
+        class="key-room-property-value">100</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Задолженность</span>: <span
+        class="key-room-property-value">200</span></mat-list-item>
+      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Количество точек</span>: <span
+        class="key-room-property-value">{{item?.countPoints}}</span></mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>

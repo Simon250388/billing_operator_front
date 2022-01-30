@@ -10,7 +10,7 @@ export const accountingPointHttpServiceFactory = (http: HttpClient) => {
   const isProduction = environment["production"] as boolean;
 
   if (!isProduction) {
-    return new AccountingPointHttpMockService(http);
+    return new AccountingPointHttpMockService();
   }
 
   return new AccountingPointHttpService(http)

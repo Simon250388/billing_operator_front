@@ -1,4 +1,3 @@
-import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {IAccountingPointActive} from 'src/store/models/accounting-point-active.model';
@@ -9,7 +8,7 @@ import {IAccountingPointHttpService} from './accounting-point.http.factory';
 })
 export class AccountingPointHttpMockService implements IAccountingPointHttpService {
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   load(keyRoomId: string): Observable<IAccountingPointActive[]> {
@@ -36,7 +35,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
         meterStateChangeAt: "2022-15-30T12:00:00",
         differentiationType: {
           id: "somestring",
-          present: "somepresent"
+          present: "однотарифный"
         },
         lastMeterValue: 158,
         avgVolume: 0
@@ -63,7 +62,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
           meterStateChangeAt: "2022-15-30T12:00:00",
           differentiationType: {
             id: "somestring",
-            present: "somepresent"
+            present: "однотарифный"
           },
           lastMeterValue: 158,
           avgVolume: 10
@@ -90,7 +89,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
           meterStateChangeAt: "2022-15-30T12:00:00",
           differentiationType: {
             id: "somestring",
-            present: "somepresent"
+            present: "однотарифный"
           },
           lastMeterValue: 158,
           avgVolume: 15
@@ -117,7 +116,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
           meterStateChangeAt: "2022-15-30T12:00:00",
           differentiationType: {
             id: "somestring",
-            present: "somepresent"
+            present: "однотарифный"
           },
           lastMeterValue: 158,
           avgVolume: 20
@@ -144,7 +143,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
           meterStateChangeAt: "2022-15-30T12:00:00",
           differentiationType: {
             id: "somestring",
-            present: "somepresent"
+            present: "однотарифный"
           },
           lastMeterValue: 158,
           avgVolume: 25
@@ -171,7 +170,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
           meterStateChangeAt: "2022-15-30T12:00:00",
           differentiationType: {
             id: "somestring",
-            present: "somepresent"
+            present: "однотарифный"
           },
           lastMeterValue: 158,
           avgVolume: 35

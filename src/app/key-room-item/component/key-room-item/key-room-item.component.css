@@ -1,5 +1,18 @@
 .example-card{
   margin-top: 10px;
+  max-width: 300px;
+}
+
+.key-room-list-item {
+  max-height: 35px;
+}
+
+.key-room-property-lbl {
+
+}
+
+.key-room-property-value {
+  padding-left: 3px;
 }
 
 .example-card:hover {

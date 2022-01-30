@@ -2,10 +2,10 @@
   <div fxFlex = "12%" fxFlex.lt-lg="8%" >
     <app-side-nav></app-side-nav>
   </div>
-  <div fxFlex="68%" fxFlex.lt-lg="58" fxFlexOffset="10px">
+  <div fxFlex="68%" fxFlex.lt-lg="40" fxFlexOffset="10px">
     <router-outlet></router-outlet>
   </div>
-  <div fxFlex="20%" fxFlex.lt-lg="34" fxFlexOffset="10px">
+  <div fxFlex="20%" fxFlex.lt-lg="50" fxFlexOffset="10px">
     <app-key-room-item *ngIf="item" [item]="item | async"></app-key-room-item>
   </div>
 </div>
