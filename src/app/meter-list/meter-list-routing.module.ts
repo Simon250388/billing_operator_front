@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MeterValueHistoryComponent } from './meter-value-history.component';
+import { MeterListComponent } from './component/meter-list/meter-list.component';
 
 const routes: Routes = [
-  { path: ':id', component: MeterValueHistoryComponent }
+  { path: '', component: MeterListComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MeterValueHistoryRoutingModule { }
+export class MeterListRoutingModule { }

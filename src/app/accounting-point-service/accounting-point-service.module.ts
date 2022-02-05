@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 
-import {MeterModule} from '../meter/meter.module';
+import {MeterAddModule} from '../meter-add/meter-add.module';
 import {
   AccountingPointServiceListComponent
 } from './accounting-point-service-list/accounting-point-service-list.component';
@@ -22,7 +22,7 @@ import {AccountingPointAddDialogModule} from "../accounting-point-add-dialog/acc
     CommonModule,
     ReactiveFormsModule,
     AccountingPointServiceRoutingModule,
-    MeterModule,
+    MeterAddModule,
     AccountingPointAddDialogModule,
 
     MatTableModule,

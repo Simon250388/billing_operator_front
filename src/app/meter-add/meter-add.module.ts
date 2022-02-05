@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MeterRoutingModule } from './meter-routing.module';
+import { MeterAddRoutingModule } from './meter-add-routing.module';
 import { MeterAddComponent } from './meter-add/meter-add.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -16,14 +16,14 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MeterRoutingModule,
+    MeterAddRoutingModule,
     MatInputModule,
     MatAutocompleteModule,
     MatDatepickerModule,
-    MatMomentDateModule 
+    MatMomentDateModule
   ],
   exports: [
     MeterAddComponent
   ]
 })
-export class MeterModule { }
+export class MeterAddModule { }

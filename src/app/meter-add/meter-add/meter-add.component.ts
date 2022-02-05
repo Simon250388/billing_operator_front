@@ -9,7 +9,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { ImprovementType } from 'src/store/models/improvement-type';
 
 @Component({
-  selector: 'app-meter-add',
+  selector: 'app-meter-list-add-add',
   templateUrl: './meter-add.component.html',
   styleUrls: ['./meter-add.component.css'],
   providers: [

@@ -8,7 +8,7 @@ import { MeterValueHistory } from 'src/store/models/meter-value-history';
   providedIn: 'root'
 })
 export class MeterValueHistoryRepositoryService extends BaseRepositoryService<MeterValueHistory>{
-  protected apiDomain: string = 'meter-value-history';
+  protected apiDomain: string = 'meter-list-add-value-history';
 
   constructor(
     protected override environment: Environmenter,

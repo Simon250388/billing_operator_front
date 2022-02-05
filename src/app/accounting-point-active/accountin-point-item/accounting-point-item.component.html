@@ -32,7 +32,7 @@
                       <mat-icon>edit</mat-icon>
                       <span>Изменить</span>
                   </button>
-                  <button mat-menu-item [routerLink]="['/meter-history', item.meter.id]">
+                  <button mat-menu-item [routerLink]="['/meter-list-add-history', item.meter.id]">
                       <mat-icon>history</mat-icon>
                       <span>История</span>
                   </button>
@@ -46,6 +46,7 @@
   </mat-card-content>
   <mat-card-actions>
       <button mat-button color="primary">Отключить</button>
+      <button mat-button color="primary">Вывести прибор</button>
       <button mat-button color="primary">Вывести прибор</button>
   </mat-card-actions>
 </mat-card>

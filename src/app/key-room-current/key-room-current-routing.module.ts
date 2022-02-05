@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'meters',
-        loadChildren: () => import('../meter-history/meter-history.module').then(m => m.MeterHistoryModule),
+        loadChildren: () => import('../meter-list/meter-list.module').then(m => m.MeterListModule),
       }
       ]
   }

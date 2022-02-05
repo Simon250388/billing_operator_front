@@ -1,0 +1,50 @@
+<mat-card class="meter-card">
+  <mat-card-title>
+    Заводской номер
+  </mat-card-title>
+  <mat-card-content>
+    <div fxLayout="{{isSmallSize ? 'column': 'row'}}" fxLayoutGap="10px" fxLayoutAlign="space-between start">
+      <div fxFlex="60">
+        <table class="mat-table">
+          <tr *ngFor="let key of keys">
+            <td>{{getPropertyPresent(key)}}</td>
+            <td>{{getValuePresent(key)}}</td>
+            <td class="meter-row-property-action">
+              <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menuType="matMenu">
+                <button mat-menu-item>
+                  <mat-icon>edit</mat-icon>
+                  <span>Изменить</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>history</mat-icon>
+                  <span>История</span>
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div fxFlex="40">
+        <table class="mat-table-value">
+          <tr>
+            <td class="mat-header-cell">Зона</td>
+            <td class="mat-header-cell content-center">Последние показания</td>
+            <td class="mat-header-cell content-center">Средний объем</td>
+          </tr>
+          <tr *ngFor="let meterValue of item.currentMeterValues">
+            <td>{{meterValue.zone.present}}</td>
+            <td class="content-center">{{meterValue.meterValue}}</td>
+            <td class="content-center">{{meterValue.avgVolume}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Внести</button>
+    <button mat-button>История</button>
+  </mat-card-actions>
+</mat-card>
