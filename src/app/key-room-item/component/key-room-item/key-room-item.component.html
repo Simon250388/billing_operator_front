@@ -1,24 +1,25 @@
-<mat-card class="example-card" (click)=setCurrentKeyRoom()>
+<mat-card class="key-room-card" (click)=onClick()>
   <mat-card-content>
-    <mat-list class="key-room-list">
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Нанименование</span>: <span
-        class="key-room-property-value">{{item?.present}}</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Адрес</span>: <span
-        class="key-room-property-value">{{item?.address}}</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Тип помещения</span>: <span
-        class="key-room-property-value">квартира</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Прописанных</span>: <span
-        class="key-room-property-value">2</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Проживающих</span>: <span
-        class="key-room-property-value">2</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Собственников</span>: <span
-        class="key-room-property-value">2</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Общая площадь</span>: <span
-        class="key-room-property-value">100</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Задолженность</span>: <span
-        class="key-room-property-value">200</span></mat-list-item>
-      <mat-list-item class="key-room-list-item"><span class="key-room-property-lbl">Количество точек</span>: <span
-        class="key-room-property-value">{{item?.countPoints}}</span></mat-list-item>
-    </mat-list>
+    <table class="app-table">
+      <tr *ngFor="let key of keys">
+        <td class="key-room-property-column">{{getPropertyPresent(key)}}</td>
+        <td>{{getValuePresent(key)}}</td>
+        <td class="app-action-column">
+          <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menuType="matMenu">
+            <button mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>Изменить</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>history</mat-icon>
+              <span>История</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </table>
   </mat-card-content>
 </mat-card>

@@ -1,12 +1,21 @@
-<div fxLayout="row">
+<div fxLayout="row" >
   <div fxFlex = "12%" fxFlex.lt-lg="8%" >
     <app-side-nav></app-side-nav>
   </div>
-  <div fxFlex="68%" fxFlex.lt-lg="40" fxFlexOffset="10px">
+  <div fxFlex="63%"
+       fxFlex.lt-md="52" fxFlexOffset="10px">
     <router-outlet></router-outlet>
   </div>
-  <div fxFlex="20%" fxFlex.lt-lg="50" fxFlexOffset="10px">
-    <app-key-room-item *ngIf="item" [item]="item | async"></app-key-room-item>
+  <div fxFlex="25%" fxFlex.lt-md="40" fxFlexOffset="10px" *ngIf="item">
+    <app-key-room-item [item]="(item | async)!"></app-key-room-item>
   </div>
 </div>
 
+<!--<div fxFlex="63%"-->
+<!--     fxFlex.lt-lg="65"-->
+<!--     fxFlex.lt-sm="45" fxFlexOffset="10px">-->
+<!--  <router-outlet></router-outlet>-->
+<!--</div>-->
+<!--<div fxFlex="25%" fxFlex.lt-lg="25" fxFlex.lt-sm="45" fxFlexOffset="10px" *ngIf="item">-->
+<!--  <app-key-room-item [item]="(item | async)!"></app-key-room-item>-->
+<!--</div>-->

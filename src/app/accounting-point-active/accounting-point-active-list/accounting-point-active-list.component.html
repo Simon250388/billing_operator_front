@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFill fxLayoutGap="10px" class="card-container">
+<div fxLayout="column" fxFill fxLayoutGap="10px" class="card-container" >
     <div>
         <mat-expansion-panel [expanded]="true">
             <mat-expansion-panel-header>
@@ -10,7 +10,7 @@
                 <div fxLayout="row wrap">
                     <button mat-button color="primary" routerLink="new">Добавить</button>
                 </div>
-                <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start start">
+                <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center start">
                     <app-accounting-point-item *ngFor="let item of accountingPoints | async" [item]="item"></app-accounting-point-item>
                 </div>
             </div>

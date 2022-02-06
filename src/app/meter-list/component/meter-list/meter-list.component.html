@@ -1,4 +1,5 @@
-<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start start">
+<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center start">
+  <app-meter-item *ngFor="let item of items | async" [item]="item"></app-meter-item>
   <app-meter-item *ngFor="let item of items | async" [item]="item"></app-meter-item>
 </div>
 

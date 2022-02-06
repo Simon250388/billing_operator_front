@@ -1,5 +1,5 @@
-import { BaseEntity } from './base-entity';
-import { SimpleRef } from './simple-ref.model';
+import {BaseEntity} from './base-entity';
+import {SimpleRef} from './simple-ref.model';
 
 export interface IAccountingPointActive extends BaseEntity {
     accountingPoint: SimpleRef;
@@ -13,4 +13,19 @@ export interface IAccountingPointActive extends BaseEntity {
     lastMeterValue: number;
     avgVolume: number;
 }
+
+export const accountingPointPropertyTranslations: { [key: string]: string } = {
+  "service": "Услуга",
+  "provider": "Поставщик",
+  "meter": "Пр-р учета",
+  "differentiationType": "Вид дифф-ти"
+}
+
+export const accountingPointPropertyPresent: { [key: string]: (model: IAccountingPointActive) => string } = {
+  "service": (model: IAccountingPointActive) => model.service.present,
+  "provider": (model: IAccountingPointActive) => model.provider.present,
+  "meter": (model: IAccountingPointActive) => model.meter.present,
+  "differentiationType":  (model: IAccountingPointActive) => model.differentiationType.present
+}
+
 

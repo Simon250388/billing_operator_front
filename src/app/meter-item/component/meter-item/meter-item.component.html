@@ -4,11 +4,11 @@
   </mat-card-title>
   <mat-card-content>
     <div fxLayout="{{isSmallSize ? 'column': 'row'}}" fxLayoutGap="10px" fxLayoutAlign="space-between start">
-      <div fxFlex="60">
-        <table class="mat-table">
+      <div fxFlex="55">
+        <table class="app-table">
           <tr *ngFor="let key of keys">
-            <td>{{getPropertyPresent(key)}}</td>
-            <td>{{getValuePresent(key)}}</td>
+            <td class="meter-property-column">{{getPropertyPresent(key)}}</td>
+            <td class="meter-value-column">{{getValuePresent(key)}}</td>
             <td class="meter-row-property-action">
               <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu">
                 <mat-icon>more_vert</mat-icon>
@@ -27,8 +27,8 @@
           </tr>
         </table>
       </div>
-      <div fxFlex="40">
-        <table class="mat-table-value">
+      <div fxFlex="45">
+        <table class="app-table">
           <tr>
             <td class="mat-header-cell">Зона</td>
             <td class="mat-header-cell content-center">Последние показания</td>

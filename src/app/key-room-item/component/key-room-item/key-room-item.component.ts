@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IKeyRoom} from "../../../../store/models/key-room.model";
-import {startChooseCurrentAction} from "../../../../store/action/key-room.action";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {IKeyRoom, keyRoomPropertyPresent, keyRoomPropertyTranslations} from "../../../../store/models/key-room.model";
 import {Store} from "@ngrx/store";
 import {IAppState} from "../../../../store/state/app.state";
+
 
 @Component({
   selector: 'app-key-room-item',
@@ -11,7 +11,8 @@ import {IAppState} from "../../../../store/state/app.state";
 })
 export class KeyRoomItemComponent implements OnInit {
 
-  @Input() item: IKeyRoom | null | undefined
+  @Input() item!: IKeyRoom
+  @Output() onItemClick: EventEmitter<IKeyRoom> = new EventEmitter()
 
   constructor(private store: Store<IAppState>) {
   }
@@ -19,11 +20,24 @@ export class KeyRoomItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setCurrentKeyRoom() {
-    if (!this.item) {
-      return
+  get keys(): string[] {
+    let result = []
+    for (let key in keyRoomPropertyTranslations) {
+      result.push(key)
     }
-    this.store.dispatch(startChooseCurrentAction(this.item))
+    return result;
   }
 
+  getValuePresent(property: string): String {
+    let presentFunc = keyRoomPropertyPresent[property]
+    return presentFunc(this.item)
+  }
+
+  getPropertyPresent(property: string): String {
+    return keyRoomPropertyTranslations[property]
+  }
+
+  onClick() {
+    this.onItemClick.emit(this.item)
+  }
 }

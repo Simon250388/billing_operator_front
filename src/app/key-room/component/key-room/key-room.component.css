@@ -9,3 +9,12 @@
 .button-row{
     width: 100%;
 }
+
+app-key-room-item {
+  margin-top: 10px;
+}
+
+app-key-room-item:hover {
+  background-color: #3f51b5;
+  cursor: pointer;
+}
