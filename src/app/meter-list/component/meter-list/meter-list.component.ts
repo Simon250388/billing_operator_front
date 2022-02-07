@@ -12,7 +12,7 @@ export class MeterListComponent implements OnInit {
   items: Observable<MeterModel[]> = of([
     {
       id: "someID",
-      type: {
+      meterType: {
         id: "someId",
         present: "132"
       },

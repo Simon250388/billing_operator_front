@@ -10,8 +10,6 @@ import {AccountingPointActiveRoutingModule} from './accounting-point-active-rout
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
-import {ChangeValueModule} from '../change-value/change-value.module';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -28,13 +26,11 @@ import {SimpleServiceComponent} from './simple-service/simple-service.component'
     imports: [
         CommonModule,
         AccountingPointActiveRoutingModule,
-        ChangeValueModule,
         FlexLayoutModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
         MatMenuModule,
-        MatDialogModule,
         MatListModule,
         MatDividerModule,
         MatExpansionModule

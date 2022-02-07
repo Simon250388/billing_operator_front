@@ -5,7 +5,6 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {PortalModule} from '@angular/cdk/portal';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import {MatButtonModule} from '@angular/material/button';
@@ -30,10 +29,8 @@ import {ServiceSimpleEffect} from "../store/effects/service-simple.effect";
 import {ToolBarComponent} from './tool-bar/tool-bar.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatListModule} from "@angular/material/list";
-
-import {MatSelectModule} from "@angular/material/select";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {MatDialogModule} from "@angular/material/dialog";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -49,7 +46,6 @@ registerLocaleData(localeRu, 'ru');
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
-    PortalModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
@@ -63,16 +59,14 @@ registerLocaleData(localeRu, 'ru');
       ServiceSimpleEffect
     ]),
     StoreRouterConnectingModule.forRoot(),
-    MatCardModule,
+    MatDialogModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
     MatMenuModule,
     MatIconModule,
     MatFormFieldModule,
-    MatListModule,
     MatToolbarModule,
-    MatSelectModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

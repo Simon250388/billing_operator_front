@@ -10,18 +10,17 @@
             <td class="meter-property-column">{{getPropertyPresent(key)}}</td>
             <td class="meter-value-column">{{getValuePresent(key)}}</td>
             <td class="meter-row-property-action">
-              <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu">
+              <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu"
+                      *ngIf="getPropertyAction(key).length > 0">
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menuType="matMenu">
-                <button mat-menu-item>
-                  <mat-icon>edit</mat-icon>
-                  <span>Изменить</span>
-                </button>
-                <button mat-menu-item>
-                  <mat-icon>history</mat-icon>
-                  <span>История</span>
-                </button>
+                <ng-container *ngFor="let propertyAction of getPropertyAction(key); let i = index">
+                  <button mat-menu-item (click)="onActionClick(key, i)">
+                    <mat-icon>{{getActionIconName(key, i)}}</mat-icon>
+                    <span>{{getActionName(key, i)}}</span>
+                  </button>
+                </ng-container>
               </mat-menu>
             </td>
           </tr>

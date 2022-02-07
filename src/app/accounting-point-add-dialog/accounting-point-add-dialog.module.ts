@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AccountingPointAddDialogComponent } from './component/accounting-point-add-dialog/accounting-point-add-dialog.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {
+  AccountingPointAddDialogComponent
+} from './component/accounting-point-add-dialog/accounting-point-add-dialog.component';
 import {AccountingPointAddFormModule} from "../accounting-point-add-form/accounting-point-add-form.module";
-import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -11,9 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
   ],
   imports: [
     CommonModule,
-
     AccountingPointAddFormModule,
-
     MatDialogModule,
     MatButtonModule
   ],
@@ -21,4 +21,5 @@ import {MatButtonModule} from "@angular/material/button";
     AccountingPointAddDialogComponent
   ]
 })
-export class AccountingPointAddDialogModule { }
+export class AccountingPointAddDialogModule {
+}
