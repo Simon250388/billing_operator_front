@@ -1,41 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Subscription} from "rxjs";
 import {MeterModel} from "../../../../store/models/meter.model";
+import {IMeterState} from "../../../../store/state/meter.state";
+import {Store} from "@ngrx/store";
+import {getMeterItems} from "../../../../store/selectors/meter.selector";
+import {startLoadMeterItemsFromApiAction} from "../../../../store/action/meter.action";
 
 @Component({
   selector: 'app-meter-list',
   templateUrl: './meter-list.component.html',
   styleUrls: ['./meter-list.component.css']
 })
-export class MeterListComponent implements OnInit {
+export class MeterListComponent implements OnInit, OnDestroy {
 
-  items: Observable<MeterModel[]> = of([
-    {
-      id: "someID",
-      meterType: {
-        id: "someId",
-        present: "132"
-      },
-      location: {
-        id: "someId",
-        present: "Кухня"
-      },
-      differentiationType: {
-        id: "SomeId",
-        present: "3-х тарифный"
-      },
-      verificationDate: "01-01-2021",
-      meterValueDate: "01-01-2021",
-      currentMeterValues: [
-        {zone: {id: "SOMEID", present: "Ночь"}, meterValue: 137580, avgVolume: 1000},
-        {zone: {id: "SOMEID", present: "Полупик"}, meterValue: 137580, avgVolume: 1000},
-        {zone: {id: "SOMEID", present: "Пик"}, meterValue: 137580, avgVolume: 1000}
-      ]
-    }
-  ])
+  items: Observable<MeterModel[] | undefined> = this.meterStore.select(getMeterItems)
 
-  ngOnInit(): void {
+  private subscription!: Subscription
+
+  constructor(private meterStore: Store<IMeterState>) {
   }
 
+  ngOnInit(): void {
+    this.subscription = this.items.subscribe(items => {
+      if (items == undefined) this.meterStore.dispatch(startLoadMeterItemsFromApiAction())
+    })
+  }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
 }

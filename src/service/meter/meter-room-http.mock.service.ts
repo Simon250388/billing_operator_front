@@ -1,99 +1,53 @@
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {IKeyRoom} from 'src/store/models/key-room.model';
-import {IKeyRoomHttpService} from './meter.http.service.factory';
-import {IKeyRoomAddModel} from "../../store/models/key-room-add.model";
+import {IMeterHttpService} from './meter.http.service.factory';
+import {MeterModel} from "../../store/models/meter.model";
 
-export class KeyRoomHttMockService implements IKeyRoomHttpService {
+export class MeterHttMockService implements IMeterHttpService {
 
   protected apiDomen: string = "";
 
   constructor(private http: HttpClient) {
   }
 
-  search(): Observable<IKeyRoom[]> {
+  load(): Observable<MeterModel[]> {
     return of([
-      {
-        present: "Королева",
-        id: "someId",
-        building: {
-          id: "someBuildingId",
-          present: "some"
-        },
-        room: undefined,
-        address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
-      },
-      {
-        present: "Второе",
-        address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "someId",
-        building: {
-          id: "someBuildingId",
-          present: "some"
-        },
-        room: undefined,
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
-
-      },
-      {
-        present: "Второе",
-        address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "someId",
-        building: {
-          id: "someBuildingId",
-          present: "some"
-        },
-        room: undefined,
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
-      },
-      {
-        present: "Третье",
-        address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "someId",
-        building: {
-          id: "someBuildingId",
-          present: "some"
-        },
-        room: undefined,
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
-      }
+        {
+          id: "someID",
+          meterType: {
+            id: "someId",
+            present: "132"
+          },
+          location: {
+            id: "someId",
+            present: "Кухня"
+          },
+          differentiationType: {
+            id: "SomeId",
+            present: "3-х тарифный"
+          },
+          verificationDate: "01-01-2021",
+          meterValueDate: "01-01-2021",
+          currentMeterValues: [
+            {zone: {id: "SOMEID", present: "Ночь"}, meterValue: 137580, avgVolume: 1000},
+            {zone: {id: "SOMEID", present: "Полупик"}, meterValue: 137580, avgVolume: 1000},
+            {zone: {id: "SOMEID", present: "Пик"}, meterValue: 137580, avgVolume: 1000}
+          ]
+        }
     ])
   }
 
-  save(model: IKeyRoomAddModel): Observable<IKeyRoom> {
-    return of(
-      {
-        present: "Королева",
-        id: "someId",
-        building: {
-          id: "someBuildingId",
-          present: "some"
-        },
-        room: undefined,
-        address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
-      });
+  save(model: MeterModel): Observable<MeterModel> {
+    return of(model);
+  }
+
+  put(model: MeterModel, property: String, value: any): Observable<MeterModel> {
+    console.log(`
+    MeterHttMockService.patch is work
+    model: ${JSON.stringify(model)}
+    property: ${JSON.stringify(property)}
+    value: ${JSON.stringify(value)}`)
+    return of(model);
   }
 
 }

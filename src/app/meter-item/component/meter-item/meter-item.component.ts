@@ -4,7 +4,8 @@ import {IAppState} from "../../../../store/state/app.state";
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {MeterModel} from "../../../../store/models/meter.model";
 import {PropertyAction} from "../../../../store/models/PropertyAction";
-import {startChangeMeterTypeAction} from "../../../../store/action/meter.action";
+import {openChangeMeterTypeDialogAction} from "../../../../store/action/meter.action";
+import {IMeterState} from "../../../../store/state/meter.state";
 
 @Component({
   selector: 'app-meter-item',
@@ -32,7 +33,11 @@ export class MeterItemComponent implements OnInit {
   get meterPropertyChangeActions(): { [key: string]: PropertyAction[] } {
     return {
       "meterType": [
-        {name: "Изменить", iconName: "edit", action: startChangeMeterTypeAction(this.item)}
+        {
+          name: "Изменить",
+          iconName: "edit",
+          action: openChangeMeterTypeDialogAction({meterId: this.item.id, meterType: this.item.meterType})
+        }
       ],
       "verificationDate": [],
       "location": [],
@@ -67,7 +72,7 @@ export class MeterItemComponent implements OnInit {
   }
 
   constructor(
-    private store: Store<IAppState>,
+    private store: Store<IMeterState>,
     private breakpointObserver: BreakpointObserver) {
   }
 

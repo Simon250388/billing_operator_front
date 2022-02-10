@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import {inject, TestBed} from '@angular/core/testing';
-import {KeyRoomHttMockService} from './key-room-http.mock.service';
+import {KeyRoomHttMockService} from './meter-room-http.mock.service';
 
 describe('Service: KeyRoomHttMock', () => {
   beforeEach(() => {

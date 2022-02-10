@@ -1,21 +1,27 @@
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { globalEnvironment } from "src/environments/environment";
-import { IKeyRoom } from "src/store/models/key-room.model";
-import { IKeyRoomHttpService } from "./key-room.http.service.factory";
-import {IKeyRoomAddModel} from "../../store/models/key-room-add.model";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {globalEnvironment} from "src/environments/environment";
+import {IMeterHttpService} from "./meter.http.service.factory";
+import {MeterModel} from "../../store/models/meter.model";
 
-export class KeyRoomHttpService implements IKeyRoomHttpService {
+export class MeterHttpService implements IMeterHttpService {
 
-    protected apiDomen: string = "";
+  protected apiDomen: string = "";
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-    search(): Observable<IKeyRoom[]> {
-        return this.http.get<IKeyRoom[]>(`${globalEnvironment['apiUrl']}/${this.apiDomen}`);
-    }
+  load(): Observable<MeterModel[]> {
+    return this.http.get<MeterModel[]>(`${globalEnvironment['apiUrl']}/${this.apiDomen}`);
+  }
 
-  save(model: IKeyRoomAddModel): Observable<IKeyRoom> {
-    return this.http.post<IKeyRoom>(`${globalEnvironment['apiUrl']}/${this.apiDomen}`, JSON.stringify(model) );
+  save(model: MeterModel): Observable<MeterModel> {
+    return this.http.post<MeterModel>(`${globalEnvironment['apiUrl']}/${this.apiDomen}`, JSON.stringify(model));
+  }
+
+  put(model: MeterModel, property: string, value: any): Observable<MeterModel> {
+    const newModelState = {...model}
+    newModelState.meterType = value
+    return this.http.put<MeterModel>(`${globalEnvironment['apiUrl']}/${this.apiDomen}/${newModelState.id}`, JSON.stringify(newModelState));
   }
 }

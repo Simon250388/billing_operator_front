@@ -1,11 +1,12 @@
 import {MeterModel} from "../models/meter.model";
 
 export interface IMeterState {
-  items: { [key: string]: MeterModel }[],
+  items: { [key: string]: MeterModel }[] | undefined,
   current: string | undefined
 }
 
 export const initialMeterState: IMeterState = {
-  items: [],
+  items:  undefined,
   current: undefined
 }
+

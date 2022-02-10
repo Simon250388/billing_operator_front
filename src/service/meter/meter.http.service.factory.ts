@@ -2,32 +2,32 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {environment} from "src/environments/environment";
-import {IKeyRoom} from "src/store/models/key-room.model";
-import {KeyRoomHttMockService} from "./key-room-http.mock.service";
-import {KeyRoomHttpService} from "./key-room.http.service";
-import {IKeyRoomAddModel} from "../../store/models/key-room-add.model";
+import {MeterHttpService} from "./meter.http.service";
+import {MeterModel} from "../../store/models/meter.model";
+import {MeterHttMockService} from "./meter-room-http.mock.service";
 
-export const keyRoomHttpServiceFactory = (http: HttpClient): IKeyRoomHttpService => {
+export const meterHttpServiceFactory = (http: HttpClient): IMeterHttpService => {
 
   const isProduction = environment["production"] as boolean;
 
   if (!isProduction) {
-    return new KeyRoomHttMockService(http);
+    return new MeterHttMockService(http);
   }
 
-  return new KeyRoomHttpService(http)
+  return new MeterHttpService(http)
 
 }
 
 @Injectable({
   providedIn: "root",
-  useFactory: keyRoomHttpServiceFactory,
+  useFactory: meterHttpServiceFactory,
   deps: [HttpClient]
 })
-export abstract class IKeyRoomHttpService {
-  abstract search(): Observable<IKeyRoom[]>
+export abstract class IMeterHttpService {
+  abstract load(): Observable<MeterModel[]>
 
-  abstract save(model: IKeyRoomAddModel): Observable<IKeyRoom>
+  abstract save(model: MeterModel): Observable<MeterModel>
+  abstract put(model: MeterModel, property: String, value: any): Observable<MeterModel>
 }
 
 
