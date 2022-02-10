@@ -1,12 +1,17 @@
 import {createAction, props} from "@ngrx/store";
 import {SimpleRef} from "../models/simple-ref.model";
-import {MeterModel} from "../models/meter.model";
+import {MeterModel, MeterModelToUpdate} from "../models/meter.model";
+
+
+
 
 export enum EMeterActions {
   openChangeMeterTypeDialog = "[Meter] open meter type change dialog",
+  openChangeVerificationDateDialog = "[Meter] open verification date change dialog",
   startLoadItemsFromApi = "[Meter] start load items from api",
   successfulLoadItemsFromApi = "[Meter] successful load items from api",
-  UpdateItem = "[Meter] update item",
+  startUpdateItem = "[Meter] start update item",
+  completeUpdateItem = "[Meter] complete update item",
 }
 
 export const openChangeMeterTypeDialogAction = createAction(
@@ -14,8 +19,18 @@ export const openChangeMeterTypeDialogAction = createAction(
   props<{ meterId: string, meterType: SimpleRef }>()
 );
 
-export const updateItemAction = createAction(
-  EMeterActions.UpdateItem,
+export const openChangeVerificationDateDialogAction = createAction(
+  EMeterActions.openChangeVerificationDateDialog,
+  props<{ meterId: string, verificationDate: String }>()
+);
+
+export const startUpdateItemAction = createAction(
+  EMeterActions.startUpdateItem,
+  props<MeterModelToUpdate>()
+);
+
+export const completeUpdateItemAction = createAction(
+  EMeterActions.completeUpdateItem,
   props<MeterModel>()
 );
 
@@ -25,8 +40,10 @@ export const startLoadMeterItemsFromApiAction = createAction(
 
 export const successfulLoadMeterItemsFromApiAction = createAction(
   EMeterActions.successfulLoadItemsFromApi,
-  props<{ items: MeterModel[] }>()
+  props<{items: Map<String, MeterModel>}>()
 );
+
+
 
 
 

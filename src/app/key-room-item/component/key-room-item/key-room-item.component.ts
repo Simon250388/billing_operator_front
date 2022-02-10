@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IKeyRoom, keyRoomPropertyPresent, keyRoomPropertyTranslations} from "../../../../store/models/key-room.model";
-import {Store} from "@ngrx/store";
-import {IAppState} from "../../../../store/state/app.state";
 
 
 @Component({
@@ -14,7 +12,7 @@ export class KeyRoomItemComponent implements OnInit {
   @Input() item!: IKeyRoom
   @Output() onItemClick: EventEmitter<IKeyRoom> = new EventEmitter()
 
-  constructor(private store: Store<IAppState>) {
+  constructor() {
   }
 
   ngOnInit(): void {

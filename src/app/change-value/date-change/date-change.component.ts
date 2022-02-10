@@ -4,21 +4,22 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-provider-change',
-  templateUrl: './provider-change.component.html',
-  styleUrls: ['./provider-change.component.css']
+  selector: 'app-date-change',
+  templateUrl: './date-change.component.html',
+  styleUrls: ['./date-change.component.css']
 })
-export class ProviderChangeComponent {
+export class DateChangeComponent {
 
-  formGroup: FormGroup = this.formBuilder.group({
-    providerId: ['', Validators.required]
-  });
+  formGroup: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<ProviderChangeComponent>,
+    private dialogRef: MatDialogRef<DateChangeComponent>,
     @Inject(MAT_DIALOG_DATA) private data: { value: string, beforeCloseAction: (value: string) => Observable<Boolean> } | undefined
   ) {
+    this.formGroup = this.formBuilder.group({
+      editableDate: ['', Validators.required]
+    })
   }
 
   get valuePresent(): String {
@@ -26,7 +27,7 @@ export class ProviderChangeComponent {
   }
 
   complete() {
-    const currentValue = this.formGroup.get("providerId")?.value;
+    const currentValue = this.formGroup.get("editableDate")?.value;
 
     if (!this.data || !this.data.beforeCloseAction) {
       this.dialogRef.close()

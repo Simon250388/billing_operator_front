@@ -8,13 +8,15 @@ import {SimpleNumberChangeComponent} from './simple-number-change/simple-number-
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from "@angular/material/dialog";
 import { ProviderChangeComponent } from './provider-change/provider-change.component';
+import { DateChangeComponent } from './date-change/date-change.component';
 
 
 @NgModule({
   declarations: [
     DifferentiationTypeChangeComponent,
     SimpleNumberChangeComponent,
-    ProviderChangeComponent
+    ProviderChangeComponent,
+    DateChangeComponent
   ],
   imports: [
     CommonModule,

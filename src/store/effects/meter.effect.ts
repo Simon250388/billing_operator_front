@@ -3,13 +3,11 @@ import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import * as EntityActions from "../action/meter.action";
-import {catchError, filter, map, mergeMap, of} from "rxjs";
-import {ProviderChangeComponent} from "../../app/change-value/provider-change/provider-change.component";
+import {catchError, map, mergeMap} from "rxjs";
 import {IAppState} from "../state/app.state";
 import {Store} from "@ngrx/store";
 import {IMeterHttpService} from "../../service/meter/meter.http.service.factory";
 import {IMeterState} from "../state/meter.state";
-import {getMeterByIdSelector} from "../selectors/meter.selector";
 
 
 @Injectable()
@@ -24,41 +22,22 @@ export class MeterEffect {
   ) {
   }
 
-  openMeterTypeChangeDialogEffect = createEffect(
-    () => this.actions.pipe(
-      ofType(EntityActions.openChangeMeterTypeDialogAction),
-      map((action) => {
-        const dialogRef = this.dialog.open(ProviderChangeComponent, {
-          data: action.meterType
-        });
-        return dialogRef.afterClosed().pipe(
-          map(value => value as String),
-          filter(value => !!value),
-          map(value => {
-            return {meterId: action.meterId, meterTypeId: value}
-          }))
-      }),
-      mergeMap(observableValue => observableValue.pipe(
-        mergeMap(value => {
-          return this.meterStore.select(getMeterByIdSelector(value.meterId))
-            .pipe(
-              mergeMap(meterModel => this.httpService.put(meterModel, "meterType", value.meterTypeId).pipe(
-                  mergeMap(meterModel => of(EntityActions.updateItemAction(meterModel)))
-                )
-              ),
-            )
-        })
-      ))
-    ))
-
-
   loadItemsFromApiEffect = createEffect(() => this.actions.pipe(
     ofType(EntityActions.startLoadMeterItemsFromApiAction),
-    mergeMap(action => this.httpService.load().pipe(
-      map(item => EntityActions.successfulLoadMeterItemsFromApiAction({items: item})),
+    mergeMap(() => this.httpService.load().pipe(
+      map(items => EntityActions.successfulLoadMeterItemsFromApiAction({items: new Map(items.map(i => [i.id, i]))})),
       catchError(() => {
         throw new Error('could not load from http')
       })
     ))
   ))
+
+
+  updateItemEffect = createEffect(() => this.actions.pipe(
+    ofType(EntityActions.startUpdateItemAction),
+    mergeMap(value => this.httpService.save(value).pipe(
+      map(item => EntityActions.completeUpdateItemAction(item))
+    ))
+  ))
+
 }

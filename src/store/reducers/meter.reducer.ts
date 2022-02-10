@@ -5,16 +5,19 @@ import {MeterModel} from "../models/meter.model";
 
 export const MeterReducer = createReducer(
   initialMeterState,
-  on(EntityActions.updateItemAction, (state: IMeterState, payload: MeterModel) => {
-    console.log(`State changed ${JSON.stringify(payload)}`)
-    return {...state}
+  on(EntityActions.completeUpdateItemAction, (state: IMeterState, model: MeterModel) => {
+    if (!state.items) {
+      return {...state}
+    }
+    return {...state, items: updateObject(state.items, model)}
   }),
-  on(EntityActions.successfulLoadMeterItemsFromApiAction, (state: IMeterState, payload: { items: MeterModel[] }) => {
-
-    const result: { [key: string]: MeterModel }[] = [];
-
-    payload.items.map(item => result[item.id] = item)
-
-    return {...state, items: result}
+  on(EntityActions.successfulLoadMeterItemsFromApiAction, (state: IMeterState, payload: { items: Map<String, MeterModel> }) => {
+    return {...state, items: payload.items}
   })
 )
+
+const updateObject = (items: Map<String, MeterModel>, meterModel: MeterModel) => {
+  items.set(meterModel.id, meterModel)
+  return items;
+}
+

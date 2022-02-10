@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {IAppState} from "../../../../store/state/app.state";
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {MeterModel} from "../../../../store/models/meter.model";
 import {PropertyAction} from "../../../../store/models/PropertyAction";
-import {openChangeMeterTypeDialogAction} from "../../../../store/action/meter.action";
 import {IMeterState} from "../../../../store/state/meter.state";
+import {
+  MeterMeterTypeChangeAction,
+  MeterVerificationDateChangeAction
+} from "../../../../service/meter/meter-edit-action";
 
 @Component({
   selector: 'app-meter-item',
@@ -36,10 +38,16 @@ export class MeterItemComponent implements OnInit {
         {
           name: "Изменить",
           iconName: "edit",
-          action: openChangeMeterTypeDialogAction({meterId: this.item.id, meterType: this.item.meterType})
+          action: this.meterTypeEditAction
         }
       ],
-      "verificationDate": [],
+      "verificationDate": [
+        {
+          name: "Изменить",
+          iconName: "edit",
+          action: this.meterVerificationDateChangeAction
+        }
+      ],
       "location": [],
       "differentiationType": [],
       "meterValueDate": [],
@@ -68,12 +76,15 @@ export class MeterItemComponent implements OnInit {
   }
 
   onActionClick(property: string, index: number) {
-    this.store.dispatch(this.meterPropertyChangeActions[property][index].action)
+    this.meterPropertyChangeActions[property][index].action.apply(this.item)
   }
 
   constructor(
     private store: Store<IMeterState>,
-    private breakpointObserver: BreakpointObserver) {
+    private breakpointObserver: BreakpointObserver,
+    private meterTypeEditAction: MeterMeterTypeChangeAction,
+    private meterVerificationDateChangeAction: MeterVerificationDateChangeAction,
+  ) {
   }
 
   ngOnInit(): void {

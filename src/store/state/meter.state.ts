@@ -1,7 +1,7 @@
 import {MeterModel} from "../models/meter.model";
 
 export interface IMeterState {
-  items: { [key: string]: MeterModel }[] | undefined,
+  items: Map<String, MeterModel> | undefined,
   current: string | undefined
 }
 

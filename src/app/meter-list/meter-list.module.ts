@@ -11,6 +11,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {MeterEffect} from "../../store/effects/meter.effect";
 import {MeterReducer} from "../../store/reducers/meter.reducer";
 import {IMeterModuleState} from "../../store/state/meter-module.state";
+import {MeterMeterTypeChangeAction, MeterVerificationDateChangeAction} from "../../service/meter/meter-edit-action";
 
 
 export const meterReducers: ActionReducerMap<IMeterModuleState, any> = {
@@ -29,6 +30,10 @@ export const meterReducers: ActionReducerMap<IMeterModuleState, any> = {
     ChangeValueModule,
     StoreModule.forFeature('meter-list', meterReducers),
     EffectsModule.forFeature([MeterEffect])
+  ],
+  providers: [
+    {provide: MeterVerificationDateChangeAction},
+    {provide: MeterMeterTypeChangeAction},
   ]
 })
 export class MeterListModule {

@@ -11,5 +11,14 @@ export interface MeterModel {
   currentMeterValues: MeterValueModel[]
 }
 
+export interface MeterModelToUpdate {
+  id: string,
+  meterTypeId: string,
+  verificationDate: string,
+  meterValueDate: string,
+  locationId: string,
+  differentiationTypeId: string
+}
+
 
 

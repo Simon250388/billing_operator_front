@@ -7,5 +7,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close="">Отмена</button>
-  <button mat-button [mat-dialog-close]="newValue" cdkFocusInitial>Завершить</button>
+  <button mat-button cdkFocusInitial (click)="complete()">Завершить</button>
 </mat-dialog-actions>

@@ -1,7 +1,7 @@
-import {TypedAction} from "@ngrx/store/src/models";
+import {MeterEditAction} from "../../service/meter/meter-edit-action";
 
 export interface PropertyAction {
   name: string;
   iconName: string;
-  action : TypedAction<any>
+  action : MeterEditAction
 }
