@@ -2,7 +2,6 @@ import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Observable} from "rxjs";
-import {getHttpRequestInProgress} from "../../../store/selectors/common.selector";
 import {Store} from "@ngrx/store";
 import {IAppState} from "../../../store/state/app.state";
 
@@ -30,14 +29,6 @@ export class ProviderChangeComponent {
     @Inject(MAT_DIALOG_DATA) private data: { value: string, beforeCloseAction: (value: string) => Observable<Boolean> } | undefined
   ) {
 
-    this.store.select(getHttpRequestInProgress).subscribe(value => {
-
-      if (this._saveInProgress && value == false) {
-        this.dialogRef.close()
-      }
-
-      this._saveInProgress = value
-    })
   }
 
   get valuePresent(): String {
