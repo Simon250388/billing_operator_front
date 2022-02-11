@@ -1,4 +1,7 @@
-<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center start">
+<div *ngIf="itemsIsLoaded == false" fxLayout="column" fxFill fxLayoutAlign="center center">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="itemsIsLoaded == true" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center start">
   <app-meter-item *ngFor="let item of items | async" [item]="item"></app-meter-item>
 </div>
 

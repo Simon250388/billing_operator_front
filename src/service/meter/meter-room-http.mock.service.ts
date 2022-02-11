@@ -1,4 +1,4 @@
-import {Observable, of} from 'rxjs';
+import {delay, Observable, of} from 'rxjs';
 import {IMeterHttpService} from './meter.http.service.factory';
 import {MeterModel, MeterModelToUpdate} from "../../store/models/meter.model";
 
@@ -32,12 +32,14 @@ export class MeterHttMockService implements IMeterHttpService {
           {zone: {id: "SOMEID", present: "Пик"}, meterValue: 137580, avgVolume: 1000}
         ]
       }
-    ])
+    ]).pipe(delay(2000))
   }
 
   save(model: MeterModelToUpdate): Observable<MeterModel> {
     console.log("save MeterHttMockService")
-    return of(mapToModel(model));
+    return of (mapToModel(model)).pipe(
+      delay(3000)
+    )
   }
 }
 

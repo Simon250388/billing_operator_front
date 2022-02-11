@@ -4,10 +4,10 @@ import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/lay
 import {MeterModel} from "../../../../store/models/meter.model";
 import {PropertyAction} from "../../../../store/models/PropertyAction";
 import {IMeterState} from "../../../../store/state/meter.state";
+import {MeterMeterTypeChangeAction} from "../../../../service/meter/meter-meter-type-change-action.service";
 import {
-  MeterMeterTypeChangeAction,
   MeterVerificationDateChangeAction
-} from "../../../../service/meter/meter-edit-action";
+} from "../../../../service/meter/meter-verification-date-change-action.service";
 
 @Component({
   selector: 'app-meter-item',
@@ -17,6 +17,8 @@ import {
 export class MeterItemComponent implements OnInit {
 
   @Input() item!: MeterModel
+
+
 
   private _isSmallSize: boolean = false;
 
@@ -85,6 +87,7 @@ export class MeterItemComponent implements OnInit {
     private meterTypeEditAction: MeterMeterTypeChangeAction,
     private meterVerificationDateChangeAction: MeterVerificationDateChangeAction,
   ) {
+
   }
 
   ngOnInit(): void {

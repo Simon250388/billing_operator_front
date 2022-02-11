@@ -2,10 +2,15 @@
   <form [formGroup]="formGroup">
     <h4>Текущее значение : {{valuePresent}}</h4>
     <app-provider-input [lbl]="'Поставщик'" [formGroup]="formGroup" formControlName="providerId"
-        [placeholder]="'Укажите текущего поставщика'"></app-provider-input>
+                        [placeholder]="'Укажите текущего поставщика'"></app-provider-input>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close="">Отмена</button>
-  <button mat-button cdkFocusInitial (click)="complete()">Завершить</button>
+  <button mat-button cdkFocusInitial (click)="complete()">
+    Завершить
+    <mat-icon *ngIf="saveInProgress">
+      <mat-spinner color="accent" diameter="20"></mat-spinner>
+    </mat-icon>
+  </button>
 </mat-dialog-actions>

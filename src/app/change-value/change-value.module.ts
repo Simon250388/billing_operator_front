@@ -9,6 +9,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from "@angular/material/dialog";
 import { ProviderChangeComponent } from './provider-change/provider-change.component';
 import { DateChangeComponent } from './date-change/date-change.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { DateChangeComponent } from './date-change/date-change.component';
     EntityInputModule,
     MatDialogModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ChangeValueModule {

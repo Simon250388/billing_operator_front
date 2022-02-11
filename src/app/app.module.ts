@@ -11,7 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {EnvironmenterModule} from 'ng-environmenter';
-import {StoreModule} from '@ngrx/store';
+import {ActionReducer, INIT, MetaReducer, StoreModule, UPDATE} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {appReducers} from 'src/store/app.reducer';
@@ -31,8 +31,31 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {MatDialogModule} from "@angular/material/dialog";
+import {IAppState} from "../store/state/app.state";
 
 registerLocaleData(localeRu, 'ru');
+
+export const appMetaReducer = (
+  reducer: ActionReducer<IAppState>
+): ActionReducer<IAppState> => {
+  return (state, action) => {
+    if (action.type === INIT || action.type === UPDATE) {
+      const storageValue = localStorage.getItem("state");
+      if (storageValue) {
+        try {
+          return JSON.parse(storageValue);
+        } catch {
+          localStorage.removeItem("state");
+        }
+      }
+    }
+    const nextState = reducer(state, action);
+    localStorage.setItem("state", JSON.stringify(nextState));
+    return nextState;
+  };
+};
+
+export const metaReducers: MetaReducer[] = [appMetaReducer];
 
 
 @NgModule({
@@ -50,7 +73,7 @@ registerLocaleData(localeRu, 'ru');
     ReactiveFormsModule,
     FormsModule,
     EnvironmenterModule.forRoot(environment),
-    StoreModule.forRoot(appReducers),
+    StoreModule.forRoot(appReducers, { metaReducers }),
     EffectsModule.forRoot([
       UserEffect,
       KeyRoomEffect,
