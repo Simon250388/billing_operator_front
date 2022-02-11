@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {getCurrentKeyRoom, getKeyRoomItems} from "../../../store/selectors/key-room.selector";
 import {Store} from "@ngrx/store";
-import {IAppState} from "../../../store/state/app.state";
 import {IKeyRoom} from "../../../store/models/key-room.model";
 import {clearCurrentKeyRoomAction, startChooseCurrentAction} from "../../../store/action/key-room.action";
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
+import {IKeyRoomState} from "../../../store/state/key-room.state";
 
 @Component({
   selector: 'app-side-nav',
@@ -20,7 +20,7 @@ export class SideNavComponent implements OnInit {
 
   private _isSmallSize: boolean = false;
 
-  constructor(private store: Store<IAppState>, private breakpointObserver: BreakpointObserver) {
+  constructor(private store: Store<IKeyRoomState>, private breakpointObserver: BreakpointObserver) {
   }
 
   get isSmallSize(): boolean {

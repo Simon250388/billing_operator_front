@@ -1,23 +1,22 @@
 <mat-card class="accounting-point-card" (click)=onClick()>
-  <mat-card-title>{{item.accountingPoint.present}}</mat-card-title>
+  <mat-card-title>{{item.name}}</mat-card-title>
   <mat-card-content>
     <table class="app-table">
       <tr *ngFor="let key of keys">
         <td class="key-room-property-column">{{getPropertyPresent(key)}}</td>
         <td>{{getValuePresent(key)}}</td>
         <td class="app-action-column">
+        <td class="meter-row-property-action" *ngIf="getPropertyAction(key).length > 0">
           <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menuType="matMenu">
-            <button mat-menu-item>
-              <mat-icon>edit</mat-icon>
-              <span>Изменить</span>
-            </button>
-            <button mat-menu-item>
-              <mat-icon>history</mat-icon>
-              <span>История</span>
-            </button>
+            <ng-container *ngFor="let propertyAction of getPropertyAction(key); let i = index">
+              <button mat-menu-item (click)="onActionClick(key, i)">
+                <mat-icon>{{getActionIconName(key, i)}}</mat-icon>
+                <span>{{getActionName(key, i)}}</span>
+              </button>
+            </ng-container>
           </mat-menu>
         </td>
       </tr>

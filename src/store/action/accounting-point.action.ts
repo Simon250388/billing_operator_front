@@ -1,59 +1,41 @@
 import {createAction, props} from "@ngrx/store";
-import {IAccountingPointActive} from "../models/accounting-point-active.model";
-import {SimpleRef} from "../models/simple-ref.model";
+
+import {IAccountingPointActive, IAccountingPointActiveToUpdateModel} from "../models/accounting-point-active.model";
+import {IServiceSimpleModel} from "../models/service-simple.model";
 
 export enum EActiveAccountingPointAction {
-  LoadFromApiStart = "[AccountingPoint] load from api start",
-  LoadFromApiSuccess = "[AccountingPoint] load from api success",
-  CreateActiveAccountingPoint = "[AccountingPoint] create new",
-  DisconnectService = "[AccountingPoint] disconnect service",
-  DisconnectMeter = "[AccountingPoint] Disconnect meter",
-  ConnectMeter = "[AccountingPoint] Connect meter",
-  ChangeProvider = "[AccountingPoint] Change provider",
-  ChangeMeterValue = "[AccountingPoint] Change meter value",
-  ChangeSelected = "[AccountingPoint] Change selected"
+  startLoadItemsFromApi = "[AccountingPoint] start load items from api",
+  successfulLoadItemsFromApi = "[AccountingPoint] successful load items from api",
+  startLoadSimpleServiceItemsFromApi = "[SimpleService] start load items from api",
+  successfulLoadSimpleServiceItemsFromApi = "[SimpleService] successful load items from api",
+  startUpdateItem = "[AccountingPoint] start update item",
+  completeUpdateItem = "[AccountingPoint] complete update item"
 }
 
-export const loadFromApiStartAction = createAction(
-  EActiveAccountingPointAction.LoadFromApiStart,
-  props<String>()
-)
-
-export const loadFromApiStartActionSuccessAction = createAction(
-  EActiveAccountingPointAction.LoadFromApiSuccess,
-  props<{ items: IAccountingPointActive[] }>()
-)
-
-export const createActiveAccountingPointAction = createAction(
-  EActiveAccountingPointAction.CreateActiveAccountingPoint
+export const startUpdateItemAction = createAction(
+  EActiveAccountingPointAction.startUpdateItem,
+  props<IAccountingPointActiveToUpdateModel>()
 );
 
-export const disconnectServiceInActiveAccountingPointAction = createAction(
-  EActiveAccountingPointAction.DisconnectService,
-  props<SimpleRef>()
-)
-
-export const disconnectMeterInActiveAccountingPointAction = createAction(
-  EActiveAccountingPointAction.DisconnectMeter,
-  props<SimpleRef>()
-)
-
-export const connectMeterInActiveAccountingPointAction = createAction(
-  EActiveAccountingPointAction.ConnectMeter,
-  props<SimpleRef>()
-)
-
-export const changeProviderInActiveAccountingPointAction = createAction(
-  EActiveAccountingPointAction.ChangeProvider,
-  props<SimpleRef>()
-)
-
-export const changeMeterValueInActiveAccountingPointAction = createAction(
-  EActiveAccountingPointAction.ChangeMeterValue,
-  props<{ value: number }>()
-)
-
-export const changeSelectedActiveAccountingPointAction = createAction(
-  EActiveAccountingPointAction.ChangeSelected,
+export const completeUpdateItemAction = createAction(
+  EActiveAccountingPointAction.completeUpdateItem,
   props<IAccountingPointActive>()
-)
+);
+
+export const startLoadItemsFromApiAction = createAction(
+  EActiveAccountingPointAction.startLoadItemsFromApi
+);
+
+export const successfulLoadItemsFromApiAction = createAction(
+  EActiveAccountingPointAction.successfulLoadItemsFromApi,
+  props<{items: Map<String, IAccountingPointActive>}>()
+);
+
+export const startLoadSimpleServiceItemsFromApiAction = createAction(
+  EActiveAccountingPointAction.startLoadSimpleServiceItemsFromApi
+);
+
+export const successfulLoadSimpleServiceItemsFromApiAction = createAction(
+  EActiveAccountingPointAction.successfulLoadSimpleServiceItemsFromApi,
+  props<{items: Map<String, IServiceSimpleModel>}>()
+);

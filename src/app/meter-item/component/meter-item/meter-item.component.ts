@@ -34,7 +34,7 @@ export class MeterItemComponent implements OnInit {
     return result;
   }
 
-  get meterPropertyChangeActions(): { [key: string]: PropertyAction[] } {
+  get meterPropertyChangeActions(): { [key: string]: PropertyAction<MeterModel>[] } {
     return {
       "meterType": [
         {

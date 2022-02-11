@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {IAccountingPointActive} from 'src/store/models/accounting-point-active.model';
+import {delay, Observable, of} from 'rxjs';
+import {
+  IAccountingPointActive,
+  IAccountingPointActiveToUpdateModel
+} from 'src/store/models/accounting-point-active.model';
 import {IAccountingPointHttpService} from './accounting-point.http.factory';
 
 @Injectable({
@@ -14,10 +17,8 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
   load(keyRoomId: string): Observable<IAccountingPointActive[]> {
     return of(
       [{
-        accountingPoint: {
-          id: "somestring",
-          present: "Кухня"
-        },
+        id: "someId-1",
+        name: "Кухня",
         service: {
           id: "somestring",
           present: "Холодная вода"
@@ -32,19 +33,11 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
           present: "12555454/СГВ-15"
         },
         meterIsActive: true,
-        meterStateChangeAt: "2022-15-30T12:00:00",
-        differentiationType: {
-          id: "somestring",
-          present: "однотарифный"
-        },
-        lastMeterValue: 158,
-        avgVolume: 0
+        meterStateChangeAt: "2022-15-30T12:00:00"
       },
         {
-          accountingPoint: {
-            id: "somestring",
-            present: "Кухня"
-          },
+          id: "someId-2",
+          name: "Кухня",
           service: {
             id: "somestring",
             present: "Холодная вода"
@@ -59,19 +52,11 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
             present: "12555454/СГВ-15"
           },
           meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00",
-          differentiationType: {
-            id: "somestring",
-            present: "однотарифный"
-          },
-          lastMeterValue: 158,
-          avgVolume: 10
+          meterStateChangeAt: "2022-15-30T12:00:00"
         },
         {
-          accountingPoint: {
-            id: "somestring",
-            present: "Кухня"
-          },
+          id: "someId-3",
+          name: "Кухня",
           service: {
             id: "somestring",
             present: "Холодная вода"
@@ -86,19 +71,11 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
             present: "12555454/СГВ-15"
           },
           meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00",
-          differentiationType: {
-            id: "somestring",
-            present: "однотарифный"
-          },
-          lastMeterValue: 158,
-          avgVolume: 15
+          meterStateChangeAt: "2022-15-30T12:00:00"
         },
         {
-          accountingPoint: {
-            id: "somestring",
-            present: "Кухня"
-          },
+          id: "someId-4",
+          name: "Кухня",
           service: {
             id: "somestring",
             present: "Холодная вода"
@@ -113,19 +90,11 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
             present: "12555454/СГВ-15"
           },
           meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00",
-          differentiationType: {
-            id: "somestring",
-            present: "однотарифный"
-          },
-          lastMeterValue: 158,
-          avgVolume: 20
+          meterStateChangeAt: "2022-15-30T12:00:00"
         },
         {
-          accountingPoint: {
-            id: "somestring",
-            present: "Кухня"
-          },
+          id: "someId-5",
+          name: "Кухня",
           service: {
             id: "somestring",
             present: "Холодная вода"
@@ -140,19 +109,11 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
             present: "12555454/СГВ-15"
           },
           meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00",
-          differentiationType: {
-            id: "somestring",
-            present: "однотарифный"
-          },
-          lastMeterValue: 158,
-          avgVolume: 25
+          meterStateChangeAt: "2022-15-30T12:00:00"
         },
         {
-          accountingPoint: {
-            id: "somestring",
-            present: "Кухня"
-          },
+          id: "someId-6",
+          name: "Кухня",
           service: {
             id: "somestring",
             present: "Холодная вода"
@@ -167,14 +128,32 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
             present: "12555454/СГВ-15"
           },
           meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00",
-          differentiationType: {
-            id: "somestring",
-            present: "однотарифный"
-          },
-          lastMeterValue: 158,
-          avgVolume: 35
+          meterStateChangeAt: "2022-15-30T12:00:00"
         }]
+    ).pipe(
+      delay(1500)
     );
+  }
+
+  save(model: IAccountingPointActiveToUpdateModel): Observable<IAccountingPointActive> {
+    return of({
+      id: "someId-1",
+      name: "Кухня",
+      service: {
+        id: "somestring",
+        present: "Холодная вода"
+      },
+      provider: {
+        id: "somestring",
+        present: "ООО Водоканал"
+      },
+      isActive: true,
+      meter: {
+        id: "somestring",
+        present: "12555454/СГВ-15"
+      },
+      meterIsActive: true,
+      meterStateChangeAt: "2022-15-30T12:00:00"
+    });
   }
 }

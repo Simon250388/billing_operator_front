@@ -1,13 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {MeterModel} from "../../../../store/models/meter.model";
 import {IMeterState} from "../../../../store/state/meter.state";
 import {Store} from "@ngrx/store";
 import {getMeterItems} from "../../../../store/selectors/meter.selector";
-import {
-  startLoadMeterItemsFromApiAction,
-  successfulLoadMeterItemsFromApiAction
-} from "../../../../store/action/meter.action";
+import * as EntityAction from "../../../../store/action/meter.action";
 import {Actions, ofType} from "@ngrx/effects";
 
 @Component({
@@ -15,7 +12,7 @@ import {Actions, ofType} from "@ngrx/effects";
   templateUrl: './meter-list.component.html',
   styleUrls: ['./meter-list.component.css']
 })
-export class MeterListComponent implements OnInit, OnDestroy {
+export class MeterListComponent implements OnDestroy {
 
   get itemsIsLoaded(): boolean {
     return this._itemsIsLoaded;
@@ -25,26 +22,28 @@ export class MeterListComponent implements OnInit, OnDestroy {
 
   items: Observable<MeterModel[] | undefined> = this.meterStore.select(getMeterItems)
 
-  private subscription!: Subscription
+  private readonly subscription: Subscription
+  private actionSubscription: Subscription | undefined
 
   constructor(
     private readonly meterStore: Store<IMeterState>,
     private readonly actions: Actions) {
-  }
 
-  ngOnInit(): void {
     this.subscription = this.items.subscribe(items => {
       if (items == undefined) {
-        this.meterStore.dispatch(startLoadMeterItemsFromApiAction())
+        this.meterStore.dispatch(EntityAction.startLoadMeterItemsFromApiAction())
 
-        this.actions.pipe(
-          ofType(successfulLoadMeterItemsFromApiAction)
+        this.actionSubscription = this.actions.pipe(
+          ofType(EntityAction.successfulLoadMeterItemsFromApiAction)
         ).subscribe(() => this._itemsIsLoaded = true)
+      } else {
+        this._itemsIsLoaded = true
       }
     })
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
+    if (this.actionSubscription) this.actionSubscription.unsubscribe()
   }
 }

@@ -1,43 +1,66 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {select, Store} from '@ngrx/store';
-import {Observable, of} from 'rxjs';
-
-import {loadFromApiStartAction} from 'src/store/action/accounting-point.action';
+import {Component} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {Observable, Subscription} from 'rxjs';
 import {IAccountingPointActive} from 'src/store/models/accounting-point-active.model';
-import {IAppState} from 'src/store/state/app.state';
 import {IServiceSimpleModel} from "../../../store/models/service-simple.model";
-import {getAccountingPointsCurrentKeyRoom, isAccountingPointsLoad} from "../../../store/selectors/key-room.selector";
+import {Actions, ofType} from "@ngrx/effects";
+import * as EntityAction from "../../../store/action/accounting-point.action";
+import {IAccountingPointActiveState} from "../../../store/state/accounting-pointactive.state";
+import {getAccountingPointsItems, getSimpleServiceItems} from "../../../store/selectors/accounting-point.selector";
 
 @Component({
   selector: 'app-accounting-point-list',
   templateUrl: './accounting-point-active-list.component.html',
   styleUrls: ['./accounting-point-active-list.component.css']
 })
-export class AccountingPointActiveListComponent implements OnInit {
+export class AccountingPointActiveListComponent  {
 
-  accountingPoints: Observable<IAccountingPointActive[]> = this._store.pipe(select(getAccountingPointsCurrentKeyRoom))
-  // simpleServices: Observable<IServiceSimpleModel[]> = this._store.pipe(select(getSimpleServicesCurrentKeyRoom))
-  simpleServices: Observable<IServiceSimpleModel[]> = of([])
+  private _itemsIsLoaded: boolean = false
+  private _simpleServiceIsLoaded: boolean = false
+
+  accountingPoints: Observable<IAccountingPointActive[] | undefined> = this.store.select(getAccountingPointsItems)
+  simpleServices: Observable<IServiceSimpleModel[] | undefined> = this.store.select(getSimpleServiceItems)
+
+  private readonly accountingPointSubscription: Subscription
+  private readonly simpleServiceSubscription: Subscription
+  private actionAccountingPointSubscription: Subscription | undefined
+  private actionSimpleServiceSubscription: Subscription | undefined
 
   constructor(
-    private dialog: MatDialog,
-    private _store: Store<IAppState>) {
-  }
+    private readonly store: Store<IAccountingPointActiveState>,
+    private readonly actions: Actions) {
 
-  ngOnInit(): void {
+    this.accountingPointSubscription = this.accountingPoints.subscribe(items => {
+      if (items == undefined) {
+        this.store.dispatch(EntityAction.startLoadItemsFromApiAction())
 
-    this._store.select(isAccountingPointsLoad).subscribe(accountingPointsState => {
-      if (accountingPointsState && accountingPointsState.current && !accountingPointsState.isAccountingPointLoad) {
-        this._store.dispatch(loadFromApiStartAction(accountingPointsState.current.id))
+        this.actionAccountingPointSubscription = this.actions.pipe(
+          ofType(EntityAction.successfulLoadItemsFromApiAction)
+        ).subscribe(() => this._itemsIsLoaded = true)
+      } else {
+        this._itemsIsLoaded = true
       }
     })
 
-    // this._store.select(isSimpleServiceLoad).subscribe(simpleServiceState => {
-    //   if (simpleServiceState && simpleServiceState.current && !simpleServiceState.isAccountingPointLoad) {
-    //     this._store.dispatch(servicesHttpRequestStartAction(simpleServiceState.current.id))
-    //   }
-    // })
+
+    this.simpleServiceSubscription = this.simpleServices.subscribe(items => {
+      if (items == undefined) {
+        this.store.dispatch(EntityAction.startLoadSimpleServiceItemsFromApiAction())
+
+        this.actionSimpleServiceSubscription = this.actions.pipe(
+          ofType(EntityAction.successfulLoadSimpleServiceItemsFromApiAction)
+        ).subscribe(() => this._simpleServiceIsLoaded = true)
+      } else {
+        this._simpleServiceIsLoaded = true
+      }
+    })
+
   }
 
+  ngOnDestroy(): void {
+    this.accountingPointSubscription.unsubscribe()
+    this.simpleServiceSubscription.unsubscribe()
+    if (this.actionAccountingPointSubscription) this.actionAccountingPointSubscription.unsubscribe()
+    if (this.actionSimpleServiceSubscription) this.actionSimpleServiceSubscription.unsubscribe()
+  }
 }

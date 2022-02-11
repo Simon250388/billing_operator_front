@@ -1,11 +1,12 @@
-import { IAccountingPointActive } from "../models/accounting-point-active.model";
+import {IAccountingPointActive} from "../models/accounting-point-active.model";
+import {IServiceSimpleModel} from "../models/service-simple.model";
 
 export interface IAccountingPointActiveState {
-    items: IAccountingPointActive[],
-    selected: IAccountingPointActive | undefined
+  items: Map<String, IAccountingPointActive> | undefined
+  simpleServices: Map<String, IServiceSimpleModel> | undefined
 }
 
 export const initialAccountingPointActiveState: IAccountingPointActiveState = {
-    items: [],
-    selected: undefined
+  items: undefined,
+  simpleServices: undefined
 }

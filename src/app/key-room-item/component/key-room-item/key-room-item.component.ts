@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IKeyRoom, keyRoomPropertyPresent, keyRoomPropertyTranslations} from "../../../../store/models/key-room.model";
 
 
@@ -7,15 +7,12 @@ import {IKeyRoom, keyRoomPropertyPresent, keyRoomPropertyTranslations} from "../
   templateUrl: './key-room-item.component.html',
   styleUrls: ['./key-room-item.component.css']
 })
-export class KeyRoomItemComponent implements OnInit {
+export class KeyRoomItemComponent  {
 
   @Input() item!: IKeyRoom
   @Output() onItemClick: EventEmitter<IKeyRoom> = new EventEmitter()
 
   constructor() {
-  }
-
-  ngOnInit(): void {
   }
 
   get keys(): string[] {

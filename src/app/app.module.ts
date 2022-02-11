@@ -22,8 +22,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
-import {KeyRoomEffect} from 'src/store/effects/key-room.effect';
-import {AccountingPointEffect} from 'src/store/effects/accountin-point.effect';
 import {SimpleRefEffects} from 'src/store/effects/simple-ref-effects.service';
 import {ServiceSimpleEffect} from "../store/effects/service-simple.effect";
 import {ToolBarComponent} from './tool-bar/tool-bar.component';
@@ -76,8 +74,6 @@ export const metaReducers: MetaReducer[] = [appMetaReducer];
     StoreModule.forRoot(appReducers, { metaReducers }),
     EffectsModule.forRoot([
       UserEffect,
-      KeyRoomEffect,
-      AccountingPointEffect,
       SimpleRefEffects,
       ServiceSimpleEffect
     ]),

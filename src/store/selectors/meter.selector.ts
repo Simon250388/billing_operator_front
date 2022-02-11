@@ -15,7 +15,7 @@ export const getMeterItems = createSelector(
   meterModuleState,
   (state: IMeterModuleState) => {
     if (!state.meters.items) return undefined
-
+    if (!state.meters.items.size || state.meters.items.size == 0) return undefined
     return [...state.meters.items.values()]
   }
 )

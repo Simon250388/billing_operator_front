@@ -1,29 +1,30 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {Store} from '@ngrx/store';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {
   accountingPointPropertyPresent,
   accountingPointPropertyTranslations,
   IAccountingPointActive
 } from 'src/store/models/accounting-point-active.model';
-import {IAppState} from 'src/store/state/app.state';
+import {PropertyAction} from "../../../store/models/PropertyAction";
 
 @Component({
   selector: 'app-accounting-point-item',
   templateUrl: './accounting-point-item.component.html',
   styleUrls: ['./accounting-point-item.component.css']
 })
-export class AccountingPointItemComponent implements OnInit {
+export class AccountingPointItemComponent {
 
   @Input() item!: IAccountingPointActive
   @Output() onItemClick: EventEmitter<IAccountingPointActive> = new EventEmitter()
 
-  constructor(
-    private dialog: MatDialog,
-    private store: Store<IAppState>) {
+  constructor() {
   }
 
-  ngOnInit(): void {
+  get propertyChangeActions(): { [key: string]: PropertyAction<IAccountingPointActive>[] } {
+    return {
+      "service": [],
+      "provider": [],
+      "meter": []
+    }
   }
 
   get keys(): string[] {
@@ -47,41 +48,20 @@ export class AccountingPointItemComponent implements OnInit {
     this.onItemClick.emit(this.item)
   }
 
-  // ngOnInit() {
-  // }
-  //
-  // showProviderDialog(): void {
-  //
-  //   this.store.dispatch(AccountingPointActions.changeSelectedActiveAccountingPointAction(this.item))
-  //
-  //   const dialogRef = this.dialog.open(ProviderChangeComponent, {
-  //     data: this.item.provider
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result && result != '' && <SimpleRef>result != undefined) {
-  //       this.store.dispatch(AccountingPointActions.changeProviderInActiveAccountingPointAction(<SimpleRef>result))
-  //     }
-  //   });
-  // }
-  //
-  // showDifferentiationTypeChangeDialog(): void {
-  //
-  // }
-  //
-  // showMeterValueChangeDialog(): void {
-  //
-  //   this.store.dispatch(AccountingPointActions.changeSelectedActiveAccountingPointAction(this.item))
-  //
-  //   const dialogRef = this.dialog.open(SimpleNumberChangeComponent, {
-  //     data: this.item.lastMeterValue
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result && result != '' && <SimpleRef>result != undefined) {
-  //       this.store.dispatch(AccountingPointActions.changeMeterValueInActiveAccountingPointAction({value: result}))
-  //     }
-  //   });
-  // }
+  getPropertyAction(property: string): string[] {
+    return this.propertyChangeActions[property].map(value => value.name)
+  }
+
+  getActionIconName(property: string, index: number): string {
+    return this.propertyChangeActions[property][index].iconName
+  }
+
+  getActionName(property: string, index: number): string {
+    return this.propertyChangeActions[property][index].name
+  }
+
+  onActionClick(property: string, index: number) {
+    this.propertyChangeActions[property][index].action.apply(this.item)
+  }
 
 }

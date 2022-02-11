@@ -13,7 +13,7 @@ import {convertModelToUpdateModel, MeterEditAction} from "./meter-edit-action";
 
 @Injectable()
 export class MeterVerificationDateChangeAction
-  implements MeterEditAction {
+  implements MeterEditAction<MeterModel> {
 
   private datePipe: DatePipe;
 

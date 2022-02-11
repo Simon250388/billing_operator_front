@@ -11,7 +11,7 @@ import * as EntityActions from "../../store/action/meter.action";
 import {convertModelToUpdateModel, MeterEditAction} from "./meter-edit-action";
 
 @Injectable()
-export class MeterMeterTypeChangeAction implements MeterEditAction {
+export class MeterMeterTypeChangeAction implements MeterEditAction<MeterModel> {
 
   constructor(
     private readonly store: Store<IAppState>,
@@ -24,7 +24,9 @@ export class MeterMeterTypeChangeAction implements MeterEditAction {
     this.dialog.open(ProviderChangeComponent, {
       data: {
         value: meter.meterType.present,
-        beforeCloseAction: this.changeMeterType(meter.id)
+        beforeCloseAction: this.changeMeterType(meter.id),
+        inProgressAction: EntityActions.startUpdateItemAction,
+        successCompleteAction: EntityActions.completeUpdateItemAction
       },
       disableClose: true
     })
