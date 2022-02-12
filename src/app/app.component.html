@@ -1,11 +1,12 @@
-<div fxLayout="row" fxLayoutAlign="center" style="min-height: 100%">
+<div fxLayout="row" fxFill fxLayoutAlign="center" style="min-height: 100%">
   <div fxFlex="65%" fxFlex.lt-lg="100%">
-    <div fxLayout="row" fxLayoutAlign="center">
+    <div fxLayout="column" fxFill>
+      <div fxLayout="row" fxLayoutAlign="center" fxFlex="7">
         <app-tool-bar></app-tool-bar>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="center">
-      <router-outlet></router-outlet>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center stretch" fxFlex="90">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>
-

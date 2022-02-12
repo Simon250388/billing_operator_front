@@ -20,6 +20,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {accountingPointReducer} from "../../store/reducers/accounting-point.reducer";
 import {AccountingPointEffect} from "../../store/effects/accountin-point.effect";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     CommonModule,
     AccountingPointActiveRoutingModule,
     FlexLayoutModule,
+    ScrollingModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
