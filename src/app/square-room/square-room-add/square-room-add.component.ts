@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {SquareRoomRowComponent} from "../square-room-row/square-room-row.component";
 import {MatDialog} from "@angular/material/dialog";
-import {AbstractControl, FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {SquareTypeRow, squareTypeValues} from "src/store/models/square-type-row";
 
 @Component({
@@ -10,8 +10,8 @@ import {SquareTypeRow, squareTypeValues} from "src/store/models/square-type-row"
   styleUrls: ["./square-room-add.component.css"],
 })
 export class SquareRoomAddComponent {
-  @Input()
-  formArray!: FormArray;
+
+  @Input() formArray!: FormArray;
 
   constructor(
     private dialog: MatDialog,
