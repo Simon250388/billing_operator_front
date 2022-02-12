@@ -4,12 +4,12 @@
       <mat-list-item role="listitem">
 
         <button [class.mat-icon-button]=isSmallSize [class.mat-button]=!isSmallSize  [matMenuTriggerFor]="setCurrentKeyRoomMenu">
-          <span [hidden]="isSmallSize">{{(currentKeyRoom | async)?.present}}</span>
+          <span [hidden]="isSmallSize">{{(currentKeyRoom | async)?.id}}</span>
           <mat-icon *ngIf="isSmallSize">more_vert</mat-icon>
         </button>
         <mat-menu #setCurrentKeyRoomMenu="matMenu">
           <button mat-menu-item *ngFor="let keyRoom of keyRoomItems | async"
-                  (click)="setCurrentKeyRoom(keyRoom)">{{keyRoom.present}}</button>
+                  (click)="setCurrentKeyRoom(keyRoom)">{{keyRoom.id}}</button>
         </mat-menu>
 
       </mat-list-item>

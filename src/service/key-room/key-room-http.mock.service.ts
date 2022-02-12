@@ -12,8 +12,7 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
   search(): Observable<IKeyRoom[]> {
     return of([
       {
-        present: "Королева",
-        id: "1",
+        id: "Первое",
         building: {
           id: "someBuildingId",
           present: "some"
@@ -26,9 +25,8 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
 
       },
       {
-        present: "Второе",
+        id: "Второе",
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "2",
         building: {
           id: "someBuildingId",
           present: "some"
@@ -39,9 +37,8 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
         countOwner: 4,
       },
       {
-        present: "Второе",
+        id: "Третье",
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "3",
         building: {
           id: "someBuildingId",
           present: "some"
@@ -52,9 +49,8 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
         countOwner: 2,
       },
       {
-        present: "Третье",
+        id: "Четвертое",
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "4",
         building: {
           id: "someBuildingId",
           present: "some"
@@ -72,7 +68,6 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
   save(model: IKeyRoomUpdateModel): Observable<IKeyRoom> {
     return of(
       {
-        present: model.present,
         id: model.id!!,
         building: {
           id: model.buildingId,

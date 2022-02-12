@@ -2,7 +2,6 @@ import {SimpleRef} from "./simple-ref.model";
 
 export interface IKeyRoom {
   id: string,
-  present: string,
   address: string,
   countResident: number,
   countSubscribed: number,
@@ -12,8 +11,7 @@ export interface IKeyRoom {
 }
 
 export interface IKeyRoomUpdateModel {
-  id: string | undefined,
-  present: string,
+  id: string,
   address: string,
   countResident: number,
   countSubscribed: number,
