@@ -18,8 +18,8 @@ export class UserEffect {
   loginUserEffect = createEffect(
     () => this.actions$.pipe(
       ofType(EntityActions.UserTryLoginAction),
-      mergeMap(payload => this.httpService.login(payload.userName, payload.password)
-        .pipe(map((user) => EntityActions.UserLoginSuccessAction(user)))),
+      mergeMap(payload => this.httpService.login(payload.userName, payload.password)),
+      map((user) => EntityActions.UserLoginSuccessAction(user)),
       tap(() => this.router.navigate(["key-room"]))
     ))
 }
