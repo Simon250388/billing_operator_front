@@ -1,7 +1,7 @@
-import {MeterEditAction} from "../../service/meter/meter-edit-action";
+import {EntityEditAction} from "../../service/meter/entity-edit-action";
 
 export interface PropertyAction<T> {
   name: string;
   iconName: string;
-  action : MeterEditAction<T>
+  action : EntityEditAction<T>
 }

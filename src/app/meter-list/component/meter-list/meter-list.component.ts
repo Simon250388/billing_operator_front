@@ -31,6 +31,7 @@ export class MeterListComponent implements OnDestroy {
 
     this.subscription = this.items.subscribe(items => {
       if (items == undefined) {
+        this._itemsIsLoaded = false
         this.meterStore.dispatch(EntityAction.startLoadMeterItemsFromApiAction())
 
         this.actionSubscription = this.actions.pipe(

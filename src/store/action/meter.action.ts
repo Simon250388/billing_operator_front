@@ -6,6 +6,7 @@ export enum EMeterActions {
   successfulLoadItemsFromApi = "[Meter] successful load items from api",
   startUpdateItem = "[Meter] start update item",
   completeUpdateItem = "[Meter] complete update item",
+  clearState = "[Meter] clear state",
 }
 
 export const startUpdateItemAction = createAction(
@@ -25,6 +26,10 @@ export const startLoadMeterItemsFromApiAction = createAction(
 export const successfulLoadMeterItemsFromApiAction = createAction(
   EMeterActions.successfulLoadItemsFromApi,
   props<{items: Map<String, MeterModel>}>()
+);
+
+export const clearStateMeterStateAction = createAction(
+  EMeterActions.clearState
 );
 
 

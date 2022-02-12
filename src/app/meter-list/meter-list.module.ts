@@ -6,19 +6,14 @@ import {MeterListComponent} from './component/meter-list/meter-list.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MeterItemModule} from "../meter-item/meter-item.module";
 import {ChangeValueModule} from "../change-value/change-value.module";
-import {ActionReducerMap, StoreModule} from "@ngrx/store";
+import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {MeterEffect} from "../../store/effects/meter.effect";
-import {MeterReducer} from "../../store/reducers/meter.reducer";
-import {IMeterModuleState} from "../../store/state/meter-module.state";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MeterMeterTypeChangeAction} from "../../service/meter/meter-meter-type-change-action.service";
 import {MeterVerificationDateChangeAction} from "../../service/meter/meter-verification-date-change-action.service";
+import {meterReducer} from "../../store/reducers/meter.reducer";
 
-
-export const meterReducers: ActionReducerMap<IMeterModuleState, any> = {
-  meters: MeterReducer
-}
 
 @NgModule({
   declarations: [
@@ -31,7 +26,7 @@ export const meterReducers: ActionReducerMap<IMeterModuleState, any> = {
     MeterItemModule,
     ChangeValueModule,
     MatProgressSpinnerModule,
-    StoreModule.forFeature('meter-list', meterReducers),
+    StoreModule.forFeature('meter-list', meterReducer),
     EffectsModule.forFeature([MeterEffect])
   ],
   providers: [

@@ -1,4 +1,7 @@
-<div fxLayout="column" class="card-container" >
+<div *ngIf="itemsIsLoaded == false" fxLayout="column" fxFill fxLayoutAlign="center center">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="itemsIsLoaded" fxLayout="column" class="card-container" >
   <div fxLayout="row wrap" class="button-row">
     <button mat-button color="primary" routerLink="new">Добавить</button>
   </div>

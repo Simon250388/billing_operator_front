@@ -4,7 +4,7 @@ import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 import {IAppState} from "../../../../store/state/app.state";
 import {Store} from "@ngrx/store";
 import {addNewKeyRoomStartAction} from "../../../../store/action/key-room.action";
-import {IKeyRoomAddModel} from "../../../../store/models/key-room-add.model";
+import {IKeyRoomUpdateModel} from "../../../../store/models/key-room.model";
 
 @Component({
   selector: 'app-contract-details',
@@ -83,6 +83,6 @@ export class KeyRoomAddComponent implements OnInit {
     if (this.formGroup.invalid) {
       return
     }
-    this.store.dispatch(addNewKeyRoomStartAction(this.formGroup.value as IKeyRoomAddModel))
+    this.store.dispatch(addNewKeyRoomStartAction(this.formGroup.value as IKeyRoomUpdateModel))
   }
 }

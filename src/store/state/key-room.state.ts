@@ -1,11 +1,11 @@
-import { IKeyRoom } from "../models/key-room.model";
+import {IKeyRoom} from "../models/key-room.model";
 
 export interface IKeyRoomState {
-    items: IKeyRoom[],
-    current: IKeyRoom | undefined
+  items: Map<String, IKeyRoom> | undefined,
+  currentId: String | undefined
 }
 
 export const initialKeyRoomState: IKeyRoomState = {
-    items: [],
-    current: undefined
+  items: undefined,
+  currentId: undefined
 }

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {IKeyRoom} from "../../../../store/models/key-room.model";
-import {getCurrentKeyRoom} from "../../../../store/selectors/key-room.selector";
+import {getCurrentKeyRoomSelector} from "../../../../store/selectors/key-room.selector";
 import {IKeyRoomState} from "../../../../store/state/key-room.state";
 
 @Component({
@@ -12,7 +12,7 @@ import {IKeyRoomState} from "../../../../store/state/key-room.state";
 })
 export class CurrentKeyRoomComponent {
 
-  item: Observable<IKeyRoom | undefined> = this.store.select(getCurrentKeyRoom);
+  item: Observable<IKeyRoom | undefined> = this.store.select(getCurrentKeyRoomSelector);
 
   constructor(private store: Store<IKeyRoomState>) {
   }

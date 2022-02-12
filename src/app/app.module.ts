@@ -30,6 +30,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {MatDialogModule} from "@angular/material/dialog";
 import {IAppState} from "../store/state/app.state";
+import {IUserState} from "../store/state/user.state";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -41,14 +42,17 @@ export const appMetaReducer = (
       const storageValue = localStorage.getItem("state");
       if (storageValue) {
         try {
-          return JSON.parse(storageValue);
+          const userSate = JSON.parse(storageValue) as IUserState
+          const nextUserState = reducer(state, action)
+          return {...nextUserState, user: userSate}
         } catch {
           localStorage.removeItem("state");
         }
       }
     }
     const nextState = reducer(state, action);
-    localStorage.setItem("state", JSON.stringify(nextState));
+    localStorage.removeItem("state")
+    if (nextState.user) localStorage.setItem("state", JSON.stringify(nextState.user))
     return nextState;
   };
 };

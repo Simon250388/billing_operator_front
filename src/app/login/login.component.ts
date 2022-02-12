@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import * as EntityAction from 'src/store/action/user.action';
 import {IAppState} from 'src/store/state/app.state';
-import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {IUser} from "../../store/models/user.model";
 import {getCurrentUser} from "../../store/selectors/user.selector";
@@ -13,7 +12,7 @@ import {getCurrentUser} from "../../store/selectors/user.selector";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnDestroy {
 
   form: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.email]),
@@ -23,22 +22,12 @@ export class LoginComponent implements OnInit {
   currentUser: Observable<IUser | undefined> = this.store.select(getCurrentUser)
 
   constructor(
-    private store: Store<IAppState>,
-    private router: Router
-  ) {
-  }
+    private store: Store<IAppState>
+  ) { }
 
-  ngOnInit(): void {
-    this.currentUser.subscribe(
-      user => {
-        if (!user) {
-          return
-        }
+  ngOnDestroy(): void {
 
-        this.router.navigate(["key-room"])
-      }
-    )
-  }
+    }
 
   get userNameControl(): AbstractControl | null {
     return this.form.get("username")

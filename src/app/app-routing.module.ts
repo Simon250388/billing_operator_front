@@ -6,6 +6,11 @@ import {AuthGuardService} from "../service/auth-guard.service";
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'key-room',
+    pathMatch: 'full'
+  },
+  {
     path: 'key-room',
     loadChildren: () => import('./key-room/key-room.module').then(m => m.KeyRoomModule),
     canActivate: [AuthGuardService]

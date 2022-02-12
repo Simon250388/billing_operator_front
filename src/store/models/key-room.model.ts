@@ -1,12 +1,21 @@
 import {SimpleRef} from "./simple-ref.model";
 
 export interface IKeyRoom {
+  id: string,
   present: string,
   address: string,
-  countPoints: number,
-  id: string,
+  countResident: number,
   building: SimpleRef,
   room: SimpleRef | undefined
+}
+
+export interface IKeyRoomUpdateModel {
+  id: string | undefined,
+  present: string,
+  address: string,
+  countResident: number,
+  buildingId: string,
+  roomId: string | undefined
 }
 
 export const keyRoomPropertyTranslations: { [key: string]: string } = {

@@ -9,9 +9,8 @@
           <tr *ngFor="let key of keys">
             <td class="meter-property-column">{{getPropertyPresent(key)}}</td>
             <td class="meter-value-column">{{getValuePresent(key)}}</td>
-            <td class="meter-row-property-action">
-              <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu"
-                      *ngIf="getPropertyAction(key).length > 0">
+            <td class="meter-row-property-action" *ngIf="getPropertyAction(key).length > 0">
+              <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu">
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menuType="matMenu">

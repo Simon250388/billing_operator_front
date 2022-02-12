@@ -9,6 +9,7 @@ import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {KeyRoomReducer} from "../../store/reducers/key-room.reducer";
 import {KeyRoomEffect} from "../../store/effects/key-room.effect";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {KeyRoomEffect} from "../../store/effects/key-room.effect";
     KeyRoomRoutingModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     StoreModule.forFeature('key-room-list', KeyRoomReducer),
     EffectsModule.forFeature([KeyRoomEffect])
   ]

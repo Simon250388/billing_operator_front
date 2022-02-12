@@ -9,11 +9,11 @@ import {DateChangeComponent} from "../../app/change-value/date-change/date-chang
 import * as EntityActions from "../../store/action/meter.action";
 import {getMeterByIdSelector} from "../../store/selectors/meter.selector";
 import {take} from "rxjs";
-import {convertModelToUpdateModel, MeterEditAction} from "./meter-edit-action";
+import {convertModelToUpdateModel, EntityEditAction} from "./entity-edit-action";
 
 @Injectable()
 export class MeterVerificationDateChangeAction
-  implements MeterEditAction<MeterModel> {
+  implements EntityEditAction<MeterModel> {
 
   private datePipe: DatePipe;
 

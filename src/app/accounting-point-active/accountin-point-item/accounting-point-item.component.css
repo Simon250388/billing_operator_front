@@ -1,6 +1,7 @@
 .accounting-point-card{
+  min-width: 280px;
   margin-top: 10px;
-  max-width: 300px;
+  max-width: 430px;
 }
 
 .card-container-left {

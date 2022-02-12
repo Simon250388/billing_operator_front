@@ -11,7 +11,7 @@ import {getCurrentUser} from "../store/selectors/user.selector";
 )
 export class AuthGuardService implements CanActivate {
 
-  private login: boolean = false
+  private login: boolean = true
 
   constructor(
     public store: Store<IAppState>) {

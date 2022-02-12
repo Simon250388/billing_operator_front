@@ -1,98 +1,79 @@
-import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {IKeyRoom} from 'src/store/models/key-room.model';
+import {delay, Observable, of} from 'rxjs';
+import {IKeyRoom, IKeyRoomUpdateModel} from 'src/store/models/key-room.model';
 import {IKeyRoomHttpService} from './key-room.http.service.factory';
-import {IKeyRoomAddModel} from "../../store/models/key-room-add.model";
 
 export class KeyRoomHttMockService implements IKeyRoomHttpService {
 
   protected apiDomen: string = "";
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   search(): Observable<IKeyRoom[]> {
     return of([
       {
         present: "Королева",
-        id: "someId",
+        id: "1",
         building: {
           id: "someBuildingId",
           present: "some"
         },
         room: undefined,
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
+        countResident: 4
       },
       {
         present: "Второе",
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "someId",
+        id: "2",
         building: {
           id: "someBuildingId",
           present: "some"
         },
         room: undefined,
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
+        countResident: 4
 
       },
       {
         present: "Второе",
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "someId",
+        id: "3",
         building: {
           id: "someBuildingId",
           present: "some"
         },
         room: undefined,
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
+        countResident: 4
       },
       {
         present: "Третье",
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        id: "someId",
+        id: "4",
         building: {
           id: "someBuildingId",
           present: "some"
         },
         room: undefined,
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
+        countResident: 2
+
       }
-    ])
+    ]).pipe(
+      delay(1500)
+    )
   }
 
-  save(model: IKeyRoomAddModel): Observable<IKeyRoom> {
+  save(model: IKeyRoomUpdateModel): Observable<IKeyRoom> {
     return of(
       {
         present: "Королева",
-        id: "someId",
+        id: "1",
         building: {
           id: "someBuildingId",
           present: "some"
         },
         room: undefined,
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        countPoints: 4,
-        isAccountingPointLoad: false,
-        simpleServices: [],
-        isSimpleServiceLoad: false,
-        accountingPoints: []
+        countResident: 2,
       });
   }
 

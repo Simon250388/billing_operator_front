@@ -19,6 +19,7 @@ import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {accountingPointReducer} from "../../store/reducers/accounting-point.reducer";
 import {AccountingPointEffect} from "../../store/effects/accountin-point.effect";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {AccountingPointEffect} from "../../store/effects/accountin-point.effect"
     MatListModule,
     MatDividerModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
     StoreModule.forFeature('accounting-points', accountingPointReducer),
     EffectsModule.forFeature([AccountingPointEffect])
   ]

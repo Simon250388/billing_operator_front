@@ -8,10 +8,10 @@ import {MeterModel} from "../../store/models/meter.model";
 import {getMeterByIdSelector} from "../../store/selectors/meter.selector";
 import {take} from "rxjs";
 import * as EntityActions from "../../store/action/meter.action";
-import {convertModelToUpdateModel, MeterEditAction} from "./meter-edit-action";
+import {convertModelToUpdateModel, EntityEditAction} from "./entity-edit-action";
 
 @Injectable()
-export class MeterMeterTypeChangeAction implements MeterEditAction<MeterModel> {
+export class MeterMeterTypeChangeAction implements EntityEditAction<MeterModel> {
 
   constructor(
     private readonly store: Store<IAppState>,

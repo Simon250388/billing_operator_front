@@ -14,6 +14,13 @@ import {getAccountingPointsItems, getSimpleServiceItems} from "../../../store/se
   styleUrls: ['./accounting-point-active-list.component.css']
 })
 export class AccountingPointActiveListComponent  {
+  get simpleServiceIsLoaded(): boolean {
+    return this._simpleServiceIsLoaded;
+  }
+
+  get itemsIsLoaded(): boolean {
+    return this._itemsIsLoaded;
+  }
 
   private _itemsIsLoaded: boolean = false
   private _simpleServiceIsLoaded: boolean = false
@@ -32,6 +39,8 @@ export class AccountingPointActiveListComponent  {
 
     this.accountingPointSubscription = this.accountingPoints.subscribe(items => {
       if (items == undefined) {
+        this._itemsIsLoaded  = false
+
         this.store.dispatch(EntityAction.startLoadItemsFromApiAction())
 
         this.actionAccountingPointSubscription = this.actions.pipe(
@@ -45,6 +54,9 @@ export class AccountingPointActiveListComponent  {
 
     this.simpleServiceSubscription = this.simpleServices.subscribe(items => {
       if (items == undefined) {
+
+        this._simpleServiceIsLoaded  = false
+
         this.store.dispatch(EntityAction.startLoadSimpleServiceItemsFromApiAction())
 
         this.actionSimpleServiceSubscription = this.actions.pipe(

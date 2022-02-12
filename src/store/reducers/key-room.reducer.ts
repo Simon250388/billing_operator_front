@@ -5,22 +5,29 @@ import {IKeyRoomState, initialKeyRoomState} from "../state/key-room.state";
 
 export const KeyRoomReducer = createReducer(
   initialKeyRoomState,
-  on(EntityActions.chooseCurrentCompleteAction, (state: IKeyRoomState, keyRoom: IKeyRoom) => {
-    return {...state, current: keyRoom}
-
+  on(EntityActions.finishChooseCurrenAction, (state: IKeyRoomState, payload : { currentId: String}) => {
+    return {...state, currentId: payload.currentId}
   }),
-  on(EntityActions.receiveResultSearchKeyRoomAction, (state: IKeyRoomState, payload: { items: IKeyRoom[] }) => {
-    return {...state, items: [...payload.items]}
+  on(EntityActions.successfulLoadItemsFromApiAction, (state: IKeyRoomState, payload: { items: Map<String, IKeyRoom> }) => {
+    return {...state, items: payload.items}
   }),
-
-  on(EntityActions.clearCurrentKeyRoomAction, (state: IKeyRoomState) => {
-    return {...state, current: undefined}
+  on(EntityActions.addNewKeyRoomSuccessAction, (state: IKeyRoomState, model: IKeyRoom) => {
+    if (!state.items) {
+      return {...state}
+    }
+    return {...state, items: updateObject(state.items, model)}
   }),
-  on(EntityActions.addNewKeyRoomSuccessAction, (state: IKeyRoomState, keyRoom: IKeyRoom) => {
-    let new_items = [...state.items];
-
-    new_items.push(keyRoom)
-
-    return {...state, items: new_items}
+  on(EntityActions.completeUpdateItemAction, (state: IKeyRoomState, model: IKeyRoom) => {
+    if (!state.items) {
+      return {...state}
+    }
+    return {...state, items: updateObject(state.items, model)}
   })
 )
+
+const updateObject = (items: Map<String, IKeyRoom>, model: IKeyRoom) => {
+  items.set(model.id, model)
+  return items;
+}
+
+

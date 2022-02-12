@@ -1,9 +1,10 @@
 import {createReducer, on} from "@ngrx/store";
 import * as EntityActions from "../action/meter.action";
+import {finishChooseCurrenAction} from "../action/key-room.action";
 import {IMeterState, initialMeterState} from "../state/meter.state";
 import {MeterModel} from "../models/meter.model";
 
-export const MeterReducer = createReducer(
+export const meterReducer = createReducer(
   initialMeterState,
   on(EntityActions.completeUpdateItemAction, (state: IMeterState, model: MeterModel) => {
     if (!state.items) {
@@ -13,6 +14,9 @@ export const MeterReducer = createReducer(
   }),
   on(EntityActions.successfulLoadMeterItemsFromApiAction, (state: IMeterState, payload: { items: Map<String, MeterModel> }) => {
     return {...state, items: payload.items}
+  }),
+  on(finishChooseCurrenAction, () => {
+    return initialMeterState
   })
 )
 

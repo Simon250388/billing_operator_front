@@ -18,8 +18,6 @@ export class MeterItemComponent implements OnInit {
 
   @Input() item!: MeterModel
 
-
-
   private _isSmallSize: boolean = false;
 
   get isSmallSize(): boolean {
