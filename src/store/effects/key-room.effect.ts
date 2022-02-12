@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {catchError, map, mergeMap} from "rxjs";
+import {catchError, map, mergeMap, switchMap} from "rxjs";
 import {IKeyRoomHttpService} from "src/service/key-room/key-room.http.service.factory";
 import * as EntityActions from "../action/key-room.action";
 import {Router} from "@angular/router";
@@ -46,5 +46,11 @@ export class KeyRoomEffect {
         })
       )))
   )
+
+  updateItemEffect = createEffect(() => this.actions.pipe(
+    ofType(EntityActions.startUpdateItemAction),
+    switchMap(value => this.httpService.save(value)),
+    map(item => EntityActions.completeUpdateItemAction(item))
+  ))
 }
 

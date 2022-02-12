@@ -1,7 +1,7 @@
 import {MeterModel, MeterModelToUpdate} from "../../store/models/meter.model";
 
 export interface EntityEditAction<T> {
-  apply(meter: T): void
+  apply(model: T): void
 }
 
 

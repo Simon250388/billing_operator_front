@@ -10,6 +10,9 @@ import {EffectsModule} from "@ngrx/effects";
 import {KeyRoomReducer} from "../../store/reducers/key-room.reducer";
 import {KeyRoomEffect} from "../../store/effects/key-room.effect";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {KeyRoomCountResidentChangeAction} from "../../service/key-room/key-room-count-resident-change.action";
+import {KeyRoomCountSubscribedChangeAction} from "../../service/key-room/key-room-count-subscribed-change.action";
+import {KeyRoomCountOwnerChangeAction} from "../../service/key-room/key-room-count-owner-change.action";
 
 
 @NgModule({
@@ -25,6 +28,11 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatProgressSpinnerModule,
     StoreModule.forFeature('key-room-list', KeyRoomReducer),
     EffectsModule.forFeature([KeyRoomEffect])
+  ],
+  providers: [
+    {provide: KeyRoomCountResidentChangeAction},
+    {provide: KeyRoomCountSubscribedChangeAction},
+    {provide: KeyRoomCountOwnerChangeAction},
   ]
 })
 export class KeyRoomModule {

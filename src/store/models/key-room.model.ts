@@ -5,6 +5,8 @@ export interface IKeyRoom {
   present: string,
   address: string,
   countResident: number,
+  countSubscribed: number,
+  countOwner: number,
   building: SimpleRef,
   room: SimpleRef | undefined
 }
@@ -14,6 +16,8 @@ export interface IKeyRoomUpdateModel {
   present: string,
   address: string,
   countResident: number,
+  countSubscribed: number,
+  countOwner: number,
   buildingId: string,
   roomId: string | undefined
 }
@@ -21,7 +25,7 @@ export interface IKeyRoomUpdateModel {
 export const keyRoomPropertyTranslations: { [key: string]: string } = {
   "address": "Адрес",
   "type": "Тип помещения",
-  "countPresubcribe": "Прописанных",
+  "countSubscribed": "Прописанных",
   "countResident": "Проживающих",
   "countOwner": "Собственников",
   "commonSquare": "Общая площадь",
@@ -31,9 +35,9 @@ export const keyRoomPropertyTranslations: { [key: string]: string } = {
 export const keyRoomPropertyPresent: { [key: string]: (model: IKeyRoom) => string } = {
   "address": (model: IKeyRoom) => model.address,
   "type": () => "квартира",
-  "countPresubcribe": () => "2",
-  "countResident": () => "2",
-  "countOwner": () => "2",
+  "countSubscribed": (model: IKeyRoom) => model.countSubscribed.toString(),
+  "countResident": (model: IKeyRoom) => model.countResident.toString(),
+  "countOwner": (model: IKeyRoom) => model.countOwner.toString(),
   "commonSquare": () => "100",
   "debt": () => "200"
 }

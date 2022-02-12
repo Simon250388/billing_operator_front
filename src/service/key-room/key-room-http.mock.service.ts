@@ -20,7 +20,10 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
         },
         room: undefined,
         address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        countResident: 4
+        countResident: 4,
+        countSubscribed: 4,
+        countOwner: 2,
+
       },
       {
         present: "Второе",
@@ -31,8 +34,9 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
           present: "some"
         },
         room: undefined,
-        countResident: 4
-
+        countResident: 4,
+        countSubscribed: 4,
+        countOwner: 4,
       },
       {
         present: "Второе",
@@ -43,7 +47,9 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
           present: "some"
         },
         room: undefined,
-        countResident: 4
+        countResident: 4,
+        countSubscribed: 4,
+        countOwner: 2,
       },
       {
         present: "Третье",
@@ -54,8 +60,9 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
           present: "some"
         },
         room: undefined,
-        countResident: 2
-
+        countResident: 2,
+        countSubscribed: 2,
+        countOwner: 2,
       }
     ]).pipe(
       delay(1500)
@@ -65,16 +72,20 @@ export class KeyRoomHttMockService implements IKeyRoomHttpService {
   save(model: IKeyRoomUpdateModel): Observable<IKeyRoom> {
     return of(
       {
-        present: "Королева",
-        id: "1",
+        present: model.present,
+        id: model.id!!,
         building: {
-          id: "someBuildingId",
-          present: "some"
+          id: model.buildingId,
+          present: "asdasd"
         },
         room: undefined,
-        address: "414000, г. Москва, ул. Королева, д. 985, кв. 999",
-        countResident: 2,
-      });
+        address: model.address,
+        countResident: model.countResident,
+        countSubscribed: model.countSubscribed,
+        countOwner: model.countOwner,
+      }).pipe(
+        delay(1500)
+    );
   }
 
 }

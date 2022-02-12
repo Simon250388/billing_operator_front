@@ -6,6 +6,6 @@
     <button mat-button color="primary" routerLink="new">Добавить</button>
   </div>
   <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start start">
-    <app-key-room-item *ngFor="let item of items | async;" [item] ="item" (onItemClick)="serCurrent($event)"></app-key-room-item>
+    <app-key-room-item *ngFor="let item of items | async;" [item] ="item" [chooseMode]="true" (onChoose)="serCurrent($event)"></app-key-room-item>
   </div>
 </div>

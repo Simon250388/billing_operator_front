@@ -3,5 +3,9 @@
   max-width: 350px;
 }
 
+.key-room-property-column {
+  max-width: 125px;
+  min-width: 125px;
+}
 
 

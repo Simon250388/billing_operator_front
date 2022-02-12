@@ -7,6 +7,8 @@ export const keyRoomModelConvertor = (model: IKeyRoom): IKeyRoomUpdateModel => {
     present: model.present,
     address: model.address,
     countResident: model.countResident,
+    countSubscribed: model.countSubscribed,
+    countOwner: model.countOwner,
     buildingId: model.building.id,
     roomId: model.room?.id
   }
