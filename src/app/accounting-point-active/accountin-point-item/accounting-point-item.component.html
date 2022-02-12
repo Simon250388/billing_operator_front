@@ -1,4 +1,5 @@
-<mat-card class="accounting-point-card" (click)=onClick()>
+<mat-card [ngClass.sm]="'small-accounting-point-card'" [ngClass.xs]="'small-accounting-point-card'"
+  [ngClass.gt-sm]="'accounting-point-card'" (click)=onClick()>
   <mat-card-title>{{item.name}}</mat-card-title>
   <mat-card-content>
     <table class="app-table">
@@ -26,4 +27,3 @@
     <button mat-button color="primary">Отключить</button>
   </mat-card-actions>
 </mat-card>
-
