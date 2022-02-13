@@ -5,7 +5,7 @@
 }
 
 .small-accounting-point-card {
-  min-width: 200px;
+  min-width: 240px;
 }
 
 .card-container-left {
@@ -16,4 +16,8 @@
 .app-mat-list-item {
   height: 35px !important;
   font-size: 14px;
+}
+
+.accounting-pint-property-column{
+  max-width: 85px;
 }
