@@ -22,6 +22,10 @@ const routes: Routes = [
       {
         path: 'meters',
         loadChildren: () => import('../meter-list/meter-list.module').then(m => m.MeterListModule),
+      },
+      {
+        path: 'calculation',
+        loadChildren: () => import('../calculation-list/calculation-list.module').then(m => m.CalculationListModule),
       }
       ]
   }
