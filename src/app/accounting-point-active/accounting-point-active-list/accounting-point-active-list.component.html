@@ -1,37 +1,28 @@
-<div fxLayout="column" fxFill fxLayoutGap="10px" class="card-container" >
-  <mat-expansion-panel [expanded]="true" style="overflow-y: scroll;">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Точки учета
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div *ngIf="itemsIsLoaded == false" fxLayout="column" fxFill fxLayoutAlign="center center">
-      <mat-spinner></mat-spinner>
-    </div>
-    <div *ngIf="itemsIsLoaded == true" fxLayout="column" fxLayoutGap="10px" >
-      <div fxLayout="row wrap">
-        <button mat-button color="primary" routerLink="new">Добавить</button>
+<div fxLayout="column" fxFill class="card-container">
+  <mat-tab-group>
+    <mat-tab label="Точки учета" >     
+      <div fxLayout="column">
+        <div *ngIf="itemsIsLoaded == false" fxLayout="column" fxFill fxLayoutAlign="center center">
+          <mat-spinner style="margin-top: 100px;"></mat-spinner>
+        </div>
+        <div *ngIf="itemsIsLoaded == true" fxLayout="row wrap">
+          <button mat-button color="primary" routerLink="new">Добавить</button>
+        </div>
+        <div *ngIf="itemsIsLoaded == true" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center start" fxFlexFill>
+          <app-accounting-point-item *ngFor="let item of accountingPoints | async" [item]="item">
+          </app-accounting-point-item>
+        </div>
       </div>
-      <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center start" fxFlexFill>
-        <app-accounting-point-item *ngFor="let item of accountingPoints | async"
-                                   [item]="item"></app-accounting-point-item>
-      </div>
-    </div>
-  </mat-expansion-panel>
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Прочие услуги
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div fxLayout="column" fxLayoutAlign="center start">
-      <div *ngIf="simpleServiceIsLoaded == false" fxLayout="column" fxFill fxLayoutAlign="center center">
-        <mat-spinner></mat-spinner>
-      </div>
-      <div *ngIf="simpleServiceIsLoaded == true" fxLayout="row wrap" fxLayoutGap="10px">
-        <app-simple-service *ngFor="let item of simpleServices | async;" [item]="item"></app-simple-service>
-      </div>
-    </div>
-  </mat-expansion-panel>
-
+    </mat-tab>
+    <mat-tab label="Прочие услуги">
+      <div fxLayout="column" fxFill fxLayoutAlign="center center">
+        <div *ngIf="simpleServiceIsLoaded == false" fxLayout="row wrap" fxLayoutGap="10px">
+          <mat-spinner style="margin-top: 100px;"></mat-spinner>
+        </div>       
+        <div *ngIf="simpleServiceIsLoaded == true" fxLayout="row wrap" fxLayoutGap="10px">
+          <app-simple-service *ngFor="let item of simpleServices | async;" [item]="item"></app-simple-service>
+        </div>
+      </div>      
+    </mat-tab>
+  </mat-tab-group>
 </div>

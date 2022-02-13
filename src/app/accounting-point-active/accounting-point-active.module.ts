@@ -12,7 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 import {AccountingPointItemComponent} from './accountin-point-item/accounting-point-item.component';
 import {SimpleServiceComponent} from './simple-service/simple-service.component';
 import {StoreModule} from "@ngrx/store";
@@ -20,8 +20,6 @@ import {EffectsModule} from "@ngrx/effects";
 import {accountingPointReducer} from "../../store/reducers/accounting-point.reducer";
 import {AccountingPointEffect} from "../../store/effects/accountin-point.effect";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { ScrollingModule } from '@angular/cdk/scrolling';
-
 
 @NgModule({
   declarations: [
@@ -33,14 +31,13 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     CommonModule,
     AccountingPointActiveRoutingModule,
     FlexLayoutModule,
-    ScrollingModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
     MatListModule,
     MatDividerModule,
-    MatExpansionModule,
+    MatTabsModule,
     MatProgressSpinnerModule,
     StoreModule.forFeature('accounting-points', accountingPointReducer),
     EffectsModule.forFeature([AccountingPointEffect])

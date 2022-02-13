@@ -5,10 +5,13 @@
 
 
 .meter-property-column{
-  min-width: 150px;
+  min-width: 130px;
 }
 .meter-value-column{
-  min-width: 100px;
+  min-width: 80px;
+}
+.meter-row-property-action{
+  max-width: 60px;
 }
 
 

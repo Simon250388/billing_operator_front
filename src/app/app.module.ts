@@ -31,7 +31,6 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {MatDialogModule} from "@angular/material/dialog";
 import {IAppState} from "../store/state/app.state";
 import {IUserState} from "../store/state/user.state";
-import { ScrollingModule } from '@angular/cdk/scrolling';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -72,7 +71,6 @@ export const metaReducers: MetaReducer[] = [appMetaReducer];
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
-    ScrollingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
