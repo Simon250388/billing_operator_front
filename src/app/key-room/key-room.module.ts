@@ -13,7 +13,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {KeyRoomCountResidentChangeAction} from "../../service/key-room/key-room-count-resident-change.action";
 import {KeyRoomCountSubscribedChangeAction} from "../../service/key-room/key-room-count-subscribed-change.action";
 import {KeyRoomCountOwnerChangeAction} from "../../service/key-room/key-room-count-owner-change.action";
-
+import {RouterEffect} from "../../store/effects/router.effect";
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import {KeyRoomCountOwnerChangeAction} from "../../service/key-room/key-room-cou
     MatButtonModule,
     MatProgressSpinnerModule,
     StoreModule.forFeature('key-room-list', KeyRoomReducer),
-    EffectsModule.forFeature([KeyRoomEffect])
+    EffectsModule.forFeature([KeyRoomEffect, RouterEffect]),
   ],
   providers: [
     {provide: KeyRoomCountResidentChangeAction},

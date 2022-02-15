@@ -1,5 +1,5 @@
 .accounting-point-card{
-  min-width: 280px;
+  min-width: 320px;
   margin-top: 10px;
   /*max-width: 430px;*/
 }
@@ -21,4 +21,8 @@
 
 .accounting-pint-property-column{
   max-width: 85px;
+}
+
+.column-width-empty{
+  max-width: 0;
 }

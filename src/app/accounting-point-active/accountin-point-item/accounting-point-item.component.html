@@ -6,7 +6,6 @@
       <tr *ngFor="let key of keys">
         <td class="accounting-pint-property-column">{{getPropertyPresent(key)}}</td>
         <td>{{getValuePresent(key)}}</td>
-        <td class="app-action-column">
         <td class="meter-row-property-action" *ngIf="getPropertyAction(key).length > 0">
           <button mat-icon-button [matMenuTriggerFor]="menuType" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
