@@ -1,4 +1,4 @@
-import {SimpleRef} from "./simple-ref.model";
+import {SimpleEnum} from "./simple-ref.model";
 
 export interface IKeyRoom {
   id: string,
@@ -6,18 +6,18 @@ export interface IKeyRoom {
   countResident: number,
   countSubscribed: number,
   countOwner: number,
-  building: SimpleRef,
-  room: SimpleRef | undefined
+  square: number,
+  roomType: SimpleEnum,
 }
 
 export interface IKeyRoomUpdateModel {
   id: string,
   address: string,
+  roomTypeId: number,
   countResident: number,
   countSubscribed: number,
   countOwner: number,
-  buildingId: string,
-  roomId: string | undefined
+  square: number,
 }
 
 export const keyRoomPropertyTranslations: { [key: string]: string } = {

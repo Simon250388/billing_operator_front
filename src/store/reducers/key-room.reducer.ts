@@ -15,7 +15,9 @@ export const KeyRoomReducer = createReducer(
     if (!state.items) {
       return {...state}
     }
-    return {...state, items: updateObject(state.items, model)}
+    const newItems = [...state.items.values(), model]
+
+    return {...state, items: new Map(newItems.map(i => [i.id, i]))}
   }),
   on(EntityActions.completeUpdateItemAction, (state: IKeyRoomState, model: IKeyRoom) => {
     if (!state.items) {
