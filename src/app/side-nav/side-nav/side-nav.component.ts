@@ -6,6 +6,7 @@ import {IKeyRoom} from "../../../store/models/key-room.model";
 import {chooseCurrenAction} from "../../../store/action/key-room.action";
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {IKeyRoomState} from "../../../store/state/key-room.state";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-side-nav',
@@ -29,7 +30,8 @@ export class SideNavComponent implements OnDestroy {
 
   constructor(
     private store: Store<IKeyRoomState>,
-    private breakpointObserver: BreakpointObserver) {
+    private breakpointObserver: BreakpointObserver,
+    private location: Location) {
     this.subscription = this.breakpointObserver
       .observe([
           Breakpoints.XSmall,
@@ -59,6 +61,10 @@ export class SideNavComponent implements OnDestroy {
   }
 
   setCurrentKeyRoom(value: IKeyRoom) {
+
+    const pathArr = this.location.path().split("/")
+    pathArr[2] = value.id
+    this.location.replaceState(pathArr.join("/"))
     this.store.dispatch(chooseCurrenAction({currentId: value.id}));
   }
 }
