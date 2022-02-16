@@ -57,6 +57,8 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
       },
       meterIsActive: model.meterIsActive,
       meterStateChangeAt: model.meterStateChangeAt
-    });
+    }).pipe(
+      delay(1500)
+    );
   }
 }
