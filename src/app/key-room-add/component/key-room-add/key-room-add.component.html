@@ -99,7 +99,11 @@
     <p>Значение площади: {{keyRoomFormGroup.get('square')?.value}}</p>
     <div>
       <button mat-button matStepperPrevious>Назад</button>
-      <button mat-button (click)="save()">Записать</button>
+      <button mat-button (click)="save()">Записать
+        <mat-icon *ngIf="saveInProgress">
+          <mat-spinner color="primary" diameter="20"></mat-spinner>
+        </mat-icon>
+      </button>
     </div>
   </mat-step>
 </mat-vertical-stepper>

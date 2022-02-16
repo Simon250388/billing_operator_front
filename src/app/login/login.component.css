@@ -1,7 +1,5 @@
-:host {
-    height: 100%;
-}
-
-.login-container {
-    height: 60vh;
+.login-card{
+  min-height: 200px;
+  max-height: 200px;
+  margin-top: 50px;
 }

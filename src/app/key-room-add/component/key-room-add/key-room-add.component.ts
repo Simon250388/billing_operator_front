@@ -18,7 +18,14 @@ import {roomTypes} from "../../../../store/models/room-type";
 export class KeyRoomAddComponent {
 
   keyRoomFormGroup!: FormGroup;
+
   accountingPointFormGroup!: FormGroup;
+
+  private _saveInProgress: boolean = false
+
+  get saveInProgress(): boolean {
+    return this._saveInProgress;
+  }
 
   get roomTypesKeys(): string[] {
     const keys = []
@@ -82,7 +89,7 @@ export class KeyRoomAddComponent {
 
   roomPropertyHasError(): boolean {
 
-    let controls = ['name', 'countOwner', 'countPrescribed', 'countResidents']
+    let controls = ['id', 'address', 'countOwner', 'square', 'countSubscribed', 'countResident']
 
     for (const control of controls) {
       if (this.keyRoomFormGroup.get(control) && this.keyRoomFormGroup.get(control)!.invalid) {
@@ -102,6 +109,10 @@ export class KeyRoomAddComponent {
     if (this.keyRoomFormGroup.invalid) {
       return
     }
+
+    this.keyRoomFormGroup.disable()
+
+    this._saveInProgress = true
 
     this.store.dispatch(addNewKeyRoomStartAction(this.keyRoomFormGroup.value as IKeyRoomUpdateModel))
   }

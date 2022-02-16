@@ -19,16 +19,6 @@ export class KeyRoomEffect {
   ) {
   }
 
-  setCurrentEffect = createEffect(
-    () => this.actions.pipe(
-      ofType(EntityActions.startChooseCurrenAction),
-      map((payload) => {
-        this.router.navigate(["/key-room", payload.currentId])
-        return EntityActions.finishChooseCurrenAction({currentId: payload.currentId})
-      }),
-    )
-  )
-
   loadEffect = createEffect(
     () => this.actions.pipe(
       ofType(EntityActions.startLoadItemsFromApiAction),
@@ -49,7 +39,7 @@ export class KeyRoomEffect {
       switchMap(item => {
           return [
             EntityActions.addNewKeyRoomSuccessAction(item),
-            EntityActions.startChooseCurrenAction({currentId: item.id})
+            EntityActions.chooseCurrenAction({currentId: item.id})
           ]
         }
       ),

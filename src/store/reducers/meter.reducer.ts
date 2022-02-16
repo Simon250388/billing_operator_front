@@ -1,6 +1,6 @@
 import {createReducer, on} from "@ngrx/store";
 import * as EntityActions from "../action/meter.action";
-import {finishChooseCurrenAction} from "../action/key-room.action";
+import {chooseCurrenAction} from "../action/key-room.action";
 import {IMeterState, initialMeterState} from "../state/meter.state";
 import {MeterModel} from "../models/meter.model";
 
@@ -15,7 +15,7 @@ export const meterReducer = createReducer(
   on(EntityActions.successfulLoadMeterItemsFromApiAction, (state: IMeterState, payload: { items: Map<String, MeterModel> }) => {
     return {...state, items: payload.items}
   }),
-  on(finishChooseCurrenAction, () => {
+  on(chooseCurrenAction, () => {
     return initialMeterState
   })
 )

@@ -8,6 +8,10 @@ export enum EActiveAccountingPointAction {
   successfulLoadItemsFromApi = "[AccountingPoint] successful load items from api",
   startLoadSimpleServiceItemsFromApi = "[SimpleService] start load items from api",
   successfulLoadSimpleServiceItemsFromApi = "[SimpleService] successful load items from api",
+
+  AddAccountingPointStart = "[AccountingPoint] add new start",
+  AddAccountingPointSuccess = "[AccountingPoint] add new success",
+
   startUpdateItem = "[AccountingPoint] start update item",
   completeUpdateItem = "[AccountingPoint] complete update item"
 }
@@ -38,4 +42,14 @@ export const startLoadSimpleServiceItemsFromApiAction = createAction(
 export const successfulLoadSimpleServiceItemsFromApiAction = createAction(
   EActiveAccountingPointAction.successfulLoadSimpleServiceItemsFromApi,
   props<{items: Map<String, IServiceSimpleModel>}>()
+);
+
+export const addAccountingPointStartAction = createAction(
+  EActiveAccountingPointAction.AddAccountingPointStart,
+  props<IAccountingPointActiveToUpdateModel>()
+);
+
+export const addAccountingPointSuccessAction = createAction(
+  EActiveAccountingPointAction.AddAccountingPointSuccess,
+  props<IAccountingPointActive>()
 );

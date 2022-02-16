@@ -2,7 +2,7 @@ import {createReducer, on} from "@ngrx/store";
 import * as EntityActions from "../action/accounting-point.action";
 import {IAccountingPointActive} from "../models/accounting-point-active.model";
 import {IAccountingPointActiveState, initialAccountingPointActiveState} from "../state/accounting-pointactive.state";
-import {finishChooseCurrenAction} from "../action/key-room.action";
+import {chooseCurrenAction} from "../action/key-room.action";
 
 export const accountingPointReducer = createReducer(
   initialAccountingPointActiveState,
@@ -15,8 +15,16 @@ export const accountingPointReducer = createReducer(
   on(EntityActions.successfulLoadItemsFromApiAction, (state: IAccountingPointActiveState, payload: { items: Map<String, IAccountingPointActive> }) => {
     return {...state, items: payload.items}
   }),
-  on(finishChooseCurrenAction, () => {
+  on(chooseCurrenAction, () => {
     return initialAccountingPointActiveState
+  }),
+  on(EntityActions.addAccountingPointSuccessAction, (state: IAccountingPointActiveState, model: IAccountingPointActive) => {
+    if (!state.items) {
+      return {...state}
+    }
+    const newItems = [...state.items.values(), model]
+
+    return {...state, items: new Map(newItems.map(i => [i.id, i]))}
   })
 )
 

@@ -20,7 +20,7 @@ export class AccountingPointAddFormComponent implements OnInit, OnDestroy {
     private _formBuilder: FormBuilder) {
 
     this.formGroup = this._formBuilder.group({
-      description: this._formBuilder.control('', [Validators.required]),
+      id: this._formBuilder.control('', [Validators.required]),
       serviceId: this._formBuilder.control('', [Validators.required]),
       providerId: this._formBuilder.control('', [Validators.required]),
       directionOfUseId: this._formBuilder.control('', [Validators.required]),
@@ -43,6 +43,6 @@ export class AccountingPointAddFormComponent implements OnInit, OnDestroy {
   }
 
   getDescriptionControl(): FormControl {
-    return this.formGroup.controls['description'] as FormControl
+    return this.formGroup.controls['id'] as FormControl
   }
 }

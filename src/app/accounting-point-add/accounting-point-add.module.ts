@@ -5,6 +5,8 @@ import {AccountingPointAddFormModule} from "../accounting-point-add-form/account
 import {AccountingPointAddRoutingModule} from "./accounting-point-add-routing.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import {MatButtonModule} from "@angular/material/button";
     AccountingPointAddFormModule,
 
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatIconModule
   ]
 })
 export class AccountingPointAddModule {

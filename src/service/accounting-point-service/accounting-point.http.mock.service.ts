@@ -17,8 +17,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
   load(keyRoomId: string): Observable<IAccountingPointActive[]> {
     return of(
       [{
-        id: "someId-1",
-        name: "Кухня",
+        id: "Кухня",
         service: {
           id: "somestring",
           present: "Холодная вода"
@@ -34,102 +33,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
         },
         meterIsActive: true,
         meterStateChangeAt: "2022-15-30T12:00:00"
-      },
-        {
-          id: "someId-2",
-          name: "Кухня",
-          service: {
-            id: "somestring",
-            present: "Холодная вода"
-          },
-          provider: {
-            id: "somestring",
-            present: "ООО Водоканал"
-          },
-          isActive: true,
-          meter: {
-            id: "somestring",
-            present: "12555454/СГВ-15"
-          },
-          meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00"
-        },
-        {
-          id: "someId-3",
-          name: "Кухня",
-          service: {
-            id: "somestring",
-            present: "Холодная вода"
-          },
-          provider: {
-            id: "somestring",
-            present: "ООО Водоканал"
-          },
-          isActive: true,
-          meter: {
-            id: "somestring",
-            present: "12555454/СГВ-15"
-          },
-          meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00"
-        },
-        {
-          id: "someId-4",
-          name: "Кухня",
-          service: {
-            id: "somestring",
-            present: "Холодная вода"
-          },
-          provider: {
-            id: "somestring",
-            present: "ООО Водоканал"
-          },
-          isActive: true,
-          meter: {
-            id: "somestring",
-            present: "12555454/СГВ-15"
-          },
-          meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00"
-        },
-        {
-          id: "someId-5",
-          name: "Кухня",
-          service: {
-            id: "somestring",
-            present: "Холодная вода"
-          },
-          provider: {
-            id: "somestring",
-            present: "ООО Водоканал"
-          },
-          isActive: true,
-          meter: {
-            id: "somestring",
-            present: "12555454/СГВ-15"
-          },
-          meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00"
-        },
-        {
-          id: "someId-6",
-          name: "Кухня",
-          service: {
-            id: "somestring",
-            present: "Холодная вода"
-          },
-          provider: {
-            id: "somestring",
-            present: "ООО Водоканал"
-          },
-          isActive: true,
-          meter: {
-            id: "somestring",
-            present: "12555454/СГВ-15"
-          },
-          meterIsActive: true,
-          meterStateChangeAt: "2022-15-30T12:00:00"
-        }]
+      }]
     ).pipe(
       delay(1500)
     );
@@ -137,14 +41,13 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
 
   save(model: IAccountingPointActiveToUpdateModel): Observable<IAccountingPointActive> {
     return of({
-      id: "someId-1",
-      name: "Кухня",
+      id: model.id,
       service: {
-        id: "somestring",
+        id: model.serviceId,
         present: "Холодная вода"
       },
       provider: {
-        id: "somestring",
+        id: model.providerId,
         present: "ООО Водоканал"
       },
       isActive: true,
@@ -152,8 +55,8 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
         id: "somestring",
         present: "12555454/СГВ-15"
       },
-      meterIsActive: true,
-      meterStateChangeAt: "2022-15-30T12:00:00"
+      meterIsActive: model.meterIsActive,
+      meterStateChangeAt: model.meterStateChangeAt
     });
   }
 }

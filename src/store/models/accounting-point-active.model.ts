@@ -1,8 +1,7 @@
 import {SimpleRef} from './simple-ref.model';
 
 export interface IAccountingPointActive {
-  id: string
-  name: String;
+  id: string,
   service: SimpleRef;
   provider: SimpleRef;
   isActive: boolean;
@@ -12,8 +11,7 @@ export interface IAccountingPointActive {
 }
 
 export interface IAccountingPointActiveToUpdateModel {
-  id: string | undefined;
-  name: string;
+  id: string;
   serviceId: string;
   providerId: string;
   isActive: boolean;

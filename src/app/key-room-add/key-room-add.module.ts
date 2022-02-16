@@ -12,6 +12,8 @@ import {EntityInputModule} from "../entity-input/entity-input.module";
 import {AccountingPointServiceModule} from "../accounting-point-service/accounting-point-service.module";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    MatIconModule
   ]
 })
 export class KeyRoomAddModule { }

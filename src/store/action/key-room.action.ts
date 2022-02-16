@@ -5,7 +5,6 @@ export enum EKeyRoomActionAction {
   startLoadItemsFromApi = "[KeyRoom] start load items from api",
   successfulLoadItemsFromApi = "[KeyRoom] successful load items from api",
 
-  startChooseCurrent = "[KeyRoom] start choose current",
   finishChooseCurrent = "[KeyRoom] finish choose current",
 
   AddKeyRoomStart = "[KeyRoom] add new start",
@@ -24,12 +23,8 @@ export const successfulLoadItemsFromApiAction = createAction(
   props<{ items: Map<String, IKeyRoom> }>()
 );
 
-export const startChooseCurrenAction = createAction(
-  EKeyRoomActionAction.startChooseCurrent,
-  props<{ currentId: String }>()
-);
 
-export const finishChooseCurrenAction = createAction(
+export const chooseCurrenAction = createAction(
   EKeyRoomActionAction.finishChooseCurrent,
   props<{ currentId: String }>()
 );

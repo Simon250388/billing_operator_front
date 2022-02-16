@@ -5,7 +5,7 @@ import {IKeyRoomState, initialKeyRoomState} from "../state/key-room.state";
 
 export const KeyRoomReducer = createReducer(
   initialKeyRoomState,
-  on(EntityActions.finishChooseCurrenAction, (state: IKeyRoomState, payload : { currentId: String}) => {
+  on(EntityActions.chooseCurrenAction, (state: IKeyRoomState, payload : { currentId: String}) => {
     return {...state, currentId: payload.currentId}
   }),
   on(EntityActions.successfulLoadItemsFromApiAction, (state: IKeyRoomState, payload: { items: Map<String, IKeyRoom> }) => {

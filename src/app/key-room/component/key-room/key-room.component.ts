@@ -5,6 +5,7 @@ import * as EntityAction from 'src/store/action/key-room.action';
 import {IKeyRoom} from 'src/store/models/key-room.model';
 import {getKeyRoomItems} from 'src/store/selectors/key-room.selector';
 import {IKeyRoomState} from "../../../../store/state/key-room.state";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-key-room',
@@ -23,7 +24,8 @@ export class KeyRoomComponent implements OnDestroy {
   readonly items: Observable<IKeyRoom[] | undefined> = this.store.select(getKeyRoomItems);
 
   constructor(
-    private store: Store<IKeyRoomState>
+    private store: Store<IKeyRoomState>,
+    private router: Router,
   ) {
     this.store.dispatch(EntityAction.startLoadItemsFromApiAction())
 
@@ -35,6 +37,6 @@ export class KeyRoomComponent implements OnDestroy {
   }
 
   serCurrent(item: IKeyRoom) {
-    this.store.dispatch(EntityAction.startChooseCurrenAction({currentId: item.id}))
+    this.router.navigate([".", item.id])
   }
 }

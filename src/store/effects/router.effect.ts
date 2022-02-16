@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {filter, startWith, switchMap, take} from "rxjs";
+import {filter, map, mergeMap, startWith, switchMap, take} from "rxjs";
 import {Store} from "@ngrx/store";
 import {IKeyRoomState} from "../state/key-room.state";
 import {getKeyRoomItems} from "../selectors/key-room.selector";
@@ -19,20 +19,30 @@ export class RouterEffect {
   }
 
   loadKeyRoom = createEffect(() => this.actions.pipe(
-      ofType(routerNavigatedAction),
-      startWith("key-room/:id/**"),
-      switchMap(() => this.keyRoomStore.select(getKeyRoomItems)),
-      take(1),
+    ofType(routerNavigatedAction),
+    startWith("key-room/:id/**"),
+    map(() => this.keyRoomStore.select(getKeyRoomItems)),
+    map((items) => items.pipe(
       filter(items => items == undefined),
-      switchMap(() => this.appStore.select(getRouterKeyRoomId)),
-      filter((params) => params && params['id']),
-      switchMap((params) => {
-          return [
-            EntityAction.startLoadItemsFromApiAction(),
-            EntityAction.finishChooseCurrenAction({currentId: params!['id']})
-          ]
-        }
+      map(() => EntityAction.startLoadItemsFromApiAction()))),
+    switchMap(() => this.keyRoomStore.select(getKeyRoomItems)
+      .pipe(
+        take(1),
+        filter(items => items == undefined))
+      .pipe(
+        take(1),
+        map(() => this.keyRoomStore.dispatch(EntityAction.startLoadItemsFromApiAction()))
       )
-    )
-  )
+      .pipe(
+        mergeMap(() => this.appStore.select(getRouterKeyRoomId)
+          .pipe(
+            filter(params => params != undefined && params['id'] != undefined))
+          .pipe(
+            take(1),
+            map(
+              params => EntityAction.chooseCurrenAction({currentId: params!['id']})
+            )
+          )
+        ))
+    )))
 }

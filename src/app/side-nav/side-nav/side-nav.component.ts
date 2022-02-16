@@ -3,7 +3,7 @@ import {Observable, Subscription} from "rxjs";
 import {getCurrentKeyRoomSelector, getKeyRoomItems} from "../../../store/selectors/key-room.selector";
 import {Store} from "@ngrx/store";
 import {IKeyRoom} from "../../../store/models/key-room.model";
-import {startChooseCurrenAction} from "../../../store/action/key-room.action";
+import {chooseCurrenAction} from "../../../store/action/key-room.action";
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {IKeyRoomState} from "../../../store/state/key-room.state";
 
@@ -59,6 +59,6 @@ export class SideNavComponent implements OnDestroy {
   }
 
   setCurrentKeyRoom(value: IKeyRoom) {
-    this.store.dispatch(startChooseCurrenAction({currentId: value.id}));
+    this.store.dispatch(chooseCurrenAction({currentId: value.id}));
   }
 }
