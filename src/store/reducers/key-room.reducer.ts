@@ -6,8 +6,9 @@ import {UserLogoutAction} from "../action/user.action";
 
 export const KeyRoomReducer = createReducer(
   initialKeyRoomState,
-  on(EntityActions.chooseCurrenAction, (state: IKeyRoomState, payload : { currentId: String}) => {
-    return {...state, currentId: payload.currentId}
+  on(EntityActions.chooseCurrenAction, (state: IKeyRoomState, payload: { currentId: String }) => {
+    if (state.currentId == payload.currentId) return state
+    else return {...state, currentId: payload.currentId}
   }),
   on(EntityActions.successfulLoadItemsFromApiAction, (state: IKeyRoomState, payload: { items: Map<String, IKeyRoom> }) => {
     return {...state, items: payload.items}

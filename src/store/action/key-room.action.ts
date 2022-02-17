@@ -12,6 +12,8 @@ export enum EKeyRoomActionAction {
 
   startUpdateItem = "[KeyRoom] start update item",
   completeUpdateItem = "[KeyRoom] complete update item",
+
+  empty = "[KeyRoom] empty",
 }
 
 export const startLoadItemsFromApiAction = createAction(
@@ -47,4 +49,8 @@ export const startUpdateItemAction = createAction(
 export const completeUpdateItemAction = createAction(
   EKeyRoomActionAction.completeUpdateItem,
   props<IKeyRoom>()
+);
+
+export const emptyAction = createAction(
+  EKeyRoomActionAction.empty
 );
