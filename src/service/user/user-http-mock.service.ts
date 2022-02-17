@@ -1,18 +1,28 @@
 import {IUserHttpService} from "./user-http.factory";
-import {HttpClient} from "@angular/common/http";
-import {Observable, of} from "rxjs";
-import {IUser} from "../../store/models/user.model";
+import {delay, Observable, of} from "rxjs";
+import {ESocialProvider, IUser} from "../../store/models/user.model";
 
 
 export class UserHttpMockService implements IUserHttpService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor() {
   }
 
   login(userName: string, password: string): Observable<IUser> {
     return of({
-      userName: "someUsername@gmail.com",
+      userName: userName,
       token: "someToken"
-    });
+    }).pipe(
+      delay(1500)
+    );
+  }
+
+  loginByToken(userName: string, token: string, provider: ESocialProvider): Observable<IUser> {
+    return of({
+      userName: userName,
+      token: token
+    }).pipe(
+      delay(1500)
+    );
   }
 }

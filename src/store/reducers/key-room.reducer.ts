@@ -2,6 +2,7 @@ import {createReducer, on} from "@ngrx/store";
 import * as EntityActions from "../action/key-room.action";
 import {IKeyRoom} from "../models/key-room.model";
 import {IKeyRoomState, initialKeyRoomState} from "../state/key-room.state";
+import {UserLogoutAction} from "../action/user.action";
 
 export const KeyRoomReducer = createReducer(
   initialKeyRoomState,
@@ -24,6 +25,9 @@ export const KeyRoomReducer = createReducer(
       return {...state}
     }
     return {...state, items: updateObject(state.items, model)}
+  }),
+  on(UserLogoutAction, () => {
+    return initialKeyRoomState
   })
 )
 

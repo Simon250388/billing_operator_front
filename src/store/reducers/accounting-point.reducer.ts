@@ -3,6 +3,7 @@ import * as EntityActions from "../action/accounting-point.action";
 import {IAccountingPointActive} from "../models/accounting-point-active.model";
 import {IAccountingPointActiveState, initialAccountingPointActiveState} from "../state/accounting-pointactive.state";
 import {chooseCurrenAction} from "../action/key-room.action";
+import {UserLogoutAction} from "../action/user.action";
 
 export const accountingPointReducer = createReducer(
   initialAccountingPointActiveState,
@@ -15,7 +16,7 @@ export const accountingPointReducer = createReducer(
   on(EntityActions.successfulLoadItemsFromApiAction, (state: IAccountingPointActiveState, payload: { items: Map<String, IAccountingPointActive> }) => {
     return {...state, items: payload.items}
   }),
-  on(chooseCurrenAction, () => {
+  on(chooseCurrenAction, UserLogoutAction, () => {
     return initialAccountingPointActiveState
   }),
   on(EntityActions.addAccountingPointSuccessAction, (state: IAccountingPointActiveState, model: IAccountingPointActive) => {

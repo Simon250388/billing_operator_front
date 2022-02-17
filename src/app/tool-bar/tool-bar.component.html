@@ -12,18 +12,19 @@
       <span>Сообщения</span>
     </span>
   </a>
-<!--  <a mat-button routerLink="/prices">Сообщения</a>-->
+  <!--  <a mat-button routerLink="/prices">Сообщения</a>-->
 
 
-<!--  <mat-icon mat-list-icon>email</mat-icon>-->
-  <span style="flex: 1 1 auto;"></span>
-  <ng-container *ngIf="currentUser | async ">
-    <button mat-button [matMenuTriggerFor]="menuAccount">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menuAccount="matMenu">
-      <button mat-menu-item>Настройки</button>
-      <button mat-menu-item (click)="logout()">Выход</button>
-    </mat-menu>
+  <!--  <mat-icon mat-list-icon>email</mat-icon>-->
+  <ng-container *ngIf="(currentUser | async) as currentUserValue">
+    <span style="flex: 1 1 auto;"></span>
+      <button mat-button [matMenuTriggerFor]="menuAccount">
+        <span fxShow.xs="false" fxShow.gt-sm="true">{{currentUserValue.userName}}</span>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menuAccount="matMenu">
+        <button mat-menu-item>Настройки</button>
+        <button mat-menu-item (click)="logout()">Выход</button>
+      </mat-menu>
   </ng-container>
 </mat-toolbar>

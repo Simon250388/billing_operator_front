@@ -8,6 +8,7 @@ import {
 } from "../action/services.action";
 import {SimpleRef} from "../models/simple-ref.model";
 import {initialSimpleRefState, ISimpleRefState} from "../state/simple-ref.state";
+import {UserLogoutAction} from "../action/user.action";
 
 export const simpleRefReducer = createReducer(
   initialSimpleRefState,
@@ -40,5 +41,8 @@ export const simpleRefReducer = createReducer(
       ...state,
       directionOfUses: payload.items
     }
+  }),
+  on(UserLogoutAction, () => {
+    return initialSimpleRefState
   })
 )

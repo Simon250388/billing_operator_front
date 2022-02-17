@@ -1,8 +1,9 @@
 import {createAction, props} from "@ngrx/store";
-import {IUser} from "../models/user.model";
+import {ESocialProvider, IUser} from "../models/user.model";
 
 enum EUserAction {
   UserTryLogin = "[User] try login",
+  UserTryLoginSocialProvider = "[User] try login social provider",
   UserLoginSuccess = "[User] login success",
   UserLoginFail = "[User] login fail",
   UserLogout = "[User] logout"
@@ -20,6 +21,11 @@ export const UserLoginSuccessAction = createAction(
 
 export const UserLoginFailAction = createAction(
   EUserAction.UserLoginFail
+)
+
+export const UserTryLoginSocialProviderAction = createAction(
+  EUserAction.UserTryLoginSocialProvider,
+  props<{ userName: string, token: string, providerType: ESocialProvider }>()
 )
 
 export const UserLogoutAction = createAction(

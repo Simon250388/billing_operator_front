@@ -27,10 +27,8 @@ export class RouterEffect {
       map(() => EntityAction.startLoadItemsFromApiAction()))),
     switchMap(() => this.keyRoomStore.select(getKeyRoomItems)
       .pipe(
-        take(1),
         filter(items => items == undefined))
       .pipe(
-        take(1),
         map(() => this.keyRoomStore.dispatch(EntityAction.startLoadItemsFromApiAction()))
       )
       .pipe(

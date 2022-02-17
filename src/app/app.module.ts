@@ -31,6 +31,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {MatDialogModule} from "@angular/material/dialog";
 import {IAppState} from "../store/state/app.state";
 import {IUserState} from "../store/state/user.state";
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "angularx-social-login";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -94,10 +95,28 @@ export const metaReducers: MetaReducer[] = [appMetaReducer];
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-    })
+    }),
+    SocialLoginModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'ru'}
+    {provide: LOCALE_ID, useValue: 'ru'},
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              ''
+            )
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })
