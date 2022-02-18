@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {map, mergeMap} from "rxjs";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { map, mergeMap, tap } from "rxjs";
 import * as EntityActions from "../action/user.action";
-import {IUserHttpService} from "../../service/user/user-http.factory";
+import { IUserHttpService } from "../../service/user/user-http.factory";
 
 
 @Injectable()
@@ -28,5 +28,13 @@ export class UserEffect {
       ofType(EntityActions.UserTryLoginSocialProviderAction),
       mergeMap(payload => this.httpService.loginByToken(payload.userName, payload.token, payload.providerType)),
       map((user) => EntityActions.UserLoginSuccessAction(user))
+    ))
+
+
+  logoutEffect = createEffect(
+    () => this.actions$.pipe(
+      ofType(EntityActions.UserLogoutAction),
+      map(() => EntityActions.UserLogoutCompleteAction()),
+      tap(() => this.router.navigate(["/login"]))
     ))
 }

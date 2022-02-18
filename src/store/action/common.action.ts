@@ -1,14 +1,10 @@
 import {createAction} from "@ngrx/store";
 
 export enum ECommonAction {
-  startHttpRequest = "[Common] start http request",
-  finishHttpRequest = "[Common] finish http request",
+  empty = "[Common] empty"
 }
 
-export const startHttpRequestAction = createAction(
-  ECommonAction.startHttpRequest
+export const emptyAction = createAction(
+  ECommonAction.empty
 )
 
-export const finishHttpRequestAction = createAction(
-  ECommonAction.finishHttpRequest
-)

@@ -9,6 +9,7 @@ import {
 import {SimpleRef} from "../models/simple-ref.model";
 import {initialSimpleRefState, ISimpleRefState} from "../state/simple-ref.state";
 import {UserLogoutAction} from "../action/user.action";
+import { emptyAction } from "../action/common.action";
 
 export const simpleRefReducer = createReducer(
   initialSimpleRefState,

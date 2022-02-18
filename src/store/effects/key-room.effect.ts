@@ -1,10 +1,11 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {catchError, map, mergeMap, of, switchMap} from "rxjs";
+import {catchError, filter, map, mergeMap, of, switchMap} from "rxjs";
 import {IKeyRoomHttpService} from "src/service/key-room/key-room.http.service.factory";
 import * as EntityActions from "../action/key-room.action";
+import * as CommonActions from "../action/common.action";
 import {Router} from "@angular/router";
-import {Store} from "@ngrx/store";
+import {compose, Store} from "@ngrx/store";
 import {IKeyRoomState} from "../state/key-room.state";
 
 @Injectable()
@@ -28,13 +29,14 @@ export class KeyRoomEffect {
               map(items => EntityActions.successfulLoadItemsFromApiAction({items: new Map(items.map(i => [i.id, i]))})),
               catchError(() => {
                 throw new Error('could not get services from http')
-              }))
-          } else {
-            return of(EntityActions.emptyAction)
+              }))            
+          }
+          else {
+            return of(CommonActions.emptyAction)
           }
         }
       )
-    ))
+    )) 
 
   saveEffect = createEffect(
     () => this.actions.pipe(

@@ -11,25 +11,11 @@ import {IUser} from "../store/models/user.model";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {  
 
-  currentUser: Observable<IUser | undefined> = this.store.select(getCurrentUser)
-
-  constructor(
-    private store: Store<IAppState>,
-    private router: Router) {
+  constructor() {
   }
 
   title = 'BillingOperator';
-
-  ngOnInit(): void {
-    this.currentUser.subscribe(
-      (user) => {
-        if (!user) {
-          this.router.navigate(["login"])
-        }
-      }
-    )
-  }
 }
 

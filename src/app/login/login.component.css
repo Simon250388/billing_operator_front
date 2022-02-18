@@ -1,5 +1,88 @@
-.login-card{
-  min-height: 200px;
-  max-height: 200px;
-  margin-top: 50px;
+.login-card {
+    /* min-height: 200px;
+  max-height: 200px; */
+    margin-top: 20px;
+}
+
+.devider {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.login-action-btn {
+    background-image: url("/assets/login-7.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: inherit;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    min-width: 64px;
+    line-height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(195, 195, 195);
+    margin: 0 8px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.login-action-btn:hover {
+    background-color: rgb(239, 239, 239);
+}
+
+.login-action-btn-google {
+    background-image: url("/assets/icons8-google.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: inherit;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    min-width: 64px;
+    line-height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(195, 195, 195);
+    margin: 0 8px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.login-action-btn-google:hover {
+    background-color: rgb(239, 239, 239);
 }

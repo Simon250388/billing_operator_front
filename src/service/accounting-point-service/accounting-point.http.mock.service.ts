@@ -33,6 +33,24 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
         },
         meterIsActive: true,
         meterStateChangeAt: "2022-15-30T12:00:00"
+      },
+      {
+        id: "Ванная",
+        service: {
+          id: "somestring",
+          present: "Холодная вода"
+        },
+        provider: {
+          id: "somestring",
+          present: "ООО Водоканал"
+        },
+        isActive: true,
+        meter: {
+          id: "somestring",
+          present: "12555454/СГВ-15"
+        },
+        meterIsActive: true,
+        meterStateChangeAt: "2022-15-30T12:00:00"
       }]
     ).pipe(
       delay(1500)

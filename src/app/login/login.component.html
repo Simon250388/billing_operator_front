@@ -1,27 +1,25 @@
 <div fxLayout="column" fxFill fxLayoutAlign="start start">
-  <mat-card class="login-card">
-    <mat-card-title>Login</mat-card-title>
-    <mat-card-content>
-      <form [formGroup]="form">
-
-        <mat-form-field>
-          <input type="text" matInput placeholder="Username" formControlName="username">
-          <mat-error *ngIf="userNameControl?.hasError('email') || userNameControl?.hasError('required')">
-            Please enter email
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input type="password" matInput placeholder="Password" formControlName="password">
-        </mat-form-field>
-
-        <div class="button">
-          <button type="button" (click)="login()" mat-button>Login</button>
-        </div>
-        <div class="button">
-          <button (click)="loginWithGoogle()" type="button" mat-button>google</button>
-        </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="login-card">
+        <mat-card-title>Добро пожаловать</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Username" formControlName="username">
+                    <mat-error *ngIf="userNameControl?.hasError('email') || userNameControl?.hasError('required')">
+                        Please enter email
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password" formControlName="password">
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <div fxLayout="column" fxLayoutGap="10px">
+                <button (click)="login()" class="login-action-btn">Войти или зарегистрироваться</button>
+                <div class="devider">или</div>
+                <button (click)="loginWithGoogle()" class="login-action-btn-google">Войти с помощью google</button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
 </div>

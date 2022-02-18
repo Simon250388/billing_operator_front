@@ -1,30 +1,29 @@
-<mat-toolbar color="primary" style="height: 100%;">
-
-  <a mat-button routerLink="/key-room">
-    <span class="mat-button-wrapper">
+<mat-toolbar color="primary" style="height: 100%;" *ngIf="(currentUser | async) as currentUserValue">
+    <a mat-button routerLink="/key-room">
+        <span class="mat-button-wrapper">
       <mat-icon>home</mat-icon>
       <span>Домой</span>
-    </span>
-  </a>
-  <a mat-button routerLink=".">
-    <span class="mat-button-wrapper">
+        </span>
+    </a>
+    <a mat-button routerLink=".">
+        <span class="mat-button-wrapper">
       <mat-icon>email</mat-icon>
       <span>Сообщения</span>
-    </span>
-  </a>
-  <!--  <a mat-button routerLink="/prices">Сообщения</a>-->
+        </span>
+    </a>
+    <!--  <a mat-button routerLink="/prices">Сообщения</a>-->
 
 
-  <!--  <mat-icon mat-list-icon>email</mat-icon>-->
-  <ng-container *ngIf="(currentUser | async) as currentUserValue">
-    <span style="flex: 1 1 auto;"></span>
-      <button mat-button [matMenuTriggerFor]="menuAccount">
+    <!--  <mat-icon mat-list-icon>email</mat-icon>-->
+    <ng-container>
+        <span style="flex: 1 1 auto;"></span>
+        <button mat-button [matMenuTriggerFor]="menuAccount">
         <span fxShow.xs="false" fxShow.gt-sm="true">{{currentUserValue.userName}}</span>
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #menuAccount="matMenu">
-        <button mat-menu-item>Настройки</button>
-        <button mat-menu-item (click)="logout()">Выход</button>
-      </mat-menu>
-  </ng-container>
+        <mat-menu #menuAccount="matMenu">
+            <button mat-menu-item>Настройки</button>
+            <button mat-menu-item (click)="logout()">Выход</button>
+        </mat-menu>
+    </ng-container>
 </mat-toolbar>

@@ -6,7 +6,8 @@ enum EUserAction {
   UserTryLoginSocialProvider = "[User] try login social provider",
   UserLoginSuccess = "[User] login success",
   UserLoginFail = "[User] login fail",
-  UserLogout = "[User] logout"
+  UserLogout = "[User] logout",
+  UserLogoutComplete = "[User] logout complete"
 }
 
 export const UserTryLoginAction = createAction(
@@ -31,3 +32,9 @@ export const UserTryLoginSocialProviderAction = createAction(
 export const UserLogoutAction = createAction(
   EUserAction.UserLogout
 )
+
+export const UserLogoutCompleteAction = createAction(
+  EUserAction.UserLogoutComplete
+)
+
+

@@ -75,7 +75,6 @@ export const metaReducers: MetaReducer[] = [appMetaReducer];
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    EnvironmenterModule.forRoot(environment),
     StoreModule.forRoot(appReducers, { metaReducers }),
     EffectsModule.forRoot([
       UserEffect,

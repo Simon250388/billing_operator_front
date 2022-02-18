@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {mergeMap, startWith} from "rxjs";
+import {mergeMap, of, startWith} from "rxjs";
 import {Store} from "@ngrx/store";
 import {routerNavigatedAction} from "@ngrx/router-store";
 import * as EntityAction from "../action/key-room.action";
+import * as CommonAction from "../action/common.action";
 import {IAppState} from "../state/app.state";
 
 @Injectable()
@@ -25,9 +26,7 @@ export class RouterEffect {
           EntityAction.chooseCurrenAction({currentId: params!['id']})
         ]
       } else {
-        return [
-          EntityAction.emptyAction
-        ]
+        return of(CommonAction.emptyAction())        
       }
     })
   ))
