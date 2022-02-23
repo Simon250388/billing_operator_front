@@ -1,14 +1,14 @@
-import {Component, OnDestroy} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngrx/store';
+import { Component, OnDestroy } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import * as EntityAction from 'src/store/action/user.action';
-import {IAppState} from 'src/store/state/app.state';
-import {Observable, Subscription} from "rxjs";
-import {ESocialProvider, IUser} from "../../store/models/user.model";
-import {getCurrentUser} from "../../store/selectors/user.selector";
-import {GoogleLoginProvider, SocialAuthService} from "angularx-social-login";
-import {Actions, ofType} from "@ngrx/effects";
-import {Router} from "@angular/router";
+import { IAppState } from 'src/store/state/app.state';
+import { Observable, Subscription } from "rxjs";
+import { ESocialProvider, IUser } from "../../store/models/user.model";
+import { getCurrentUser } from "../../store/selectors/user.selector";
+import { GoogleLoginProvider, SocialAuthService } from "angularx-social-login";
+import { Actions, ofType } from "@ngrx/effects";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -26,6 +26,12 @@ export class LoginComponent implements OnDestroy {
 
   private authSubscription: Subscription;
   private navigationSubscription: Subscription;
+  private _inProgress: boolean = false
+
+
+  get inProgress(): boolean {
+    return this._inProgress;
+  }
 
   constructor(
     private readonly store: Store<IAppState>,
@@ -48,8 +54,9 @@ export class LoginComponent implements OnDestroy {
     this.navigationSubscription = this.actions.pipe(
       ofType(EntityAction.UserLoginSuccessAction)
     ).subscribe(() => {
-        this.router.navigate([".."])
-      }
+      this._inProgress = false;
+      this.router.navigate([".."])
+    }
     )
   }
 
@@ -78,9 +85,9 @@ export class LoginComponent implements OnDestroy {
     if (this.form.invalid) {
       return
     }
-
+    this._inProgress = true;
     this.form.disable()
-    this.store.dispatch(EntityAction.UserTryLoginAction({userName: this.userName, password: this.password}))
+    this.store.dispatch(EntityAction.UserTryLoginAction({ userName: this.userName, password: this.password }))
   }
 
   loginWithGoogle() {

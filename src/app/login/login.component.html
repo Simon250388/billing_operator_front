@@ -16,7 +16,11 @@
         </mat-card-content>
         <mat-card-actions>
             <div fxLayout="column" fxLayoutGap="10px">
-                <button (click)="login()" class="login-action-btn">Войти или зарегистрироваться</button>
+                <button (click)="login()" class="login-action-btn">Войти или зарегистрироваться
+                    <mat-icon *ngIf="inProgress">
+                        <mat-spinner color="primary" diameter="20"></mat-spinner>
+                    </mat-icon>
+                </button>
                 <div class="devider">или</div>
                 <button (click)="loginWithGoogle()" class="login-action-btn-google">Войти с помощью google</button>
             </div>

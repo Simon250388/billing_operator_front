@@ -32,6 +32,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {IAppState} from "../store/state/app.state";
 import {IUserState} from "../store/state/user.state";
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "angularx-social-login";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -90,6 +91,7 @@ export const metaReducers: MetaReducer[] = [appMetaReducer];
     MatIconModule,
     MatFormFieldModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
@@ -107,7 +109,7 @@ export const metaReducers: MetaReducer[] = [appMetaReducer];
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              ''
+              '282694977202-21h9jnjeulob4qmmkncki49da58kkj4l.apps.googleusercontent.com'
             )
           },
         ],
