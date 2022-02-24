@@ -3,9 +3,11 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 import {IAppState} from "../../../../store/state/app.state";
 import {Store} from "@ngrx/store";
-import {addNewKeyRoomStartAction} from "../../../../store/action/key-room.action";
+import * as EntityActions from "../../../../store/action/key-room.action";
 import {IKeyRoomUpdateModel} from "../../../../store/models/key-room.model";
 import {roomTypes} from "../../../../store/models/room-type";
+import { Actions, ofType } from '@ngrx/effects';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contract-details',
@@ -45,7 +47,9 @@ export class KeyRoomAddComponent {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private store: Store<IAppState>
+    private router: Router,
+    private store: Store<IAppState>,
+    private actions: Actions,
   ) {
 
     this.keyRoomFormGroup = this._formBuilder.group({
@@ -61,6 +65,12 @@ export class KeyRoomAddComponent {
     this.accountingPointFormGroup = this._formBuilder.group({
       accountingPointFormArray: this._formBuilder.array([], Validators.required)
     })
+
+    this.actions.pipe(
+      ofType(EntityActions.addNewKeyRoomSuccessAction)
+    ).subscribe(() => this.router.navigate(["/key-room"]))
+
+
   }
 
   idControl() {
@@ -114,6 +124,6 @@ export class KeyRoomAddComponent {
 
     this._saveInProgress = true
 
-    this.store.dispatch(addNewKeyRoomStartAction(this.keyRoomFormGroup.value as IKeyRoomUpdateModel))
+    this.store.dispatch(EntityActions.addNewKeyRoomStartAction(this.keyRoomFormGroup.value as IKeyRoomUpdateModel))
   }
 }

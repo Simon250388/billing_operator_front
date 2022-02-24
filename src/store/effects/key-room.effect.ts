@@ -7,6 +7,7 @@ import * as CommonActions from "../action/common.action";
 import {Router} from "@angular/router";
 import {compose, Store} from "@ngrx/store";
 import {IKeyRoomState} from "../state/key-room.state";
+import { getKeyRoomItems } from "../selectors/key-room.selector";
 
 @Injectable()
 export class KeyRoomEffect {
@@ -14,7 +15,6 @@ export class KeyRoomEffect {
   constructor(
     private readonly actions: Actions,
     private readonly httpService: IKeyRoomHttpService,
-    private readonly router: Router,
     private readonly keyRoomStore: Store<IKeyRoomState>
   ) {
   }
@@ -22,7 +22,7 @@ export class KeyRoomEffect {
   loadEffect = createEffect(
     () => this.actions.pipe(
       ofType(EntityActions.startLoadItemsFromApiAction),
-      mergeMap(() => this.keyRoomStore.select((state) => state.items)),
+      mergeMap(() => this.keyRoomStore.select(getKeyRoomItems)),
       switchMap((items) => {
           if (items == undefined) {
             return this.httpService.search().pipe(
