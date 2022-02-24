@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { Store } from '@ngrx/store';
 import * as EntityAction from 'src/store/action/user.action';
 import { IAppState } from 'src/store/state/app.state';
-import { Observable, Subscription } from "rxjs";
+import { Observable, Subscription, take } from "rxjs";
 import { ESocialProvider, IUser } from "../../store/models/user.model";
 import { getCurrentUser } from "../../store/selectors/user.selector";
 import { GoogleLoginProvider, SocialAuthService } from "angularx-social-login";
@@ -26,6 +26,7 @@ export class LoginComponent implements OnDestroy {
 
   private authSubscription: Subscription;
   private navigationSubscription: Subscription;
+  private currentUserSubscription: Subscription;
   private _inProgress: boolean = false
 
 
@@ -39,7 +40,9 @@ export class LoginComponent implements OnDestroy {
     private readonly actions: Actions,
     private readonly router: Router,
   ) {
+    
     this.authSubscription = this.authService.authState.subscribe((user) => {
+      
       if (user) {
         this.store.dispatch(EntityAction.UserTryLoginSocialProviderAction(
           {
@@ -48,21 +51,34 @@ export class LoginComponent implements OnDestroy {
             providerType: ESocialProvider[user.provider.toUpperCase()]
           }
         ))
+      } else {
+        this.form.enable()
       }
     });
 
     this.navigationSubscription = this.actions.pipe(
       ofType(EntityAction.UserLoginSuccessAction)
-    ).subscribe(() => {
+    ).subscribe(() => {      
       this._inProgress = false;
-      this.router.navigate([".."])
+      this.router.navigate(["/key-room"])
     }
     )
+
+    this.currentUserSubscription = this.currentUser.pipe(
+      take(1)
+    ).subscribe(user => {
+      if (user) {       
+        this.router.navigate(["/key-room"])
+      } else {
+        this.form.enable()
+      }
+    })
   }
 
   ngOnDestroy(): void {
     this.authSubscription.unsubscribe()
     this.navigationSubscription.unsubscribe()
+    this.currentUserSubscription.unsubscribe()
   }
 
   get userNameControl(): AbstractControl | null {

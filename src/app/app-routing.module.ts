@@ -1,15 +1,10 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from './login/login.component';
-import {AuthGuardService} from "../service/auth-guard.service";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from "../service/auth-guard.service";
 
 
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'key-room',
-    pathMatch: 'full'
-  },
+const routes: Routes = [  
   {
     path: 'key-room',
     loadChildren: () => import('./key-room/key-room.module').then(m => m.KeyRoomModule),
@@ -34,9 +29,11 @@ const routes: Routes = [
     path: 'people-history',
     loadChildren: () => import('./people-history/people-history.module').then(m => m.PeopleHistoryModule),
     canActivate: [AuthGuardService]
-  },
-  {path: '**', component: LoginComponent},
+  },    
+  { path: '**', component: LoginComponent },
+ 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
