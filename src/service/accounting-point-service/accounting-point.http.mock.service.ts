@@ -18,6 +18,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
     return of(
       [{
         id: "Кухня",
+        keyRoomId: keyRoomId,
         service: {
           id: "somestring",
           present: "Холодная вода"
@@ -36,6 +37,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
       },
       {
         id: "Ванная",
+        keyRoomId: keyRoomId,
         service: {
           id: "somestring",
           present: "Холодная вода"
@@ -60,6 +62,7 @@ export class AccountingPointHttpMockService implements IAccountingPointHttpServi
   save(model: IAccountingPointActiveToUpdateModel): Observable<IAccountingPointActive> {
     return of({
       id: model.id,
+      keyRoomId: "",
       service: {
         id: model.serviceId,
         present: "Холодная вода"

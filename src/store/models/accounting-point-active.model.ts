@@ -2,6 +2,7 @@ import {SimpleRef} from './simple-ref.model';
 
 export interface IAccountingPointActive {
   id: string,
+  keyRoomId: string,
   service: SimpleRef;
   provider: SimpleRef;
   isActive: boolean;

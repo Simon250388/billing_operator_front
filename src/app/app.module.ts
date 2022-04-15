@@ -10,7 +10,6 @@ import localeRu from '@angular/common/locales/ru';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
-import {EnvironmenterModule} from 'ng-environmenter';
 import {ActionReducer, INIT, MetaReducer, StoreModule, UPDATE} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
@@ -109,7 +108,7 @@ export const metaReducers: MetaReducer[] = [appMetaReducer];
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '282694977202-21h9jnjeulob4qmmkncki49da58kkj4l.apps.googleusercontent.com'
+              environment.googleClientId
             )
           },
         ],

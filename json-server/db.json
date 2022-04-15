@@ -1,0 +1,39 @@
+{
+    "key-room": [{
+            "id": "Первое",
+            "address": "414000, г. Москва, ул. Королева, д. 985, кв. 999",
+            "countResident": 4,
+            "countSubscribed": 4,
+            "countOwner": 2,
+            "square": 40,
+            "roomType": { "id": 1, "present": "Квартира" }
+        },
+        {
+            "id": "Второе",
+            "address": "414000, г. Москва, ул. Королева, д. 985, кв. 999",
+            "countResident": 4,
+            "countSubscribed": 4,
+            "countOwner": 4,
+            "square": 50,
+            "roomType": { "id": 1, "present": "Квартира" }
+        },
+        {
+            "id": "Третье",
+            "address": "414000, г. Москва, ул. Королева, д. 985, кв. 999",
+            "countResident": 4,
+            "countSubscribed": 4,
+            "countOwner": 2,
+            "square": 60,
+            "roomType": { "id": 1, "present": "Квартира" }
+        },
+        {
+            "id": "Четвертое",
+            "address": "414000, г. Москва, ул. Королева, д. 985, кв. 999",
+            "countResident": 2,
+            "countSubscribed": 2,
+            "countOwner": 2,
+            "square": 70,
+            "roomType": { "id": 1, "present": "Квартира" }
+        }
+    ]
+}

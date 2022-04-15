@@ -6,14 +6,15 @@ import {IAccountingPointActive, IAccountingPointActiveToUpdateModel} from "src/s
 import {AccountingPointHttpMockService} from "./accounting-point.http.mock.service";
 import {AccountingPointHttpService} from "./accounting-point.http.service";
 
-export const accountingPointHttpServiceFactory = () => {
-  const isProduction = environment["production"] as boolean;
+export const accountingPointHttpServiceFactory = (http: HttpClient) => {
+  
+  const useServer = environment["useServer"] as boolean;
 
-  if (!isProduction) {
+  if (!useServer) {
     return new AccountingPointHttpMockService();
   }
 
-  return new AccountingPointHttpService()
+  return new AccountingPointHttpService(http)
 }
 
 @Injectable({

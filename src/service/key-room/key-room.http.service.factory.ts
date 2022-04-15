@@ -8,9 +8,9 @@ import {KeyRoomHttpService} from "./key-room.http.service";
 
 export const keyRoomHttpServiceFactory = (http: HttpClient): IKeyRoomHttpService => {
 
-  const isProduction = environment["production"] as boolean;
+  const useServer = environment["useServer"] as boolean;
 
-  if (!isProduction) {
+  if (!useServer) {
     return new KeyRoomHttMockService();
   }
 

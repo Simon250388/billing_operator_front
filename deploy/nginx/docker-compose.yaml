@@ -1,0 +1,5 @@
+sitename:
+  build: .
+  ports:
+  - 3890:80
+  restart: always
