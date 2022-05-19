@@ -25,7 +25,7 @@ const routes: Routes = [
       },
       {
         path: 'calculation',
-        loadChildren: () => import('../calculation-list/calculation-list.module').then(m => m.CalculationListModule),
+        loadChildren: () => import('../calculation/calculation-list/calculation-list.module').then(m => m.CalculationListModule),
       }
       ]
   }

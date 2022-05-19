@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CalculationItem } from 'src/app/calculation-list/component/calcultaion-list/calcultaion-list.component';
+import { CalculationItem } from 'src/app/calculation/calculation-list/component/calcultaion-list/calcultaion-list.component';
 
 
 @Component({

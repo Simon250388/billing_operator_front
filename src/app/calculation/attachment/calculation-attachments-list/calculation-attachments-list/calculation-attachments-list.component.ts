@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CalculationAttachment } from 'src/app/calculation-list/component/calcultaion-list/calcultaion-list.component';
+import { CalculationAttachment } from 'src/app/calculation/calculation-list/component/calcultaion-list/calcultaion-list.component';
 
 @Component({
   selector: 'app-calculation-attachments-list',

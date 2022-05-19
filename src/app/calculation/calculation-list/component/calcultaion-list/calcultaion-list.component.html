@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFill>
+<div fxLayout="row" fxFill>
     <app-calculation-item *ngFor="let item of items" [item]="item"></app-calculation-item>
     <div *ngIf="items.length == 0">Начисление не найдены</div>
 </div>

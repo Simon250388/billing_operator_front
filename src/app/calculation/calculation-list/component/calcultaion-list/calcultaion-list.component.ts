@@ -23,7 +23,10 @@ const ELEMENT_DATA: CalculationItem[] = [
         debtEnd: 100
       } as CalculationByService
     ],
-    attachments: []
+    attachments: [{
+      provider: { id: "someID", present: "Газпром" },
+      url: "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    }]
   }
 ];
 
@@ -38,7 +41,8 @@ export class CalcultaionListComponent {
 }
 
 export interface CalculationAttachment {
-  provider: string
+  provider: SimpleRef,
+  url: string
 }
 
 export interface CalculationItem {

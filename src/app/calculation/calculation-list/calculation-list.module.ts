@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CalcultaionListComponent } from './component/calcultaion-list/calcultaion-list.component';
 import { CalculationRoutingModule } from './calculcation-routing.module';
 import { CalculationItemModule } from '../calculation-item/calculation-item.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CalculationItemModule } from '../calculation-item/calculation-item.modu
   imports: [
     CalculationItemModule,
     CommonModule,
-    CalculationRoutingModule  
-  ]  
+    CalculationRoutingModule,
+    FlexLayoutModule
+  ]
 })
 export class CalculationListModule { }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CalculationByService } from 'src/app/calculation-list/component/calcultaion-list/calcultaion-list.component';
+import { CalculationByService } from 'src/app/calculation/calculation-list/component/calcultaion-list/calcultaion-list.component';
 
 @Component({
   selector: 'app-calculation-item-service',
