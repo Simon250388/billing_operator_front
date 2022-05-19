@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SimpleRef } from 'src/store/models/simple-ref.model';
 
 
 export interface PeriodicElement {
@@ -9,14 +10,21 @@ export interface PeriodicElement {
   debtEnd: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {service: "Холодная вода", debtBegin: 100, calculate: 100, payment: 150, debtEnd: 50},
-  {service: "Холодная вода 1", debtBegin: 100, calculate: 100, payment: 150, debtEnd: 50},
-  {service: "Холодная вода 2", debtBegin: 100, calculate: 100, payment: 150, debtEnd: 50},
-  {service: "Холодная вода 3", debtBegin: 100, calculate: 100, payment: 150, debtEnd: 50},
-  {service: "Холодная вода 4", debtBegin: 100, calculate: 100, payment: 150, debtEnd: 50},
-  {service: "Холодная вода 5", debtBegin: 100, calculate: 100, payment: 150, debtEnd: 50},
-  
+const ELEMENT_DATA: CalculationItem[] = [
+  {
+    month: '2022-01-01',
+    details: [
+      {
+        provider: { id: "someID", present: "Газпром" },
+        service: { id: "someID", present: "Холодная вода" },
+        debtBegin: 200,
+        calculate: 100,
+        payment: 100,
+        debtEnd: 100
+      } as CalculationByService
+    ],
+    attachments: []
+  }
 ];
 
 
@@ -25,14 +33,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './calcultaion-list.component.html',
   styleUrls: ['./calcultaion-list.component.css']
 })
-export class CalcultaionListComponent implements OnInit {
+export class CalcultaionListComponent {
+  items: CalculationItem[] = ELEMENT_DATA
+}
 
-  displayedColumns: string[] = ['service', 'debtBegin', 'calculate', 'payment', 'debtEnd'];
-  dataSource = ELEMENT_DATA;
+export interface CalculationAttachment {
+  provider: string
+}
 
-  constructor() { }
+export interface CalculationItem {
+  month: string,
+  attachments: CalculationAttachment[]
+  details: CalculationByService[]
+}
 
-  ngOnInit() {
-  }
-
+export interface CalculationByService {
+  provider: SimpleRef,
+  service: SimpleRef,
+  debtBegin: number,
+  calculate: number,
+  payment: number,
+  debtEnd: number
 }

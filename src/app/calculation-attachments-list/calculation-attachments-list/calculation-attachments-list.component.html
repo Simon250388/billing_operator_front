@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <b style="margin-top: 10px">Прикрепленные файлы</b>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <app-calculation-attachment *ngFor="let attachment of items" [item]="attachment"></app-calculation-attachment>
+        <mat-card class="calculation-attacment-add-card">
+            <div fxLayout="column" class="calculation-attacment-add-column" fxLayoutAlign="center center">
+                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+            </button>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel #myPanel [disabled]="false">
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                <table class="app-table">
+                    <tr>
+                        <td>{{item?.month}}</td>
+                        <td>Начисленно: 100</td>
+                        <td>Оплачено: 0</td>
+                    </tr>
+                </table>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-calculation-item-service [items]="item?.details"></app-calculation-item-service>
+        <app-calculation-attachments-list [items]="item?.attachments"></app-calculation-attachments-list>
+    </mat-expansion-panel>
+
+</mat-accordion>

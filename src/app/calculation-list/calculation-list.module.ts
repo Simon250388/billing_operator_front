@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { CalcultaionListComponent } from './component/calcultaion-list/calcultaion-list.component';
 import { CalculationRoutingModule } from './calculcation-routing.module';
-import { MatTableModule } from '@angular/material/table';
+import { CalculationItemModule } from '../calculation-item/calculation-item.module';
 
 @NgModule({
   declarations: [
     CalcultaionListComponent
   ],
   imports: [
+    CalculationItemModule,
     CommonModule,
-    CalculationRoutingModule,
-    MatExpansionModule
+    CalculationRoutingModule  
   ]  
 })
 export class CalculationListModule { }

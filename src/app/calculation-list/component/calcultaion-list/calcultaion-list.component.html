@@ -1,36 +1,4 @@
 <div fxLayout="column" fxFill>
-  <mat-accordion class="example-headers-align">
-    <mat-expansion-panel #myPanel [disabled]="false"
-      *ngFor="let month of ['Январь 2022','Февраль 2022','Март 2022','Апрель 2022']">
-      <mat-expansion-panel-header>
-        <mat-panel-description>
-          <table class="app-table">
-            <tr>
-              <td>{{month}}</td>
-              <td>Было: 100</td>
-              <td>Стало: 0</td>
-            </tr>
-          </table>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-
-      <table class="app-table">
-        <tr>
-          <td class="calculation-service-column">Услуга</td>
-          <td class="calculation-value content-center">x</td>
-          <td class="calculation-value content-center">+</td>
-          <td class="calculation-value content-center">-</td>
-          <td class="calculation-value content-center">=</td>
-        </tr>
-        <tr *ngFor="let item of dataSource">
-          <td class="calculation-service-column">{{item.service}}</td>
-          <td class="calculation-value content-center">{{item.debtBegin}}</td>
-          <td class="calculation-value content-center">{{item.calculate}}</td>
-          <td class="calculation-value content-center">{{item.payment}}</td>
-          <td class="calculation-value content-center">{{item.debtEnd}}</td>
-        </tr>
-      </table>     
-
-    </mat-expansion-panel>
-  </mat-accordion>
+    <app-calculation-item *ngFor="let item of items" [item]="item"></app-calculation-item>
+    <div *ngIf="items.length == 0">Начисление не найдены</div>
 </div>

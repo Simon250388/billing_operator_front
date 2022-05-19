@@ -1,0 +1,16 @@
+<table class="app-table">
+    <tr>
+        <td class="calculation-service-column">Услуга</td>
+        <td class="calculation-value content-center">x</td>
+        <td class="calculation-value content-center">+</td>
+        <td class="calculation-value content-center">-</td>
+        <td class="calculation-value content-center">=</td>
+    </tr>
+    <tr *ngFor="let item of items">
+        <td class="calculation-service-column">{{item.service.present}}</td>
+        <td class="calculation-value content-center">{{item.debtBegin}}</td>
+        <td class="calculation-value content-center">{{item.calculate}}</td>
+        <td class="calculation-value content-center">{{item.payment}}</td>
+        <td class="calculation-value content-center">{{item.debtEnd}}</td>
+    </tr>
+</table>

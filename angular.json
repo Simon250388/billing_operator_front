@@ -75,7 +75,7 @@
                             }]
                         }
                     },
-                    "defaultConfiguration": "production"
+                    "defaultConfiguration": "development-mock"
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
@@ -85,9 +85,12 @@
                         },
                         "development": {
                             "browserTarget": "billingFront:build:development"
+                        },
+                        "development-mock": {
+                            "browserTarget": "billingFront:build:development-mock"
                         }
                     },
-                    "defaultConfiguration": "development"
+                    "defaultConfiguration": "development-mock"
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
