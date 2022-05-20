@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { EnumInputModule } from '../enum-input/enum-input.module';
+import { EnumInputModule } from '../input/enum-input/enum-input.module';
 import {MatDialogModule} from "@angular/material/dialog";
 
 

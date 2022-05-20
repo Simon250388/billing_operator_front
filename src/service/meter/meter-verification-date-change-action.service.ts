@@ -5,7 +5,7 @@ import {IAppState} from "../../store/state/app.state";
 import {IMeterState} from "../../store/state/meter.state";
 import {MatDialog} from "@angular/material/dialog";
 import {MeterModel} from "../../store/models/meter.model";
-import {DateChangeComponent} from "../../app/change-value/date-change/date-change.component";
+import {DateChangeComponent} from "../../app/input/change-value/date-change/date-change.component";
 import * as EntityActions from "../../store/action/meter.action";
 import {getMeterByIdSelector} from "../../store/selectors/meter.selector";
 import {take} from "rxjs";

@@ -6,7 +6,7 @@ import {take} from "rxjs";
 import {Store} from "@ngrx/store";
 import {EntityEditAction} from "../meter/entity-edit-action";
 import {IKeyRoomState} from "../../store/state/key-room.state";
-import {SimpleNumberChangeComponent} from "../../app/change-value/simple-number-change/simple-number-change.component";
+import {SimpleNumberChangeComponent} from "../../app/input/change-value/simple-number-change/simple-number-change.component";
 import {keyRoomModelConvertor} from "./key-room-model.convertor";
 import {getKeyRoomByIdSelector} from "../../store/selectors/key-room.selector";
 

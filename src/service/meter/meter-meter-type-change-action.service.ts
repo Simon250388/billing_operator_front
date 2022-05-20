@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {MatDialog} from "@angular/material/dialog";
-import {ProviderChangeComponent} from "../../app/change-value/provider-change/provider-change.component";
+import {ProviderChangeComponent} from "../../app/input/change-value/provider-change/provider-change.component";
 import {Store} from "@ngrx/store";
 import {IAppState} from "../../store/state/app.state";
 import {IMeterState} from "../../store/state/meter.state";

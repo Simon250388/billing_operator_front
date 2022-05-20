@@ -10,6 +10,15 @@ export class CalculationAttachmentsListComponent {
 
   @Input() items: CalculationAttachment[] | undefined = []
 
+
+
+  delete(item: CalculationAttachment) {
+    const index = this.items?.indexOf(item) ?? -1;
+    if (index > -1) {
+      this.items?.splice(index, 1);
+    }
+  }
+
 }
 
 

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CalculationAttachment } from 'src/app/calculation/calculation-list/component/calcultaion-list/calcultaion-list.component';
+
 
 @Component({
   selector: 'app-calculation-attachment',
@@ -9,5 +10,10 @@ import { CalculationAttachment } from 'src/app/calculation/calculation-list/comp
 export class CalculationAttachmentComponent {
 
   @Input() item: CalculationAttachment | undefined
+  @Output() onItemDelete: EventEmitter<CalculationAttachment> = new EventEmitter()
+
+  delete() {
+    this.onItemDelete.emit(this.item)
+  }
 
 }

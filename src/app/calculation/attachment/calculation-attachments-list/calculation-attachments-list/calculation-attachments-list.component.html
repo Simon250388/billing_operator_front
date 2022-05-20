@@ -4,7 +4,6 @@
     </div>
     <mat-divider></mat-divider>
     <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlexFill>
-        <app-calculation-attachment *ngFor="let attachment of items" [item]="attachment"></app-calculation-attachment>
-        <app-calculation-attachment-add></app-calculation-attachment-add>
+        <app-calculation-attachment *ngFor="let attachment of items" [item]="attachment" (onItemDelete)="delete($event)"></app-calculation-attachment>
     </div>
 </div>

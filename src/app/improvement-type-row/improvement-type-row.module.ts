@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EntityInputModule } from '../entity-input/entity-input.module';
+import { EntityInputModule } from '../input/entity-input/entity-input.module';
 import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({

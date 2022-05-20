@@ -5,14 +5,12 @@ import { CalculationAttachmentModule } from '../calculation-attachment/calculati
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { CalculationAttachmentAddModule } from '../calculation-attachment-add/calculation-attachment-add.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     CalculationAttachmentModule,
-    CalculationAttachmentAddModule,
     MatCardModule,
     MatIconModule,
     MatDividerModule,
