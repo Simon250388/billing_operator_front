@@ -1,6 +1,6 @@
 export interface ServiceImprovementTypeRateGroup {
-  id?: number,
-  serviceId?: string;
+  id: string | undefined,
+  serviceId: string;
   improvementTypeId: string;
   rateGroupId: string;
 }

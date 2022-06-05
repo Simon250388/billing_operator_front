@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormGroup} from "@angular/forms";
 import {AbstractEntityInput} from "../abstract-entity-input";
 import {Store} from "@ngrx/store";
 import {IAppState} from "../../../../store/state/app.state";

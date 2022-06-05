@@ -1,11 +1,11 @@
-import {Component, Inject} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Subscription} from "rxjs";
-import {IAppState} from "../../../../store/state/app.state";
-import {ActionCreator, Store} from "@ngrx/store";
-import {Actions} from "@ngrx/effects";
-import {AbstractChangeValueComponent} from "../abstract-change-value.component";
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Subscription } from "rxjs";
+import { IAppState } from "../../../../store/state/app.state";
+import { ActionCreator, Store } from "@ngrx/store";
+import { Actions } from "@ngrx/effects";
+import { AbstractChangeValueComponent } from "../abstract-change-value.component";
 
 @Component({
   selector: 'app-date-change',
@@ -14,8 +14,8 @@ import {AbstractChangeValueComponent} from "../abstract-change-value.component";
 })
 export class DateChangeComponent extends AbstractChangeValueComponent {
 
-  formGroup = this.formBuilder.group({
-    editableDate: ['', Validators.required]
+  formGroup = new FormGroup({
+    editableDate: new FormControl<string>('', [Validators.required])
   })
 
   get value(): any {
@@ -23,7 +23,6 @@ export class DateChangeComponent extends AbstractChangeValueComponent {
   }
 
   constructor(
-    override readonly formBuilder: FormBuilder,
     override readonly dialogRef: MatDialogRef<DateChangeComponent>,
     override readonly store: Store<IAppState>,
     override readonly actions: Actions,
@@ -35,6 +34,6 @@ export class DateChangeComponent extends AbstractChangeValueComponent {
       failCompleteAction: ActionCreator,
     } | undefined
   ) {
-    super(formBuilder, dialogRef, store, actions, data)
+    super(dialogRef, store, actions, data)
   }
 }

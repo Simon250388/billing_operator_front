@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, Validators, FormGroup, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
@@ -10,23 +10,18 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DifferentiationTypeChangeComponent {
 
-  formGroup: FormGroup;
+  formGroup = new FormGroup({
+    differentiationTypeId: new FormControl<number | undefined | null>(null, [Validators.required])
+  });
 
-  constructor(
-    private formbuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public currentValueId: number
-  ) {
-    this.formGroup = this.formbuilder.group({
-      differentiationTypeId: ['', Validators.required]
-    })
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public currentValueId: number) { }
 
   get currentValuePresent(): string {
     return "";
   }
 
-  get controlValue(): number {
-    return this.formGroup.controls['differentiationTypeId'].value;
+  get controlValue(): number | undefined | null {
+    return this.formGroup.value.differentiationTypeId
   }
 
 }

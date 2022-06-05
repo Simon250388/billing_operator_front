@@ -1,5 +1,5 @@
 import {Inject, Injectable, OnDestroy} from "@angular/core";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ActionCreator, Store} from "@ngrx/store";
 import {IAppState} from "../../../store/state/app.state";
@@ -26,7 +26,6 @@ export abstract class AbstractChangeValueComponent implements OnDestroy {
   abstract get value(): any
 
   protected constructor(
-    protected readonly formBuilder: FormBuilder,
     protected readonly dialogRef: MatDialogRef<any>,
     protected readonly store: Store<IAppState>,
     protected readonly actions: Actions,

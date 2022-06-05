@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
-import {IAppState} from "../../../../../store/state/app.state";
-import {Store} from "@ngrx/store";
+import { Component } from '@angular/core';
+import { FormArray, FormControl, FormGroup, UntypedFormArray, Validators } from '@angular/forms';
+import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
+import { IAppState } from "../../../../../store/state/app.state";
+import { Store } from "@ngrx/store";
 import * as EntityActions from "../../../../../store/action/key-room.action";
-import {IKeyRoomUpdateModel} from "../../../../../store/models/key-room.model";
-import {roomTypes} from "../../../../../store/models/room-type";
+import { IKeyRoomUpdateModel } from "../../../../../store/models/key-room.model";
+import { roomTypes } from "../../../../../store/models/room-type";
 import { Actions, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
 
@@ -14,14 +14,24 @@ import { Router } from '@angular/router';
   templateUrl: './key-room-add.component.html',
   styleUrls: ['./key-room-add.component.css'],
   providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false, showError: true}
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false, showError: true }
   }]
 })
 export class KeyRoomAddComponent {
 
-  keyRoomFormGroup!: FormGroup;
+  keyRoomFormGroup = new FormGroup({
+    id: new FormControl<string | null>(null, [Validators.required]),
+    address: new FormControl<string>(''),
+    roomTypeId: new FormControl<number>(0, [Validators.required]),
+    countOwner: new FormControl<number>(1, [Validators.required, Validators.min(1)]),
+    countSubscribed: new FormControl<number>(0, [Validators.required, Validators.min(1)]),
+    countResident: new FormControl<number>(0, [Validators.required, Validators.min(1)]),
+    square: new FormControl<number>(0, [Validators.required, Validators.min(1)])
+  });;
 
-  accountingPointFormGroup!: FormGroup;
+  accountingPointFormGroup = new FormGroup({
+    accountingPointFormArray: new FormArray([], Validators.required)
+  });
 
   private _saveInProgress: boolean = false
 
@@ -46,55 +56,37 @@ export class KeyRoomAddComponent {
   }
 
   constructor(
-    private _formBuilder: FormBuilder,
     private router: Router,
     private store: Store<IAppState>,
-    private actions: Actions,
+    private actions: Actions
   ) {
-
-    this.keyRoomFormGroup = this._formBuilder.group({
-      id: ['', [Validators.required]],
-      address: [''],
-      roomTypeId: [0, [Validators.required]],
-      countOwner: [1, [Validators.required, Validators.min(1)]],
-      countSubscribed: [0, [Validators.required, Validators.min(1)]],
-      countResident: [0, [Validators.required, Validators.min(1)]],
-      square: [0, [Validators.required, Validators.min(1)]]
-    });
-
-    this.accountingPointFormGroup = this._formBuilder.group({
-      accountingPointFormArray: this._formBuilder.array([], Validators.required)
-    })
-
     this.actions.pipe(
       ofType(EntityActions.addNewKeyRoomSuccessAction)
     ).subscribe(() => this.router.navigate(["/key-room"]))
-
-
   }
 
-  idControl() {
-    return this.keyRoomFormGroup.controls['id'] as FormArray;
+  idControl(): FormControl<string | null> {
+    return this.keyRoomFormGroup.controls.id;
   }
 
   accountingPointsArray() {
-    return this.keyRoomFormGroup.controls['accountingPoints'] as FormArray;
+    return this.accountingPointFormGroup.controls.accountingPointFormArray;
   }
 
   countOwnerControl() {
-    return this.keyRoomFormGroup.get('countOwner') as FormControl
+    return this.keyRoomFormGroup.controls.countOwner;
   }
 
   countPrescribedControl() {
-    return this.keyRoomFormGroup.get('countSubscribed') as FormControl
+    return this.keyRoomFormGroup.controls.countSubscribed;
   }
 
   countResidentsControl() {
-    return this.keyRoomFormGroup.get('countResident') as FormControl
+    return this.keyRoomFormGroup.controls.countResident;
   }
 
   squareControl() {
-    return this.keyRoomFormGroup.get('square') as FormControl
+    return this.keyRoomFormGroup.controls.square
   }
 
   roomPropertyHasError(): boolean {
@@ -110,8 +102,8 @@ export class KeyRoomAddComponent {
     return false;
   }
 
-  get accountingPointFormArray(): FormArray {
-    return this.accountingPointFormGroup.get('accountingPointFormArray') as FormArray
+  get accountingPointFormArray(): UntypedFormArray {
+    return this.accountingPointFormGroup.get('accountingPointFormArray') as UntypedFormArray
   }
 
   save() {

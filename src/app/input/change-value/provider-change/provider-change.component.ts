@@ -1,11 +1,11 @@
-import {Component, Inject} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Subscription} from "rxjs";
-import {ActionCreator, Store} from "@ngrx/store";
-import {IAppState} from "../../../../store/state/app.state";
-import {AbstractChangeValueComponent} from "../abstract-change-value.component";
-import {Actions} from "@ngrx/effects";
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Subscription } from "rxjs";
+import { ActionCreator, Store } from "@ngrx/store";
+import { IAppState } from "../../../../store/state/app.state";
+import { AbstractChangeValueComponent } from "../abstract-change-value.component";
+import { Actions } from "@ngrx/effects";
 
 @Component({
   selector: 'app-provider-change',
@@ -14,16 +14,15 @@ import {Actions} from "@ngrx/effects";
 })
 export class ProviderChangeComponent extends AbstractChangeValueComponent {
 
-  formGroup: FormGroup = this.formBuilder.group({
-    providerId: ['', Validators.required]
+  formGroup = new FormGroup({
+    providerId: new FormControl<string>('', [Validators.required])
   });
 
-  get value(): any {
-    return this.formGroup.get("providerId")?.value || ""
+  get value(): string | undefined | null {
+    return this.formGroup.value.providerId
   }
 
   constructor(
-    override readonly formBuilder: FormBuilder,
     override readonly dialogRef: MatDialogRef<ProviderChangeComponent>,
     override readonly store: Store<IAppState>,
     override readonly actions: Actions,
@@ -35,8 +34,6 @@ export class ProviderChangeComponent extends AbstractChangeValueComponent {
       failCompleteAction: ActionCreator,
     } | undefined
   ) {
-    super(formBuilder, dialogRef, store, actions, data)
+    super(dialogRef, store, actions, data)
   }
-
-
 }

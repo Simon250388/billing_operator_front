@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {AbstractEntityInput} from "../abstract-entity-input";
-import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {SimpleRef} from "../../../../store/models/simple-ref.model";
 import {providerSimpleRefSelector} from "../../../../store/selectors/simple-ref.selector";

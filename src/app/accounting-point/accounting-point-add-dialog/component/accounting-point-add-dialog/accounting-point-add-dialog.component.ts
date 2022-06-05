@@ -1,17 +1,17 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {AccountingPointService} from "../../../../../store/models/accounting-point-service";
-import {FormGroup} from "@angular/forms";
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { AccountingPointService } from "../../../../../store/models/accounting-point-service";
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-accounting-point-add-form-form-dialog',
   templateUrl: './accounting-point-add-dialog.component.html',
   styleUrls: ['./accounting-point-add-dialog.component.css']
 })
-export class AccountingPointAddDialogComponent  {
+export class AccountingPointAddDialogComponent {
 
-  value : AccountingPointService | undefined;
-  formGroupValue : FormGroup | undefined;
+  value: AccountingPointService | undefined;
+  formGroupValue: FormGroup | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<AccountingPointAddDialogComponent>,

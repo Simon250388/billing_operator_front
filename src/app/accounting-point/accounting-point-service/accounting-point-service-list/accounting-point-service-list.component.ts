@@ -1,15 +1,15 @@
-import {Component, Input} from '@angular/core';
-import {FormArray, FormGroup} from '@angular/forms';
-import {MatDialog} from '@angular/material/dialog';
-import {AccountingPointService} from 'src/store/models/accounting-point-service';
-import {Observable} from "rxjs";
+import { Component, Input } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AccountingPointService } from 'src/store/models/accounting-point-service';
+import { Observable } from "rxjs";
 import {
   directionOfUseSimpleRefPresentSelector,
   providerSimpleRefPresentSelector,
   serviceSimpleRefPresentSelector
 } from "../../../../store/selectors/simple-ref.selector";
-import {IAppState} from "../../../../store/state/app.state";
-import {Store} from "@ngrx/store";
+import { IAppState } from "../../../../store/state/app.state";
+import { Store } from "@ngrx/store";
 import {
   AccountingPointAddDialogComponent
 } from "../../accounting-point-add-dialog/component/accounting-point-add-dialog/accounting-point-add-dialog.component";

@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormGroup} from '@angular/forms';
 import {SimpleRef} from "../../../../store/models/simple-ref.model";
 import {squareTypeValues} from "../../../../store/models/square-type-row";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";

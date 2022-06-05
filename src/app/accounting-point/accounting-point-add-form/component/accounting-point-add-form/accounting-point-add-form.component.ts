@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AccountingPointService} from "../../../../../store/models/accounting-point-service";
-import {Subscription} from "rxjs";
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
+import { AccountingPointService } from "../../../../../store/models/accounting-point-service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-accounting-point-add-form',
@@ -10,23 +10,19 @@ import {Subscription} from "rxjs";
 })
 export class AccountingPointAddFormComponent implements OnInit, OnDestroy {
 
-  formGroup: FormGroup;
+  formGroup = new FormGroup({
+    id: new FormControl<string| undefined>('', [Validators.required]),
+    serviceId: new FormControl<string>('', [Validators.required]),
+    providerId: new FormControl<string>('', [Validators.required]),
+    directionOfUseId: new FormControl<string>('', [Validators.required])
+  });
+
   @Input() value: AccountingPointService | undefined
-  @Output() onFormGroupValueChange: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  @Output() onFormGroupValueChange: EventEmitter<FormGroup> = new EventEmitter<UntypedFormGroup>();
 
   private subscription: Subscription;
 
-  constructor(
-    private _formBuilder: FormBuilder) {
-
-    this.formGroup = this._formBuilder.group({
-      id: this._formBuilder.control('', [Validators.required]),
-      serviceId: this._formBuilder.control('', [Validators.required]),
-      providerId: this._formBuilder.control('', [Validators.required]),
-      directionOfUseId: this._formBuilder.control('', [Validators.required]),
-      meter: this._formBuilder.group({})
-    });
-
+  constructor() {
     this.subscription = this.formGroup.valueChanges.subscribe(() =>
       this.onFormGroupValueChange.emit(this.formGroup)
     )
@@ -42,7 +38,7 @@ export class AccountingPointAddFormComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  getDescriptionControl(): FormControl {
-    return this.formGroup.controls['id'] as FormControl
+  getDescriptionControl(): FormControl<string> {
+    return this.formGroup.controls['id'] as FormControl<string>
   }
 }

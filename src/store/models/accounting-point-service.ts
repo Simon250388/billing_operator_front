@@ -4,5 +4,5 @@ export interface AccountingPointService extends BaseEntity {
   description: string;
   serviceId: string;
   providerId: string;
-  directionOfUseId: String
+  directionOfUseId: string
 }

@@ -9,7 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'accounting-points'
+        redirectTo: 'accounting-points',
+        pathMatch: 'full'
       },
       {
         path: 'accounting-points',

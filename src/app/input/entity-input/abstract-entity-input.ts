@@ -1,4 +1,4 @@
-import {FormGroup} from "@angular/forms";
+import {FormGroup, UntypedFormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {SimpleRef} from "../../../store/models/simple-ref.model";
 import {Store} from "@ngrx/store";

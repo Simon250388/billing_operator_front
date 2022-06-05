@@ -17,9 +17,9 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnDestroy {
 
-  form: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+  form = new FormGroup({
+    username: new FormControl<string>('', [Validators.required, Validators.email]),
+    password: new FormControl<string>('', [Validators.required]),
   });
 
   currentUser: Observable<IUser | undefined> = this.store.select(getCurrentUser)

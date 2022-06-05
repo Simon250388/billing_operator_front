@@ -1,30 +1,28 @@
-import {Component, Inject} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {ActionCreator, Store} from "@ngrx/store";
-import {IAppState} from "../../../../store/state/app.state";
-import {Actions} from "@ngrx/effects";
-import {Subscription} from "rxjs";
-import {AbstractChangeValueComponent} from "../abstract-change-value.component";
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ActionCreator, Store } from "@ngrx/store";
+import { IAppState } from "../../../../store/state/app.state";
+import { Actions } from "@ngrx/effects";
+import { Subscription } from "rxjs";
+import { AbstractChangeValueComponent } from "../abstract-change-value.component";
 
 @Component({
   selector: 'app-simple-number-change',
   templateUrl: './simple-number-change.component.html',
   styleUrls: ['./simple-number-change.component.scss']
 })
-export class SimpleNumberChangeComponent extends AbstractChangeValueComponent  {
+export class SimpleNumberChangeComponent extends AbstractChangeValueComponent {
 
-  formGroup = this.formBuilder.group({
-    editableValue: ['', Validators.required]
+  formGroup = new FormGroup({
+    editableValue: new FormControl<string>('', [Validators.required])
   })
 
-  get value(): number {
-    return this.formGroup.get("editableValue")?.value || 0
+  get value(): string | null | undefined {
+    return this.formGroup.value.editableValue
   }
 
-  constructor(
-    override readonly formBuilder: FormBuilder,
-    override readonly dialogRef: MatDialogRef<SimpleNumberChangeComponent>,
+  constructor(override readonly dialogRef: MatDialogRef<SimpleNumberChangeComponent>,
     override readonly store: Store<IAppState>,
     override readonly actions: Actions,
     @Inject(MAT_DIALOG_DATA) override readonly data: {
@@ -35,6 +33,6 @@ export class SimpleNumberChangeComponent extends AbstractChangeValueComponent  {
       failCompleteAction: ActionCreator,
     } | undefined
   ) {
-    super(formBuilder, dialogRef, store, actions, data)
+    super(dialogRef, store, actions, data)
   }
 }

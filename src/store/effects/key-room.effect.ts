@@ -32,7 +32,7 @@ export class KeyRoomEffect {
               }))            
           }
           else {
-            return of(CommonActions.emptyAction)
+            return of(CommonActions.emptyAction())
           }
         }
       )

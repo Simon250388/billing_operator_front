@@ -1,7 +1,7 @@
-import {Component, Inject} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {SquareTypeRow} from 'src/store/models/square-type-row';
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { SquareTypeRow } from 'src/store/models/square-type-row';
 
 @Component({
   selector: 'app-square-room-row',
@@ -10,14 +10,13 @@ import {SquareTypeRow} from 'src/store/models/square-type-row';
 })
 export class SquareRoomRowComponent {
 
-  formGroup: FormGroup = this._formBuilder.group({
-    squareTypeId: [Validators.required],
-    value: [Validators.required]
+  formGroup = new FormGroup({
+    squareTypeId: new FormControl<string | null>(null, [Validators.required]),
+    value: new FormControl<number>(0, [Validators.required])
   });
 
   constructor(
     public dialogRef: MatDialogRef<SquareRoomRowComponent>,
-    private _formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public rowData: SquareTypeRow) {
 
     if (rowData) {
