@@ -1,11 +1,11 @@
-import {Component, OnDestroy} from '@angular/core';
-import {Observable, Subscription} from "rxjs";
-import {MeterModel} from "../../../../../store/models/meter.model";
-import {IMeterState} from "../../../../../store/state/meter.state";
-import {Store} from "@ngrx/store";
-import {getMeterItems} from "../../../../../store/selectors/meter.selector";
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from "rxjs";
+import { MeterModel } from "../../../../../store/models/meter.model";
+import { IMeterState } from "../../../../../store/state/meter.state";
+import { Store } from "@ngrx/store";
+import { getMeterItems } from "../../../../../store/selectors/meter.selector";
 import * as EntityAction from "../../../../../store/action/meter.action";
-import {Actions, ofType} from "@ngrx/effects";
+import { Actions, ofType } from "@ngrx/effects";
 
 @Component({
   selector: 'app-meter-list',
